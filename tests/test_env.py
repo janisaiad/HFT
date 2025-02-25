@@ -1,0 +1,1 @@
+from hft.models import QR
