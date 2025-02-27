@@ -1,0 +1,17 @@
+{
+    "TICKER": "MSFT",
+    "data_shape": {
+        "rows": 45330303
+    },
+    "date_range": {
+        "start": "2024-10-01 13:00:00",
+        "end": "2024-12-16 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 4.373e-08,
+        "max_price": 8.000000000000001e-07,
+        "mean_price": 4.22262434700249e-07,
+        "total_trades": 3530691,
+        "unique_days": 54
+    }
+}

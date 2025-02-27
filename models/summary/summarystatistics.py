@@ -5,161 +5,188 @@ import numpy as np
 from datetime import datetime, time
 from tqdm import tqdm
 import json
+import gc
 
 dotenv.load_dotenv()
 
-FOLDER_PATH = os.getenv("FOLDER_PATH") if os.getenv("FOLDER_PATH") else "/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/"
-
-# Fonction pour calculer la taille d'un dossier
-def get_folder_size(path):
-    total_size = 0
-    for dirpath, dirnames, filenames in os.walk(path):
-        for filename in filenames:
-            file_path = os.path.join(dirpath, filename)
-            total_size += os.path.getsize(file_path)
-    return total_size
-
-# Trier les stocks par taille de dossier
-list_of_stocks = [(stock, get_folder_size(os.path.join(FOLDER_PATH, stock))) 
-                  for stock in os.listdir(FOLDER_PATH)]
-list_of_stocks.sort(key=lambda x: x[1])  # Tri par taille croissante
-list_of_stocks = [stock for stock, _ in list_of_stocks]
-
-# Création du dossier pour les résultats JSON
-json_output_dir = "results/summarystats"
-os.makedirs(json_output_dir, exist_ok=True)
+FOLDER_PATH = os.getenv("FOLDER_PATH") if os.getenv("FOLDER_PATH") else "/home/janis/3A/EA/HFT_QR_RL/data/smash4/DB_MBP_10/"
 
 # Colonnes requises pour l'analyse
 REQUIRED_COLUMNS = ["price", "bid_px_00", "ask_px_00", "size", "action", "ts_event"]
 
-# Création du DataFrame pour stocker les statistiques
-columns = [
-    "TICKER", "Tick_size", "Min_price", "Max_price", "Mean_trades_per_day",
-    "Average_spread", "Max_spread", "Mean_volume_per_trade", "Median_volume_per_trade",
-    "StdDev_volume_per_trade", "Transactions_at_bid_pct", "Average_duration_between_moves",
-    "Median_duration_between_moves", "Max_duration_between_moves", "StdDev_duration_between_moves",
-    "Number_of_jumps_week", "Average_jump_size", "Min_jump_size", "Max_jump_size",
-    "StdDev_jump_size", "Prop_jumps_size_1", "Prop_jumps_size_minus1",
-    "Prop_jumps_size_2", "Prop_jumps_size_minus2", "Prop_jumps_size_3",
-    "Prop_jumps_size_minus3"
-]
+# Création du dossier pour les résultats JSON et les logs
+json_output_dir = "results/summarystats"
+os.makedirs(json_output_dir, exist_ok=True)
 
-df_stats = pl.DataFrame(schema={col: pl.Float64 for col in columns})
+# Fichier de log pour les problèmes
+log_file = os.path.join(json_output_dir, "processing_issues.txt")
+
+def log_issue(message):
+    with open(log_file, 'a') as f:
+        f.write(f"{datetime.now()}: {message}\n")
+
+def get_folder_size(path):
+    """Calculer la taille totale d'un dossier"""
+    total_size = 0
+    try:
+        for dirpath, dirnames, filenames in os.walk(path):
+            for filename in filenames:
+                file_path = os.path.join(dirpath, filename)
+                total_size += os.path.getsize(file_path)
+    except Exception as e:
+        print(f"Erreur lors du calcul de la taille pour {path}: {e}")
+        return 0
+    return total_size
+
+class StockStats:
+    def __init__(self):
+        self.min_price = float('inf')
+        self.max_price = float('-inf')
+        self.sum_price = 0
+        self.count_price = 0
+        self.total_trades = 0
+        self.dates = set()
+        self.total_rows = 0
+        self.min_date = None
+        self.max_date = None
+    
+    def update(self, df):
+        # Mise à jour des statistiques de prix
+        prices = df["price_scaled"].to_numpy()
+        self.min_price = min(self.min_price, float(np.min(prices)))
+        self.max_price = max(self.max_price, float(np.max(prices)))
+        self.sum_price += float(np.sum(prices))
+        self.count_price += len(prices)
+        
+        # Mise à jour des trades
+        self.total_trades += df.filter(pl.col("action") == "T").height
+        
+        # Mise à jour des dates
+        dates = df["datetime"].dt.date().unique()
+        self.dates.update(dates.to_list())
+        
+        # Mise à jour du nombre total de lignes
+        self.total_rows += len(df)
+        
+        # Mise à jour des dates min/max
+        df_min_date = df["datetime"].min()
+        df_max_date = df["datetime"].max()
+        if self.min_date is None or df_min_date < self.min_date:
+            self.min_date = df_min_date
+        if self.max_date is None or df_max_date > self.max_date:
+            self.max_date = df_max_date
+    
+    def get_stats(self):
+        return {
+            "data_shape": {"rows": self.total_rows},
+            "date_range": {
+                "start": self.min_date.strftime("%Y-%m-%d %H:%M:%S"),
+                "end": self.max_date.strftime("%Y-%m-%d %H:%M:%S")
+            },
+            "basic_stats": {
+                "min_price": self.min_price,
+                "max_price": self.max_price,
+                "mean_price": self.sum_price / self.count_price if self.count_price > 0 else 0,
+                "total_trades": self.total_trades,
+                "unique_days": len(self.dates)
+            }
+        }
 
 # Constante pour la conversion des prix (1e-9 selon le format)
 PRICE_SCALE = 1e-9
 
-for stock in tqdm(list_of_stocks, desc="Processing stocks"):
+# Liste et trie les stocks par taille décroissante
+print("Calcul de la taille des dossiers...")
+stocks_with_size = []
+for stock in os.listdir(FOLDER_PATH):
     stock_path = os.path.join(FOLDER_PATH, stock)
-    list_of_files = os.listdir(stock_path)
+    if os.path.isdir(stock_path):
+        size = get_folder_size(stock_path)
+        stocks_with_size.append((stock, size))
+
+# Tri par taille décroissante
+stocks_with_size.sort(key=lambda x: x[1], reverse=True)
+stocks = [stock for stock, _ in stocks_with_size]
+
+print(f"Nombre total de stocks trouvés: {len(stocks)}")
+print("Top 5 plus gros dossiers:")
+for stock, size in stocks_with_size[:5]:
+    print(f"{stock}: {size / (1024*1024*1024):.2f} GB")
+
+for stock in tqdm(stocks, desc="Processing stocks"):
+    stock_path = os.path.join(FOLDER_PATH, stock)
     
-    # Filtrer pour ne garder que les fichiers parquet
-    parquet_files = [f for f in list_of_files if f.endswith('.parquet')]
-    
-    all_data = []
-    for file in tqdm(parquet_files, desc=f"Processing {stock} files", leave=False):
-        file_path = os.path.join(stock_path, file)
-        try:
-            # Lire uniquement les colonnes nécessaires
-            df = pl.read_parquet(file_path, columns=REQUIRED_COLUMNS)
-            
-            # Convertir ts_event en datetime et filtrer les heures de trading
-            df = df.with_columns([
-                pl.col("ts_event").cast(pl.Datetime).alias("datetime")
-            ]).filter(
-                (pl.col("datetime").dt.hour() >= 13) | 
-                ((pl.col("datetime").dt.hour() == 13) & (pl.col("datetime").dt.minute() >= 30))
-            ).filter(
-                pl.col("datetime").dt.hour() < 20
-            )
-            
-            if len(df) > 0:
-                all_data.append(df)
-        except Exception as e:
-            print(f"Error processing {file}: {str(e)}")
-            continue
-    
-    if not all_data:
-        print(f"Skipping {stock}: no valid data")
-        continue
-        
-    # Concaténer tous les fichiers pour ce stock
     try:
-        stock_data = pl.concat(all_data)
+        # Liste tous les fichiers parquet pour ce stock
+        parquet_files = [f for f in os.listdir(stock_path) if f.endswith('.parquet')]
         
-        # Convertir les prix en utilisant le facteur d'échelle
-        stock_data = stock_data.with_columns([
-            (pl.col("price") * PRICE_SCALE).alias("price_scaled"),
-            (pl.col("bid_px_00") * PRICE_SCALE).alias("bid_price_scaled"),
-            (pl.col("ask_px_00") * PRICE_SCALE).alias("ask_price_scaled")
-        ])
+        if not parquet_files:
+            log_issue(f"{stock}: Aucun fichier parquet trouvé")
+            continue
+            
+        # Essayer de lire le premier fichier pour vérifier la structure
+        first_file = os.path.join(stock_path, parquet_files[0])
+        try:
+            test_df = pl.read_parquet(first_file)
+            missing_cols = [col for col in REQUIRED_COLUMNS if col not in test_df.columns]
+            if missing_cols:
+                log_issue(f"{stock}: Colonnes manquantes dans les données: {missing_cols}")
+                log_issue(f"{stock}: Colonnes disponibles: {test_df.columns}")
+                continue
+            del test_df
+        except Exception as e:
+            log_issue(f"{stock}: Erreur lors de la lecture du premier fichier: {str(e)}")
+            continue
+            
+        # Si on arrive ici, la structure est OK, on peut traiter tous les fichiers
+        stats_accumulator = StockStats()
         
-        # Calcul des statistiques
-        stats = {
-            "TICKER": stock,
-            "Tick_size": float(stock_data["price_scaled"].diff().abs().min() or 0),
-            "Min_price": float(stock_data["price_scaled"].min()),
-            "Max_price": float(stock_data["price_scaled"].max()),
-            "Mean_trades_per_day": float(stock_data.filter(pl.col("action") == "T").groupby(
-                pl.col("datetime").dt.date()
-            ).count().mean()["count"]),
-            "Average_spread": float((stock_data["ask_price_scaled"] - stock_data["bid_price_scaled"]).mean()),
-            "Max_spread": float((stock_data["ask_price_scaled"] - stock_data["bid_price_scaled"]).max()),
-            "Mean_volume_per_trade": float(stock_data.filter(pl.col("action") == "T")["size"].mean()),
-            "Median_volume_per_trade": float(stock_data.filter(pl.col("action") == "T")["size"].median()),
-            "StdDev_volume_per_trade": float(stock_data.filter(pl.col("action") == "T")["size"].std()),
-            "Transactions_at_bid_pct": float(
-                stock_data.filter(pl.col("action") == "T")
-                .with_column(pl.col("price_scaled") == pl.col("bid_price_scaled"))
-                .select(pl.col("price_scaled") == pl.col("bid_price_scaled"))
-                .mean() * 100
-            ),
-        }
+        for file in tqdm(parquet_files, desc=f"Processing {stock} files", leave=False):
+            file_path = os.path.join(stock_path, file)
+            try:
+                # Lire et traiter le fichier
+                df = pl.read_parquet(file_path, columns=REQUIRED_COLUMNS)
+                
+                # Filtrer les heures de trading (13h30-20h)
+                df = (df
+                     .with_columns([
+                         pl.col("ts_event").cast(pl.Datetime).alias("datetime"),
+                         (pl.col("price") * PRICE_SCALE).alias("price_scaled")
+                     ])
+                     .filter(
+                         (pl.col("datetime").dt.hour() >= 13) | 
+                         ((pl.col("datetime").dt.hour() == 13) & (pl.col("datetime").dt.minute() >= 30))
+                     )
+                     .filter(
+                         pl.col("datetime").dt.hour() < 20
+                     ))
+                
+                if len(df) > 0:
+                    stats_accumulator.update(df)
+                
+                del df
+                gc.collect()
+                    
+            except Exception as e:
+                log_issue(f"{stock}: Erreur lors du traitement de {file}: {str(e)}")
+                continue
         
-        # Calcul des durées entre mouvements (en nanosecondes)
-        time_diffs = stock_data.filter(pl.col("price_scaled").diff() != 0)["ts_event"].diff()
-        stats.update({
-            "Average_duration_between_moves": float(time_diffs.mean()),
-            "Median_duration_between_moves": float(time_diffs.median()),
-            "Max_duration_between_moves": float(time_diffs.max()),
-            "StdDev_duration_between_moves": float(time_diffs.std()),
-        })
+        if stats_accumulator.total_rows == 0:
+            log_issue(f"{stock}: Aucune donnée valide après filtrage")
+            continue
+            
+        # Obtenir les statistiques finales
+        stats = {"TICKER": stock}
+        stats.update(stats_accumulator.get_stats())
         
-        # Calcul des sauts de prix
-        price_jumps = stock_data["price_scaled"].diff()
-        jumps = price_jumps[price_jumps != 0]
-        
-        stats.update({
-            "Number_of_jumps_week": int(len(jumps)),
-            "Average_jump_size": float(jumps.mean() * 1e5),  # × 10^-5 comme demandé
-            "Min_jump_size": float(jumps.min()),
-            "Max_jump_size": float(jumps.max()),
-            "StdDev_jump_size": float(jumps.std()),
-            "Prop_jumps_size_1": float((jumps == PRICE_SCALE).mean()),
-            "Prop_jumps_size_minus1": float((jumps == -PRICE_SCALE).mean()),
-            "Prop_jumps_size_2": float((jumps == 2 * PRICE_SCALE).mean()),
-            "Prop_jumps_size_minus2": float((jumps == -2 * PRICE_SCALE).mean()),
-            "Prop_jumps_size_3": float((jumps == 3 * PRICE_SCALE).mean()),
-            "Prop_jumps_size_minus3": float((jumps == -3 * PRICE_SCALE).mean()),
-        })
-        
-        # Sauvegarder les statistiques dans un fichier JSON pour ce stock
+        # Sauvegarder immédiatement les stats pour ce stock
         json_file_path = os.path.join(json_output_dir, f"{stock}_stats.json")
         with open(json_file_path, 'w') as f:
             json.dump(stats, f, indent=4)
-        
-        # Ajouter les statistiques au DataFrame principal
-        df_stats = df_stats.vstack(pl.DataFrame([stats]))
-        
+            
     except Exception as e:
-        print(f"Error processing stock {stock}: {str(e)}")
+        log_issue(f"{stock}: Erreur générale: {str(e)}")
         continue
 
-# Sauvegarder les résultats complets en parquet
-output_path = "results/summary_statistics.parquet"
-os.makedirs(os.path.dirname(output_path), exist_ok=True)
-df_stats.write_parquet(output_path)
-
-# Afficher un aperçu des résultats
-print(df_stats)
+print(f"\nTraitement terminé. Consultez {log_file} pour les détails des problèmes rencontrés.")
 

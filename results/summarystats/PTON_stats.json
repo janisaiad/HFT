@@ -1,0 +1,17 @@
+{
+    "TICKER": "PTON",
+    "data_shape": {
+        "rows": 37089803
+    },
+    "date_range": {
+        "start": "2023-07-17 13:01:03",
+        "end": "2024-12-16 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 1.0011e-07,
+        "mean_price": 5.870128064484453e-09,
+        "total_trades": 3054721,
+        "unique_days": 359
+    }
+}

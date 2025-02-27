@@ -1,0 +1,17 @@
+{
+    "TICKER": "LION",
+    "data_shape": {
+        "rows": 935298
+    },
+    "date_range": {
+        "start": "2024-05-14 13:00:35",
+        "end": "2024-12-16 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 2.14748e-06,
+        "mean_price": 7.212499289210501e-09,
+        "total_trades": 49118,
+        "unique_days": 150
+    }
+}

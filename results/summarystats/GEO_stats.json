@@ -1,0 +1,17 @@
+{
+    "TICKER": "GEO",
+    "data_shape": {
+        "rows": 4892714
+    },
+    "date_range": {
+        "start": "2024-07-22 13:00:34",
+        "end": "2024-11-21 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 0.00019999900000000002,
+        "mean_price": 1.83711211550481e-08,
+        "total_trades": 333836,
+        "unique_days": 88
+    }
+}

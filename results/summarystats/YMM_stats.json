@@ -1,0 +1,17 @@
+{
+    "TICKER": "YMM",
+    "data_shape": {
+        "rows": 111006
+    },
+    "date_range": {
+        "start": "2024-06-24 13:30:36",
+        "end": "2024-09-23 19:59:57"
+    },
+    "basic_stats": {
+        "min_price": 6.76e-09,
+        "max_price": 8.87e-09,
+        "mean_price": 7.617678864205538e-09,
+        "total_trades": 111006,
+        "unique_days": 62
+    }
+}

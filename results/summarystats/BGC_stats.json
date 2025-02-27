@@ -1,0 +1,17 @@
+{
+    "TICKER": "BGC",
+    "data_shape": {
+        "rows": 16270722
+    },
+    "date_range": {
+        "start": "2023-07-17 13:01:18",
+        "end": "2024-12-16 19:59:58"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 8e-08,
+        "mean_price": 8.18556041990024e-09,
+        "total_trades": 1390576,
+        "unique_days": 359
+    }
+}

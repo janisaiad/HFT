@@ -1,0 +1,17 @@
+{
+    "TICKER": "RIOT",
+    "data_shape": {
+        "rows": 1158321
+    },
+    "date_range": {
+        "start": "2024-06-24 13:02:11",
+        "end": "2024-09-23 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 6.36e-09,
+        "max_price": 1.308e-08,
+        "mean_price": NaN,
+        "total_trades": 193095,
+        "unique_days": 63
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "TICKER": "KHC",
+    "data_shape": {
+        "rows": 12965012
+    },
+    "date_range": {
+        "start": "2024-07-22 13:00:00",
+        "end": "2024-10-21 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.9600000000000003e-08,
+        "max_price": 8.248000000000001e-08,
+        "mean_price": 3.503543276165113e-08,
+        "total_trades": 904478,
+        "unique_days": 65
+    }
+}

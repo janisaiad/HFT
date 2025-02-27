@@ -1,0 +1,17 @@
+{
+    "TICKER": "INTC",
+    "data_shape": {
+        "rows": 49739841
+    },
+    "date_range": {
+        "start": "2024-07-22 13:00:05",
+        "end": "2024-11-01 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 8.750000000000001e-10,
+        "max_price": 2.0000000000000002e-07,
+        "mean_price": 2.265523765445893e-08,
+        "total_trades": 3977190,
+        "unique_days": 74
+    }
+}

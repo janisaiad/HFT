@@ -1,0 +1,17 @@
+{
+    "TICKER": "LCID",
+    "data_shape": {
+        "rows": 4364241
+    },
+    "date_range": {
+        "start": "2024-07-22 13:00:46",
+        "end": "2024-10-21 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 9.7e-10,
+        "max_price": 1.0000000000000001e-07,
+        "mean_price": 3.501480098143069e-09,
+        "total_trades": 482361,
+        "unique_days": 65
+    }
+}

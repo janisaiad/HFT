@@ -1,0 +1,17 @@
+{
+    "TICKER": "NTAP",
+    "data_shape": {
+        "rows": 4257276
+    },
+    "date_range": {
+        "start": "2024-10-01 13:01:05",
+        "end": "2024-12-16 19:59:58"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 0.00019999900000000002,
+        "mean_price": 1.265153923176933e-07,
+        "total_trades": 385565,
+        "unique_days": 54
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "TICKER": "GOOGL",
+    "data_shape": {
+        "rows": 152467274
+    },
+    "date_range": {
+        "start": "2024-07-22 13:00:03",
+        "end": "2024-10-21 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.7500000000000002e-09,
+        "max_price": 3.0000000000000004e-07,
+        "mean_price": 1.630919271036157e-07,
+        "total_trades": 5543697,
+        "unique_days": 59
+    }
+}

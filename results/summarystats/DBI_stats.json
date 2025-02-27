@@ -1,0 +1,17 @@
+{
+    "TICKER": "DBI",
+    "data_shape": {
+        "rows": 81715
+    },
+    "date_range": {
+        "start": "2024-06-24 13:30:48",
+        "end": "2024-09-23 19:59:58"
+    },
+    "basic_stats": {
+        "min_price": 4.4000000000000005e-09,
+        "max_price": 8.445e-09,
+        "mean_price": 6.804902833017195e-09,
+        "total_trades": 81715,
+        "unique_days": 62
+    }
+}

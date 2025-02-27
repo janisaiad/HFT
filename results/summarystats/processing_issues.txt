@@ -1,0 +1,416 @@
+2025-02-27 17:10:10.639906: UA: Erreur lors du traitement de UA_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/UA/UA_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:10.651707: UA: Erreur lors du traitement de UA_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/UA/UA_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:13.226436: CGAU: Erreur lors du traitement de CGAU_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/CGAU/CGAU_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:31.395524: APLT: Erreur lors du traitement de APLT_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/APLT/APLT_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:31.495176: APLT: Erreur lors du traitement de APLT_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/APLT/APLT_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:31.768251: ITUB: Erreur lors du traitement de ITUB_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ITUB/ITUB_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:31.795658: ITUB: Erreur lors du traitement de ITUB_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ITUB/ITUB_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:46.965444: CX: Erreur lors du traitement de CX_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/CX/CX_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:46.979140: CX: Erreur lors du traitement de CX_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/CX/CX_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:50.685250: DBI: Erreur lors du traitement de DBI_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/DBI/DBI_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:50.696497: DBI: Erreur lors du traitement de DBI_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/DBI/DBI_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:54.822610: ERIC: Erreur lors du traitement de ERIC_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ERIC/ERIC_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:10:54.943409: ERIC: Erreur lors du traitement de ERIC_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ERIC/ERIC_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:21:53.794466: UA: Erreur lors du traitement de UA_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/UA/UA_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:21:53.801298: UA: Erreur lors du traitement de UA_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/UA/UA_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:21:55.180379: CGAU: Erreur lors du traitement de CGAU_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/CGAU/CGAU_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:10.197605: APLT: Erreur lors du traitement de APLT_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/APLT/APLT_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:10.233629: APLT: Erreur lors du traitement de APLT_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/APLT/APLT_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:10.404967: ITUB: Erreur lors du traitement de ITUB_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ITUB/ITUB_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:10.426455: ITUB: Erreur lors du traitement de ITUB_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ITUB/ITUB_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:21.130401: CX: Erreur lors du traitement de CX_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/CX/CX_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:21.138237: CX: Erreur lors du traitement de CX_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/CX/CX_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:23.343197: DBI: Erreur lors du traitement de DBI_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/DBI/DBI_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:23.348538: DBI: Erreur lors du traitement de DBI_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/DBI/DBI_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:25.874531: ERIC: Erreur lors du traitement de ERIC_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ERIC/ERIC_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:22:25.948244: ERIC: Erreur lors du traitement de ERIC_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ERIC/ERIC_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:24:42.833601: GOOGL: Erreur lors du traitement de GOOGL_2024-08-29.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:24:43.303558: GOOGL: Erreur lors du traitement de GOOGL_2024-08-21.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:24:43.695213: GOOGL: Erreur lors du traitement de GOOGL_2024-09-26.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:24:45.620148: GOOGL: Erreur lors du traitement de GOOGL_2024-08-23.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:24:48.607216: GOOGL: Erreur lors du traitement de GOOGL_2024-08-27.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:26:21.547314: GOOGL: Erreur lors du traitement de GOOGL_2024-08-29.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:26:22.064998: GOOGL: Erreur lors du traitement de GOOGL_2024-08-21.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:26:22.547219: GOOGL: Erreur lors du traitement de GOOGL_2024-09-26.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:26:25.326073: GOOGL: Erreur lors du traitement de GOOGL_2024-08-23.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:26:27.677760: GOOGL: Erreur lors du traitement de GOOGL_2024-08-27.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:26:28.723428: GOOGL: Erreur lors du traitement de GOOGL_2024-08-05.parquet: parquet: File out of specification: The file must end with PAR1
+
+This error occurred with the following context stack:
+	[1] 'parquet scan'
+	[2] 'select'
+
+2025-02-27 17:29:18.681193: RIOT: Erreur lors du traitement de RIOT_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/RIOT/RIOT_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:18.790080: HL: Erreur lors du traitement de HL_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/HL/HL_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:19.974545: CGAU: Erreur lors du traitement de CGAU_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/CGAU/CGAU_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:20.947940: ASAI: Erreur lors du traitement de ASAI_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ASAI/ASAI_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:21.129639: CX: Erreur lors du traitement de CX_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/CX/CX_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:21.159818: CX: Erreur lors du traitement de CX_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/CX/CX_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:21.756514: YMM: Erreur lors du traitement de YMM_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/YMM/YMM_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:22.161569: YMM: Erreur lors du traitement de YMM_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/YMM/YMM_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:22.366579: ERIC: Erreur lors du traitement de ERIC_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ERIC/ERIC_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:22.670627: ERIC: Erreur lors du traitement de ERIC_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ERIC/ERIC_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:22.970948: ITUB: Erreur lors du traitement de ITUB_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ITUB/ITUB_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:23.036834: ITUB: Erreur lors du traitement de ITUB_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ITUB/ITUB_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:23.836305: DBI: Erreur lors du traitement de DBI_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/DBI/DBI_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:23.853890: DBI: Erreur lors du traitement de DBI_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/DBI/DBI_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:24.393243: UA: Erreur lors du traitement de UA_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/UA/UA_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:24.420072: UA: Erreur lors du traitement de UA_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/UA/UA_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:24.505360: APLT: Erreur lors du traitement de APLT_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/APLT/APLT_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:24.643539: APLT: Erreur lors du traitement de APLT_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/APLT/APLT_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:25.022038: PBI: Erreur lors du traitement de PBI_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/PBI/PBI_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:25.442595: PBI: Erreur lors du traitement de PBI_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/PBI/PBI_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:25.672440: IE: Erreur lors du traitement de IE_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/IE/IE_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:25.994043: IE: Erreur lors du traitement de IE_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/IE/IE_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:26.194542: ANGO: Erreur lors du traitement de ANGO_2024-08-07_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ANGO/ANGO_2024-08-07_dbeq-basic.parquet]
+PROJECT */13 COLUMNS
+2025-02-27 17:29:26.404306: ANGO: Erreur lors du traitement de ANGO_2024-09-13_dbeq-basic.parquet: price
+
+Resolved plan until failure:
+
+	---> FAILED HERE RESOLVING 'select' <---
+Parquet SCAN [/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/ANGO/ANGO_2024-09-13_dbeq-basic.parquet]
+PROJECT */13 COLUMNS

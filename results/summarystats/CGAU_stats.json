@@ -1,0 +1,17 @@
+{
+    "TICKER": "CGAU",
+    "data_shape": {
+        "rows": 274068
+    },
+    "date_range": {
+        "start": "2024-06-24 13:30:29",
+        "end": "2024-09-23 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 5.815000000000001e-09,
+        "max_price": 7.51e-09,
+        "mean_price": NaN,
+        "total_trades": 16347,
+        "unique_days": 63
+    }
+}

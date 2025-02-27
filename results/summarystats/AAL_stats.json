@@ -1,0 +1,17 @@
+{
+    "TICKER": "AAL",
+    "data_shape": {
+        "rows": 60784302
+    },
+    "date_range": {
+        "start": "2023-07-17 13:00:20",
+        "end": "2024-12-16 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 3e-10,
+        "max_price": 8.500000000000001e-08,
+        "mean_price": 1.3296583417705446e-08,
+        "total_trades": 5125102,
+        "unique_days": 359
+    }
+}

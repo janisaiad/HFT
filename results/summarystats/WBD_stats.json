@@ -1,0 +1,17 @@
+{
+    "TICKER": "WBD",
+    "data_shape": {
+        "rows": 9510824
+    },
+    "date_range": {
+        "start": "2024-07-22 13:01:10",
+        "end": "2024-11-01 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1e-09,
+        "max_price": 7.500000000000001e-08,
+        "mean_price": 7.868413211095065e-09,
+        "total_trades": 905466,
+        "unique_days": 74
+    }
+}

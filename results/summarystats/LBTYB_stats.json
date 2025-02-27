@@ -1,0 +1,17 @@
+{
+    "TICKER": "LBTYB",
+    "data_shape": {
+        "rows": 2379423
+    },
+    "date_range": {
+        "start": "2023-07-17 13:01:18",
+        "end": "2024-12-16 19:58:57"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 7.033010000000001e-06,
+        "mean_price": 1.7916885928773493e-08,
+        "total_trades": 2911,
+        "unique_days": 359
+    }
+}
