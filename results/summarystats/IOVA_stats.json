@@ -1,17 +1,29 @@
 {
-    "TICKER": "IOVA",
-    "data_shape": {
-        "rows": 41326002
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 0.0001,
+        "Max price": 199999.0,
+        "Mean number of trades per day": 8968.930362116991,
+        "Average spread": 0.013051928178293178,
+        "Max spread": 3.16
     },
-    "date_range": {
-        "start": "2023-07-17 13:01:19",
-        "end": "2024-12-16 19:59:59"
-    },
-    "basic_stats": {
-        "min_price": 1.0000000000000002e-13,
-        "max_price": 0.00019999900000000002,
-        "mean_price": 1.074423955199924e-08,
-        "total_trades": 3219846,
-        "unique_days": 359
-    }
+    "Mean volume per trade": 135.83534429907516,
+    "Average duration between moves": 351473583.4552425,
+    "Median duration between moves": 393365.0,
+    "Max duration between moves": 1911895328211.0,
+    "Stand. Dev. duration between moves": 3277983612.656616,
+    "Median volume per trade": 100.0,
+    "Stand. Dev. Volume per trade": 1172.3731968121876,
+    "Transactions at the Bid price (%)": 34.841697397950085,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

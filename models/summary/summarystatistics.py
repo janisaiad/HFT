@@ -40,15 +40,41 @@ def get_folder_size(path):
 
 class StockStats:
     def __init__(self):
+        # Stats de prix de base
         self.min_price = float('inf')
         self.max_price = float('-inf')
         self.sum_price = 0
         self.count_price = 0
+        
+        # Stats de trades
         self.total_trades = 0
+        self.trades_at_bid = 0
+        self.sum_volume = 0
+        self.volumes = []  # Pour calculer médiane et écart-type
+        
+        # Stats temporelles
         self.dates = set()
         self.total_rows = 0
         self.min_date = None
         self.max_date = None
+        self.time_diffs = []  # Pour calculer médiane et écart-type des durées
+        
+        # Stats de spread
+        self.sum_spread = 0
+        self.count_spread = 0
+        self.max_spread = float('-inf')
+        
+        # Stats de sauts
+        self.jumps = []  # Pour calculer les stats sur les sauts
+        self.jump_counts = {
+            1: 0, -1: 0,
+            2: 0, -2: 0,
+            3: 0, -3: 0
+        }
+        self.total_jumps = 0
+        
+        # Tick size
+        self.price_diffs = set()
     
     def update(self, df):
         # Mise à jour des statistiques de prix
@@ -58,8 +84,25 @@ class StockStats:
         self.sum_price += float(np.sum(prices))
         self.count_price += len(prices)
         
-        # Mise à jour des trades
-        self.total_trades += df.filter(pl.col("action") == "T").height
+        # Calcul des spreads
+        spreads = (df["ask_price_scaled"] - df["bid_price_scaled"]).to_numpy()
+        self.sum_spread += float(np.sum(spreads))
+        self.count_spread += len(spreads)
+        self.max_spread = max(self.max_spread, float(np.max(spreads)))
+        
+        # Stats de trades
+        trades = df.filter(pl.col("action") == "T")
+        self.total_trades += trades.height
+        
+        if trades.height > 0:
+            # Volumes des trades
+            trade_volumes = trades["size"].to_numpy()
+            self.sum_volume += float(np.sum(trade_volumes))
+            self.volumes.extend(trade_volumes.tolist())
+            
+            # Trades au bid
+            trades_at_bid = trades.filter(pl.col("price_scaled") == pl.col("bid_price_scaled")).height
+            self.trades_at_bid += trades_at_bid
         
         # Mise à jour des dates
         dates = df["datetime"].dt.date().unique()
@@ -75,25 +118,65 @@ class StockStats:
             self.min_date = df_min_date
         if self.max_date is None or df_max_date > self.max_date:
             self.max_date = df_max_date
+            
+        # Calcul des durées entre mouvements
+        price_changes = df.filter(pl.col("price_scaled").diff() != 0)
+        if len(price_changes) > 1:
+            time_diffs = price_changes["ts_event"].diff().drop_nulls()
+            self.time_diffs.extend(time_diffs.to_numpy().tolist())
+            
+        # Calcul des sauts de prix et tick size
+        price_diffs = df["price_scaled"].diff().drop_nulls()
+        non_zero_diffs = price_diffs[price_diffs != 0]
+        
+        if len(non_zero_diffs) > 0:
+            self.jumps.extend(non_zero_diffs.to_numpy().tolist())
+            self.price_diffs.update(abs(non_zero_diffs).unique().to_numpy().tolist())
+            
+            # Compter les sauts de différentes tailles
+            for jump_size in [1, -1, 2, -2, 3, -3]:
+                count = (non_zero_diffs == jump_size).sum()
+                self.jump_counts[jump_size] += count
+                self.total_jumps += count
     
     def get_stats(self):
-        return {
-            "data_shape": {"rows": self.total_rows},
-            "date_range": {
-                "start": self.min_date.strftime("%Y-%m-%d %H:%M:%S"),
-                "end": self.max_date.strftime("%Y-%m-%d %H:%M:%S")
+        # Convertir les listes en arrays numpy pour les calculs
+        time_diffs_arr = np.array(self.time_diffs) if self.time_diffs else np.array([0])
+        volumes_arr = np.array(self.volumes) if self.volumes else np.array([0])
+        jumps_arr = np.array(self.jumps) if self.jumps else np.array([0])
+        
+        # Calculer les statistiques dans le format demandé
+        stats = {
+            "TICKER": {
+                "Tick size": float(min(self.price_diffs)) if self.price_diffs else 0,
+                "Min price": self.min_price,
+                "Max price": self.max_price,
+                "Mean number of trades per day": self.total_trades / len(self.dates) if self.dates else 0,
+                "Average spread": self.sum_spread / self.count_spread if self.count_spread > 0 else 0,
+                "Max spread": self.max_spread
             },
-            "basic_stats": {
-                "min_price": self.min_price,
-                "max_price": self.max_price,
-                "mean_price": self.sum_price / self.count_price if self.count_price > 0 else 0,
-                "total_trades": self.total_trades,
-                "unique_days": len(self.dates)
-            }
+            "Mean volume per trade": self.sum_volume / self.total_trades if self.total_trades > 0 else 0,
+            "Average duration between moves": float(np.mean(time_diffs_arr)),
+            "Median duration between moves": float(np.median(time_diffs_arr)),
+            "Max duration between moves": float(np.max(time_diffs_arr)),
+            "Stand. Dev. duration between moves": float(np.std(time_diffs_arr)),
+            "Median volume per trade": float(np.median(volumes_arr)),
+            "Stand. Dev. Volume per trade": float(np.std(volumes_arr)),
+            "Transactions at the Bid price (%)": (self.trades_at_bid / self.total_trades * 100) if self.total_trades > 0 else 0,
+            "Number of jumps over the week": self.total_jumps * 5 / len(self.dates) if self.dates else 0,
+            "Average size of the jumps": float(np.mean(jumps_arr)),  # Déjà à la bonne échelle
+            "Min. size of the jumps": float(np.min(jumps_arr)),
+            "Max. size of the jumps": float(np.max(jumps_arr)),
+            "Stand. Dev. size of the jumps": float(np.std(jumps_arr)),
+            "Prop. jumps of size 1": self.jump_counts[1] / self.total_jumps if self.total_jumps > 0 else 0,
+            "Prop. jumps of size -1": self.jump_counts[-1] / self.total_jumps if self.total_jumps > 0 else 0,
+            "Prop. jumps of size 2": self.jump_counts[2] / self.total_jumps if self.total_jumps > 0 else 0,
+            "Prop. jumps of size -2": self.jump_counts[-2] / self.total_jumps if self.total_jumps > 0 else 0,
+            "Prop. jumps of size 3": self.jump_counts[3] / self.total_jumps if self.total_jumps > 0 else 0,
+            "Prop. jumps of size -3": self.jump_counts[-3] / self.total_jumps if self.total_jumps > 0 else 0
         }
-
-# Constante pour la conversion des prix (1e-9 selon le format)
-PRICE_SCALE = 1e-9
+        
+        return stats
 
 # Liste et trie les stocks par taille décroissante
 print("Calcul de la taille des dossiers...")
@@ -115,6 +198,11 @@ for stock, size in stocks_with_size[:5]:
 
 for stock in tqdm(stocks, desc="Processing stocks"):
     stock_path = os.path.join(FOLDER_PATH, stock)
+    json_file_path = os.path.join(json_output_dir, f"{stock}_stats.json")
+    
+    # Supprimer le fichier JSON s'il existe déjà
+    if os.path.exists(json_file_path):
+        os.remove(json_file_path)
     
     try:
         # Liste tous les fichiers parquet pour ce stock
@@ -147,11 +235,13 @@ for stock in tqdm(stocks, desc="Processing stocks"):
                 # Lire et traiter le fichier
                 df = pl.read_parquet(file_path, columns=REQUIRED_COLUMNS)
                 
-                # Filtrer les heures de trading (13h30-20h)
+                # Filtrer les heures de trading (13h30-20h) et préparer toutes les colonnes
                 df = (df
                      .with_columns([
                          pl.col("ts_event").cast(pl.Datetime).alias("datetime"),
-                         (pl.col("price") * PRICE_SCALE).alias("price_scaled")
+                         pl.col("price").alias("price_scaled"),
+                         pl.col("bid_px_00").alias("bid_price_scaled"),
+                         pl.col("ask_px_00").alias("ask_price_scaled")
                      ])
                      .filter(
                          (pl.col("datetime").dt.hour() >= 13) | 
@@ -175,12 +265,11 @@ for stock in tqdm(stocks, desc="Processing stocks"):
             log_issue(f"{stock}: Aucune donnée valide après filtrage")
             continue
             
-        # Obtenir les statistiques finales
+        # Obtenir les statistiques finales et sauvegarder
         stats = {"TICKER": stock}
         stats.update(stats_accumulator.get_stats())
         
-        # Sauvegarder immédiatement les stats pour ce stock
-        json_file_path = os.path.join(json_output_dir, f"{stock}_stats.json")
+        # Sauvegarder dans un nouveau fichier (écrase l'ancien s'il existe)
         with open(json_file_path, 'w') as f:
             json.dump(stats, f, indent=4)
             

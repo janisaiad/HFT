@@ -1,17 +1,29 @@
 {
-    "TICKER": "WB",
-    "data_shape": {
-        "rows": 16259285
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 0.01,
+        "Max price": 64.82,
+        "Mean number of trades per day": 3485.0194986072424,
+        "Average spread": 0.01339742430248317,
+        "Max spread": 2.16
     },
-    "date_range": {
-        "start": "2023-07-17 13:01:18",
-        "end": "2024-12-16 19:59:54"
-    },
-    "basic_stats": {
-        "min_price": 1.0000000000000001e-11,
-        "max_price": 6.482e-08,
-        "mean_price": 1.0174807375293558e-08,
-        "total_trades": 1251122,
-        "unique_days": 359
-    }
+    "Mean volume per trade": 105.07933598801715,
+    "Average duration between moves": 951952015.7329688,
+    "Median duration between moves": 583208.0,
+    "Max duration between moves": 6095668213541.0,
+    "Stand. Dev. duration between moves": 6934298074.620174,
+    "Median volume per trade": 81.0,
+    "Stand. Dev. Volume per trade": 662.2966125833223,
+    "Transactions at the Bid price (%)": 32.67658949327084,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

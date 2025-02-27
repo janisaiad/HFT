@@ -1,17 +1,29 @@
 {
-    "TICKER": "AAPL",
-    "data_shape": {
-        "rows": 84079091
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 0.75,
+        "Max price": 888.0,
+        "Mean number of trades per day": 92710.07407407407,
+        "Average spread": 0.017759844121055034,
+        "Max spread": 1.4599999999999795
     },
-    "date_range": {
-        "start": "2024-10-01 13:00:00",
-        "end": "2024-12-16 19:59:59"
-    },
-    "basic_stats": {
-        "min_price": 7.500000000000001e-10,
-        "max_price": 8.88e-07,
-        "mean_price": 2.3053865172531424e-07,
-        "total_trades": 5006344,
-        "unique_days": 54
-    }
+    "Mean volume per trade": 69.4396383868148,
+    "Average duration between moves": 22152098.290185343,
+    "Median duration between moves": 177499.0,
+    "Max duration between moves": 196713872144.0,
+    "Stand. Dev. duration between moves": 153950352.33365706,
+    "Median volume per trade": 30.0,
+    "Stand. Dev. Volume per trade": 4230.734748154762,
+    "Transactions at the Bid price (%)": 44.224467995007934,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

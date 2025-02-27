@@ -1,17 +1,29 @@
 {
-    "TICKER": "MSFT",
-    "data_shape": {
-        "rows": 45330303
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 43.73,
+        "Max price": 800.0,
+        "Mean number of trades per day": 65383.166666666664,
+        "Average spread": 0.057332323148159954,
+        "Max spread": 3.519999999999982
     },
-    "date_range": {
-        "start": "2024-10-01 13:00:00",
-        "end": "2024-12-16 19:59:59"
-    },
-    "basic_stats": {
-        "min_price": 4.373e-08,
-        "max_price": 8.000000000000001e-07,
-        "mean_price": 4.22262434700249e-07,
-        "total_trades": 3530691,
-        "unique_days": 54
-    }
+    "Mean volume per trade": 45.66103717374305,
+    "Average duration between moves": 36970713.21546448,
+    "Median duration between moves": 178899.0,
+    "Max duration between moves": 345425402250.0,
+    "Stand. Dev. duration between moves": 218980630.12905863,
+    "Median volume per trade": 15.0,
+    "Stand. Dev. Volume per trade": 2472.120215646024,
+    "Transactions at the Bid price (%)": 37.720293279700776,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }
