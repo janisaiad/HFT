@@ -1,17 +1,29 @@
 {
-    "TICKER": "ASAI",
-    "data_shape": {
-        "rows": 173655
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 7.06,
+        "Max price": 10.78,
+        "Mean number of trades per day": 222.0793650793651,
+        "Average spread": NaN,
+        "Max spread": -Infinity
     },
-    "date_range": {
-        "start": "2024-06-24 13:37:16",
-        "end": "2024-09-23 19:59:59"
-    },
-    "basic_stats": {
-        "min_price": 7.06e-09,
-        "max_price": 1.078e-08,
-        "mean_price": NaN,
-        "total_trades": 13991,
-        "unique_days": 63
-    }
+    "Mean volume per trade": 64.71403044814524,
+    "Average duration between moves": 27038187730.54193,
+    "Median duration between moves": 145311679.0,
+    "Max duration between moves": 6991995497558.0,
+    "Stand. Dev. duration between moves": 137932285261.15546,
+    "Median volume per trade": 50.0,
+    "Stand. Dev. Volume per trade": 71.86419682831095,
+    "Transactions at the Bid price (%)": 21.392323636623544,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

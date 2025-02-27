@@ -1,17 +1,29 @@
 {
-    "TICKER": "NTAP",
-    "data_shape": {
-        "rows": 4257276
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 0.0001,
+        "Max price": 199999.0,
+        "Mean number of trades per day": 7140.092592592592,
+        "Average spread": 0.07963145447934315,
+        "Max spread": 26.25999999999999
     },
-    "date_range": {
-        "start": "2024-10-01 13:01:05",
-        "end": "2024-12-16 19:59:58"
-    },
-    "basic_stats": {
-        "min_price": 1.0000000000000002e-13,
-        "max_price": 0.00019999900000000002,
-        "mean_price": 1.265153923176933e-07,
-        "total_trades": 385565,
-        "unique_days": 54
-    }
+    "Mean volume per trade": 40.14208499215437,
+    "Average duration between moves": 397993927.7841542,
+    "Median duration between moves": 710426.5,
+    "Max duration between moves": 2179867605603.0,
+    "Stand. Dev. duration between moves": 4628345735.2417555,
+    "Median volume per trade": 13.0,
+    "Stand. Dev. Volume per trade": 479.84866247840057,
+    "Transactions at the Bid price (%)": 35.02470400580965,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

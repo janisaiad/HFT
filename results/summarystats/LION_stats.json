@@ -1,17 +1,29 @@
 {
-    "TICKER": "LION",
-    "data_shape": {
-        "rows": 935298
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 0.0001,
+        "Max price": 2147.48,
+        "Mean number of trades per day": 327.4533333333333,
+        "Average spread": NaN,
+        "Max spread": 7.73
     },
-    "date_range": {
-        "start": "2024-05-14 13:00:35",
-        "end": "2024-12-16 19:59:59"
-    },
-    "basic_stats": {
-        "min_price": 1.0000000000000002e-13,
-        "max_price": 2.14748e-06,
-        "mean_price": 7.212499289210501e-09,
-        "total_trades": 49118,
-        "unique_days": 150
-    }
+    "Mean volume per trade": 67.8256850848976,
+    "Average duration between moves": 4813632839.858187,
+    "Median duration between moves": 792396.0,
+    "Max duration between moves": 6754643947952.0,
+    "Stand. Dev. duration between moves": 35677449115.72037,
+    "Median volume per trade": 29.0,
+    "Stand. Dev. Volume per trade": 287.8751308375835,
+    "Transactions at the Bid price (%)": 27.881835579624575,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

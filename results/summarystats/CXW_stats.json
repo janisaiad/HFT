@@ -1,17 +1,29 @@
 {
-    "TICKER": "CXW",
-    "data_shape": {
-        "rows": 2502727
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 0.0001,
+        "Max price": 199999.0,
+        "Mean number of trades per day": 1931.1022727272727,
+        "Average spread": 0.0340973146491807,
+        "Max spread": 10.719999999999999
     },
-    "date_range": {
-        "start": "2024-07-22 13:00:34",
-        "end": "2024-11-21 19:59:58"
-    },
-    "basic_stats": {
-        "min_price": 1.0000000000000002e-13,
-        "max_price": 0.00019999900000000002,
-        "mean_price": 2.1028061223817062e-08,
-        "total_trades": 169937,
-        "unique_days": 88
-    }
+    "Mean volume per trade": 52.69215650505776,
+    "Average duration between moves": 1269265570.3741953,
+    "Median duration between moves": 763078.0,
+    "Max duration between moves": 2251971536023.0,
+    "Stand. Dev. duration between moves": 6987810555.944037,
+    "Median volume per trade": 24.0,
+    "Stand. Dev. Volume per trade": 120.75167645699064,
+    "Transactions at the Bid price (%)": 36.79775446194766,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

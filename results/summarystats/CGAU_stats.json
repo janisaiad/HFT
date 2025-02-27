@@ -1,17 +1,29 @@
 {
-    "TICKER": "CGAU",
-    "data_shape": {
-        "rows": 274068
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 5.815,
+        "Max price": 7.51,
+        "Mean number of trades per day": 259.4761904761905,
+        "Average spread": NaN,
+        "Max spread": 0.15000000000000036
     },
-    "date_range": {
-        "start": "2024-06-24 13:30:29",
-        "end": "2024-09-23 19:59:59"
-    },
-    "basic_stats": {
-        "min_price": 5.815000000000001e-09,
-        "max_price": 7.51e-09,
-        "mean_price": NaN,
-        "total_trades": 16347,
-        "unique_days": 63
-    }
+    "Mean volume per trade": 96.6350400685141,
+    "Average duration between moves": 29894922849.49801,
+    "Median duration between moves": 98849674.0,
+    "Max duration between moves": 4408796382772.0,
+    "Stand. Dev. duration between moves": 141420178899.91895,
+    "Median volume per trade": 100.0,
+    "Stand. Dev. Volume per trade": 120.83220045725623,
+    "Transactions at the Bid price (%)": 20.32788890927999,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

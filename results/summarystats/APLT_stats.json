@@ -1,17 +1,29 @@
 {
-    "TICKER": "APLT",
-    "data_shape": {
-        "rows": 52833
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 4.2,
+        "Max price": 8.86,
+        "Mean number of trades per day": 852.1451612903226,
+        "Average spread": NaN,
+        "Max spread": -Infinity
     },
-    "date_range": {
-        "start": "2024-06-24 13:36:19",
-        "end": "2024-09-23 19:59:59"
-    },
-    "basic_stats": {
-        "min_price": 4.2e-09,
-        "max_price": 8.86e-09,
-        "mean_price": 6.208332292317302e-09,
-        "total_trades": 52833,
-        "unique_days": 62
-    }
+    "Mean volume per trade": 85.53474154411069,
+    "Average duration between moves": 56329281659.33403,
+    "Median duration between moves": 17712826404.5,
+    "Max duration between moves": 1605725047930.0,
+    "Stand. Dev. duration between moves": 96787721789.0276,
+    "Median volume per trade": 75.0,
+    "Stand. Dev. Volume per trade": 564.5092517013426,
+    "Transactions at the Bid price (%)": 15.195048549202204,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

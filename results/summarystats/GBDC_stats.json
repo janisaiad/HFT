@@ -1,17 +1,29 @@
 {
-    "TICKER": "GBDC",
-    "data_shape": {
-        "rows": 9271743
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 0.0001,
+        "Max price": 199999.0,
+        "Mean number of trades per day": 1787.1782729805013,
+        "Average spread": NaN,
+        "Max spread": 7.75
     },
-    "date_range": {
-        "start": "2023-07-17 13:01:19",
-        "end": "2024-12-16 19:59:52"
-    },
-    "basic_stats": {
-        "min_price": 1.0000000000000002e-13,
-        "max_price": 0.00019999900000000002,
-        "mean_price": 2.250565730334632e-08,
-        "total_trades": 641597,
-        "unique_days": 359
-    }
+    "Mean volume per trade": 109.70100545981356,
+    "Average duration between moves": 1782243688.4686496,
+    "Median duration between moves": 2257506.0,
+    "Max duration between moves": 3460035222961.0,
+    "Stand. Dev. duration between moves": 11383519651.421991,
+    "Median volume per trade": 77.0,
+    "Stand. Dev. Volume per trade": 630.4966567789645,
+    "Transactions at the Bid price (%)": 32.867516525170785,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }

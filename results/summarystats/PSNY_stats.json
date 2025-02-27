@@ -1,17 +1,29 @@
 {
-    "TICKER": "PSNY",
-    "data_shape": {
-        "rows": 7386361
+    "TICKER": {
+        "Tick size": 0,
+        "Min price": 0.0001,
+        "Max price": 199999.0,
+        "Mean number of trades per day": 1868.782729805014,
+        "Average spread": 0.00866360200916256,
+        "Max spread": 0.46999999999999975
     },
-    "date_range": {
-        "start": "2023-07-17 13:00:26",
-        "end": "2024-12-16 19:59:58"
-    },
-    "basic_stats": {
-        "min_price": 1.0000000000000002e-13,
-        "max_price": 0.00019999900000000002,
-        "mean_price": 2.070251147743794e-09,
-        "total_trades": 670893,
-        "unique_days": 359
-    }
+    "Mean volume per trade": 381.29482048553194,
+    "Average duration between moves": 2221829544.154298,
+    "Median duration between moves": 1124144.0,
+    "Max duration between moves": 1675598037771.0,
+    "Stand. Dev. duration between moves": 11299400745.372993,
+    "Median volume per trade": 100.0,
+    "Stand. Dev. Volume per trade": 2533.9182813495995,
+    "Transactions at the Bid price (%)": 34.97785787003293,
+    "Number of jumps over the week": 0.0,
+    "Average size of the jumps": 0.0,
+    "Min. size of the jumps": 0.0,
+    "Max. size of the jumps": 0.0,
+    "Stand. Dev. size of the jumps": 0.0,
+    "Prop. jumps of size 1": 0,
+    "Prop. jumps of size -1": 0,
+    "Prop. jumps of size 2": 0,
+    "Prop. jumps of size -2": 0,
+    "Prop. jumps of size 3": 0,
+    "Prop. jumps of size -3": 0
 }
