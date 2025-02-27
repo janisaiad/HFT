@@ -2,7 +2,7 @@ import dotenv
 import os
 import polars as pl
 import numpy as np
-from datetime import datetime
+from datetime import datetime, time
 from tqdm import tqdm
 import json
 
@@ -28,6 +28,9 @@ list_of_stocks = [stock for stock, _ in list_of_stocks]
 # Création du dossier pour les résultats JSON
 json_output_dir = "results/summarystats"
 os.makedirs(json_output_dir, exist_ok=True)
+
+# Colonnes requises pour l'analyse
+REQUIRED_COLUMNS = ["price", "bid_px_00", "ask_px_00", "size", "action", "ts_event"]
 
 # Création du DataFrame pour stocker les statistiques
 columns = [
@@ -56,78 +59,101 @@ for stock in tqdm(list_of_stocks, desc="Processing stocks"):
     all_data = []
     for file in tqdm(parquet_files, desc=f"Processing {stock} files", leave=False):
         file_path = os.path.join(stock_path, file)
-        df = pl.read_parquet(file_path)
-        all_data.append(df)
+        try:
+            # Lire uniquement les colonnes nécessaires
+            df = pl.read_parquet(file_path, columns=REQUIRED_COLUMNS)
+            
+            # Convertir ts_event en datetime et filtrer les heures de trading
+            df = df.with_columns([
+                pl.col("ts_event").cast(pl.Datetime).alias("datetime")
+            ]).filter(
+                (pl.col("datetime").dt.hour() >= 13) | 
+                ((pl.col("datetime").dt.hour() == 13) & (pl.col("datetime").dt.minute() >= 30))
+            ).filter(
+                pl.col("datetime").dt.hour() < 20
+            )
+            
+            if len(df) > 0:
+                all_data.append(df)
+        except Exception as e:
+            print(f"Error processing {file}: {str(e)}")
+            continue
     
     if not all_data:
+        print(f"Skipping {stock}: no valid data")
         continue
         
     # Concaténer tous les fichiers pour ce stock
-    stock_data = pl.concat(all_data)
-    
-    # Convertir les prix en utilisant le facteur d'échelle
-    stock_data = stock_data.with_columns([
-        (pl.col("price") * PRICE_SCALE).alias("price_scaled"),
-        (pl.col("bid_px_00") * PRICE_SCALE).alias("bid_price_scaled"),
-        (pl.col("ask_px_00") * PRICE_SCALE).alias("ask_price_scaled")
-    ])
-    
-    # Calcul des statistiques
-    stats = {
-        "TICKER": stock,
-        "Tick_size": float(stock_data["price_scaled"].diff().abs().min() or 0),
-        "Min_price": float(stock_data["price_scaled"].min()),
-        "Max_price": float(stock_data["price_scaled"].max()),
-        "Mean_trades_per_day": float(stock_data.filter(pl.col("action") == "T").groupby(
-            pl.col("ts_event").cast(pl.Datetime).dt.date()
-        ).count().mean()["count"]),
-        "Average_spread": float((stock_data["ask_price_scaled"] - stock_data["bid_price_scaled"]).mean()),
-        "Max_spread": float((stock_data["ask_price_scaled"] - stock_data["bid_price_scaled"]).max()),
-        "Mean_volume_per_trade": float(stock_data.filter(pl.col("action") == "T")["size"].mean()),
-        "Median_volume_per_trade": float(stock_data.filter(pl.col("action") == "T")["size"].median()),
-        "StdDev_volume_per_trade": float(stock_data.filter(pl.col("action") == "T")["size"].std()),
-        "Transactions_at_bid_pct": float(
-            stock_data.filter(pl.col("action") == "T")
-            .with_column(pl.col("price_scaled") == pl.col("bid_price_scaled"))
-            .select(pl.col("price_scaled") == pl.col("bid_price_scaled"))
-            .mean() * 100
-        ),
-    }
-    
-    # Calcul des durées entre mouvements (en nanosecondes)
-    time_diffs = stock_data.filter(pl.col("price_scaled").diff() != 0)["ts_event"].diff()
-    stats.update({
-        "Average_duration_between_moves": float(time_diffs.mean()),
-        "Median_duration_between_moves": float(time_diffs.median()),
-        "Max_duration_between_moves": float(time_diffs.max()),
-        "StdDev_duration_between_moves": float(time_diffs.std()),
-    })
-    
-    # Calcul des sauts de prix
-    price_jumps = stock_data["price_scaled"].diff()
-    jumps = price_jumps[price_jumps != 0]
-    
-    stats.update({
-        "Number_of_jumps_week": int(len(jumps)),
-        "Average_jump_size": float(jumps.mean() * 1e5),  # × 10^-5 comme demandé
-        "Min_jump_size": float(jumps.min()),
-        "Max_jump_size": float(jumps.max()),
-        "StdDev_jump_size": float(jumps.std()),
-        "Prop_jumps_size_1": float((jumps == PRICE_SCALE).mean()),
-        "Prop_jumps_size_minus1": float((jumps == -PRICE_SCALE).mean()),
-        "Prop_jumps_size_2": float((jumps == 2 * PRICE_SCALE).mean()),
-        "Prop_jumps_size_minus2": float((jumps == -2 * PRICE_SCALE).mean()),
-        "Prop_jumps_size_3": float((jumps == 3 * PRICE_SCALE).mean()),
-        "Prop_jumps_size_minus3": float((jumps == -3 * PRICE_SCALE).mean()),
-    })
-    
-    # Sauvegarder les statistiques dans un fichier JSON pour ce stock
-    json_file_path = os.path.join(json_output_dir, f"{stock}_stats.json")
-    with open(json_file_path, 'w') as f:
-        json.dump(stats, f, indent=4)
-    
-    # Ajouter les statistiques au DataFrame principal
-    df_stats = df_stats.vstack(pl.DataFrame([stats]))
+    try:
+        stock_data = pl.concat(all_data)
+        
+        # Convertir les prix en utilisant le facteur d'échelle
+        stock_data = stock_data.with_columns([
+            (pl.col("price") * PRICE_SCALE).alias("price_scaled"),
+            (pl.col("bid_px_00") * PRICE_SCALE).alias("bid_price_scaled"),
+            (pl.col("ask_px_00") * PRICE_SCALE).alias("ask_price_scaled")
+        ])
+        
+        # Calcul des statistiques
+        stats = {
+            "TICKER": stock,
+            "Tick_size": float(stock_data["price_scaled"].diff().abs().min() or 0),
+            "Min_price": float(stock_data["price_scaled"].min()),
+            "Max_price": float(stock_data["price_scaled"].max()),
+            "Mean_trades_per_day": float(stock_data.filter(pl.col("action") == "T").groupby(
+                pl.col("datetime").dt.date()
+            ).count().mean()["count"]),
+            "Average_spread": float((stock_data["ask_price_scaled"] - stock_data["bid_price_scaled"]).mean()),
+            "Max_spread": float((stock_data["ask_price_scaled"] - stock_data["bid_price_scaled"]).max()),
+            "Mean_volume_per_trade": float(stock_data.filter(pl.col("action") == "T")["size"].mean()),
+            "Median_volume_per_trade": float(stock_data.filter(pl.col("action") == "T")["size"].median()),
+            "StdDev_volume_per_trade": float(stock_data.filter(pl.col("action") == "T")["size"].std()),
+            "Transactions_at_bid_pct": float(
+                stock_data.filter(pl.col("action") == "T")
+                .with_column(pl.col("price_scaled") == pl.col("bid_price_scaled"))
+                .select(pl.col("price_scaled") == pl.col("bid_price_scaled"))
+                .mean() * 100
+            ),
+        }
+        
+        # Calcul des durées entre mouvements (en nanosecondes)
+        time_diffs = stock_data.filter(pl.col("price_scaled").diff() != 0)["ts_event"].diff()
+        stats.update({
+            "Average_duration_between_moves": float(time_diffs.mean()),
+            "Median_duration_between_moves": float(time_diffs.median()),
+            "Max_duration_between_moves": float(time_diffs.max()),
+            "StdDev_duration_between_moves": float(time_diffs.std()),
+        })
+        
+        # Calcul des sauts de prix
+        price_jumps = stock_data["price_scaled"].diff()
+        jumps = price_jumps[price_jumps != 0]
+        
+        stats.update({
+            "Number_of_jumps_week": int(len(jumps)),
+            "Average_jump_size": float(jumps.mean() * 1e5),  # × 10^-5 comme demandé
+            "Min_jump_size": float(jumps.min()),
+            "Max_jump_size": float(jumps.max()),
+            "StdDev_jump_size": float(jumps.std()),
+            "Prop_jumps_size_1": float((jumps == PRICE_SCALE).mean()),
+            "Prop_jumps_size_minus1": float((jumps == -PRICE_SCALE).mean()),
+            "Prop_jumps_size_2": float((jumps == 2 * PRICE_SCALE).mean()),
+            "Prop_jumps_size_minus2": float((jumps == -2 * PRICE_SCALE).mean()),
+            "Prop_jumps_size_3": float((jumps == 3 * PRICE_SCALE).mean()),
+            "Prop_jumps_size_minus3": float((jumps == -3 * PRICE_SCALE).mean()),
+        })
+        
+        # Sauvegarder les statistiques dans un fichier JSON pour ce stock
+        json_file_path = os.path.join(json_output_dir, f"{stock}_stats.json")
+        with open(json_file_path, 'w') as f:
+            json.dump(stats, f, indent=4)
+        
+        # Ajouter les statistiques au DataFrame principal
+        df_stats = df_stats.vstack(pl.DataFrame([stats]))
+        
+    except Exception as e:
+        print(f"Error processing stock {stock}: {str(e)}")
+        continue
 
 # Sauvegarder les résultats complets en parquet
 output_path = "results/summary_statistics.parquet"
