@@ -1,0 +1,17 @@
+{
+    "TICKER": "HLMN",
+    "data_shape": {
+        "rows": 10315875
+    },
+    "date_range": {
+        "start": "2023-07-17 13:01:18",
+        "end": "2024-12-16 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 5.0000000000000004e-08,
+        "mean_price": 9.358506626553735e-09,
+        "total_trades": 786169,
+        "unique_days": 359
+    }
+}

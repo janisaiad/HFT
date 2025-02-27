@@ -1,0 +1,17 @@
+{
+    "TICKER": "ASAI",
+    "data_shape": {
+        "rows": 173655
+    },
+    "date_range": {
+        "start": "2024-06-24 13:37:16",
+        "end": "2024-09-23 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 7.06e-09,
+        "max_price": 1.078e-08,
+        "mean_price": NaN,
+        "total_trades": 13991,
+        "unique_days": 63
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "TICKER": "PBI",
+    "data_shape": {
+        "rows": 50425
+    },
+    "date_range": {
+        "start": "2024-06-24 13:30:25",
+        "end": "2024-09-23 19:59:57"
+    },
+    "basic_stats": {
+        "min_price": 4.62e-09,
+        "max_price": 7.68e-09,
+        "mean_price": 6.594823004462074e-09,
+        "total_trades": 50425,
+        "unique_days": 62
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "TICKER": "GRAB",
+    "data_shape": {
+        "rows": 11987726
+    },
+    "date_range": {
+        "start": "2023-07-17 13:07:50",
+        "end": "2024-12-16 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 3.72e-08,
+        "mean_price": 3.5961044179771847e-09,
+        "total_trades": 1608166,
+        "unique_days": 359
+    }
+}

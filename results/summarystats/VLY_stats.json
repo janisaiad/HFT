@@ -1,0 +1,17 @@
+{
+    "TICKER": "VLY",
+    "data_shape": {
+        "rows": 31207280
+    },
+    "date_range": {
+        "start": "2023-07-17 13:01:20",
+        "end": "2024-12-16 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 0.00019999900000000002,
+        "mean_price": 1.418664848554569e-08,
+        "total_trades": 1975810,
+        "unique_days": 359
+    }
+}

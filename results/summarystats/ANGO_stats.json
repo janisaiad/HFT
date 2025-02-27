@@ -1,0 +1,17 @@
+{
+    "TICKER": "ANGO",
+    "data_shape": {
+        "rows": 17995
+    },
+    "date_range": {
+        "start": "2024-06-24 13:35:23",
+        "end": "2024-09-23 19:59:56"
+    },
+    "basic_stats": {
+        "min_price": 5.47e-09,
+        "max_price": 8.105e-09,
+        "mean_price": 7.1326532370102795e-09,
+        "total_trades": 17995,
+        "unique_days": 62
+    }
+}

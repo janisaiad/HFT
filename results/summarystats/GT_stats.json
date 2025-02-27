@@ -1,0 +1,17 @@
+{
+    "TICKER": "GT",
+    "data_shape": {
+        "rows": 57995862
+    },
+    "date_range": {
+        "start": "2023-07-17 13:00:28",
+        "end": "2024-12-16 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 0.00019999900000000002,
+        "mean_price": 1.1907613980135354e-08,
+        "total_trades": 4328316,
+        "unique_days": 359
+    }
+}

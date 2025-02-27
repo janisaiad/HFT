@@ -1,0 +1,17 @@
+{
+    "TICKER": "WB",
+    "data_shape": {
+        "rows": 16259285
+    },
+    "date_range": {
+        "start": "2023-07-17 13:01:18",
+        "end": "2024-12-16 19:59:54"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000001e-11,
+        "max_price": 6.482e-08,
+        "mean_price": 1.0174807375293558e-08,
+        "total_trades": 1251122,
+        "unique_days": 359
+    }
+}

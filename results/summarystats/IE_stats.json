@@ -1,0 +1,17 @@
+{
+    "TICKER": "IE",
+    "data_shape": {
+        "rows": 32091
+    },
+    "date_range": {
+        "start": "2024-06-24 13:32:18",
+        "end": "2024-09-23 19:59:55"
+    },
+    "basic_stats": {
+        "min_price": 6.31e-09,
+        "max_price": 1.211e-08,
+        "mean_price": 8.397807484964632e-09,
+        "total_trades": 32091,
+        "unique_days": 62
+    }
+}

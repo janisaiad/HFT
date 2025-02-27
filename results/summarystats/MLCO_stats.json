@@ -1,0 +1,17 @@
+{
+    "TICKER": "MLCO",
+    "data_shape": {
+        "rows": 39521290
+    },
+    "date_range": {
+        "start": "2023-07-17 13:00:28",
+        "end": "2024-12-16 19:59:59"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 0.00019999900000000002,
+        "mean_price": 9.738023978043235e-09,
+        "total_trades": 3181018,
+        "unique_days": 359
+    }
+}

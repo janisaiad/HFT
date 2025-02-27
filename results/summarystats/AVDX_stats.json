@@ -1,0 +1,17 @@
+{
+    "TICKER": "AVDX",
+    "data_shape": {
+        "rows": 17065399
+    },
+    "date_range": {
+        "start": "2023-07-17 13:01:20",
+        "end": "2024-12-16 19:59:57"
+    },
+    "basic_stats": {
+        "min_price": 1.0000000000000002e-13,
+        "max_price": 0.00019999900000000002,
+        "mean_price": 1.4468171811294903e-08,
+        "total_trades": 1355804,
+        "unique_days": 359
+    }
+}

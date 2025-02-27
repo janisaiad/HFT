@@ -1,0 +1,17 @@
+{
+    "TICKER": "VOD",
+    "data_shape": {
+        "rows": 19783357
+    },
+    "date_range": {
+        "start": "2023-07-17 13:00:00",
+        "end": "2024-12-16 19:59:43"
+    },
+    "basic_stats": {
+        "min_price": 1.0900000000000002e-09,
+        "max_price": 4.9e-08,
+        "mean_price": 9.130296156764502e-09,
+        "total_trades": 971103,
+        "unique_days": 359
+    }
+}
