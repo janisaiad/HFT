@@ -1,4 +1,4 @@
-GOOGL - 9:30 - 16:00 - meilleur asset
+GOOGL - 13:30 - 20:00 - meilleur asset
 AAPL - 9:30 - 16:00 - attention beaucoup d'activités en hors horaires
 AMZN - 9:30 - 16:00 - belle démarcation hors horaires
 AAL - 9:30 - 16:00
