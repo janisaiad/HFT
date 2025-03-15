@@ -32,9 +32,7 @@ def curate_mid_price(stock, file, folder_path=folder_path):
     mid_price = mid_price.fill_nan(mid_price.shift(1))
     df = df.with_columns(mid_price=mid_price)
     
-
-
-
-
-
-
+    
+    
+    
+    
