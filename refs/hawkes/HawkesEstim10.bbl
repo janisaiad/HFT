@@ -1,0 +1,210 @@
+\begin{thebibliography}{10}
+
+\bibitem{ait2010modeling}
+Y.~A{\"\i}t-Sahalia, J.~Cacho-Diaz, and R.~J. Laeven.
+\newblock Modeling financial contagion using mutually exciting jump processes.
+\newblock Technical report, National Bureau of Economic Research, 2010.
+
+\bibitem{bacry2012non}
+E.~Bacry, K.~Dayri, and J.-F. Muzy.
+\newblock Non-parametric kernel estimation for symmetric {H}awkes processes.
+  application to high frequency financial data.
+\newblock {\em The European Physical Journal B}, 85(5):1--12, 2012.
+
+\bibitem{bacry2013modelling}
+E.~Bacry, S.~Delattre, M.~Hoffmann, and J.-F. Muzy.
+\newblock Modelling microstructure noise with mutually exciting point
+  processes.
+\newblock {\em Quantitative Finance}, 13(1):65--77, 2013.
+
+\bibitem{bacry2014hawkes}
+E.~Bacry and J.-F. Muzy.
+\newblock Hawkes model for price and trades high-frequency dynamics.
+\newblock {\em Quantitative Finance}, 14(ahead-of-print):1--20, 2014.
+
+\bibitem{bacry2014second}
+E.~Bacry and J.-F. Muzy.
+\newblock Second order statistics characterization of {H}awkes processes and
+  non-parametric estimation.
+\newblock {\em arXiv preprint arXiv:1401.0903}, 2014.
+
+\bibitem{bouchaud2009markets}
+J.-P. Bouchaud, J.~D. Farmer, and F.~Lillo.
+\newblock How markets slowly digest changes in supply and demand.
+\newblock {\em Handbook of financial markets: dynamics and evolution}, 1:57,
+  2009.
+
+\bibitem{bouchaud2004fluctuations}
+J.-P. Bouchaud, Y.~Gefen, M.~Potters, and M.~Wyart.
+\newblock Fluctuations and response in financial markets: the subtle nature of
+  {``}random{"} price changes.
+\newblock {\em Quantitative Finance}, 4(2):176--190, 2004.
+
+\bibitem{bowsher2007modelling}
+C.~G. Bowsher.
+\newblock Modelling security market events in continuous time: Intensity based,
+  multivariate point process models.
+\newblock {\em Journal of Econometrics}, 141(2):876--912, 2007.
+
+\bibitem{bremaud1996stability}
+P.~Br{\'e}maud and L.~Massouli{\'e}.
+\newblock Stability of nonlinear {H}awkes processes.
+\newblock {\em Annals of Probability}, 24(3):1563--1588, 1996.
+
+\bibitem{cont2013markov}
+R.~Cont and A.~de~Larrard.
+\newblock Price dynamics in a {M}arkovian limit order book market.
+\newblock {\em SIAM Journal of Financial Mathematics}, 4:1--25, 2013.
+
+\bibitem{cont2013price}
+R.~Cont, A.~Kukanov, and S.~Stoikov.
+\newblock The price impact of order book events.
+\newblock {\em Journal of financial econometrics}, 12(1):47--88, 2013.
+
+\bibitem{dayri2012large}
+K.~Dayri and M.~Rosenbaum.
+\newblock Large tick assets: implicit spread and optimal tick size.
+\newblock {\em arXiv preprint arXiv:1207.6325}, 2012.
+
+\bibitem{eisler2012price}
+Z.~Eisler, J.-P. Bouchaud, and J.~Kockelkoren.
+\newblock The price impact of order book events: market orders, limit orders
+  and cancellations.
+\newblock {\em Quantitative Finance}, 12(9):1395--1419, 2012.
+
+\bibitem{errais2010affine}
+E.~Errais, K.~Giesecke, and L.~R. Goldberg.
+\newblock Affine point processes and portfolio credit risk.
+\newblock {\em SIAM Journal on Financial Mathematics}, 1(1):642--665, 2010.
+
+\bibitem{filimonov2012quantifying}
+V.~Filimonov and D.~Sornette.
+\newblock Quantifying reflexivity in financial markets: Toward a prediction of
+  flash crashes.
+\newblock {\em Physical Review E}, 85(5):056108, 2012.
+
+\bibitem{gareche2013fokker}
+A.~Gareche, G.~Disdier, J.~Kockelkoren, and J.-P. Bouchaud.
+\newblock Fokker-{P}lanck description for the queue dynamics of large tick
+  stocks.
+\newblock {\em Physical Review E}, 88(3):032809, 2013.
+
+\bibitem{gokhberg1958systems}
+I.~Gokhberg and M.~G. Krein.
+\newblock Systems of integral equations on the half-line with kernels depending
+  on the difference of the arguments.
+\newblock {\em Uspekhi matematicheskikh nauk}, 13(2):3--72, 1958.
+
+\bibitem{hansen2012lasso}
+N.~R. Hansen, P.~Reynaud-Bouret, and V.~Rivoirard.
+\newblock Lasso and probabilistic inequalities for multivariate point
+  processes.
+\newblock {\em arXiv preprint arXiv:1208.0570}, 2012.
+
+\bibitem{hardiman2013critical}
+S.~J. Hardiman, N.~Bercot, and J.-P. Bouchaud.
+\newblock Critical reflexivity in financial markets: a {H}awkes process
+  analysis.
+\newblock {\em arXiv preprint arXiv:1302.1405}, 2013.
+
+\bibitem{hawkes1971point}
+A.~G. {H}awkes.
+\newblock Point spectra of some mutually exciting point processes.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)}, pages 438--443, 1971.
+
+\bibitem{hawkes1971spectra}
+A.~G. {H}awkes.
+\newblock Spectra of some self-exciting and mutually exciting point processes.
+\newblock {\em Biometrika}, 58(1):83--90, 1971.
+
+\bibitem{hawkes1974cluster}
+A.~G. Hawkes and D.~Oakes.
+\newblock A cluster process representation of a self-exciting process.
+\newblock {\em Journal of Applied Probability}, pages 493--503, 1974.
+
+\bibitem{hewlett2006clustering}
+P.~Hewlett.
+\newblock Clustering of order arrivals, price impact and trade path
+  optimisation.
+\newblock In {\em Workshop on Financial Modeling with Jump processes, Ecole
+  Polytechnique}, pages 6--8, 2006.
+
+\bibitem{huang2013simulating}
+W.~Huang, C.-A. Lehalle, and M.~Rosenbaum.
+\newblock Simulating and analyzing order book data: {T}he queue-reactive model.
+\newblock {\em arXiv preprint arXiv:1312.0563}, 2013.
+
+\bibitem{jaisson2014market}
+T.~Jaisson.
+\newblock Market impact as anticipation of the order flow imbalance.
+\newblock {\em arXiv preprint arXiv:1402.1288}, 2014.
+
+\bibitem{jaisson2013limit}
+T.~Jaisson and M.~Rosenbaum.
+\newblock Limit theorems for nearly unstable {H}awkes processes.
+\newblock {\em arXiv preprint arXiv:1310.2033}, 2013.
+
+\bibitem{jaisson2014fractional}
+T.~Jaisson and M.~Rosenbaum.
+\newblock Fractional diffusions as scaling limits of nearly unstable
+  heavy-tailed {H}awkes processes.
+\newblock {\em Working paper}, 2014.
+
+\bibitem{large2007measuring}
+J.~Large.
+\newblock Measuring the resiliency of an electronic limit order book.
+\newblock {\em Journal of Financial Markets}, 10(1):1--25, 2007.
+
+\bibitem{lillo2005theory}
+F.~Lillo, S.~Mike, and J.~D. Farmer.
+\newblock Theory for long memory in supply and demand.
+\newblock {\em Physical Review E}, 71(6):066122, 2005.
+
+\bibitem{mohler2011self}
+G.~O. Mohler, M.~B. Short, P.~J. Brantingham, F.~P. Schoenberg, and G.~E. Tita.
+\newblock Self-exciting point process modeling of crime.
+\newblock {\em Journal of the American Statistical Association}, 106(493),
+  2011.
+
+\bibitem{nystrom1930praktische}
+E.~J. Nystr{\"o}m.
+\newblock {\"U}ber die praktische aufl{\"o}sung von integralgleichungen mit
+  anwendungen auf randwertaufgaben.
+\newblock {\em Acta Mathematica}, 54(1):185--204, 1930.
+
+\bibitem{ogata1999seismicity}
+Y.~Ogata.
+\newblock Seismicity analysis through point-process modeling: A review.
+\newblock {\em Pure and applied geophysics}, 155(2-4):471--507, 1999.
+
+\bibitem{rambaldi2014modeling}
+M.~Rambaldi, P.~Pennesi, and F.~Lillo.
+\newblock Modeling {FX} market activity around macroeconomic news: {A} {H}awkes
+  process approach.
+\newblock {\em arXiv preprint arXiv:1405.6047}, 2014.
+
+\bibitem{reynaud2014goodness}
+P.~Reynaud-Bouret, V.~Rivoirard, F.~Grammont, and C.~Tuleau-Malot.
+\newblock Goodness-of-fit tests and nonparametric adaptive estimation for spike
+  train analysis.
+\newblock {\em The Journal of Mathematical Neuroscience (JMN)}, 4(1):1--41,
+  2014.
+
+\bibitem{rocsu2009dynamic}
+I.~Ro{\c{s}}u.
+\newblock A dynamic model of the limit order book.
+\newblock {\em Review of Financial Studies}, page hhp011, 2009.
+
+\bibitem{sloan1981quadrature}
+I.~H. Sloan.
+\newblock Quadrature methods for integral equations of the second kind over
+  infinite intervals.
+\newblock {\em Mathematics of Computation}, 36(154):511--523, 1981.
+
+\bibitem{farmer2003doubleauction}
+E.~Smith, J.~D. Farmer, L.~Gillemot, and S.~Krishnamurthy.
+\newblock Statistical theory of continuous double auction.
+\newblock {\em Quantitative Finance}, 3:481--514, 2003.
+
+\end{thebibliography}
