@@ -88,7 +88,7 @@ This script will:
 
 ## Usage
 
-The project is structured to support various research workflows:
+The project is structured to support various research workflows in the future:
 
 1. Data Processing
    ```python
