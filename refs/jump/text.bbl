@@ -1,0 +1,487 @@
+\providecommand{\noopsort}[1]{}\providecommand{\singleletter}[1]{#1}%
+\begin{thebibliography}{63}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname bibnamefont\endcsname\relax
+  \def\bibnamefont#1{#1}\fi
+\expandafter\ifx\csname bibfnamefont\endcsname\relax
+  \def\bibfnamefont#1{#1}\fi
+\expandafter\ifx\csname citenamefont\endcsname\relax
+  \def\citenamefont#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{\citenamefont{Bak}(2013)}]{bak_SOC_book}
+\bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Bak}},
+  \emph{\bibinfo{title}{How nature works: the science of self-organized
+  criticality}} (\bibinfo{publisher}{Springer Science \& Business Media},
+  \bibinfo{year}{2013}).
+
+\bibitem[{\citenamefont{Albeverio et~al.}(2006)\citenamefont{Albeverio,
+  Jentsch, and Kantz}}]{book_extreme_events}
+\bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Albeverio}},
+  \bibinfo{author}{\bibfnamefont{V.}~\bibnamefont{Jentsch}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{Kantz}},
+  \emph{\bibinfo{title}{Extreme events in nature and society}}
+  (\bibinfo{publisher}{Springer Science \& Business Media},
+  \bibinfo{year}{2006}).
+
+\bibitem[{\citenamefont{Sornette}(2006{\natexlab{a}})}]{sornette_book_critical}
+\bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \emph{\bibinfo{title}{Critical phenomena in natural sciences: chaos,
+  fractals, selforganization and disorder: concepts and tools}}
+  (\bibinfo{publisher}{Springer Science \& Business Media},
+  \bibinfo{year}{2006}{\natexlab{a}}).
+
+\bibitem[{\citenamefont{Taleb}(2007)}]{taleb_book_black_sw}
+\bibinfo{author}{\bibfnamefont{N.~N.} \bibnamefont{Taleb}},
+  \emph{\bibinfo{title}{The black swan: The impact of the highly improbable}},
+  vol.~\bibinfo{volume}{2} (\bibinfo{publisher}{Random house},
+  \bibinfo{year}{2007}).
+
+\bibitem[{\citenamefont{Sornette}(2006{\natexlab{b}})}]{sornette_chaper_endogenous}
+\bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}}, in
+  \emph{\bibinfo{booktitle}{Extreme events in nature and society}}
+  (\bibinfo{publisher}{Springer}, \bibinfo{year}{2006}{\natexlab{b}}), pp.
+  \bibinfo{pages}{95--119}.
+
+\bibitem[{\citenamefont{Sornette and
+  Helmstetter}(2003)}]{sornette2003endogenous}
+\bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Helmstetter}},
+  \bibinfo{journal}{Physica A: Statistical Mechanics and its Applications}
+  \textbf{\bibinfo{volume}{318}}, \bibinfo{pages}{577} (\bibinfo{year}{2003}).
+
+\bibitem[{\citenamefont{Hawkes}(1971)}]{hawkes_original}
+\bibinfo{author}{\bibfnamefont{A.~G.} \bibnamefont{Hawkes}},
+  \bibinfo{journal}{Biometrika} \textbf{\bibinfo{volume}{58}},
+  \bibinfo{pages}{83} (\bibinfo{year}{1971}).
+
+\bibitem[{\citenamefont{Helmstetter and Sornette}(2003)}]{sornette_ETAS}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Helmstetter}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{journal}{Geophysical Research Letters} \textbf{\bibinfo{volume}{30}}
+  (\bibinfo{year}{2003}).
+
+\bibitem[{\citenamefont{Bacry et~al.}(2015)\citenamefont{Bacry, Mastromatteo,
+  and Muzy}}]{hawkes_mastromatteo}
+\bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Bacry}},
+  \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Mastromatteo}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{J.-F.} \bibnamefont{Muzy}},
+  \bibinfo{journal}{Market Microstructure and Liquidity}
+  \textbf{\bibinfo{volume}{1}}, \bibinfo{pages}{1550005}
+  (\bibinfo{year}{2015}).
+
+\bibitem[{\citenamefont{Mohler et~al.}(2013)}]{mohler_hawkes}
+\bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Mohler}} \bibnamefont{et~al.},
+  \bibinfo{journal}{The Annals of Applied Statistics}
+  \textbf{\bibinfo{volume}{7}}, \bibinfo{pages}{1525} (\bibinfo{year}{2013}).
+
+\bibitem[{\citenamefont{Lando and Nielsen}(2010)}]{lando_hawkes}
+\bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Lando}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.~S.} \bibnamefont{Nielsen}},
+  \bibinfo{journal}{Journal of Financial Intermediation}
+  \textbf{\bibinfo{volume}{19}}, \bibinfo{pages}{355} (\bibinfo{year}{2010}).
+
+\bibitem[{\citenamefont{Crane and Sornette}(2008)}]{sornette_youtube}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Crane}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{journal}{Proceedings of the National Academy of Sciences}
+  \textbf{\bibinfo{volume}{105}}, \bibinfo{pages}{15649}
+  (\bibinfo{year}{2008}).
+
+\bibitem[{\citenamefont{Sornette
+  et~al.}(2004{\natexlab{a}})\citenamefont{Sornette, Desch{\^a}tres, Gilbert,
+  and Ageon}}]{sornette_books}
+\bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Desch{\^a}tres}},
+  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Gilbert}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{Ageon}},
+  \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{93}},
+  \bibinfo{pages}{228701} (\bibinfo{year}{2004}{\natexlab{a}}).
+
+\bibitem[{\citenamefont{Desch\^atres and
+  Sornette}(2005)}]{amazon_book_sornette_long}
+\bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Desch\^atres}}
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{journal}{Phys. Rev. E} \textbf{\bibinfo{volume}{72}},
+  \bibinfo{pages}{016112} (\bibinfo{year}{2005}).
+
+\bibitem[{\citenamefont{Lillo and Mantegna}(2003)}]{lillo_mantegna_pl}
+\bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Lillo}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{R.~N.} \bibnamefont{Mantegna}},
+  \bibinfo{journal}{Physical Review E} \textbf{\bibinfo{volume}{68}},
+  \bibinfo{pages}{016119} (\bibinfo{year}{2003}).
+
+\bibitem[{\citenamefont{Petersen
+  et~al.}(2010{\natexlab{a}})\citenamefont{Petersen, Wang, Havlin, and
+  Stanley}}]{omori_law_1}
+\bibinfo{author}{\bibfnamefont{A.~M.} \bibnamefont{Petersen}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Wang}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Havlin}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{H.~E.} \bibnamefont{Stanley}},
+  \bibinfo{journal}{Phys. Rev. E} \textbf{\bibinfo{volume}{82}},
+  \bibinfo{pages}{036114} (\bibinfo{year}{2010}{\natexlab{a}}),
+  \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevE.82.036114}.
+
+\bibitem[{\citenamefont{Weber et~al.}(2007)\citenamefont{Weber, Wang,
+  Vodenska-Chitkushev, Havlin, and Stanley}}]{omori_law_2}
+\bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Weber}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Wang}},
+  \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Vodenska-Chitkushev}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Havlin}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{H.~E.} \bibnamefont{Stanley}},
+  \bibinfo{journal}{Phys. Rev. E} \textbf{\bibinfo{volume}{76}},
+  \bibinfo{pages}{016109} (\bibinfo{year}{2007}),
+  \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevE.76.016109}.
+
+\bibitem[{\citenamefont{Lillo and Mantegna}(2004)}]{lillo_mantegna_2}
+\bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Lillo}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{R.~N.} \bibnamefont{Mantegna}},
+  \bibinfo{journal}{Physica A: Statistical Mechanics and its Applications}
+  \textbf{\bibinfo{volume}{338}}, \bibinfo{pages}{125} (\bibinfo{year}{2004}).
+
+\bibitem[{\citenamefont{Petersen
+  et~al.}(2010{\natexlab{b}})\citenamefont{Petersen, Wang, Havlin, and
+  Stanley}}]{pl_relax_2}
+\bibinfo{author}{\bibfnamefont{A.~M.} \bibnamefont{Petersen}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Wang}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Havlin}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{H.~E.} \bibnamefont{Stanley}},
+  \bibinfo{journal}{Physical Review E} \textbf{\bibinfo{volume}{81}},
+  \bibinfo{pages}{066121} (\bibinfo{year}{2010}{\natexlab{b}}).
+
+\bibitem[{\citenamefont{Zawadowski et~al.}(2006)\citenamefont{Zawadowski,
+  Andor, and Kert{\'e}sz}}]{zawadowski2006short}
+\bibinfo{author}{\bibfnamefont{{\'A}.~G.} \bibnamefont{Zawadowski}},
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Andor}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Kert{\'e}sz}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{6}},
+  \bibinfo{pages}{283} (\bibinfo{year}{2006}).
+
+\bibitem[{\citenamefont{Utsu}(1961)}]{utsu_omori}
+\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Utsu}},
+  \bibinfo{journal}{Geophys. Mag.} \textbf{\bibinfo{volume}{30}},
+  \bibinfo{pages}{521} (\bibinfo{year}{1961}).
+
+\bibitem[{\citenamefont{Poon and Granger}(2003)}]{vol_forecasting}
+\bibinfo{author}{\bibfnamefont{S.-H.} \bibnamefont{Poon}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{C.~W.} \bibnamefont{Granger}},
+  \bibinfo{journal}{Journal of economic literature}
+  \textbf{\bibinfo{volume}{41}}, \bibinfo{pages}{478} (\bibinfo{year}{2003}).
+
+\bibitem[{\citenamefont{Yamasaki et~al.}(2005)\citenamefont{Yamasaki, Muchnik,
+  Havlin, Bunde, and Stanley}}]{pl_relax_1}
+\bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Yamasaki}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Muchnik}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Havlin}},
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Bunde}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{H.~E.} \bibnamefont{Stanley}},
+  \bibinfo{journal}{Proceedings of the National Academy of Sciences}
+  \textbf{\bibinfo{volume}{102}}, \bibinfo{pages}{9424} (\bibinfo{year}{2005}).
+
+\bibitem[{\citenamefont{Jiang et~al.}(2013)\citenamefont{Jiang, Chen, and
+  Zheng}}]{pl_time_asymmetry}
+\bibinfo{author}{\bibfnamefont{X.}~\bibnamefont{Jiang}},
+  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Chen}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{B.}~\bibnamefont{Zheng}},
+  \bibinfo{journal}{Physica A: Statistical Mechanics and its Applications}
+  \textbf{\bibinfo{volume}{392}}, \bibinfo{pages}{5369} (\bibinfo{year}{2013}).
+
+\bibitem[{\citenamefont{Ponzi et~al.}(2009)\citenamefont{Ponzi, Lillo, and
+  Mantegna}}]{pl_bid_ask}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Ponzi}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Lillo}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{R.~N.} \bibnamefont{Mantegna}},
+  \bibinfo{journal}{Phys. Rev. E} \textbf{\bibinfo{volume}{80}},
+  \bibinfo{pages}{016112} (\bibinfo{year}{2009}),
+  \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevE.80.016112}.
+
+\bibitem[{\citenamefont{Hisano et~al.}(2013)\citenamefont{Hisano, Sornette,
+  Mizuno, Ohnishi, and Watanabe}}]{hisano2013high}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Hisano}},
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Mizuno}},
+  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Ohnishi}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Watanabe}},
+  \bibinfo{journal}{PloS one} \textbf{\bibinfo{volume}{8}},
+  \bibinfo{pages}{e64846} (\bibinfo{year}{2013}).
+
+\bibitem[{\citenamefont{Rambaldi et~al.}(2015)\citenamefont{Rambaldi, Pennesi,
+  and Lillo}}]{lillo_news_hawkes_activity}
+\bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Rambaldi}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Pennesi}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Lillo}},
+  \bibinfo{journal}{Phys. Rev. E} \textbf{\bibinfo{volume}{91}},
+  \bibinfo{pages}{012819} (\bibinfo{year}{2015}).
+
+\bibitem[{\citenamefont{Cutler et~al.}(1988)\citenamefont{Cutler, Poterba, and
+  Summers}}]{vol_news_1}
+\bibinfo{author}{\bibfnamefont{D.~M.} \bibnamefont{Cutler}},
+  \bibinfo{author}{\bibfnamefont{J.~M.} \bibnamefont{Poterba}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{L.~H.}
+  \bibnamefont{Summers}}, \bibinfo{type}{Tech. Rep.},
+  \bibinfo{institution}{National Bureau of Economic Research}
+  (\bibinfo{year}{1988}).
+
+\bibitem[{\citenamefont{Fair}(2002)}]{vol_news_2}
+\bibinfo{author}{\bibfnamefont{R.~C.} \bibnamefont{Fair}},
+  \bibinfo{journal}{The Journal of Business} \textbf{\bibinfo{volume}{75}},
+  \bibinfo{pages}{713} (\bibinfo{year}{2002}).
+
+\bibitem[{\citenamefont{Hopman}(2007)}]{vol_news_3}
+\bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Hopman}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{7}},
+  \bibinfo{pages}{37} (\bibinfo{year}{2007}).
+
+\bibitem[{\citenamefont{Joulin et~al.}(2008)\citenamefont{Joulin, Lefevre,
+  Grunberg, and Bouchaud}}]{vol_news_jp}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Joulin}},
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Lefevre}},
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Grunberg}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{J.-P.} \bibnamefont{Bouchaud}},
+  \bibinfo{journal}{Wilmott Magazine} \textbf{\bibinfo{volume}{46}}
+  (\bibinfo{year}{2008}).
+
+\bibitem[{\citenamefont{Filimonov and
+  Sornette}(2012)}]{filimonov2012quantifying}
+\bibinfo{author}{\bibfnamefont{V.}~\bibnamefont{Filimonov}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{journal}{Physical Review E} \textbf{\bibinfo{volume}{85}},
+  \bibinfo{pages}{056108} (\bibinfo{year}{2012}).
+
+\bibitem[{\citenamefont{Hardiman et~al.}(2013)\citenamefont{Hardiman, Bercot,
+  and Bouchaud}}]{hardiman2013critical}
+\bibinfo{author}{\bibfnamefont{S.~J.} \bibnamefont{Hardiman}},
+  \bibinfo{author}{\bibfnamefont{N.}~\bibnamefont{Bercot}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{J.-P.} \bibnamefont{Bouchaud}},
+  \bibinfo{journal}{The European Physical Journal B}
+  \textbf{\bibinfo{volume}{86}}, \bibinfo{pages}{1} (\bibinfo{year}{2013}).
+
+\bibitem[{\citenamefont{Wheatley et~al.}(2019)\citenamefont{Wheatley, Wehrli,
+  and Sornette}}]{wheatley2019endo}
+\bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Wheatley}},
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Wehrli}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{19}},
+  \bibinfo{pages}{1165} (\bibinfo{year}{2019}).
+
+\bibitem[{\citenamefont{Koyama and Shinomoto}(2020)}]{koyama2020statistical}
+\bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Koyama}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Shinomoto}},
+  \bibinfo{journal}{Physical Review Research} \textbf{\bibinfo{volume}{2}},
+  \bibinfo{pages}{043358} (\bibinfo{year}{2020}).
+
+\bibitem[{\citenamefont{Sornette
+  et~al.}(2004{\natexlab{b}})\citenamefont{Sornette, Malevergne, and
+  Muzy}}]{sornette2004volatility}
+\bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{author}{\bibfnamefont{Y.}~\bibnamefont{Malevergne}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{J.-F.} \bibnamefont{Muzy}},
+  in \emph{\bibinfo{booktitle}{The Application of Econophysics}}
+  (\bibinfo{publisher}{Springer}, \bibinfo{year}{2004}{\natexlab{b}}), pp.
+  \bibinfo{pages}{91--102}.
+
+\bibitem[{\citenamefont{Blanc et~al.}(2017)\citenamefont{Blanc, Donier, and
+  Bouchaud}}]{quadratic_hawkes}
+\bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Blanc}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Donier}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{J.-P.} \bibnamefont{Bouchaud}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{17}},
+  \bibinfo{pages}{171} (\bibinfo{year}{2017}).
+
+\bibitem[{\citenamefont{Fosset et~al.}(2020)\citenamefont{Fosset, Bouchaud, and
+  Benzaquen}}]{fosset2020endogenous}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Fosset}},
+  \bibinfo{author}{\bibfnamefont{J.-P.} \bibnamefont{Bouchaud}},
+  \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Benzaquen}},
+  \bibinfo{journal}{Journal of Statistical Mechanics: Theory and Experiment}
+  \textbf{\bibinfo{volume}{2020}}, \bibinfo{pages}{063401}
+  (\bibinfo{year}{2020}).
+
+\bibitem[{\citenamefont{Stoikov}(2018)}]{micro_price}
+\bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Stoikov}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{18}},
+  \bibinfo{pages}{1959} (\bibinfo{year}{2018}).
+
+\bibitem[{\citenamefont{Tripathi et~al.}(2020)\citenamefont{Tripathi, Null, and
+  Dixit}}]{lob_review_1}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Tripathi}},
+  \bibinfo{author}{\bibfnamefont{V.}~\bibnamefont{Null}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Dixit}},
+  \bibinfo{journal}{Qualitative Research in Financial Markets}
+  \textbf{\bibinfo{volume}{12}}, \bibinfo{pages}{505} (\bibinfo{year}{2020}).
+
+\bibitem[{\citenamefont{Gould et~al.}(2013)\citenamefont{Gould, Porter,
+  Williams, McDonald, Fenn, and Howison}}]{lob_review_2}
+\bibinfo{author}{\bibfnamefont{M.~D.} \bibnamefont{Gould}},
+  \bibinfo{author}{\bibfnamefont{M.~A.} \bibnamefont{Porter}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Williams}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{McDonald}},
+  \bibinfo{author}{\bibfnamefont{D.~J.} \bibnamefont{Fenn}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{S.~D.} \bibnamefont{Howison}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{13}},
+  \bibinfo{pages}{1709} (\bibinfo{year}{2013}).
+
+\bibitem[{\citenamefont{Bouchaud et~al.}(2018)\citenamefont{Bouchaud, Bonart,
+  Donier, and Gould}}]{bouchaud2018trades}
+\bibinfo{author}{\bibfnamefont{J.-P.} \bibnamefont{Bouchaud}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Bonart}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Donier}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Gould}},
+  \emph{\bibinfo{title}{Trades, quotes and prices: financial markets under the
+  microscope}} (\bibinfo{publisher}{Cambridge University Press},
+  \bibinfo{year}{2018}).
+
+\bibitem[{\citenamefont{Bormetti et~al.}(2015)\citenamefont{Bormetti,
+  Calcagnile, Treccani, Corsi, Marmi, and Lillo}}]{lillo_cojump}
+\bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Bormetti}},
+  \bibinfo{author}{\bibfnamefont{L.~M.} \bibnamefont{Calcagnile}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Treccani}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Corsi}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Marmi}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Lillo}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{15}},
+  \bibinfo{pages}{1137} (\bibinfo{year}{2015}).
+
+\bibitem[{\citenamefont{Horbelt and Timmer}(2003)}]{horbelt_scaling}
+\bibinfo{author}{\bibfnamefont{W.}~\bibnamefont{Horbelt}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Timmer}},
+  \bibinfo{journal}{Physics Letters A} \textbf{\bibinfo{volume}{310}},
+  \bibinfo{pages}{269} (\bibinfo{year}{2003}).
+
+\bibitem[{\citenamefont{Lee and Mykland}(2008)}]{jump_test_1}
+\bibinfo{author}{\bibfnamefont{S.~S.} \bibnamefont{Lee}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{P.~A.} \bibnamefont{Mykland}},
+  \bibinfo{journal}{The Review of Financial Studies}
+  \textbf{\bibinfo{volume}{21}}, \bibinfo{pages}{2535} (\bibinfo{year}{2008}).
+
+\bibitem[{\citenamefont{Boudt et~al.}(2011)\citenamefont{Boudt, Croux, and
+  Laurent}}]{jump_test_2}
+\bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Boudt}},
+  \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Croux}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Laurent}},
+  \bibinfo{journal}{Journal of Empirical Finance}
+  \textbf{\bibinfo{volume}{18}}, \bibinfo{pages}{353} (\bibinfo{year}{2011}).
+
+\bibitem[{\citenamefont{Cont}(2001)}]{cont_empirical}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Cont}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{1}},
+  \bibinfo{pages}{223} (\bibinfo{year}{2001}).
+
+\bibitem[{\citenamefont{Bacry et~al.}(2001)\citenamefont{Bacry, Delour, and
+  Muzy}}]{MRW}
+\bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Bacry}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Delour}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{J.-F.} \bibnamefont{Muzy}},
+  \bibinfo{journal}{Physical Review E} \textbf{\bibinfo{volume}{64}},
+  \bibinfo{pages}{026103} (\bibinfo{year}{2001}).
+
+\bibitem[{\citenamefont{Chronopoulou and Viens}(2012)}]{rough_vol_long_range}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Chronopoulou}}
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{F.~G.} \bibnamefont{Viens}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{12}},
+  \bibinfo{pages}{635} (\bibinfo{year}{2012}).
+
+\bibitem[{\citenamefont{Goh and Barab{\'a}si}(2008)}]{barabasi_burstiness}
+\bibinfo{author}{\bibfnamefont{K.-I.} \bibnamefont{Goh}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.-L.} \bibnamefont{Barab{\'a}si}},
+  \bibinfo{journal}{EPL (Europhysics Letters)} \textbf{\bibinfo{volume}{81}},
+  \bibinfo{pages}{48002} (\bibinfo{year}{2008}).
+
+\bibitem[{\citenamefont{Saichev and Sornette}(2006)}]{saichev}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Saichev}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{journal}{Physical Review Letters} \textbf{\bibinfo{volume}{97}},
+  \bibinfo{pages}{078501} (\bibinfo{year}{2006}).
+
+\bibitem[{\citenamefont{Chicheportiche and Chakraborti}(2017)}]{chicheportiche}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Chicheportiche}}
+  \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Chakraborti}},
+  \bibinfo{journal}{Physica A: Statistical Mechanics and its Applications}
+  \textbf{\bibinfo{volume}{474}}, \bibinfo{pages}{312} (\bibinfo{year}{2017}).
+
+\bibitem[{\citenamefont{Boudt and Petitjean}(2014)}]{boudt2014intraday}
+\bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Boudt}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Petitjean}},
+  \bibinfo{journal}{Journal of Financial Markets}
+  \textbf{\bibinfo{volume}{17}}, \bibinfo{pages}{121} (\bibinfo{year}{2014}).
+
+\bibitem[{\citenamefont{Kendall}(1938)}]{kendall1938new}
+\bibinfo{author}{\bibfnamefont{M.~G.} \bibnamefont{Kendall}},
+  \bibinfo{journal}{Biometrika} \textbf{\bibinfo{volume}{30}},
+  \bibinfo{pages}{81} (\bibinfo{year}{1938}).
+
+\bibitem[{\citenamefont{Shapiro and Wilk}(1965)}]{shapiro1965analysis}
+\bibinfo{author}{\bibfnamefont{S.~S.} \bibnamefont{Shapiro}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.~B.} \bibnamefont{Wilk}},
+  \bibinfo{journal}{Biometrika} \textbf{\bibinfo{volume}{52}},
+  \bibinfo{pages}{591} (\bibinfo{year}{1965}).
+
+\bibitem[{\citenamefont{Helmstetter and
+  Sornette}(2002)}]{helmstetter2002subcritical}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Helmstetter}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{journal}{Journal of Geophysical Research: Solid Earth}
+  \textbf{\bibinfo{volume}{107}}, \bibinfo{pages}{ESE} (\bibinfo{year}{2002}).
+
+\bibitem[{\citenamefont{Wehrli et~al.}(2021)\citenamefont{Wehrli, Wheatley, and
+  Sornette}}]{Wehrli2021}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Wehrli}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Wheatley}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sornette}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{21}},
+  \bibinfo{pages}{729} (\bibinfo{year}{2021}),
+  \eprint{https://doi.org/10.1080/14697688.2020.1838602},
+  \urlprefix\url{https://doi.org/10.1080/14697688.2020.1838602}.
+
+\bibitem[{\citenamefont{Altman}(1992)}]{knn_ref}
+\bibinfo{author}{\bibfnamefont{N.~S.} \bibnamefont{Altman}},
+  \bibinfo{journal}{The American Statistician} \textbf{\bibinfo{volume}{46}},
+  \bibinfo{pages}{175} (\bibinfo{year}{1992}).
+
+\bibitem[{\citenamefont{Vinh et~al.}(2010)\citenamefont{Vinh, Epps, and
+  Bailey}}]{ARI_ref}
+\bibinfo{author}{\bibfnamefont{N.~X.} \bibnamefont{Vinh}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Epps}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Bailey}},
+  \bibinfo{journal}{The Journal of Machine Learning Research}
+  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{2837} (\bibinfo{year}{2010}).
+
+\bibitem[{\citenamefont{Shiller}(1981)}]{shiller}
+\bibinfo{author}{\bibfnamefont{R.~J.} \bibnamefont{Shiller}},
+  \bibinfo{journal}{The American Economic Review}
+  \textbf{\bibinfo{volume}{71}}, \bibinfo{pages}{421} (\bibinfo{year}{1981}).
+
+\bibitem[{\citenamefont{Fosset et~al.}(2021)\citenamefont{Fosset, Bouchaud, and
+  Benzaquen}}]{fosset2021calibration}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Fosset}},
+  \bibinfo{author}{\bibfnamefont{J.-P.} \bibnamefont{Bouchaud}},
+  \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Benzaquen}},
+  \bibinfo{journal}{The European Journal of Finance}
+  \textbf{\bibinfo{volume}{0}}, \bibinfo{pages}{1} (\bibinfo{year}{2021}),
+  \eprint{https://doi.org/10.1080/1351847X.2021.1917441},
+  \urlprefix\url{https://doi.org/10.1080/1351847X.2021.1917441}.
+
+\bibitem[{\citenamefont{Calcagnile et~al.}(2018)\citenamefont{Calcagnile,
+  Bormetti, Treccani, Marmi, and Lillo}}]{cojump_news}
+\bibinfo{author}{\bibfnamefont{L.~M.} \bibnamefont{Calcagnile}},
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Bormetti}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Treccani}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Marmi}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Lillo}},
+  \bibinfo{journal}{Quantitative Finance} \textbf{\bibinfo{volume}{18}},
+  \bibinfo{pages}{237} (\bibinfo{year}{2018}).
+
+\bibitem[{\citenamefont{Beran}(1994)}]{beran1994statistics}
+\bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Beran}},
+  \emph{\bibinfo{title}{Statistics for long-memory processes}},
+  vol.~\bibinfo{volume}{61} (\bibinfo{publisher}{CRC press},
+  \bibinfo{year}{1994}).
+
+\end{thebibliography}
