@@ -2,7 +2,7 @@ pip install uv
 
 
 export UV_LINK_MODE=symlink
-source ~/.bashrc
+source ~/.zshrc
 echo $UV_LINK_MODE
 
 
