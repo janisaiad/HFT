@@ -1,10 +1,4 @@
-pip install uv
-
-
-export UV_LINK_MODE=symlink
-source ~/.bashrc
-echo $UV_LINK_MODE
-
+pip3 install uv
 
 uv venv
 source .venv/bin/activate
