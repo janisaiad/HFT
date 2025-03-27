@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import polars as pl
 import pandas as pd
 from scipy.integrate import quad
+import cupy as cp
 
 class Hawkes: # N dimensionnal hawkes process
     def __init__(self, phi: callable, psi: callable, mu: float, N: int, stepsize: int = 10):
@@ -21,8 +22,8 @@ class Hawkes: # N dimensionnal hawkes process
         self.l1_norm_phi = None
         self.list_of_events = [[] for _ in range(N)] # matrix of time events, of size N x T
         self.stepsize = stepsize
-        self.quadrature_points = np.linspace(0, 1, self.stepsize) # stepsize will change in the future
-        self.quadrature_weights = np.ones(self.stepsize) / self.stepsize # weights also
+        self.quadrature_points = cp.linspace(0, 1, self.stepsize) # stepsize will change in the future
+        self.quadrature_weights = cp.ones(self.stepsize) / self.stepsize # weights also
         self.results = None
         
         
@@ -39,17 +40,17 @@ class Hawkes: # N dimensionnal hawkes process
             print(self.list_of_events[i])
         return self.list_of_events
     
-    def get_events(self, t: float) -> np.ndarray:
+    def get_events(self, t: float) -> cp.ndarray:
         return self.list_of_events[t]
     
     def verify_l1_norm_phi(self) -> bool:
-        l1_matrix = np.zeros((self.dim, self.dim))
+        l1_matrix = cp.zeros((self.dim, self.dim))
         for i in range(self.dim):
             for j in range(self.dim):
                 def integrand(t):
-                    return np.abs(self.phi(t)[i,j])
-                l1_matrix[i,j], _ = quad(integrand, 0, np.inf) # this is managed by scipy
-        spectral_radius = np.max(np.abs(np.linalg.eigvals(l1_matrix)))
+                    return cp.abs(self.phi(t)[i,j])
+                l1_matrix[i,j], _ = quad(integrand, 0, cp.inf) # this is managed by scipy
+        spectral_radius = cp.max(cp.abs(cp.linalg.eigvals(l1_matrix)))
         self.l1_norm_phi = l1_matrix
         return spectral_radius < 1
     
@@ -58,19 +59,19 @@ class Hawkes: # N dimensionnal hawkes process
     # L1 NORM
     
     def print_l1_norm_phi(self):
-        l1_matrix = np.zeros((self.dim, self.dim))
+        l1_matrix = cp.zeros((self.dim, self.dim))
         for i in range(self.dim):
             for j in range(self.dim):
-                l1_matrix[i,j] = quad(lambda t: np.abs(self.phi(t)[i,j]), 0, np.inf)[0]
+                l1_matrix[i,j] = quad(lambda t: cp.abs(self.phi(t)[i,j]), 0, cp.inf)[0]
         print(l1_matrix)
         self.l1_norm_phi = l1_matrix
         return l1_matrix
     
     def get_l1_norm_phi(self):
-        l1_matrix = np.zeros((self.dim, self.dim))
+        l1_matrix = cp.zeros((self.dim, self.dim))
         for i in range(self.dim):
             for j in range(self.dim):
-                l1_matrix[i,j] = quad(lambda t: np.abs(self.phi(t)[i,j]), 0, np.inf)[0]
+                l1_matrix[i,j] = quad(lambda t: cp.abs(self.phi(t)[i,j]), 0, cp.inf)[0]
         self.l1_norm_phi = l1_matrix
         return l1_matrix
     
@@ -81,8 +82,8 @@ class Hawkes: # N dimensionnal hawkes process
         print(intensity)
         return intensity
 
-    def get_intensity(self, t: float) -> np.ndarray: # returns a vector of intensities
-        intensity = self.mu.copy()
+    def get_intensity(self, t: float) -> cp.ndarray: # returns a vector of intensities
+        intensity = cp.array(self.mu.copy())
         for dim in range(self.dim):
             for event in self.list_of_events[dim]:
                 intensity += self.phi(t - event)[:, dim]  # phi returns a matrix, take column dim
@@ -94,11 +95,11 @@ class Hawkes: # N dimensionnal hawkes process
     # here we compute the equation (4) of the pape Bacry et al
     def get_average_intensity(self) -> float:
         if self.mean_vector is None:
-            mean_vector = np.zeros(self.dim)
-            I = np.eye(self.dim)
+            mean_vector = cp.zeros(self.dim)
+            I = cp.eye(self.dim)
             if self.l1_norm_phi is None:
                 l1_matrix = self.get_l1_norm_phi()
-                mean_vector = np.linalg.inv(I - l1_matrix) @ self.mu 
+                mean_vector = cp.linalg.inv(I - l1_matrix) @ cp.array(self.mu)
             self.mean_vector = mean_vector
         return self.mean_vector
     
@@ -115,8 +116,8 @@ class Hawkes: # N dimensionnal hawkes process
     
     def convolution_product_matrix(self, function: callable) -> callable:
         
-        def result(t)->np.ndarray:
-            psi_matrix = np.zeros((self.dim, self.dim))
+        def result(t)->cp.ndarray:
+            psi_matrix = cp.zeros((self.dim, self.dim))
             for i in range(self.dim):
                for j in range(self.dim):
                    function_to_apply = lambda tau: function(tau)[i,j]
@@ -130,15 +131,15 @@ class Hawkes: # N dimensionnal hawkes process
     def convolve_functions(self, function1: callable, function2: callable) -> callable:
         return lambda t: quad(lambda tau: function1(t - tau) * function2(tau), 0, t)[0]
     
-    def get_convolution_product(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+    def get_convolution_product(self, t: float) -> cp.ndarray: # this is the sum of all the convolution product of phi with itself
         return self.convolution_product_matrix(self.phi)(t)
     
-    def get_convolution_product_matrix(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+    def get_convolution_product_matrix(self, t: float) -> cp.ndarray: # this is the sum of all the convolution product of phi with itself
         return self.convolution_product_matrix(self.phi)(t)
     
     
     
-    def iterate_convolution_product(self,function: callable) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+    def iterate_convolution_product(self,function: callable) -> cp.ndarray: # this is the sum of all the convolution product of phi with itself
         temp_function = function
         for index in range(self.convolution_threshold-1):
             temp_function = self.convolution_product(temp_function)
@@ -146,16 +147,16 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     
-    def iterate_convolution_product_matrix(self,function: callable) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+    def iterate_convolution_product_matrix(self,function: callable) -> cp.ndarray: # this is the sum of all the convolution product of phi with itself
         temp_function = function
         for index in range(self.convolution_threshold-1):
             temp_function = self.convolution_product_matrix(temp_function)
         return temp_function
     
-    def get_iterate_convolution_product(self,function: callable, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+    def get_iterate_convolution_product(self,function: callable, t: float) -> cp.ndarray: # this is the sum of all the convolution product of phi with itself
         return self.iterate_convolution_product(function)(t)
     
-    def  get_iterate_convolution_product_matrix(self,function: callable, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+    def  get_iterate_convolution_product_matrix(self,function: callable, t: float) -> cp.ndarray: # this is the sum of all the convolution product of phi with itself
         return self.iterate_convolution_product_matrix(function)(t)
     
     
@@ -169,7 +170,7 @@ class Hawkes: # N dimensionnal hawkes process
         self.psi_function = self.convolution_product_matrix(self.psi)
         return self.psi_function
 
-    def get_psi(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+    def get_psi(self, t: float) -> cp.ndarray: # this is the sum of all the convolution product of phi with itself
         if self.psi_function is None:
             self.get_psi_function() 
         return self.psi_function(t)
@@ -177,9 +178,9 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     
-    def get_sigma(self, t: float) -> np.ndarray: # matrix whose diagonal entries are the average intensity and the off-diagonal entries are the average intensity of the other dimensions
+    def get_sigma(self, t: float) -> cp.ndarray: # matrix whose diagonal entries are the average intensity and the off-diagonal entries are the average intensity of the other dimensions
         mean_vector = self.get_average_intensity(t) # it is a vector, we need to make it a diagonal matrix
-        mean_vector_matrix = np.diag(mean_vector)
+        mean_vector_matrix = cp.diag(mean_vector)
         sigma = mean_vector_matrix
         return sigma
     
@@ -203,8 +204,8 @@ class Hawkes: # N dimensionnal hawkes process
    # conditional laws g
     def get_g(self, t: float) -> float:
         if t <=0:
-            return -np.eye(self.dim)
-        return self.nu(t) * np.linalg.inv(self.get_sigma(t)) # there is a dirac term in 0
+            return -cp.eye(self.dim)
+        return self.nu(t) * cp.linalg.inv(self.get_sigma(t)) # there is a dirac term in 0
    
    # this function is solution of the wiener hopf system
     def get_g_function(self) -> callable:
@@ -227,7 +228,7 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     # we should compute some g integrals
-    def get_g_from_parquet(self,df: pl.DataFrame,threshold: int = 1000) -> np.ndarray: # we estimate g in the time grid 
+    def get_g_from_parquet(self,df: pl.DataFrame,threshold: int = 1000) -> cp.ndarray: # we estimate g in the time grid 
         # pour chaque colonne on regarde les temps d'arrivée
         df = df.with_columns(
         pl.col("ts_event").cast(pl.Datetime).alias("timestamp")
@@ -257,16 +258,16 @@ class Hawkes: # N dimensionnal hawkes process
         events_by_type = [pdf[pdf["event_type"] == i]["time_microseconds"].values for i in range(self.dim)]
         # Calculer les intensités de base (Lambda^i)
         total_duration = pdf["time_microseconds"].max() - pdf["time_microseconds"].min()
-        lambda_i = np.array([len(events) / total_duration for events in events_by_type])
+        lambda_i = cp.array([len(events) / total_duration for events in events_by_type])
         
         max_lag = 300 # Tmax
         n_bins = self.stepsize
         t_grid = self.quadrature_points
         
         
-        g_estimates = np.zeros((self.dim, self.dim, n_bins))
-        g_integrals = np.zeros((self.dim, self.dim, n_bins))  # ∫g(u)du
-        ug_integrals = np.zeros((self.dim, self.dim, n_bins))  # ∫ug(u)du
+        g_estimates = cp.zeros((self.dim, self.dim, n_bins))
+        g_integrals = cp.zeros((self.dim, self.dim, n_bins))  # ∫g(u)du
+        ug_integrals = cp.zeros((self.dim, self.dim, n_bins))  # ∫ug(u)du
         
             
         # Pour chaque paire de types d'événements (i,j)
@@ -281,7 +282,7 @@ class Hawkes: # N dimensionnal hawkes process
                 
                 # Histogramme des délais entre événements j et i
                 # Attention: pour n_bins points sur la grille, il y a n_bins+1 délimiteurs de bins
-                counts = np.zeros(n_bins)  # devrait être de taille n_bins
+                counts = cp.zeros(n_bins)  # devrait être de taille n_bins
                 total_j_events = 0
                 
                 for t_j in j_events:
@@ -292,8 +293,8 @@ class Hawkes: # N dimensionnal hawkes process
                     if len(deltas) > 0:
                         # Calculer l'histogramme des délais
                         # Les bins doivent être spécifiés comme un tableau de taille n_bins+1
-                        bin_edges = np.linspace(0, max_lag, n_bins + 1)  # n_bins+1 points pour n_bins intervalles
-                        hist, _ = np.histogram(deltas, bins=bin_edges)
+                        bin_edges = cp.linspace(0, max_lag, n_bins + 1)  # n_bins+1 points pour n_bins intervalles
+                        hist, _ = cp.histogram(cp.array(deltas), bins=bin_edges)
                         
                         # Maintenant hist et counts ont la même taille (n_bins)
                         counts += hist
@@ -326,11 +327,11 @@ class Hawkes: # N dimensionnal hawkes process
                                 if start_idx <= end_idx:
                                     # ∫g(u)du sur l'intervalle
                                     integral_range = g_estimates[i, j, start_idx:end_idx+1]
-                                    g_integrals[i, j, k] += np.sum(integral_range) * bin_width
+                                    g_integrals[i, j, k] += cp.sum(integral_range) * bin_width
                                     
                                     # ∫ug(u)du sur l'intervalle
                                     u_values = t_grid[start_idx:end_idx+1]
-                                    ug_integrals[i, j, k] += np.sum(u_values * integral_range) * bin_width
+                                    ug_integrals[i, j, k] += cp.sum(u_values * integral_range) * bin_width
         
     
         results = {
@@ -358,8 +359,8 @@ class Hawkes: # N dimensionnal hawkes process
         D = self.dim       # Dimension du processus Hawkes
         
         # Initialiser le système
-        A = np.zeros((D * D * K, D * D * K))
-        b = np.zeros(D * D * K)
+        A = cp.zeros((D * D * K, D * D * K))
+        b = cp.zeros(D * D * K)
         
         # Pour chaque point t_n et chaque paire (i,j)
         for n in range(K):
@@ -428,7 +429,7 @@ class Hawkes: # N dimensionnal hawkes process
         A, b = self.compute_wiener_hopf_linear_kernel(g_results)
         
         # Vérifier le conditionnement du système
-        cond_number = np.linalg.cond(A)
+        cond_number = cp.linalg.cond(A)
         print(f"Conditionnement du système: {cond_number}")
         
         # Si le conditionnement est trop élevé, utiliser une méthode régularisée
@@ -437,15 +438,15 @@ class Hawkes: # N dimensionnal hawkes process
             # Paramètre de régularisation
             alpha = 1e-6
             # Résolution avec régularisation
-            x, residuals, rank, s = np.linalg.lstsq(A, b, rcond=alpha)
+            x, residuals, rank, s = cp.linalg.lstsq(A, b, rcond=alpha)
         else:
             # Résolution standard
-            x = np.linalg.solve(A, b)
+            x = cp.linalg.solve(A, b)
         
         # Reconstruction de φ˜
         K = self.stepsize
         D = self.dim
-        phi_values = np.zeros((D, D, K))
+        phi_values = cp.zeros((D, D, K))
         
         for i in range(D):
             for j in range(D):
@@ -459,10 +460,10 @@ class Hawkes: # N dimensionnal hawkes process
         def phi_tilde(t):
             # Trouver l'indice le plus proche dans la grille
             if t < t_grid[0] or t > t_grid[-1]:
-                return np.zeros((D, D))
+                return cp.zeros((D, D))
             
             # Interpolation linéaire
-            idx = np.searchsorted(t_grid, t)
+            idx = cp.searchsorted(t_grid, t)
             if idx == 0:
                 return phi_values[:, :, 0]
             elif idx == len(t_grid):
@@ -510,12 +511,12 @@ class Hawkes: # N dimensionnal hawkes process
 
 
     
-    def get_system(self) -> tuple[np.ndarray, np.ndarray]:
+    def get_system(self) -> tuple[cp.ndarray, cp.ndarray]:
         K = self.stepsize
         D = self.dim
         
-        system = np.zeros((D*D*K, D*D*K)) # we have D*K*K equations
-        vector = np.zeros(D*D*K) # we have D*K*K unknowns
+        system = cp.zeros((D*D*K, D*D*K)) # we have D*K*K equations
+        vector = cp.zeros(D*D*K) # we have D*K*K unknowns
         
         # for each quadrature point and each dimension
         for n in range(K):
@@ -541,23 +542,23 @@ class Hawkes: # N dimensionnal hawkes process
     def verify_system(self) -> tuple[float, float]:
         # we check if the system is well conditioned
         system, vector = self.get_system()
-        print(np.linalg.cond(system))
+        print(cp.linalg.cond(system))
         
         # we check if invertible
-        print(np.linalg.det(system) != 0)
-        return np.linalg.cond(system), np.linalg.det(system)
+        print(cp.linalg.det(system) != 0)
+        return cp.linalg.cond(system), cp.linalg.det(system)
     
     
-    def get_estimator_phi(self, t: float) -> np.ndarray: # we estimate at sensor points
+    def get_estimator_phi(self, t: float) -> cp.ndarray: # we estimate at sensor points
         system, vector = self.get_system()
-        return np.linalg.inv(system) @ vector
+        return cp.linalg.inv(system) @ vector
     
     
-    def reconstruct_phi(self) -> np.ndarray:
+    def reconstruct_phi(self) -> cp.ndarray:
         vector = self.get_estimator_phi(0)
         K = self.stepsize
         D = self.dim
-        phi_matrix = np.zeros((D, D,K))
+        phi_matrix = cp.zeros((D, D,K))
         for i in range(D):
             for j in range(D):
                 for k in range(K):
@@ -624,6 +625,6 @@ class Hawkes: # N dimensionnal hawkes process
 
 
 
-    def fit(self, X: np.ndarray): # X is a numpy array of events
+    def fit(self, X: cp.ndarray): # X is a numpy array of events
         return
 
