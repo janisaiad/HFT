@@ -98,13 +98,49 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     
+    # part 2.2 of Bacry et al
     
+    # convolution product utils, to be put in utils folder after
+    def convolution_product(self, function: callable, i: int, j: int) -> float: # this is the convolution product of
+        return lambda t: quad(lambda tau: function(t - tau)[:, i] * function(tau)[:, j], 0, t)[0] # we return a function of t
+    
+    def convolution_product_matrix(self, function: callable, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+        psi_matrix = np.zeros((self.dim, self.dim))
+        for i in range(self.dim):
+            for j in range(self.dim):
+                psi_matrix[i,j] = self.convolution_product(function, i, j)
+        return psi_matrix
+    
+    def get_convolution_product(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+        return self.convolution_product_matrix(self.phi, t)
+    
+    def get_convolution_product_matrix(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+        return self.convolution_product_matrix(self.phi, t)
+    
+    
+    
+    
+    
+    
+    def get_psi_matrix(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+        psi_matrix = np.zeros((self.dim, self.dim))
+        for i in range(self.dim):
+            for j in range(self.dim):
+                psi_matrix[i,j] = self.convolution_product(self.phi, t, tau, i, j)
+        return psi_matrix
+    
+    def nu(self, t: float) -> float: # infinitesimal covariance matrix
+        
+        
+        
+        return
+        
    
     def simulate(self, T: int, n: int):
-        pass
+        return 
 
 
 
     def fit(self, X: np.ndarray): # X is a numpy array of events
-        pass
+        return
 
