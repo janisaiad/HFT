@@ -196,14 +196,19 @@ class Hawkes: # N dimensionnal hawkes process
     def get_nu_function(self) -> callable:
         return lambda t: self.get_nu(t) # be careful
    
+   
+   
    # conditional laws g
-   def get_g(self, t: float) -> float:
-       return self.nu(t)
+    def get_g(self, t: float) -> float:
+        if t <=0:
+            return -np.eye(self.dim)
+        return self.nu(t) * np.linalg.inv(self.get_sigma(t)) # there is a dirac term in 0
    
-   
-   
-   
-   
+   # this function is solution of the wiener hopf system
+    def get_g_function(self) -> callable:
+        return lambda t: self.get_g(t)
+
+   # this function is solution of the wiener hopf system
    # estimation functions
    
    
