@@ -222,6 +222,10 @@ class Hawkes: # N dimensionnal hawkes process
     def get_parquet(self,path: str) -> pl.DataFrame:
         return pl.read_parquet(path)
     
+    
+    
+    
+    
     # we should compute some g integrals
     def get_g_from_parquet(self,df: pl.DataFrame) -> np.ndarray: # we estimate g in the time grid 
         df = df.filter(pl.col("event_type").is_in(["P(a)","P(b)","T(a)","T(b)","L(a)","L(b)"]))
@@ -288,35 +292,35 @@ class Hawkes: # N dimensionnal hawkes process
                     bin_width = t_grid[1] - t_grid[0]
                     intensity_conditional = counts / (total_j_events * bin_width)
                     
-                    # Calculer g_ij(t) = E[dN^i_t|dN^j_0=1] - 1_{i=j}δ(t) - Λ^i
+                    # on calcule g_ij(t) = E[dN^i_t|dN^j_0=1] - 1_{i=j}δ(t) - Λ^i
                     # Note: δ(t) est gérée implicitement car l'histogramme commence à t > 0
                     g_estimates[i, j, :] = intensity_conditional - lambda_i[i]
                     
-                    # Calculer les intégrales pour l'équation de Wiener-Hopf
+                    #  les intégrales pour l'équation de Wiener-Hopf
                     for n in range(n_bins):
-                        # Pour chaque point de temps t_n
+                        # sur chaque point de temps t_n
                         t_n = t_grid[n]
                         
-                        # Calculer ∫g(u)du pour chaque intervalle [t_n-t_{k+1}, t_n-t_k]
+                        #  ∫g(u)du pour chaque intervalle [t_n-t_{k+1}, t_n-t_k]
                         for k in range(n_bins):
-                            if k < n:  # S'assurer que t_n-t_k > 0
+                            if k < n:  #pour que t_n-t_k > 0
                                 t_k = t_grid[k]
                                 t_k_plus_1 = t_grid[k+1] if k+1 < n_bins else t_grid[k] + bin_width
                                 
-                                # Indices pour l'intervalle [t_n-t_{k+1}, t_n-t_k]
+                                # indices pour l'intervalle [t_n-t_{k+1}, t_n-t_k]
                                 start_idx = max(0, int((t_n - t_k_plus_1) / bin_width))
                                 end_idx = min(n_bins-1, int((t_n - t_k) / bin_width))
                                 
                                 if start_idx <= end_idx:
-                                    # Calculer ∫g(u)du sur l'intervalle
+                                    # ∫g(u)du sur l'intervalle
                                     integral_range = g_estimates[i, j, start_idx:end_idx+1]
                                     g_integrals[i, j, k] += np.sum(integral_range) * bin_width
                                     
-                                    # Calculer ∫ug(u)du sur l'intervalle
+                                    # ∫ug(u)du sur l'intervalle
                                     u_values = t_grid[start_idx:end_idx+1]
                                     ug_integrals[i, j, k] += np.sum(u_values * integral_range) * bin_width
         
-        # Stocker les résultats
+    
         results = {
             "g_estimates": g_estimates,
             "g_integrals": g_integrals,
@@ -327,7 +331,36 @@ class Hawkes: # N dimensionnal hawkes process
         self.results = results
         return results
     
+    
+    def compute_wiener_hopf_linear_kernel(self, g_results=None, t_n_idx=0):
+        g_results =  self.g_results if g_results is None else g_results
         
+        
+        g_estimates = g_results["g_estimates"]
+        g_integrals = g_results["g_integrals"]
+        ug_integrals = g_results["ug_integrals"]
+        t_grid = g_results["t_grid"]
+        
+        n_bins = len(t_grid) - 1
+        phi_tilde = self.phi
+        result = np.zeros((self.dim, self.dim))
+        t_n = t_grid[t_n_idx]
+        
+        result += phi_tilde(t_n)
+        
+        for k in range(n_bins):
+            t_k = t_grid[k]
+            t_k_plus_1 = t_grid[k+1] if k+1 < n_bins else t_grid[k] + (t_grid[1] - t_grid[0])
+            result += phi_tilde(t_k) @ g_integrals[:, :, k]
+            if k+1 < n_bins:
+                phi_diff = phi_tilde(t_k_plus_1) - phi_tilde(t_k)
+                dt = t_k_plus_1 - t_k
+                result += ((phi_diff * (t_n - t_k)) / dt) @ g_integrals[:, :, k]
+                result -= (phi_diff / dt) @ ug_integrals[:, :, k]
+        return result
+
+    
+    
 
 
 
