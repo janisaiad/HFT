@@ -13,6 +13,7 @@ class Hawkes: # N dimensionnal hawkes process
         self.dim = N
         self.phi = phi 
         self.psi = psi
+        self.convolution_threshold = 10 # number of time we convolve phi with itself
         self.mu = mu
         self.l1_norm_phi = None
         self.list_of_events = [[] for _ in range(N)] # matrix of time events, of size N x T
@@ -101,33 +102,67 @@ class Hawkes: # N dimensionnal hawkes process
     # part 2.2 of Bacry et al
     
     # convolution product utils, to be put in utils folder after
-    def convolution_product(self, function: callable, i: int, j: int) -> float: # this is the convolution product of
-        return lambda t: quad(lambda tau: function(t - tau)[:, i] * function(tau)[:, j], 0, t)[0] # we return a function of t
+    def convolution_product(self, function: callable) -> callable: # this is the convolution product of
+        return lambda t: quad(lambda tau: function(t - tau) * function(tau), 0, t)[0] # we return a function of t
     
-    def convolution_product_matrix(self, function: callable, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
-        psi_matrix = np.zeros((self.dim, self.dim))
-        for i in range(self.dim):
-            for j in range(self.dim):
-                psi_matrix[i,j] = self.convolution_product(function, i, j)
-        return psi_matrix
+    
+    def convolution_product_matrix(self, function: callable) -> callable:
+        
+        def result(t)->np.ndarray:
+            psi_matrix = np.zeros((self.dim, self.dim))
+            for i in range(self.dim):
+               for j in range(self.dim):
+                   function_to_apply = lambda tau: function(tau)[i,j]
+                   psi_matrix[i,j] = self.convolution_product(function_to_apply)(t)
+            return psi_matrix
+        
+        return result
+    
+    
+    
     
     def get_convolution_product(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
-        return self.convolution_product_matrix(self.phi, t)
+        return self.convolution_product_matrix(self.phi)(t)
     
     def get_convolution_product_matrix(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
-        return self.convolution_product_matrix(self.phi, t)
+        return self.convolution_product_matrix(self.phi)(t)
+    
+    
+    
+    def iterate_convolution_product(self,function: callable) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+        temp_function = function
+        for index in range(self.convolution_threshold-1):
+            temp_function = self.convolution_product(temp_function)
+        return temp_function
+    
+    
+    
+    def iterate_convolution_product_matrix(self,function: callable) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+        temp_function = function
+        for index in range(self.convolution_threshold-1):
+            temp_function = self.convolution_product_matrix(temp_function)
+        return temp_function
+    
+    def get_iterate_convolution_product(self,function: callable, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+        return self.iterate_convolution_product(function)(t)
+    
+    def  get_iterate_convolution_product_matrix(self,function: callable, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+        return self.iterate_convolution_product_matrix(function)(t)
     
     
     
     
-    
-    
+    # application of convolution product to phi & psi
     def get_psi_matrix(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
         psi_matrix = np.zeros((self.dim, self.dim))
         for i in range(self.dim):
             for j in range(self.dim):
-                psi_matrix[i,j] = self.convolution_product(self.phi, t, tau, i, j)
+                psi_matrix[i,j] = self.convolution_product(self.phi, t, i, j)
         return psi_matrix
+    
+    
+    
+    
     
     def nu(self, t: float) -> float: # infinitesimal covariance matrix
         
@@ -135,6 +170,22 @@ class Hawkes: # N dimensionnal hawkes process
         
         return
         
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
     def simulate(self, T: int, n: int):
         return 
