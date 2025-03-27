@@ -185,16 +185,26 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     # this is according to the formula (5) of Bacry et al
-    def nu(self, t: float) -> float:
-        sigma_function = self.get_sigma_function()
-        psi_function = self.get_psi_function()
-        return self.convolve_functions(psi_function, lambda u: psi_function(u).T)(t) + sigma_function(t)@psi_function(t).T+psi_function(t)@sigma_function(t)+ sigma_function(t)
+    def get_nu(self, t: float) -> float:
+        if self.nu_function is None:
+            sigma_function = self.get_sigma_function()
+            psi_function = self.get_psi_function()
+            value = self.convolve_functions(psi_function, lambda u: psi_function(u).T)(t) + sigma_function(t)@psi_function(t).T+psi_function(t)@sigma_function(t)+ sigma_function(t)
+            return value
+        return self.nu_function(t)
+
+    def get_nu_function(self) -> callable:
+        return lambda t: self.get_nu(t) # be careful
+   
+   # conditional laws g
+   def get_g(self, t: float) -> float:
+       return self.nu(t)
    
    
    
    
    
-   
+   # estimation functions
    
    
    
