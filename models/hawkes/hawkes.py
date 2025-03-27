@@ -340,27 +340,131 @@ class Hawkes: # N dimensionnal hawkes process
         g_integrals = g_results["g_integrals"]
         ug_integrals = g_results["ug_integrals"]
         t_grid = g_results["t_grid"]
+            
+        # Dimensions du système
+        K = self.stepsize  # Nombre de points de quadrature
+        D = self.dim       # Dimension du processus Hawkes
         
-        n_bins = len(t_grid) - 1
-        phi_tilde = self.phi
-        result = np.zeros((self.dim, self.dim))
-        t_n = t_grid[t_n_idx]
+        # Initialiser le système
+        A = np.zeros((D * D * K, D * D * K))
+        b = np.zeros(D * D * K)
         
-        result += phi_tilde(t_n)
+        # Pour chaque point t_n et chaque paire (i,j)
+        for n in range(K):
+            t_n = t_grid[n]
+            
+            for i in range(D):
+                for j in range(D):
+                    # Indice dans le système linéaire pour la ligne correspondant à φ˜_ij(t_n)
+                    row_idx = i * D * K + j * K + n
+                    
+                    # Termes de l'équation de Wiener-Hopf
+                    
+                    # 1. Terme φ˜_ij(t_n) (coefficient diagonal = 1)
+                    col_idx_n = i * D * K + j * K + n
+                    A[row_idx, col_idx_n] = 1.0
+                    
+                    # 2. Termes avec φ˜_il(t_k) pour tous l,k
+                    for k in range(K):
+                        t_k = t_grid[k]
+                        
+                        # Pour l'intégrale de g
+                        for l in range(D):
+                            # Indice de la colonne pour φ˜_il(t_k)
+                            col_idx_k = i * D * K + l * K + k
+                            
+                            # Ajouter le coefficient de φ˜_il(t_k)
+                            A[row_idx, col_idx_k] += g_integrals[l, j, k]
+                            
+                            # Si k+1 < K, ajouter les termes avec (φ˜(t_{k+1}) - φ˜(t_k))
+                            if k+1 < K:
+                                t_k_plus_1 = t_grid[k+1]
+                                dt = t_k_plus_1 - t_k
+                                
+                                # Indice de la colonne pour φ˜_il(t_{k+1})
+                                col_idx_k_plus_1 = i * D * K + l * K + (k+1)
+                                
+                                # Terme avec (t_n - t_k)/(t_{k+1} - t_k) * ∫g
+                                coef_1 = (t_n - t_k) / dt
+                                A[row_idx, col_idx_k_plus_1] += coef_1 * g_integrals[l, j, k]
+                                A[row_idx, col_idx_k] -= coef_1 * g_integrals[l, j, k]
+                                
+                                # Terme avec -1/(t_{k+1} - t_k) * ∫ug
+                                coef_2 = -1.0 / dt
+                                A[row_idx, col_idx_k_plus_1] += coef_2 * ug_integrals[l, j, k]
+                                A[row_idx, col_idx_k] -= coef_2 * ug_integrals[l, j, k]
+                    
+                    # Terme constant g˜_ij(t_n)
+                    b[row_idx] = g_estimates[i, j, n]
         
-        for k in range(n_bins):
-            t_k = t_grid[k]
-            t_k_plus_1 = t_grid[k+1] if k+1 < n_bins else t_grid[k] + (t_grid[1] - t_grid[0])
-            result += phi_tilde(t_k) @ g_integrals[:, :, k]
-            if k+1 < n_bins:
-                phi_diff = phi_tilde(t_k_plus_1) - phi_tilde(t_k)
-                dt = t_k_plus_1 - t_k
-                result += ((phi_diff * (t_n - t_k)) / dt) @ g_integrals[:, :, k]
-                result -= (phi_diff / dt) @ ug_integrals[:, :, k]
-        return result
+        return A, b
 
-    
-    
+    def solve_phi_from_wiener_hopf(self, g_results=None):
+        """
+        Résout le système linéaire issu de l'équation de Wiener-Hopf pour obtenir φ˜
+        
+        Args:
+            g_results: Résultats de get_g_from_parquet. Si None, utilise self.results.
+        
+        Returns:
+            Une matrice 3D de taille (D, D, K) contenant les valeurs de φ˜_ij(t_k)
+        """
+        # Construire le système
+        A, b = self.get_system_from_wiener_hopf(g_results)
+        
+        # Vérifier le conditionnement du système
+        cond_number = np.linalg.cond(A)
+        print(f"Conditionnement du système: {cond_number}")
+        
+        # Si le conditionnement est trop élevé, utiliser une méthode régularisée
+        if cond_number > 1e10:
+            print("Système mal conditionné. Utilisation de la régularisation de Tikhonov.")
+            # Paramètre de régularisation
+            alpha = 1e-6
+            # Résolution avec régularisation
+            x, residuals, rank, s = np.linalg.lstsq(A, b, rcond=alpha)
+        else:
+            # Résolution standard
+            x = np.linalg.solve(A, b)
+        
+        # Reconstruction de φ˜
+        K = self.stepsize
+        D = self.dim
+        phi_values = np.zeros((D, D, K))
+        
+        for i in range(D):
+            for j in range(D):
+                for k in range(K):
+                    idx = i * D * K + j * K + k
+                    phi_values[i, j, k] = x[idx]
+        
+        # Créer une fonction φ˜ interpolée
+        t_grid = g_results["t_grid"] if g_results else self.results["t_grid"]
+        
+        def phi_tilde(t):
+            # Trouver l'indice le plus proche dans la grille
+            if t < t_grid[0] or t > t_grid[-1]:
+                return np.zeros((D, D))
+            
+            # Interpolation linéaire
+            idx = np.searchsorted(t_grid, t)
+            if idx == 0:
+                return phi_values[:, :, 0]
+            elif idx == len(t_grid):
+                return phi_values[:, :, -1]
+            else:
+                t0, t1 = t_grid[idx-1], t_grid[idx]
+                phi0, phi1 = phi_values[:, :, idx-1], phi_values[:, :, idx]
+                alpha = (t - t0) / (t1 - t0)
+                return (1 - alpha) * phi0 + alpha * phi1
+        
+        # Mettre à jour la fonction phi
+        self.phi = phi_tilde
+        
+        return phi_values
+
+        
+        
 
 
 
