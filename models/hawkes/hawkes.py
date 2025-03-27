@@ -6,7 +6,7 @@ import pandas as pd
 from scipy.integrate import quad
 
 class Hawkes: # N dimensionnal hawkes process
-    def __init__(self, phi: callable, psi: callable, mu: float, N: int):
+    def __init__(self, phi: callable, psi: callable, mu: float, N: int, stepsize: int = 10):
         # phi returns a N dimensionnal vector
         # psi returns a N dimensionnal vector
         # mu is a N dimensionnal vector
@@ -20,6 +20,9 @@ class Hawkes: # N dimensionnal hawkes process
         self.mean_vector = None
         self.l1_norm_phi = None
         self.list_of_events = [[] for _ in range(N)] # matrix of time events, of size N x T
+        self.stepsize = stepsize
+        self.quadrature_points = np.linspace(0, 1, self.stepsize) # stepsize will change in the future
+        self.quadrature_weights = np.ones(self.stepsize) / self.stepsize # weights also
         
         
         
@@ -197,7 +200,6 @@ class Hawkes: # N dimensionnal hawkes process
         return lambda t: self.get_nu(t) # be careful
    
    
-   
    # conditional laws g
     def get_g(self, t: float) -> float:
         if t <=0:
@@ -209,7 +211,88 @@ class Hawkes: # N dimensionnal hawkes process
         return lambda t: self.get_g(t)
 
    # this function is solution of the wiener hopf system
+   
+   
+   
+   
+   
+   
    # estimation functions
+    
+    def get_system(self) -> tuple[np.ndarray, np.ndarray]:
+        K = self.stepsize
+        D = self.dim
+        
+        system = np.zeros((D*K*K, D*K*K)) # we have D*K*K equations
+        vector = np.zeros(D*K*K) # we have D*K*K unknowns
+        
+        # for each quadrature point and each dimension
+        for n in range(K):
+            for i in range(D):
+                for j in range(D):
+                    # Position dans le système linéaire
+                    row = i*K*K + j*K + n
+                    col = i*K*K + j*K + n
+                    # diagonal term
+                    system[row, col] = 1.0
+                    # convolution terms
+                    for l in range(D):
+                        for k in range(K):
+                            t_n = self.quadrature_points[n]
+                            t_k = self.quadrature_points[k]
+                            w_k = self.quadrature_weights[k]
+                            system[row, l*K*K + j*K + k] = w_k * self.get_g(t_n - t_k)[i,l]
+                    vector[row] = self.get_g(t_n)[i,j]
+        return system, vector
+    
+   
+   
+   
+   
+   
+    def verify_system(self) -> tuple[float, float]:
+        # we check if the system is well conditioned
+        system, vector = self.get_system()
+        print(np.linalg.cond(system))
+        
+        # we check if invertible
+        print(np.linalg.det(system) != 0)
+        return np.linalg.cond(system), np.linalg.det(system)
+    
+    
+    
+    def get_estimator_nu(self, t: float) -> np.ndarray:
+       return 
+    
+    
+    def get_estimator_sigma(self, t: float) -> np.ndarray:
+       return
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    
    
