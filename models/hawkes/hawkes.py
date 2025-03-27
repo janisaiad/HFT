@@ -231,8 +231,8 @@ class Hawkes: # N dimensionnal hawkes process
             for i in range(D):
                 for j in range(D):
                     # Position dans le système linéaire
-                    row = i*K*K + j*K + n
-                    col = i*K*K + j*K + n
+                    row = i*D*D + j*D + n
+                    col = i*D*D + j*D + n
                     # diagonal term
                     system[row, col] = 1.0
                     # convolution terms
@@ -241,7 +241,7 @@ class Hawkes: # N dimensionnal hawkes process
                             t_n = self.quadrature_points[n]
                             t_k = self.quadrature_points[k]
                             w_k = self.quadrature_weights[k]
-                            system[row, l*K*K + j*K + k] = w_k * self.get_g(t_n - t_k)[i,l]
+                            system[row, l*D*D + j*D + k] = w_k * self.get_g(t_n - t_k)[i,l]
                     vector[row] = self.get_g(t_n)[i,j]
         return system, vector
     
@@ -259,6 +259,22 @@ class Hawkes: # N dimensionnal hawkes process
         print(np.linalg.det(system) != 0)
         return np.linalg.cond(system), np.linalg.det(system)
     
+    
+    def get_estimator_phi(self, t: float) -> np.ndarray: # we estimate at sensor points
+        system, vector = self.get_system()
+        return np.linalg.inv(system) @ vector
+    
+    
+    def reconstruct_phi(self) -> np.ndarray:
+        vector = self.get_estimator_phi(0)
+        K = self.stepsize
+        D = self.dim
+        phi_matrix = np.zeros((D, D,K))
+        for i in range(D):
+            for j in range(D):
+                for k in range(K):
+                    phi_matrix[i,j,k]= vector[i*D*D + j*D + k]
+        return phi_matrix
     
     
     def get_estimator_nu(self, t: float) -> np.ndarray:
