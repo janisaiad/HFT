@@ -23,7 +23,7 @@ class Hawkes: # N dimensionnal hawkes process
         self.stepsize = stepsize
         self.quadrature_points = np.linspace(0, 1, self.stepsize) # stepsize will change in the future
         self.quadrature_weights = np.ones(self.stepsize) / self.stepsize # weights also
-        
+        self.results = None
         
         
     def add_event(self, event: float, dimension: int):
@@ -92,7 +92,7 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     # here we compute the equation (4) of the pape Bacry et al
-    def get_average_intensity(self, t: float) -> float:
+    def get_average_intensity(self) -> float:
         if self.mean_vector is None:
             mean_vector = np.zeros(self.dim)
             I = np.eye(self.dim)
@@ -217,7 +217,146 @@ class Hawkes: # N dimensionnal hawkes process
    
    
    
-   # estimation functions
+   #data handling
+   
+    def get_parquet(self,path: str) -> pl.DataFrame:
+        return pl.read_parquet(path)
+    
+    # we should compute some g integrals
+    def get_g_from_parquet(self,df: pl.DataFrame) -> np.ndarray: # we estimate g in the time grid 
+        df = df.filter(pl.col("event_type").is_in(["P(a)","P(b)","T(a)","T(b)","L(a)","L(b)"]))
+        # pour chaque colonne on regarde les temps d'arrivée
+        df = df.with_columns(
+        pl.col("ts_event").cast(pl.Datetime).alias("timestamp")
+)
+        pdf = df.to_pandas()
+        pdf["timestamp"] = pd.to_datetime(pdf["timestamp"])
+        
+        # Définir le temps de référence
+        t0 = pdf["timestamp"].min()
+        pdf["time_microseconds"] = (pdf["timestamp"] - t0).dt.total_seconds()*1000000
+            
+        # Mapper les types d'événements aux indices
+        event_types = ["P_a", "P_b", "T_a", "T_b", "L_a", "L_b", "C_a", "C_b"]
+        event_to_idx = {evt: i for i, evt in enumerate(event_types)}
+        self.dim = len(event_types)  # Mettre à jour la dimension
+        
+        # Séparer les événements par type
+        events_by_type = [pdf[pdf["event_type"] == evt]["time_seconds"].values for evt in event_types]
+        
+        # Calculer les intensités de base (Lambda^i)
+        total_duration = pdf["time_seconds"].max() - pdf["time_seconds"].min()
+        lambda_i = np.array([len(events) / total_duration for events in events_by_type])
+        
+        max_lag = 300 # Tmax
+        n_bins = self.stepsize
+        t_grid = self.quadrature_points
+        
+        
+        g_estimates = np.zeros((self.dim, self.dim, n_bins))
+        g_integrals = np.zeros((self.dim, self.dim, n_bins))  # ∫g(u)du
+        ug_integrals = np.zeros((self.dim, self.dim, n_bins))  # ∫ug(u)du
+        
+            
+        # Pour chaque paire de types d'événements (i,j)
+        for j in range(self.dim):
+            j_events = events_by_type[j]
+            
+            for i in range(self.dim):
+                i_events = events_by_type[i]
+                
+                if len(j_events) == 0 or len(i_events) == 0:
+                    continue
+                
+                # Histogramme des délais entre événements j et i
+                counts = np.zeros(n_bins)
+                total_j_events = 0
+                
+                for t_j in j_events:
+                    # Trouver tous les événements i qui suivent l'événement j dans la fenêtre max_lag
+                    deltas = i_events[i_events > t_j] - t_j
+                    deltas = deltas[deltas <= max_lag]
+                    
+                    if len(deltas) > 0:
+                        # Calculer l'histogramme des délais
+                        hist, _ = np.histogram(deltas, bins=t_grid)
+                        counts += hist
+                        total_j_events += 1
+                
+                if total_j_events > 0:
+                    # Normaliser pour obtenir une estimation de E[dN^i_t|dN^j_0=1]
+                    bin_width = t_grid[1] - t_grid[0]
+                    intensity_conditional = counts / (total_j_events * bin_width)
+                    
+                    # Calculer g_ij(t) = E[dN^i_t|dN^j_0=1] - 1_{i=j}δ(t) - Λ^i
+                    # Note: δ(t) est gérée implicitement car l'histogramme commence à t > 0
+                    g_estimates[i, j, :] = intensity_conditional - lambda_i[i]
+                    
+                    # Calculer les intégrales pour l'équation de Wiener-Hopf
+                    for n in range(n_bins):
+                        # Pour chaque point de temps t_n
+                        t_n = t_grid[n]
+                        
+                        # Calculer ∫g(u)du pour chaque intervalle [t_n-t_{k+1}, t_n-t_k]
+                        for k in range(n_bins):
+                            if k < n:  # S'assurer que t_n-t_k > 0
+                                t_k = t_grid[k]
+                                t_k_plus_1 = t_grid[k+1] if k+1 < n_bins else t_grid[k] + bin_width
+                                
+                                # Indices pour l'intervalle [t_n-t_{k+1}, t_n-t_k]
+                                start_idx = max(0, int((t_n - t_k_plus_1) / bin_width))
+                                end_idx = min(n_bins-1, int((t_n - t_k) / bin_width))
+                                
+                                if start_idx <= end_idx:
+                                    # Calculer ∫g(u)du sur l'intervalle
+                                    integral_range = g_estimates[i, j, start_idx:end_idx+1]
+                                    g_integrals[i, j, k] += np.sum(integral_range) * bin_width
+                                    
+                                    # Calculer ∫ug(u)du sur l'intervalle
+                                    u_values = t_grid[start_idx:end_idx+1]
+                                    ug_integrals[i, j, k] += np.sum(u_values * integral_range) * bin_width
+        
+        # Stocker les résultats
+        results = {
+            "g_estimates": g_estimates,
+            "g_integrals": g_integrals,
+            "ug_integrals": ug_integrals,
+            "t_grid": t_grid,
+            "lambda_i": lambda_i
+        }
+        self.results = results
+        return results
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     def get_system(self) -> tuple[np.ndarray, np.ndarray]:
         K = self.stepsize
@@ -244,10 +383,7 @@ class Hawkes: # N dimensionnal hawkes process
                             system[row, l*D*D + j*D + k] = w_k * self.get_g(t_n - t_k)[i,l]
                     vector[row] = self.get_g(t_n)[i,j]
         return system, vector
-    
-   
-   
-   
+
    
    
     def verify_system(self) -> tuple[float, float]:
@@ -277,12 +413,23 @@ class Hawkes: # N dimensionnal hawkes process
         return phi_matrix
     
     
-    def get_estimator_nu(self, t: float) -> np.ndarray:
-       return 
     
     
-    def get_estimator_sigma(self, t: float) -> np.ndarray:
-       return
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
    
    
    
