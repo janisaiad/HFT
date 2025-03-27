@@ -73,6 +73,8 @@ This script will:
 > ```
 > This will install the project in development mode, making all imports valid.
 
+> Bien changer dans .env le path de la data
+.env : FOLDER_PATH = "/home/janis/HFTP2/HFT/data/DB_MBP_10/"
 ## Setup
 
 1. Clone the repository
