@@ -36,7 +36,7 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
               "GBDC", "WBD", "PSNY", "NTAP", "GEO", "LCID", "GCMG", "CXW", "RIOT", "HL",
               "CX", "ERIC", "UA"]
     
-    stocks = ["UA"]
+    stocks.reverse()
 
     for stock in tqdm(stocks, desc="Processing stocks"):
         data_path = f"{os.getenv('FOLDER_PATH')}/data/hawkes_dataset/{stock}"
@@ -78,11 +78,15 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
                 print("Estimating g...")
                 start_g = time.time()
                 g_results = hawkes.get_g_from_parquet(df)
-                print(g_results)
+                date = file.replace('.parquet', '')  # Enlever l'extension .parquet
+        
+        
+        
                 # g_results is a dict of numpy arrays
-                for key, value in g_results.items():
-                    print(type(value))
-                    cp.save(f"/ome/janis/HFT/HFT/results/hawkes/g_values/{stock}_{date}_{key}.npy", value)
+                os.makedirs(f"/home/janis/HFT/HFT/results/hawkes/g_values/{stock}/{date}", exist_ok=True)
+                os.makedirs(f"/home/janis/HFT/HFT/results/hawkes/phi_values/{stock}/{date}", exist_ok=True)
+                for key, value in g_results.items(): 
+                    cp.save(f"/home/janis/HFT/HFT/results/hawkes/g_values/{stock}/{date}/{date}_{key}.npy", value)
                 g_time = time.time() - start_g
                 log_file.write(f"G estimation time: {g_time:.2f}s\n")
                 
@@ -100,9 +104,9 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
                 
                 # Save phi values
                 print("Saving phi values...")
-                date = file.split(".")[0]
+                
                 if phi_values is not None:
-                    cp.save(f"results/hawkes/phi_values/{stock}_{date}_phi.npy", phi_values)
+                    cp.save(f"/home/janis/HFT/HFT/results/hawkes/phi_values/{stock}/{date}/{date}_phi.npy", phi_values)
                 
                 # Plot phi matrix
                 print("Plotting phi matrix...")
@@ -122,8 +126,8 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
                         ax = axes[i,j]
                         
                         # Plot phi values at quadrature points
-                        phi_at_points = np.array([hawkes.phi(t)[i,j] for t in t_points])
-                        ax.plot(t_points, phi_at_points, 'o-')
+                        phi_at_points = cp.array([hawkes.phi(t)[i,j] for t in t_points])
+                        ax.plot(cp.asnumpy(t_points), cp.asnumpy(phi_at_points), 'o-')
                         
                         if i == N-1:
                             ax.set_xlabel("Time")
@@ -133,7 +137,7 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
                         ax.grid(True)
                 
                 plt.tight_layout()
-                plt.savefig(f"results/hawkes/plots/{stock}_{date}_kernels.png")
+                plt.savefig(f"/home/janis/HFT/HFT/results/hawkes/plots/{stock}/{date}/{date}_kernels.png")
                 plt.close()
                 plot_time = time.time() - start_plot
                 log_file.write(f"Plotting time: {plot_time:.2f}s\n")

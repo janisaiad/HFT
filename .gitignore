@@ -9,6 +9,7 @@ __pycache__/
 *.so
 *.lock
 *.sh
+*.npy
 # Distribution / packaging
 .Python
 build/

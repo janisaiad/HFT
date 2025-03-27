@@ -274,10 +274,12 @@ class Hawkes: # N dimensionnal hawkes process
         
             
         # Pour chaque paire de types d'événements (i,j)
-        for j in tqdm(range(self.dim), desc="Computing g_estimates"):
+        #  for j in tqdm(range(self.dim), desc="Computing g_estimates"):
+        for j in range(self.dim):
             j_events = events_by_type[j]
             
-            for i in tqdm(range(self.dim), desc="Computing g_estimates"):
+            # for i in tqdm(range(self.dim), desc="Computing g_estimates"):
+            for i in range(self.dim):
                 i_events = events_by_type[i]
                 
                 if len(j_events) == 0 or len(i_events) == 0:

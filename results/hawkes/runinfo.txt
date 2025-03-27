@@ -1,438 +1,4948 @@
-Run started at 2025-03-27 17:57:08.402171
+Run started at 2025-03-27 18:16:06.591529
+
+Run started at 2025-03-27 18:16:22.049583
 
 
 UA/UA_2024-06-26_dbeq-basic.parquet:
-Data reading time: 0.02s
+Data reading time: 0.04s
 Tmin, Tmax: 3.974, 58114396456.6
-Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 1.75s
+Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-12_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.275, 68708772242.200005
-Error processing UA/UA_2024-09-12_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: -0.80s
+Error processing UA/UA_2024-09-12_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-30_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 4.673, 60713685756.299995
-Error processing UA/UA_2024-08-30_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 1.60s
+Error processing UA/UA_2024-08-30_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-01_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.418, 86895313717.6
-Error processing UA/UA_2024-07-01_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 1.64s
+Error processing UA/UA_2024-07-01_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-19_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.435, 51298856787.4
-Error processing UA/UA_2024-08-19_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 1.84s
+Error processing UA/UA_2024-08-19_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-23_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.345, 70340558492.40001
-Error processing UA/UA_2024-09-23_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 1.95s
+Error processing UA/UA_2024-09-23_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-13_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 25.567, 107968171163.00002
-Error processing UA/UA_2024-08-13_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.11s
+Error processing UA/UA_2024-08-13_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-09_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 2.246, 65983448855.200005
-Error processing UA/UA_2024-08-09_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.15s
+Error processing UA/UA_2024-08-09_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-10_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.361, 33590948445.7
-Error processing UA/UA_2024-09-10_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-09-10_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-11_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 2.187, 85655042173.0
-Error processing UA/UA_2024-07-11_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.22s
+Error processing UA/UA_2024-07-11_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-29_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.674, 41931209738.8
-Error processing UA/UA_2024-08-29_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-08-29_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-28_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 1.01, 46812573072.299995
-Error processing UA/UA_2024-08-28_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-08-28_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-22_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 0.382, 96403257396.7
-Error processing UA/UA_2024-08-22_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-08-22_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-20_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 47.313, 77877216006.2
-Error processing UA/UA_2024-08-20_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-08-20_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-31_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 2.4, 161655710815.9
-Error processing UA/UA_2024-07-31_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.27s
+Error processing UA/UA_2024-07-31_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-27_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 0.484, 49529042698.5
-Error processing UA/UA_2024-08-27_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.24s
+Error processing UA/UA_2024-08-27_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-06-28_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 3.153, 82962093762.1
-Error processing UA/UA_2024-06-28_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.27s
+Error processing UA/UA_2024-06-28_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-19_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.795, 221616495074.7
-Error processing UA/UA_2024-07-19_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: -0.26s
+Error processing UA/UA_2024-07-19_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-25_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 2.782, 72565679137.0
-Error processing UA/UA_2024-07-25_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.29s
+Error processing UA/UA_2024-07-25_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-05_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 3.691, 69403940132.7
-Error processing UA/UA_2024-08-05_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.24s
+Error processing UA/UA_2024-08-05_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-09_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 5.881, 112927608357.8
-Error processing UA/UA_2024-07-09_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.24s
+Error processing UA/UA_2024-07-09_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-06_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.431, 77294444576.2
-Error processing UA/UA_2024-08-06_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.27s
+Error processing UA/UA_2024-08-06_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-17_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.656, 48748440845.0
-Error processing UA/UA_2024-09-17_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.28s
+Error processing UA/UA_2024-09-17_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-04_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.446, 66330497719.4
-Error processing UA/UA_2024-09-04_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-09-04_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-06-25_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 5.775, 65935930464.100006
-Error processing UA/UA_2024-06-25_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.24s
+Error processing UA/UA_2024-06-25_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-06_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.036, 88601053798.7
-Error processing UA/UA_2024-09-06_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-09-06_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-15_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.186, 70186199993.4
-Error processing UA/UA_2024-07-15_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.23s
+Error processing UA/UA_2024-07-15_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-05_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 47.775, 105206469980.3
-Error processing UA/UA_2024-07-05_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.22s
+Error processing UA/UA_2024-07-05_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-20_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.42, 34179007445.5
-Error processing UA/UA_2024-09-20_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.27s
+Error processing UA/UA_2024-09-20_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-17_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 2.067, 71955601918.7
-Error processing UA/UA_2024-07-17_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.27s
+Error processing UA/UA_2024-07-17_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-16_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.458, 37770465571.7
-Error processing UA/UA_2024-08-16_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.23s
+Error processing UA/UA_2024-08-16_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-23_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.512, 84778702142.6
-Error processing UA/UA_2024-07-23_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: -0.24s
+Error processing UA/UA_2024-07-23_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-18_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 4.762, 44738978940.8
-Error processing UA/UA_2024-09-18_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.29s
+Error processing UA/UA_2024-09-18_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-29_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 18.961, 78061832488.6
-Error processing UA/UA_2024-07-29_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.24s
+Error processing UA/UA_2024-07-29_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-05_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 2.619, 65136801732.00001
-Error processing UA/UA_2024-09-05_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.23s
+Error processing UA/UA_2024-09-05_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-14_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 4.787, 55008839495.50001
-Error processing UA/UA_2024-08-14_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.22s
+Error processing UA/UA_2024-08-14_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-23_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 29.825, 81118929758.4
-Error processing UA/UA_2024-08-23_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.26s
+Error processing UA/UA_2024-08-23_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-10_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 1.24, 151595535528.9
-Error processing UA/UA_2024-07-10_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.30s
+Error processing UA/UA_2024-07-10_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-12_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.528, 68900642643.6
-Error processing UA/UA_2024-07-12_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-07-12_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-12_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.004, 47969363842.4
-Error processing UA/UA_2024-08-12_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.24s
+Error processing UA/UA_2024-08-12_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-11_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 0.448, 30758040157.5
-Error processing UA/UA_2024-09-11_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.28s
+Error processing UA/UA_2024-09-11_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-08_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 0.39, 39779047453.5
-Error processing UA/UA_2024-08-08_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.26s
+Error processing UA/UA_2024-08-08_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-06-24_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 32.877, 77455905053.8
-Error processing UA/UA_2024-06-24_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.26s
+Error processing UA/UA_2024-06-24_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-02_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 5.646, 75331792127.40001
-Error processing UA/UA_2024-08-02_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.26s
+Error processing UA/UA_2024-08-02_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-09_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.613, 30292238935.7
-Error processing UA/UA_2024-09-09_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.27s
+Error processing UA/UA_2024-09-09_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-02_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 23.582, 238510897252.5
-Error processing UA/UA_2024-07-02_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: -0.21s
+Error processing UA/UA_2024-07-02_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-21_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.908, 71240584729.40001
-Error processing UA/UA_2024-08-21_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-08-21_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-19_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 0.426, 30407947466.9
-Error processing UA/UA_2024-09-19_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.30s
+Error processing UA/UA_2024-09-19_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-16_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 0.443, 34503922704.5
-Error processing UA/UA_2024-09-16_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.27s
+Error processing UA/UA_2024-09-16_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-03_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 0.329, 81858681201.3
-Error processing UA/UA_2024-07-03_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.31s
+Error processing UA/UA_2024-07-03_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-16_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 1.778, 76571301038.8
-Error processing UA/UA_2024-07-16_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.26s
+Error processing UA/UA_2024-07-16_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-09-03_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 2.718, 58126128015.6
-Error processing UA/UA_2024-09-03_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.23s
+Error processing UA/UA_2024-09-03_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-18_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 8.663, 146216657625.2
-Error processing UA/UA_2024-07-18_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.26s
+Error processing UA/UA_2024-07-18_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-15_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 7.232, 50054512367.0
-Error processing UA/UA_2024-08-15_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-08-15_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-06-27_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 1.475, 101471542682.4
-Error processing UA/UA_2024-06-27_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.26s
+Error processing UA/UA_2024-06-27_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-08_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 2.385, 121305015075.20001
-Error processing UA/UA_2024-07-08_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.25s
+Error processing UA/UA_2024-07-08_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-24_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 12.824, 89323226569.9
-Error processing UA/UA_2024-07-24_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.23s
+Error processing UA/UA_2024-07-24_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-26_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 3.465, 39653270721.3
-Error processing UA/UA_2024-08-26_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.23s
+Error processing UA/UA_2024-08-26_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-22_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 0.886, 99549032766.0
-Error processing UA/UA_2024-07-22_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.23s
+Error processing UA/UA_2024-07-22_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-30_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 10.131, 105323948930.8
-Error processing UA/UA_2024-07-30_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.21s
+Error processing UA/UA_2024-07-30_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-08-01_dbeq-basic.parquet:
 Data reading time: 0.00s
 Tmin, Tmax: 5.083, 67423968314.3
-Error processing UA/UA_2024-08-01_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: -0.25s
+Error processing UA/UA_2024-08-01_dbeq-basic.parquet: name 'timeout' is not defined
 
 UA/UA_2024-07-26_dbeq-basic.parquet:
-Data reading time: 0.01s
+Data reading time: 0.00s
 Tmin, Tmax: 0.664, 93189700673.3
-Error processing UA/UA_2024-07-26_dbeq-basic.parquet: name 'date' is not defined
+G estimation time: 2.21s
+Error processing UA/UA_2024-07-26_dbeq-basic.parquet: name 'timeout' is not defined
 
-Run completed at 2025-03-27 17:59:16.876046Run started at 2025-03-27 17:59:46.112654
+ERIC/ERIC_2024-09-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.539, 41742315780.7
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-09-06_dbeq-basic.parquet: name 'timeout' is not defined
 
+ERIC/ERIC_2024-08-13_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 19.753, 57695604854.0
+G estimation time: 2.27s
+Error processing ERIC/ERIC_2024-08-13_dbeq-basic.parquet: name 'timeout' is not defined
 
-GOOGL/GOOGL_2024-10-10.parquet:
-Data reading time: 0.07s
-Tmin, Tmax: 0.167, 564562224.7
-Run started at 2025-03-27 18:00:55.611435
+ERIC/ERIC_2024-08-26_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.456, 72409155087.0
+G estimation time: 2.21s
+Error processing ERIC/ERIC_2024-08-26_dbeq-basic.parquet: name 'timeout' is not defined
 
+ERIC/ERIC_2024-06-27_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.56, 65928649077.7
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-06-27_dbeq-basic.parquet: name 'timeout' is not defined
 
-UA/UA_2024-06-26_dbeq-basic.parquet:
+ERIC/ERIC_2024-08-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 13.416, 109927763510.29999
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-08-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-08_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.891, 50754409414.200005
+G estimation time: 2.27s
+Error processing ERIC/ERIC_2024-07-08_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.715, 54152328618.49999
+G estimation time: 2.28s
+Error processing ERIC/ERIC_2024-09-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.455, 49019581931.6
+G estimation time: 2.30s
+Error processing ERIC/ERIC_2024-08-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 14.031, 20089396151.7
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-08-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.164, 35752363263.5
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-09-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-06-24_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 10.205, 83554374837.5
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-06-24_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-21_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.492, 35676547583.200005
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-08-21_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-04_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.347, 65980425509.1
+G estimation time: -0.23s
+Error processing ERIC/ERIC_2024-09-04_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-06-25_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 12.719, 136185418505.7
+G estimation time: 2.27s
+Error processing ERIC/ERIC_2024-06-25_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-03_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 5.372, 56213709113.0
+G estimation time: 2.28s
+Error processing ERIC/ERIC_2024-07-03_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-01_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.77, 73889278966.90001
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-08-01_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-03_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.408, 71575838886.8
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-09-03_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-28_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 5.03, 55203121784.1
+G estimation time: 2.24s
+Error processing ERIC/ERIC_2024-08-28_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 22.638, 90511264861.9
+G estimation time: 2.23s
+Error processing ERIC/ERIC_2024-07-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-22_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.444, 46575253442.7
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-08-22_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-11_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.349, 74083366608.29999
+G estimation time: 2.24s
+Error processing ERIC/ERIC_2024-09-11_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-22_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 3.598, 52031411344.6
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-07-22_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 24.392, 62811502920.200005
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-07-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-11_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.501, 49997271745.5
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-07-11_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.531, 128052938495.09999
+G estimation time: 2.27s
+Error processing ERIC/ERIC_2024-09-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-20_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 5.831, 45250543845.4
+G estimation time: 2.28s
+Error processing ERIC/ERIC_2024-09-20_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-29_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.802, 40808312997.6
+G estimation time: -0.19s
+Error processing ERIC/ERIC_2024-08-29_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-27_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.855, 107494750268.9
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-08-27_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-06-28_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 3.319, 58614086085.2
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-06-28_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-25_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.731, 132414870322.4
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-07-25_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-30_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.805, 102210411840.5
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-07-30_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-17_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.44, 28401419286.199997
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-07-17_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-06-26_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 9.552, 153661038096.0
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-06-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.484, 103469016973.59999
+G estimation time: 2.27s
+Error processing ERIC/ERIC_2024-07-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-31_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.477, 42143987505.8
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-07-31_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-02_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.606, 32784860805.5
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-08-02_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.371, 29670692743.300003
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-08-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-24_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 6.094, 98706821866.40001
+G estimation time: 2.24s
+Error processing ERIC/ERIC_2024-07-24_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-10_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.426, 74242548635.8
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-07-10_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-17_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.941, 58786784446.9
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-09-17_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-18_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 6.358, 135771806651.09999
+G estimation time: -0.26s
+Error processing ERIC/ERIC_2024-09-18_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.531, 75344148890.8
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-08-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-26_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 4.478, 59326104558.299995
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-07-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-08_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.347, 64731920785.899994
+G estimation time: 2.27s
+Error processing ERIC/ERIC_2024-08-08_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-14_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.864, 109392465963.00002
+G estimation time: 2.21s
+Error processing ERIC/ERIC_2024-08-14_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.505, 45716354418.4
+G estimation time: 2.31s
+Error processing ERIC/ERIC_2024-08-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-20_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.291, 72252845557.0
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-08-20_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-30_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.405, 54552313839.0
+G estimation time: 2.27s
+Error processing ERIC/ERIC_2024-08-30_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-01_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.597, 140925627794.7
+G estimation time: 2.28s
+Error processing ERIC/ERIC_2024-07-01_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 3.323, 87447873905.6
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-09-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.309, 20641818774.1
+G estimation time: 2.27s
+Error processing ERIC/ERIC_2024-07-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-02_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 3.647, 56836435214.9
+G estimation time: 2.22s
+Error processing ERIC/ERIC_2024-07-02_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-18_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.61, 43422052000.5
+G estimation time: 2.28s
+Error processing ERIC/ERIC_2024-07-18_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-15_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.77, 55691002801.3
+G estimation time: 2.24s
+Error processing ERIC/ERIC_2024-08-15_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 9.868, 68512395083.1
+G estimation time: 2.27s
+Error processing ERIC/ERIC_2024-07-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-15_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 4.131, 58311834664.5
+G estimation time: -0.24s
+Error processing ERIC/ERIC_2024-07-15_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-10_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.209, 57403761912.3
+G estimation time: 2.31s
+Error processing ERIC/ERIC_2024-09-10_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.51, 70738985504.40001
+G estimation time: 2.26s
+Error processing ERIC/ERIC_2024-09-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-08-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.308, 31962291012.699997
+G estimation time: 2.24s
+Error processing ERIC/ERIC_2024-08-06_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-09-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 15.981, 54423960030.4
+G estimation time: 2.25s
+Error processing ERIC/ERIC_2024-09-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-29_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.382, 57340037351.5
+G estimation time: 2.32s
+Error processing ERIC/ERIC_2024-07-29_dbeq-basic.parquet: name 'timeout' is not defined
+
+ERIC/ERIC_2024-07-16_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.516, 56749230680.49999
+G estimation time: 2.67s
+Error processing ERIC/ERIC_2024-07-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.35, 24262250019.0
+G estimation time: 2.69s
+Error processing CX/CX_2024-08-06_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-17_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.53, 51203609981.7
+G estimation time: 2.46s
+Error processing CX/CX_2024-07-17_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-02_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.562, 62144398721.8
+G estimation time: 2.24s
+Error processing CX/CX_2024-07-02_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-28_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.364, 46140121515.9
+G estimation time: 2.24s
+Error processing CX/CX_2024-08-28_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-06-24_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.457, 49063794090.200005
+G estimation time: 2.29s
+Error processing CX/CX_2024-06-24_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-18_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.398, 50070032227.0
+G estimation time: 2.29s
+Error processing CX/CX_2024-07-18_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-10_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.521, 72653950162.9
+G estimation time: -0.22s
+Error processing CX/CX_2024-09-10_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.469, 90337849944.0
+G estimation time: 2.25s
+Error processing CX/CX_2024-08-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-30_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.379, 72069349580.9
+G estimation time: 2.29s
+Error processing CX/CX_2024-08-30_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.615, 71966938974.6
+G estimation time: 2.35s
+Error processing CX/CX_2024-09-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.371, 42343539184.2
+G estimation time: 2.23s
+Error processing CX/CX_2024-09-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-15_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.471, 19604448663.9
+G estimation time: 2.31s
+Error processing CX/CX_2024-08-15_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-22_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.18, 48427894635.1
+G estimation time: 2.31s
+Error processing CX/CX_2024-08-22_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-27_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.873, 121047216204.20001
+G estimation time: 2.25s
+Error processing CX/CX_2024-08-27_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-14_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.584, 75583934897.59999
+G estimation time: 2.26s
+Error processing CX/CX_2024-08-14_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.283, 33224608594.300003
+G estimation time: 2.26s
+Error processing CX/CX_2024-07-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-06-25_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 7.432, 67043026551.100006
+G estimation time: 2.25s
+Error processing CX/CX_2024-06-25_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.18, 30871881047.899998
+G estimation time: 2.24s
+Error processing CX/CX_2024-07-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-20_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.481, 37919732703.799995
+G estimation time: 2.30s
+Error processing CX/CX_2024-08-20_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-05_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.475, 87217667238.5
+G estimation time: 2.27s
+Error processing CX/CX_2024-09-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-01_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 3.957, 47820445301.5
+G estimation time: 2.26s
+Error processing CX/CX_2024-07-01_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-01_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.476, 82243041920.79999
+G estimation time: -0.16s
+Error processing CX/CX_2024-08-01_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-10_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.375, 26022539561.899998
+G estimation time: 2.32s
+Error processing CX/CX_2024-07-10_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-23_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.368, 53663075630.299995
+G estimation time: 2.40s
+Error processing CX/CX_2024-08-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-26_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.443, 39003465352.9
+G estimation time: 2.28s
+Error processing CX/CX_2024-08-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.309, 77906392192.8
+G estimation time: 2.28s
+Error processing CX/CX_2024-09-06_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-05_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.581, 66850059401.5
+G estimation time: 2.29s
+Error processing CX/CX_2024-08-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-06-27_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.097, 25018709536.899998
+G estimation time: 2.28s
+Error processing CX/CX_2024-06-27_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.099, 66233513453.6
+G estimation time: 2.31s
+Error processing CX/CX_2024-07-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-11_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.151, 73699563294.79999
+G estimation time: 2.28s
+Error processing CX/CX_2024-09-11_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-03_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 3.356, 95858438306.6
+G estimation time: 2.26s
+Error processing CX/CX_2024-09-03_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-02_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.392, 51454046408.700005
+G estimation time: 2.27s
+Error processing CX/CX_2024-08-02_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-08_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.258, 57420950628.799995
+G estimation time: 2.25s
+Error processing CX/CX_2024-08-08_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-08_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.401, 77237405066.8
+G estimation time: 2.25s
+Error processing CX/CX_2024-07-08_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-06-28_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.615, 73293545347.2
+G estimation time: 2.30s
+Error processing CX/CX_2024-06-28_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.396, 18604357844.9
+G estimation time: -0.14s
+Error processing CX/CX_2024-07-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-20_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.423, 35909382792.4
+G estimation time: 2.47s
+Error processing CX/CX_2024-09-20_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-31_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.402, 30379968133.2
+G estimation time: 2.33s
+Error processing CX/CX_2024-07-31_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.833, 117313202816.5
+G estimation time: 2.24s
+Error processing CX/CX_2024-07-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-17_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.806, 58818672691.9
+G estimation time: 2.26s
+Error processing CX/CX_2024-09-17_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-16_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.794, 49478725062.4
+G estimation time: 2.32s
+Error processing CX/CX_2024-08-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-15_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.48, 33633582113.7
+G estimation time: 2.28s
+Error processing CX/CX_2024-07-15_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-06-26_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.48, 48263113083.8
+G estimation time: 2.29s
+Error processing CX/CX_2024-06-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-21_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.42, 54098979705.49999
+G estimation time: 2.31s
+Error processing CX/CX_2024-08-21_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.434, 51830723616.399994
+G estimation time: 2.25s
+Error processing CX/CX_2024-07-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-11_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.617, 20850245479.8
+G estimation time: 2.34s
+Error processing CX/CX_2024-07-11_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-24_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.423, 26953700697.899998
+G estimation time: 2.29s
+Error processing CX/CX_2024-07-24_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-25_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.404, 30714306685.5
+G estimation time: 2.28s
+Error processing CX/CX_2024-07-25_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-22_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.396, 38697620571.100006
+G estimation time: 2.32s
+Error processing CX/CX_2024-07-22_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.484, 46654499187.7
+G estimation time: -0.23s
+Error processing CX/CX_2024-08-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.46, 55347557363.399994
+G estimation time: 2.25s
+Error processing CX/CX_2024-09-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 3.572, 68628054659.899994
+G estimation time: 2.25s
+Error processing CX/CX_2024-09-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-30_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 2.515, 26857498861.0
+G estimation time: 2.32s
+Error processing CX/CX_2024-07-30_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-18_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.4, 53683621828.799995
+G estimation time: 2.31s
+Error processing CX/CX_2024-09-18_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-03_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 4.646, 72224142013.8
+G estimation time: 2.25s
+Error processing CX/CX_2024-07-03_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-13_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.399, 81942013289.3
+G estimation time: 2.27s
+Error processing CX/CX_2024-08-13_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-29_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.429, 54629447181.9
+G estimation time: 2.28s
+Error processing CX/CX_2024-08-29_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-09_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.849, 22323489747.600002
+G estimation time: 2.30s
+Error processing CX/CX_2024-09-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-08-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 3.921, 26547642312.7
+G estimation time: 2.27s
+Error processing CX/CX_2024-08-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-09-04_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.43, 65538820795.799995
+G estimation time: 2.26s
+Error processing CX/CX_2024-09-04_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-29_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.638, 36308974225.8
+G estimation time: 2.30s
+Error processing CX/CX_2024-07-29_dbeq-basic.parquet: name 'timeout' is not defined
+
+CX/CX_2024-07-26_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.36, 40379555833.600006
+G estimation time: 2.30s
+Error processing CX/CX_2024-07-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-27_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.65, 42326808735.799995
+G estimation time: 2.26s
+Error processing HL/HL_2024-08-27_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-17_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.361, 30100574913.9
+G estimation time: -0.16s
+Error processing HL/HL_2024-09-17_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-26_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.443, 41972503116.5
+G estimation time: 2.24s
+Error processing HL/HL_2024-07-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-17_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.428, 41564762662.5
+G estimation time: 2.26s
+Error processing HL/HL_2024-07-17_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-22_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.225, 48287025486.4
+G estimation time: 2.27s
+Error processing HL/HL_2024-07-22_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-12_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.394, 22565367039.1
+G estimation time: 2.30s
+Error processing HL/HL_2024-09-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-10_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.535, 60332749359.4
+G estimation time: 2.25s
+Error processing HL/HL_2024-07-10_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-05_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.237, 43109429105.4
+G estimation time: 2.25s
+Error processing HL/HL_2024-09-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-19_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.214, 29320347588.1
+G estimation time: 2.27s
+Error processing HL/HL_2024-08-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-11_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.656, 26980417575.300003
+G estimation time: 2.26s
+Error processing HL/HL_2024-07-11_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-04_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.595, 28506594877.0
+G estimation time: 2.24s
+Error processing HL/HL_2024-09-04_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-06-24_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.949, 73084333025.8
+G estimation time: 2.24s
+Error processing HL/HL_2024-06-24_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.437, 47613781343.3
+G estimation time: 2.27s
+Error processing HL/HL_2024-08-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-06-25_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.08, 59929061369.4
+G estimation time: 2.26s
+Error processing HL/HL_2024-06-25_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-02_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.514, 29933257286.3
+G estimation time: 2.33s
+Error processing HL/HL_2024-08-02_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-22_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.904, 31465919111.3
+G estimation time: -0.24s
+Error processing HL/HL_2024-08-22_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-02_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.089, 63489691744.50001
+G estimation time: 2.28s
+Error processing HL/HL_2024-07-02_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-21_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.864, 31425796559.7
+G estimation time: 2.33s
+Error processing HL/HL_2024-08-21_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.246, 23804475513.600002
+G estimation time: 2.26s
+Error processing HL/HL_2024-08-06_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-07_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.24, 3456771049.7000003
+G estimation time: 6.17s
+Error processing HL/HL_2024-08-07_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-01_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 4.508, 72506725643.0
+G estimation time: 2.26s
+Error processing HL/HL_2024-07-01_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-03_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.419, 25302224569.100002
+G estimation time: 2.27s
+Error processing HL/HL_2024-07-03_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-23_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.677, 43310205027.100006
+G estimation time: 2.27s
+Error processing HL/HL_2024-08-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-12_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.345, 54344283920.50001
+G estimation time: 2.29s
+Error processing HL/HL_2024-08-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-23_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.026, 40351666033.1
+G estimation time: 2.26s
+Error processing HL/HL_2024-07-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-25_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.579, 41952983413.4
+G estimation time: 2.26s
+Error processing HL/HL_2024-07-25_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.331, 60661281696.7
+G estimation time: 2.28s
+Error processing HL/HL_2024-09-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-14_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 6.924, 63767467841.4
+G estimation time: -0.25s
+Error processing HL/HL_2024-08-14_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-15_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 2.447, 44546979910.6
+G estimation time: 2.25s
+Error processing HL/HL_2024-08-15_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-11_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.903, 43627892734.7
+G estimation time: 2.25s
+Error processing HL/HL_2024-09-11_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-20_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.701, 38307432929.1
+G estimation time: 2.28s
+Error processing HL/HL_2024-08-20_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.468, 20951311785.600002
+G estimation time: 2.33s
+Error processing HL/HL_2024-09-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-08_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.239, 63035040109.4
+G estimation time: 2.24s
+Error processing HL/HL_2024-07-08_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.727, 51872618151.6
+G estimation time: 2.26s
+Error processing HL/HL_2024-08-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-30_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.497, 59642008844.1
+G estimation time: 2.29s
+Error processing HL/HL_2024-07-30_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-18_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.208, 3064353538.8999996
+G estimation time: 19.77s
+Error processing HL/HL_2024-09-18_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.413, 43864799935.2
+G estimation time: 2.27s
+Error processing HL/HL_2024-09-06_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-23_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.225, 6877676257.3
+G estimation time: 7.46s
+Error processing HL/HL_2024-09-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-18_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.579, 45599920327.9
+G estimation time: 2.30s
+Error processing HL/HL_2024-07-18_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-13_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.77, 65787655829.799995
+G estimation time: 2.25s
+Error processing HL/HL_2024-08-13_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-06-26_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 5.264, 60199906178.2
+G estimation time: 2.28s
+Error processing HL/HL_2024-06-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.511, 28396141611.699997
+G estimation time: 2.27s
+Error processing HL/HL_2024-07-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.902, 47923245077.0
+G estimation time: 2.24s
+Error processing HL/HL_2024-07-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-26_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.469, 35066657457.1
+G estimation time: 2.25s
+Error processing HL/HL_2024-08-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-15_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.336, 32156952842.4
+G estimation time: 2.26s
+Error processing HL/HL_2024-07-15_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.311, 26740526082.100002
+G estimation time: -0.21s
+Error processing HL/HL_2024-07-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-30_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.256, 7457011318.700001
+G estimation time: 7.18s
+Error processing HL/HL_2024-08-30_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-20_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.271, 29106691123.9
+G estimation time: 2.28s
+Error processing HL/HL_2024-09-20_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-29_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.8, 53966179372.2
+G estimation time: 2.25s
+Error processing HL/HL_2024-08-29_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.67, 57629280339.7
+G estimation time: 2.25s
+Error processing HL/HL_2024-07-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-06-28_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 7.594, 64642792160.1
+G estimation time: 2.24s
+Error processing HL/HL_2024-06-28_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-06-27_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 4.145, 83158233864.2
+G estimation time: 2.22s
+Error processing HL/HL_2024-06-27_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-03_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.445, 51850982629.6
+G estimation time: 2.25s
+Error processing HL/HL_2024-09-03_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-01_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.368, 31864164977.899998
+G estimation time: 2.27s
+Error processing HL/HL_2024-08-01_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-09_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.386, 52964869622.799995
+G estimation time: 2.27s
+Error processing HL/HL_2024-08-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-31_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.182, 4042682001.9
+G estimation time: 4.26s
+Error processing HL/HL_2024-07-31_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-09_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 2.567, 60731508615.7
+G estimation time: 2.23s
+Error processing HL/HL_2024-07-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.477, 35261236171.0
+G estimation time: 2.31s
+Error processing HL/HL_2024-09-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-08_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.15, 46918096816.2
+G estimation time: 2.27s
+Error processing HL/HL_2024-08-08_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-08-28_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.918, 33030414289.3
+G estimation time: 2.31s
+Error processing HL/HL_2024-08-28_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-09-10_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.346, 36356830948.5
+G estimation time: 2.27s
+Error processing HL/HL_2024-09-10_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-29_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.488, 37398595400.1
+G estimation time: 2.29s
+Error processing HL/HL_2024-07-29_dbeq-basic.parquet: name 'timeout' is not defined
+
+HL/HL_2024-07-24_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 2.22, 44638913350.3
+G estimation time: 2.28s
+Error processing HL/HL_2024-07-24_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-06-27_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.223, 20439483281.2
+G estimation time: 2.31s
+Error processing RIOT/RIOT_2024-06-27_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-05_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.544, 15169185536.5
+G estimation time: 2.30s
+Error processing RIOT/RIOT_2024-08-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-10_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.233, 24815124225.9
+G estimation time: 2.33s
+Error processing RIOT/RIOT_2024-09-10_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-26_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.35, 13036036421.3
+G estimation time: 2.33s
+Error processing RIOT/RIOT_2024-07-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-07_dbeq-basic.parquet:
 Data reading time: 0.03s
-Tmin, Tmax: 3.974, 58114396456.6
-Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+Tmin, Tmax: 0.106, 852260171.3
+G estimation time: 31.36s
+Error processing RIOT/RIOT_2024-08-07_dbeq-basic.parquet: name 'timeout' is not defined
 
-UA/UA_2024-09-12_dbeq-basic.parquet:
+RIOT/RIOT_2024-08-28_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.298, 26724482325.600002
+G estimation time: 2.49s
+Error processing RIOT/RIOT_2024-08-28_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-22_dbeq-basic.parquet:
 Data reading time: 0.00s
-Tmin, Tmax: 1.275, 68708772242.200005
-Error processing UA/UA_2024-09-12_dbeq-basic.parquet: name 'date' is not defined
+Tmin, Tmax: 0.377, 24201839905.5
+G estimation time: -0.16s
+Error processing RIOT/RIOT_2024-08-22_dbeq-basic.parquet: name 'timeout' is not defined
 
-UA/UA_2024-08-30_dbeq-basic.parquet:
+RIOT/RIOT_2024-07-15_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.364, 12865136965.0
+G estimation time: 2.44s
+Error processing RIOT/RIOT_2024-07-15_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-19_dbeq-basic.parquet:
 Data reading time: 0.00s
-Tmin, Tmax: 4.673, 60713685756.299995
-Error processing UA/UA_2024-08-30_dbeq-basic.parquet: name 'date' is not defined
+Tmin, Tmax: 0.463, 21342529903.2
+G estimation time: 2.31s
+Error processing RIOT/RIOT_2024-07-19_dbeq-basic.parquet: name 'timeout' is not defined
 
-UA/UA_2024-07-01_dbeq-basic.parquet:
+RIOT/RIOT_2024-09-09_dbeq-basic.parquet:
 Data reading time: 0.00s
-Tmin, Tmax: 0.418, 86895313717.6
-Error processing UA/UA_2024-07-01_dbeq-basic.parquet: name 'date' is not defined
+Tmin, Tmax: 0.307, 21986456155.8
+G estimation time: 2.43s
+Error processing RIOT/RIOT_2024-09-09_dbeq-basic.parquet: name 'timeout' is not defined
 
-UA/UA_2024-08-19_dbeq-basic.parquet:
+RIOT/RIOT_2024-09-04_dbeq-basic.parquet:
 Data reading time: 0.00s
-Tmin, Tmax: 0.435, 51298856787.4
-Error processing UA/UA_2024-08-19_dbeq-basic.parquet: name 'date' is not defined
+Tmin, Tmax: 0.334, 37539732872.5
+G estimation time: 2.35s
+Error processing RIOT/RIOT_2024-09-04_dbeq-basic.parquet: name 'timeout' is not defined
 
-UA/UA_2024-09-23_dbeq-basic.parquet:
+RIOT/RIOT_2024-09-12_dbeq-basic.parquet:
 Data reading time: 0.00s
-Tmin, Tmax: 1.345, 70340558492.40001
-Error processing UA/UA_2024-09-23_dbeq-basic.parquet: name 'date' is not defined
+Tmin, Tmax: 0.286, 18356659715.9
+G estimation time: 2.38s
+Error processing RIOT/RIOT_2024-09-12_dbeq-basic.parquet: name 'timeout' is not defined
 
-UA/UA_2024-08-13_dbeq-basic.parquet:
+RIOT/RIOT_2024-09-23_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.096, 2168912001.7999997
+G estimation time: 14.24s
+Error processing RIOT/RIOT_2024-09-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-03_dbeq-basic.parquet:
 Data reading time: 0.00s
-Tmin, Tmax: 25.567, 107968171163.00002
-Error processing UA/UA_2024-08-13_dbeq-basic.parquet: name 'date' is not defined
+Tmin, Tmax: 0.34, 16468605816.6
+G estimation time: 2.27s
+Error processing RIOT/RIOT_2024-07-03_dbeq-basic.parquet: name 'timeout' is not defined
 
-UA/UA_2024-08-09_dbeq-basic.parquet:
+RIOT/RIOT_2024-06-25_dbeq-basic.parquet:
 Data reading time: 0.00s
-Tmin, Tmax: 2.246, 65983448855.200005
-Run started at 2025-03-27 18:01:28.461345
+Tmin, Tmax: 0.579, 13807443546.2
+G estimation time: -0.18s
+Error processing RIOT/RIOT_2024-06-25_dbeq-basic.parquet: name 'timeout' is not defined
 
+RIOT/RIOT_2024-07-24_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.35, 26406921598.0
+G estimation time: 2.36s
+Error processing RIOT/RIOT_2024-07-24_dbeq-basic.parquet: name 'timeout' is not defined
 
-UA/UA_2024-06-26_dbeq-basic.parquet:
+RIOT/RIOT_2024-08-27_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.363, 41591276153.7
+G estimation time: 2.42s
+Error processing RIOT/RIOT_2024-08-27_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-29_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.625, 12241136049.699999
+G estimation time: 2.34s
+Error processing RIOT/RIOT_2024-07-29_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-18_dbeq-basic.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.112, 1945683386.3000002
+G estimation time: 24.90s
+Error processing RIOT/RIOT_2024-09-18_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-08_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.374, 26425250863.2
+G estimation time: 2.43s
+Error processing RIOT/RIOT_2024-08-08_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-30_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.474, 29405100847.7
+G estimation time: 2.29s
+Error processing RIOT/RIOT_2024-07-30_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-20_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.309, 22983179708.5
+G estimation time: 2.39s
+Error processing RIOT/RIOT_2024-08-20_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.438, 20553759597.3
+G estimation time: 2.42s
+Error processing RIOT/RIOT_2024-08-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.534, 55460500949.100006
+G estimation time: 2.35s
+Error processing RIOT/RIOT_2024-08-06_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.341, 31106024285.600002
+G estimation time: 2.36s
+Error processing RIOT/RIOT_2024-09-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-06-24_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.295, 18887081463.4
+G estimation time: 2.38s
+Error processing RIOT/RIOT_2024-06-24_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-17_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.233, 26447614753.2
+G estimation time: 2.45s
+Error processing RIOT/RIOT_2024-09-17_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-14_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.313, 32442871862.1
+G estimation time: 2.42s
+Error processing RIOT/RIOT_2024-08-14_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-08_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.858, 30788478174.4
+G estimation time: 2.25s
+Error processing RIOT/RIOT_2024-07-08_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-29_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.305, 17957946813.3
+G estimation time: 2.39s
+Error processing RIOT/RIOT_2024-08-29_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-25_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.354, 23442299825.9
+G estimation time: 2.40s
+Error processing RIOT/RIOT_2024-07-25_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-26_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.207, 23650430373.0
+G estimation time: -0.02s
+Error processing RIOT/RIOT_2024-08-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-31_dbeq-basic.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.164, 1529524729.7
+G estimation time: 45.96s
+Error processing RIOT/RIOT_2024-07-31_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.408, 15447559859.400002
+G estimation time: 2.45s
+Error processing RIOT/RIOT_2024-07-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-03_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.393, 29137278374.9
+G estimation time: 2.27s
+Error processing RIOT/RIOT_2024-09-03_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-30_dbeq-basic.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.244, 1900495226.8
+G estimation time: 14.22s
+Error processing RIOT/RIOT_2024-08-30_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-13_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.382, 31182073538.4
+G estimation time: 2.41s
+Error processing RIOT/RIOT_2024-08-13_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-20_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.287, 13864887569.999998
+G estimation time: 2.59s
+Error processing RIOT/RIOT_2024-09-20_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-02_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.42, 31889265679.3
+G estimation time: 2.28s
+Error processing RIOT/RIOT_2024-07-02_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-18_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.32, 23509978075.8
+G estimation time: 2.36s
+Error processing RIOT/RIOT_2024-07-18_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-06-26_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.589, 18692296342.1
+G estimation time: -0.16s
+Error processing RIOT/RIOT_2024-06-26_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.496, 33285068463.1
+G estimation time: 2.29s
+Error processing RIOT/RIOT_2024-07-09_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.398, 27566066014.600002
+G estimation time: 2.41s
+Error processing RIOT/RIOT_2024-09-06_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-22_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.433, 15025411876.1
+G estimation time: 2.34s
+Error processing RIOT/RIOT_2024-07-22_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-02_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.391, 13632311005.5
+G estimation time: 2.41s
+Error processing RIOT/RIOT_2024-08-02_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-21_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.346, 15854877915.3
+G estimation time: 2.39s
+Error processing RIOT/RIOT_2024-08-21_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.353, 18648751023.8
+G estimation time: 2.28s
+Error processing RIOT/RIOT_2024-07-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.427, 25763616232.0
+G estimation time: 2.43s
+Error processing RIOT/RIOT_2024-09-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.441, 27761488212.300003
+G estimation time: 2.38s
+Error processing RIOT/RIOT_2024-08-16_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.396, 25463562495.5
+G estimation time: 2.39s
+Error processing RIOT/RIOT_2024-08-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-11_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.446, 29157847510.8
+G estimation time: 2.35s
+Error processing RIOT/RIOT_2024-07-11_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-17_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.271, 13275691070.0
+G estimation time: 2.38s
+Error processing RIOT/RIOT_2024-07-17_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-11_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.246, 24027449983.7
+G estimation time: 2.43s
+Error processing RIOT/RIOT_2024-09-11_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.608, 18806509708.399998
+G estimation time: -0.19s
+Error processing RIOT/RIOT_2024-07-05_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-06-28_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.393, 17109542101.199999
+G estimation time: 2.33s
+Error processing RIOT/RIOT_2024-06-28_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.398, 16148745292.199999
+G estimation time: 2.42s
+Error processing RIOT/RIOT_2024-08-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-12_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.286, 21062053402.7
+G estimation time: 2.36s
+Error processing RIOT/RIOT_2024-08-12_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-01_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.343, 24910214268.8
+G estimation time: 2.29s
+Error processing RIOT/RIOT_2024-07-01_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-09-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.233, 16535036184.2
+G estimation time: 2.61s
+Error processing RIOT/RIOT_2024-09-19_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-23_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.531, 26805636884.6
+G estimation time: 2.32s
+Error processing RIOT/RIOT_2024-07-23_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-15_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.512, 27023920731.800003
+G estimation time: 2.38s
+Error processing RIOT/RIOT_2024-08-15_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-08-01_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.387, 12726419821.199999
+G estimation time: 2.37s
+Error processing RIOT/RIOT_2024-08-01_dbeq-basic.parquet: name 'timeout' is not defined
+
+RIOT/RIOT_2024-07-10_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.254, 32840616213.6
+G estimation time: 2.31s
+Error processing RIOT/RIOT_2024-07-10_dbeq-basic.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-01.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.372, 12317817338.1
+G estimation time: 8.21s
+Error processing CXW/CXW_2024-11-01.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-27.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.389, 8944138670.4
+G estimation time: 6.15s
+Error processing CXW/CXW_2024-08-27.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.417, 7258869296.2
+G estimation time: 5.79s
+Error processing CXW/CXW_2024-08-09.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.464, 16356026242.699999
+G estimation time: 5.29s
+Error processing CXW/CXW_2024-10-22.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.395, 8480873879.6
+G estimation time: 12.17s
+Error processing CXW/CXW_2024-11-04.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-29.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.273, 5889333263.7
+G estimation time: 6.71s
+Error processing CXW/CXW_2024-08-29.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-16.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.397, 5484553318.7
+G estimation time: 5.57s
+Error processing CXW/CXW_2024-09-16.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-27.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.346, 10358295368.099998
+G estimation time: 4.21s
+Error processing CXW/CXW_2024-09-27.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-07.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.385, 8515338141.3
+G estimation time: 1.09s
+Error processing CXW/CXW_2024-10-07.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.321, 6475782599.3
+G estimation time: 8.69s
+Error processing CXW/CXW_2024-08-26.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-06.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.398, 7522475820.5
+G estimation time: 6.21s
+Error processing CXW/CXW_2024-09-06.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-09.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.368, 6315972553.9
+G estimation time: 8.98s
+Error processing CXW/CXW_2024-09-09.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-07-29.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.404, 9053732207.6
+G estimation time: 9.10s
+Error processing CXW/CXW_2024-07-29.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-23.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.338, 9784259688.3
+G estimation time: 7.58s
+Error processing CXW/CXW_2024-08-23.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-30.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.366, 10958720172.2
+G estimation time: 5.88s
+Error processing CXW/CXW_2024-08-30.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-14.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.243, 3889377333.8
+G estimation time: 8.24s
+Error processing CXW/CXW_2024-11-14.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-30.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.383, 6475428014.3
+G estimation time: 4.85s
+Error processing CXW/CXW_2024-09-30.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.485, 6926099541.7
+G estimation time: 6.52s
+Error processing CXW/CXW_2024-10-24.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-11.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.371, 9985017915.4
+G estimation time: 5.47s
+Error processing CXW/CXW_2024-10-11.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.453, 7441262736.7
+G estimation time: 2.43s
+Error processing CXW/CXW_2024-08-22.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-11.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.356, 4774687445.7
+G estimation time: 11.84s
+Error processing CXW/CXW_2024-11-11.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-07-22.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.292, 6503647023.2
+G estimation time: 7.25s
+Error processing CXW/CXW_2024-07-22.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-25.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.375, 9557251507.0
+G estimation time: 4.46s
+Error processing CXW/CXW_2024-09-25.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-07.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.345, 5346865542.6
+G estimation time: 15.45s
+Error processing CXW/CXW_2024-11-07.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-19.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.209, 7408396411.8
+G estimation time: 6.71s
+Error processing CXW/CXW_2024-11-19.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-15.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.338, 5969044834.2
+G estimation time: 7.48s
+Error processing CXW/CXW_2024-08-15.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.156, 9163412680.8
+G estimation time: 4.54s
+Error processing CXW/CXW_2024-09-26.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-19.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.2, 6820012365.800001
+G estimation time: 6.89s
+Error processing CXW/CXW_2024-09-19.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-08.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.341, 4837837130.6
+G estimation time: 13.15s
+Error processing CXW/CXW_2024-11-08.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.446, 6036984250.900001
+G estimation time: 8.00s
+Error processing CXW/CXW_2024-11-21.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-03.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.404, 8556960376.700001
+G estimation time: 5.22s
+Error processing CXW/CXW_2024-10-03.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-10.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.302, 7837021415.099999
+G estimation time: 2.37s
+Error processing CXW/CXW_2024-09-10.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-28.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.436, 9375785235.2
+G estimation time: 9.02s
+Error processing CXW/CXW_2024-10-28.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.433, 12877761965.099998
+G estimation time: 4.63s
+Error processing CXW/CXW_2024-09-24.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-28.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.339, 6967464589.300001
+G estimation time: 7.67s
+Error processing CXW/CXW_2024-08-28.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-08.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.349, 6411764629.0
+G estimation time: 5.00s
+Error processing CXW/CXW_2024-10-08.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-07-30.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.409, 5005262317.9
+G estimation time: 9.01s
+Error processing CXW/CXW_2024-07-30.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.388, 7191739186.1
+G estimation time: 8.79s
+Error processing CXW/CXW_2024-08-12.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-16.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.205, 9225241045.1
+G estimation time: 6.98s
+Error processing CXW/CXW_2024-10-16.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-07.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.338, 4291288975.1000004
+G estimation time: 10.53s
+Error processing CXW/CXW_2024-08-07.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.51, 8057302554.5
+G estimation time: 5.28s
+Error processing CXW/CXW_2024-09-04.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-15.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.402, 8337757948.5
+G estimation time: 7.02s
+Error processing CXW/CXW_2024-10-15.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-19.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.379, 8748155056.1
+G estimation time: 5.77s
+Error processing CXW/CXW_2024-08-19.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-17.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.381, 9304043889.8
+G estimation time: 7.70s
+Error processing CXW/CXW_2024-10-17.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.387, 7059806044.9
+G estimation time: 4.25s
+Error processing CXW/CXW_2024-11-15.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-05.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.317, 11199505164.1
+G estimation time: 5.31s
+Error processing CXW/CXW_2024-09-05.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.333, 7535593887.1
+G estimation time: 9.41s
+Error processing CXW/CXW_2024-09-18.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-01.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.153, 4772297704.599999
+G estimation time: 8.69s
+Error processing CXW/CXW_2024-08-01.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-02.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.169, 8088541930.599999
+G estimation time: 2.86s
+Error processing CXW/CXW_2024-10-02.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-01.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.27, 6904485797.0
+G estimation time: 5.65s
+Error processing CXW/CXW_2024-10-01.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-07-26.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.234, 5020101635.0
+G estimation time: 9.48s
+Error processing CXW/CXW_2024-07-26.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-23.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.339, 5451270587.3
+G estimation time: 7.33s
+Error processing CXW/CXW_2024-09-23.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-17.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.221, 6731799901.700001
+G estimation time: 6.16s
+Error processing CXW/CXW_2024-09-17.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-14.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.208, 4554026391.700001
+G estimation time: 7.26s
+Error processing CXW/CXW_2024-08-14.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-13.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.347, 4690997276.4
+G estimation time: 10.96s
+Error processing CXW/CXW_2024-11-13.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-05.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.38, 5847429693.599999
+G estimation time: 10.96s
+Error processing CXW/CXW_2024-08-05.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-14.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.378, 15879485821.1
+G estimation time: 7.25s
+Error processing CXW/CXW_2024-10-14.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-12.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.312, 7146581151.5
+G estimation time: 8.77s
+Error processing CXW/CXW_2024-11-12.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-06.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.316, 3950389580.9
+G estimation time: 25.97s
+Error processing CXW/CXW_2024-11-06.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.392, 8245857429.4
+G estimation time: 7.55s
+Error processing CXW/CXW_2024-11-20.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-07-31.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.37, 5666613786.1
+G estimation time: 11.56s
+Error processing CXW/CXW_2024-07-31.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.359, 7554747602.099999
+G estimation time: 3.07s
+Error processing CXW/CXW_2024-10-04.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-30.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.43, 7829383830.1
+G estimation time: 7.16s
+Error processing CXW/CXW_2024-10-30.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-07-25.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.259, 7514708216.2
+G estimation time: 7.33s
+Error processing CXW/CXW_2024-07-25.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-06.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.382, 4212369197.2000003
+G estimation time: 12.20s
+Error processing CXW/CXW_2024-08-06.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-07-24.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.362, 6617376564.8
+G estimation time: 8.10s
+Error processing CXW/CXW_2024-07-24.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-18.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.406, 4362427067.6
+G estimation time: 9.52s
+Error processing CXW/CXW_2024-11-18.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-11.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.296, 4807813376.1
+G estimation time: 10.10s
+Error processing CXW/CXW_2024-09-11.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-13.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.466, 5575061640.8
+G estimation time: 4.44s
+Error processing CXW/CXW_2024-08-13.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-12.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.434, 9233347286.5
+G estimation time: 5.41s
+Error processing CXW/CXW_2024-09-12.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-21.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.407, 6253602729.0
+G estimation time: 7.21s
+Error processing CXW/CXW_2024-08-21.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.209, 6243180096.7
+G estimation time: 8.57s
+Error processing CXW/CXW_2024-09-20.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-31.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.436, 6587144387.1
+G estimation time: 5.34s
+Error processing CXW/CXW_2024-10-31.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-09.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.505, 14729437516.5
+G estimation time: 4.83s
+Error processing CXW/CXW_2024-10-09.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-08.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.328, 9361867043.4
+G estimation time: 11.76s
+Error processing CXW/CXW_2024-08-08.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.358, 6518471449.2
+G estimation time: 6.03s
+Error processing CXW/CXW_2024-10-21.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.404, 7000645455.3
+G estimation time: 6.76s
+Error processing CXW/CXW_2024-10-23.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-07-23.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.391, 6418133412.2
+G estimation time: 7.80s
+Error processing CXW/CXW_2024-07-23.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-13.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.443, 10205917112.199999
+G estimation time: 5.89s
+Error processing CXW/CXW_2024-09-13.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.336, 9520176937.3
+G estimation time: 13.06s
+Error processing CXW/CXW_2024-08-20.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-18.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.31, 9459891964.8
+G estimation time: 3.58s
+Error processing CXW/CXW_2024-10-18.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-11-05.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.263, 5562360797.7
+G estimation time: 8.68s
+Error processing CXW/CXW_2024-11-05.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-29.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.389, 10132835458.2
+G estimation time: 7.66s
+Error processing CXW/CXW_2024-10-29.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.369, 4887126888.2
+G estimation time: 6.43s
+Error processing CXW/CXW_2024-08-16.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.404, 8179397361.900001
+G estimation time: 6.37s
+Error processing CXW/CXW_2024-10-25.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-09-03.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.352, 6548950438.0
+G estimation time: 5.12s
+Error processing CXW/CXW_2024-09-03.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-08-02.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.286, 4160129026.7999997
+G estimation time: 11.72s
+Error processing CXW/CXW_2024-08-02.parquet: name 'timeout' is not defined
+
+CXW/CXW_2024-10-10.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.459, 9915378793.0
+G estimation time: 4.75s
+Error processing CXW/CXW_2024-10-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-06.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.282, 13103919602.8
+G estimation time: 3.03s
+Error processing GCMG/GCMG_2024-06-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-26.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.324, 12003925728.9
+G estimation time: 6.47s
+Error processing GCMG/GCMG_2024-11-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.845, 44749698494.3
+G estimation time: 0.91s
+Error processing GCMG/GCMG_2023-07-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-28.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.267, 13206848321.1
+G estimation time: 3.77s
+Error processing GCMG/GCMG_2024-10-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.276, 21612200828.2
+G estimation time: 3.23s
+Error processing GCMG/GCMG_2024-04-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.292, 9519119912.1
+G estimation time: 5.36s
+Error processing GCMG/GCMG_2024-07-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-03.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.298, 11784025811.8
+G estimation time: 3.44s
+Error processing GCMG/GCMG_2024-06-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.399, 12101965051.6
+G estimation time: 4.10s
+Error processing GCMG/GCMG_2023-11-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-19.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.419, 14769710724.5
+G estimation time: 4.46s
+Error processing GCMG/GCMG_2023-07-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-30.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.33, 14304688462.900002
+G estimation time: 3.26s
+Error processing GCMG/GCMG_2024-04-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.303, 9852000819.5
+G estimation time: 0.90s
+Error processing GCMG/GCMG_2024-05-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.304, 12468282490.099998
+G estimation time: 4.51s
+Error processing GCMG/GCMG_2024-01-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.304, 13316790747.2
+G estimation time: 4.68s
+Error processing GCMG/GCMG_2024-11-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.261, 12099879912.800001
+G estimation time: 3.20s
+Error processing GCMG/GCMG_2024-05-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-03.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.394, 19449035619.0
+G estimation time: 2.66s
+Error processing GCMG/GCMG_2023-10-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-20.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.3, 14628873548.1
+G estimation time: 4.19s
+Error processing GCMG/GCMG_2024-03-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-07.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.308, 12486566299.1
+G estimation time: 3.57s
+Error processing GCMG/GCMG_2024-10-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.42, 20020557022.2
+G estimation time: 2.78s
+Error processing GCMG/GCMG_2023-09-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.304, 18181480060.100002
+G estimation time: 4.15s
+Error processing GCMG/GCMG_2024-08-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-05.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.413, 19197013597.3
+G estimation time: 0.22s
+Error processing GCMG/GCMG_2023-09-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.327, 11214491725.4
+G estimation time: 4.03s
+Error processing GCMG/GCMG_2023-12-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-03.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.634, 177799934265.19998
+G estimation time: 2.90s
+Error processing GCMG/GCMG_2024-07-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-14.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.315, 9055393723.5
+G estimation time: 4.30s
+Error processing GCMG/GCMG_2024-08-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-02.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.275, 11860805581.3
+G estimation time: 3.58s
+Error processing GCMG/GCMG_2024-10-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-19.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.284, 15694840164.7
+G estimation time: 2.91s
+Error processing GCMG/GCMG_2024-03-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-17.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.288, 7210877889.200001
+G estimation time: 4.42s
+Error processing GCMG/GCMG_2024-07-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.322, 19539230699.399998
+G estimation time: 3.71s
+Error processing GCMG/GCMG_2024-04-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.289, 22732671130.3
+G estimation time: 3.68s
+Error processing GCMG/GCMG_2023-12-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-20.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.305, 11948366839.1
+G estimation time: 1.53s
+Error processing GCMG/GCMG_2024-09-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.286, 36289571915.3
+G estimation time: 3.36s
+Error processing GCMG/GCMG_2024-02-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.363, 10067434802.5
+G estimation time: 3.90s
+Error processing GCMG/GCMG_2023-12-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.301, 10835620661.5
+G estimation time: 5.17s
+Error processing GCMG/GCMG_2024-07-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-13.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.307, 12011487578.300001
+G estimation time: 3.21s
+Error processing GCMG/GCMG_2024-06-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.296, 15174701252.7
+G estimation time: 3.30s
+Error processing GCMG/GCMG_2024-06-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-29.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.264, 6499999258.8
+G estimation time: 5.77s
+Error processing GCMG/GCMG_2024-10-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-05.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.254, 10735538742.0
+G estimation time: 2.86s
+Error processing GCMG/GCMG_2024-01-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-14.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.366, 9372018660.8
+G estimation time: 4.35s
+Error processing GCMG/GCMG_2023-11-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-08.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.303, 20240808094.2
+G estimation time: 3.89s
+Error processing GCMG/GCMG_2024-07-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.312, 12236734178.5
+G estimation time: 5.33s
+Error processing GCMG/GCMG_2024-10-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-17.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.275, 15126280335.499998
+G estimation time: 3.45s
+Error processing GCMG/GCMG_2024-05-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-17.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.514, 38893058547.0
+G estimation time: 4.91s
+Error processing GCMG/GCMG_2023-10-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-28.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.28, 11400912030.5
+G estimation time: 4.74s
+Error processing GCMG/GCMG_2024-03-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-01.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.291, 14723080128.099998
+G estimation time: 3.63s
+Error processing GCMG/GCMG_2024-07-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-26.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.334, 13513268507.0
+G estimation time: 1.50s
+Error processing GCMG/GCMG_2024-08-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.311, 17807416901.8
+G estimation time: 3.16s
+Error processing GCMG/GCMG_2024-01-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.345, 7789876456.999999
+G estimation time: 6.88s
+Error processing GCMG/GCMG_2024-11-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.171, 12437059084.6
+G estimation time: 3.68s
+Error processing GCMG/GCMG_2024-12-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-05.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.287, 13853409429.1
+G estimation time: 4.13s
+Error processing GCMG/GCMG_2024-09-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.443, 31044010797.399998
+G estimation time: 3.09s
+Error processing GCMG/GCMG_2023-09-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-08.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.317, 16935240145.199999
+G estimation time: 5.77s
+Error processing GCMG/GCMG_2024-11-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-14.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.293, 16105265026.300001
+G estimation time: 1.54s
+Error processing GCMG/GCMG_2024-05-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.318, 14501495188.5
+G estimation time: 4.22s
+Error processing GCMG/GCMG_2024-10-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-31.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.331, 30171598686.1
+G estimation time: 3.24s
+Error processing GCMG/GCMG_2023-10-31.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.349, 13756826175.3
+G estimation time: 4.91s
+Error processing GCMG/GCMG_2023-11-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.305, 15024450873.4
+G estimation time: 3.43s
+Error processing GCMG/GCMG_2024-09-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.174, 20080120036.3
+G estimation time: 3.03s
+Error processing GCMG/GCMG_2024-04-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-03.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.278, 7316457891.2
+G estimation time: 4.96s
+Error processing GCMG/GCMG_2024-01-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-17.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.308, 17281322226.2
+G estimation time: 3.51s
+Error processing GCMG/GCMG_2024-01-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.18, 8432508719.599999
+G estimation time: 0.79s
+Error processing GCMG/GCMG_2024-06-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.449, 21775879908.3
+G estimation time: 2.69s
+Error processing GCMG/GCMG_2023-09-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-21.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.307, 14811939460.1
+G estimation time: 3.71s
+Error processing GCMG/GCMG_2024-03-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.301, 9997054899.699999
+G estimation time: 3.72s
+Error processing GCMG/GCMG_2024-07-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-07.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.813, 23835871757.9
+G estimation time: 3.13s
+Error processing GCMG/GCMG_2024-02-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-19.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.291, 15442724512.099998
+G estimation time: 2.97s
+Error processing GCMG/GCMG_2024-08-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.722, 32303294031.5
+G estimation time: 3.15s
+Error processing GCMG/GCMG_2023-10-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-08.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.323, 29905267456.0
+G estimation time: 3.50s
+Error processing GCMG/GCMG_2024-05-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-25.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.257, 10289141089.4
+G estimation time: 4.73s
+Error processing GCMG/GCMG_2024-07-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-20.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.338, 7888111037.0
+G estimation time: 4.15s
+Error processing GCMG/GCMG_2024-11-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.347, 12006554247.2
+G estimation time: 3.78s
+Error processing GCMG/GCMG_2024-01-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-22.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.291, 12233724716.1
+G estimation time: 3.15s
+Error processing GCMG/GCMG_2024-05-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-10.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.315, 14747097908.6
+G estimation time: 3.41s
+Error processing GCMG/GCMG_2024-12-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-10.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.43, 19489422044.3
+G estimation time: 3.80s
+Error processing GCMG/GCMG_2023-08-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-06.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.3, 21130121710.8
+G estimation time: 4.02s
+Error processing GCMG/GCMG_2023-12-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.572, 22888908083.5
+G estimation time: 3.13s
+Error processing GCMG/GCMG_2023-10-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.279, 16819896042.800001
+G estimation time: 3.65s
+Error processing GCMG/GCMG_2024-09-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-09.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.365, 21755034501.0
+G estimation time: 3.24s
+Error processing GCMG/GCMG_2023-08-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-29.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.287, 9158506790.6
+G estimation time: 1.60s
+Error processing GCMG/GCMG_2024-07-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-09.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.52, 19679302862.9
+G estimation time: 4.03s
+Error processing GCMG/GCMG_2024-02-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.17, 23509831544.600002
+G estimation time: 3.32s
+Error processing GCMG/GCMG_2023-12-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-05.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.324, 9504628407.199999
+G estimation time: 5.63s
+Error processing GCMG/GCMG_2024-11-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-13.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.28, 24462684837.8
+G estimation time: 3.41s
+Error processing GCMG/GCMG_2024-03-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-29.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.287, 744862442767.7
+G estimation time: 3.59s
+Error processing GCMG/GCMG_2024-11-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-10.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.31, 7099526363.799999
+G estimation time: 4.16s
+Error processing GCMG/GCMG_2024-09-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-14.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.267, 18091498032.2
+G estimation time: 3.71s
+Error processing GCMG/GCMG_2024-06-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-29.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.265, 11225118359.900002
+G estimation time: 0.91s
+Error processing GCMG/GCMG_2024-05-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-29.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.178, 16564581287.2
+G estimation time: 3.65s
+Error processing GCMG/GCMG_2023-11-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-05.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.285, 11879295583.5
+G estimation time: 3.48s
+Error processing GCMG/GCMG_2023-12-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-08.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.281, 25526902478.2
+G estimation time: 3.59s
+Error processing GCMG/GCMG_2023-12-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-14.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.302, 28788435256.300003
+G estimation time: 3.08s
+Error processing GCMG/GCMG_2024-03-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-19.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.278, 11995348811.2
+G estimation time: 3.25s
+Error processing GCMG/GCMG_2024-07-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.326, 12927242071.0
+G estimation time: 3.21s
+Error processing GCMG/GCMG_2024-02-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.301, 25058506360.8
+G estimation time: 3.49s
+Error processing GCMG/GCMG_2024-12-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-14.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.3, 18225490860.4
+G estimation time: 4.41s
+Error processing GCMG/GCMG_2024-02-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.346, 15590827077.4
+G estimation time: 1.12s
+Error processing GCMG/GCMG_2024-08-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.286, 13424447221.900002
+G estimation time: 3.43s
+Error processing GCMG/GCMG_2024-07-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-19.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.356, 9754031702.3
+G estimation time: 4.30s
+Error processing GCMG/GCMG_2023-12-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-29.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.46, 26516529816.800003
+G estimation time: 3.30s
+Error processing GCMG/GCMG_2023-09-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-22.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.287, 13958254757.499998
+G estimation time: 4.37s
+Error processing GCMG/GCMG_2024-01-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.614, 31987259699.5
+G estimation time: 3.25s
+Error processing GCMG/GCMG_2023-10-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.826, 18314977160.5
+G estimation time: 3.79s
+Error processing GCMG/GCMG_2023-10-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-30.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.617, 24908907937.2
+G estimation time: 2.86s
+Error processing GCMG/GCMG_2023-08-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-01.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.312, 8034067747.599999
+G estimation time: 4.67s
+Error processing GCMG/GCMG_2024-08-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-07.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.314, 22245875220.4
+G estimation time: 1.72s
+Error processing GCMG/GCMG_2023-12-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.245, 12998497233.6
+G estimation time: 3.48s
+Error processing GCMG/GCMG_2024-09-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-21.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.283, 15265065398.4
+G estimation time: 4.56s
+Error processing GCMG/GCMG_2024-10-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.261, 19852898675.4
+G estimation time: 3.71s
+Error processing GCMG/GCMG_2024-01-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-11.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.34, 15143248555.7
+G estimation time: 4.81s
+Error processing GCMG/GCMG_2024-01-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-06.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.284, 6472979444.3
+G estimation time: 8.96s
+Error processing GCMG/GCMG_2024-11-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-19.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.544, 47185082486.2
+G estimation time: 2.76s
+Error processing GCMG/GCMG_2023-09-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-07.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.406, 12111148597.7
+G estimation time: 2.50s
+Error processing GCMG/GCMG_2024-11-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.449, 24640378868.8
+G estimation time: 3.23s
+Error processing GCMG/GCMG_2023-08-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-16.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.34, 12132883564.1
+G estimation time: 4.52s
+Error processing GCMG/GCMG_2024-12-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.31, 15000281469.5
+G estimation time: 4.03s
+Error processing GCMG/GCMG_2023-12-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-02.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.319, 15132029471.5
+G estimation time: 4.17s
+Error processing GCMG/GCMG_2024-04-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-06.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.488, 14782148112.099998
+G estimation time: 3.29s
+Error processing GCMG/GCMG_2024-05-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-02.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.206, 17362017002.3
+G estimation time: 3.93s
+Error processing GCMG/GCMG_2023-11-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-04.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.283, 20806346813.9
+G estimation time: 3.25s
+Error processing GCMG/GCMG_2024-04-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.151, 12581639116.9
+G estimation time: 2.45s
+Error processing GCMG/GCMG_2024-11-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.53, 36619647234.0
+G estimation time: 2.66s
+Error processing GCMG/GCMG_2023-10-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.827, 21484310793.7
+G estimation time: 3.24s
+Error processing GCMG/GCMG_2023-10-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-06.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.548, 12365033968.8
+G estimation time: 3.30s
+Error processing GCMG/GCMG_2023-11-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-08.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.854, 20089625515.5
+G estimation time: 2.91s
+Error processing GCMG/GCMG_2023-09-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-30.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.282, 17454926602.2
+G estimation time: 2.90s
+Error processing GCMG/GCMG_2024-05-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-14.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.267, 10308732984.1
+G estimation time: 4.28s
+Error processing GCMG/GCMG_2024-10-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-27.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.274, 15000001831.2
+G estimation time: 3.50s
+Error processing GCMG/GCMG_2024-03-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-07.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.294, 21209377839.3
+G estimation time: 3.34s
+Error processing GCMG/GCMG_2024-06-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.827, 19427483463.5
+G estimation time: 0.74s
+Error processing GCMG/GCMG_2023-11-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.528, 11290339303.1
+G estimation time: 3.15s
+Error processing GCMG/GCMG_2023-10-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-28.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.335, 18001846748.4
+G estimation time: 3.02s
+Error processing GCMG/GCMG_2023-11-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-20.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.293, 23682659139.8
+G estimation time: 2.65s
+Error processing GCMG/GCMG_2024-06-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.587, 9190098355.0
+G estimation time: 3.03s
+Error processing GCMG/GCMG_2023-08-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-07.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.623, 12102955759.800001
+G estimation time: 3.39s
+Error processing GCMG/GCMG_2023-09-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-05.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.285, 24311000100.9
+G estimation time: 2.96s
+Error processing GCMG/GCMG_2024-07-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-31.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.31, 15123696484.3
+G estimation time: 4.37s
+Error processing GCMG/GCMG_2024-01-31.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.298, 7584537999.9
+G estimation time: 3.83s
+Error processing GCMG/GCMG_2024-10-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-27.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.335, 13064379257.4
+G estimation time: 3.17s
+Error processing GCMG/GCMG_2023-09-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.279, 25003114653.7
+G estimation time: 0.47s
+Error processing GCMG/GCMG_2024-04-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-24.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.199, 644464703514.7999
+G estimation time: 3.02s
+Error processing GCMG/GCMG_2023-11-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.476, 11972694539.5
+G estimation time: 3.52s
+Error processing GCMG/GCMG_2024-04-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.323, 5786576077.2
+G estimation time: 4.40s
+Error processing GCMG/GCMG_2024-09-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-02.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.299, 19481952504.7
+G estimation time: 3.32s
+Error processing GCMG/GCMG_2024-05-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-02.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.184, 29808253555.0
+G estimation time: 4.47s
+Error processing GCMG/GCMG_2023-08-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-05.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.29, 12400810177.1
+G estimation time: 3.06s
+Error processing GCMG/GCMG_2024-06-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-10.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.263, 11928173142.4
+G estimation time: 4.27s
+Error processing GCMG/GCMG_2024-10-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-05.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.265, 18525546627.6
+G estimation time: 4.88s
+Error processing GCMG/GCMG_2024-12-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-24.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.192, 20424675287.5
+G estimation time: 0.53s
+Error processing GCMG/GCMG_2024-05-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-05.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.3, 26589248714.2
+G estimation time: 3.34s
+Error processing GCMG/GCMG_2024-04-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-22.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.285, 10510551632.0
+G estimation time: 3.41s
+Error processing GCMG/GCMG_2024-03-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-06.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.329, 6417066093.5
+G estimation time: 5.07s
+Error processing GCMG/GCMG_2024-08-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-31.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.478, 29006806419.700005
+G estimation time: 3.04s
+Error processing GCMG/GCMG_2023-07-31.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-19.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.295, 10878297800.5
+G estimation time: 4.37s
+Error processing GCMG/GCMG_2024-11-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.3, 22518894284.1
+G estimation time: 3.20s
+Error processing GCMG/GCMG_2024-03-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-20.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.487, 17578385167.6
+G estimation time: 3.67s
+Error processing GCMG/GCMG_2023-10-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-25.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.795, 23937489478.600002
+G estimation time: 2.80s
+Error processing GCMG/GCMG_2023-08-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.259, 10070376585.699999
+G estimation time: 1.17s
+Error processing GCMG/GCMG_2024-09-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.474, 11823946968.3
+G estimation time: 4.71s
+Error processing GCMG/GCMG_2023-11-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-29.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.275, 12220325964.300001
+G estimation time: 4.93s
+Error processing GCMG/GCMG_2023-12-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-05.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.304, 8208809142.5
+G estimation time: 5.29s
+Error processing GCMG/GCMG_2024-08-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.27, 20673996278.7
+G estimation time: 3.12s
+Error processing GCMG/GCMG_2024-05-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-06.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.292, 12128108540.7
+G estimation time: 3.90s
+Error processing GCMG/GCMG_2024-12-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.297, 9674307602.599998
+G estimation time: 3.70s
+Error processing GCMG/GCMG_2024-10-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.268, 19826605688.5
+G estimation time: 2.84s
+Error processing GCMG/GCMG_2024-06-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-15.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.287, 14252018950.6
+G estimation time: 1.05s
+Error processing GCMG/GCMG_2024-05-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-29.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.274, 22442897634.8
+G estimation time: 3.04s
+Error processing GCMG/GCMG_2024-04-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-01.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.283, 11639934090.5
+G estimation time: 4.36s
+Error processing GCMG/GCMG_2023-12-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.304, 19376752378.5
+G estimation time: 3.61s
+Error processing GCMG/GCMG_2023-12-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-10.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.306, 15261801531.0
+G estimation time: 3.61s
+Error processing GCMG/GCMG_2024-04-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-14.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.254, 8869617684.3
+G estimation time: 5.71s
+Error processing GCMG/GCMG_2024-11-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.24, 12107176485.5
+G estimation time: 3.91s
+Error processing GCMG/GCMG_2023-12-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.32, 12857172143.9
+G estimation time: 4.15s
+Error processing GCMG/GCMG_2024-01-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-08.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.315, 13466774396.399998
+G estimation time: 0.98s
+Error processing GCMG/GCMG_2024-03-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-04.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.382, 16796361626.6
+G estimation time: 3.83s
+Error processing GCMG/GCMG_2024-12-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-20.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.31, 16166900006.600002
+G estimation time: 3.07s
+Error processing GCMG/GCMG_2024-08-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-01.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.285, 11146549152.0
+G estimation time: 4.47s
+Error processing GCMG/GCMG_2024-02-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-01.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.32, 10563536370.6
+G estimation time: 3.85s
+Error processing GCMG/GCMG_2024-04-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-26.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.233, 19310331576.100002
+G estimation time: 2.87s
+Error processing GCMG/GCMG_2024-06-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-27.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.599, 18618506486.899998
+G estimation time: 2.98s
+Error processing GCMG/GCMG_2023-07-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-31.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.312, 23191423837.1
+G estimation time: 3.91s
+Error processing GCMG/GCMG_2024-07-31.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.276, 8434423891.500001
+G estimation time: 4.13s
+Error processing GCMG/GCMG_2024-09-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.158, 11526367943.7
+G estimation time: 1.99s
+Error processing GCMG/GCMG_2024-07-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-10.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.428, 14986776003.3
+G estimation time: 4.03s
+Error processing GCMG/GCMG_2023-11-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-01.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.437, 17445965175.9
+G estimation time: 2.97s
+Error processing GCMG/GCMG_2023-09-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-14.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.209, 11967933109.4
+G estimation time: 4.05s
+Error processing GCMG/GCMG_2023-12-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.291, 13282027957.199999
+G estimation time: 5.53s
+Error processing GCMG/GCMG_2024-10-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-01.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.277, 25790575369.100002
+G estimation time: 4.30s
+Error processing GCMG/GCMG_2024-10-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-08.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.26, 12601955675.1
+G estimation time: 4.04s
+Error processing GCMG/GCMG_2024-08-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-10.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.355, 45114037059.7
+G estimation time: 3.04s
+Error processing GCMG/GCMG_2024-07-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.291, 24489801005.5
+G estimation time: 0.64s
+Error processing GCMG/GCMG_2024-05-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-02.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.368, 35460401335.2
+G estimation time: 3.22s
+Error processing GCMG/GCMG_2024-02-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-03.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.405, 14669803018.0
+G estimation time: 3.70s
+Error processing GCMG/GCMG_2024-04-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-07.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.319, 16059128831.5
+G estimation time: 3.10s
+Error processing GCMG/GCMG_2024-05-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-28.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.267, 34349524911.0
+G estimation time: 3.41s
+Error processing GCMG/GCMG_2024-08-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.328, 15886514291.0
+G estimation time: 4.15s
+Error processing GCMG/GCMG_2024-03-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-17.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.588, 16339643014.4
+G estimation time: 3.20s
+Error processing GCMG/GCMG_2023-08-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-19.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.853, 29114121937.6
+G estimation time: 3.28s
+Error processing GCMG/GCMG_2023-10-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.266, 15703414193.5
+G estimation time: 4.35s
+Error processing GCMG/GCMG_2024-02-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.542, 14389768778.8
+G estimation time: 1.32s
+Error processing GCMG/GCMG_2023-08-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.796, 17222780491.100002
+G estimation time: 2.93s
+Error processing GCMG/GCMG_2023-08-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.279, 14567290032.4
+G estimation time: 3.43s
+Error processing GCMG/GCMG_2024-09-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.845, 22547900459.4
+G estimation time: 3.01s
+Error processing GCMG/GCMG_2023-07-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.807, 18611134720.6
+G estimation time: 3.18s
+Error processing GCMG/GCMG_2024-04-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.45, 25383902878.4
+G estimation time: 3.37s
+Error processing GCMG/GCMG_2023-11-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-28.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.397, 24819839436.0
+G estimation time: 2.89s
+Error processing GCMG/GCMG_2023-08-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-28.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.435, 14786963993.8
+G estimation time: 4.25s
+Error processing GCMG/GCMG_2024-06-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-27.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.316, 17574389128.5
+G estimation time: 3.27s
+Error processing GCMG/GCMG_2024-08-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-06.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.496, 18232118338.100002
+G estimation time: 2.95s
+Error processing GCMG/GCMG_2023-09-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-10.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.408, 53772311373.2
+G estimation time: 0.55s
+Error processing GCMG/GCMG_2023-10-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-07.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.387, 19242847341.800003
+G estimation time: 3.08s
+Error processing GCMG/GCMG_2024-03-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-07.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.598, 30077062108.3
+G estimation time: 3.36s
+Error processing GCMG/GCMG_2023-11-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-07.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.437, 12557053815.4
+G estimation time: 4.15s
+Error processing GCMG/GCMG_2024-08-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-04.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.433, 24054149847.2
+G estimation time: 2.86s
+Error processing GCMG/GCMG_2023-10-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-27.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.402, 15297777481.2
+G estimation time: 3.82s
+Error processing GCMG/GCMG_2024-09-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-17.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.52, 17330375726.2
+G estimation time: 4.38s
+Error processing GCMG/GCMG_2023-07-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-08.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.282, 11869826607.5
+G estimation time: 3.82s
+Error processing GCMG/GCMG_2024-10-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-15.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.289, 13222343511.4
+G estimation time: 1.83s
+Error processing GCMG/GCMG_2024-10-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.446, 23711214709.0
+G estimation time: 3.03s
+Error processing GCMG/GCMG_2023-08-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-28.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.556, 28202275396.2
+G estimation time: 2.94s
+Error processing GCMG/GCMG_2023-09-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.287, 23632913579.8
+G estimation time: 3.68s
+Error processing GCMG/GCMG_2024-03-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-29.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.326, 14687839091.9
+G estimation time: 3.93s
+Error processing GCMG/GCMG_2024-02-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.433, 13353395015.800001
+G estimation time: 4.07s
+Error processing GCMG/GCMG_2023-09-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-27.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.036, 24387727368.2
+G estimation time: 2.95s
+Error processing GCMG/GCMG_2024-02-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-12.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.315, 12375001349.3
+G estimation time: 3.48s
+Error processing GCMG/GCMG_2024-06-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.302, 23285546006.600002
+G estimation time: 3.05s
+Error processing GCMG/GCMG_2024-02-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-13.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.27, 9403708334.800001
+G estimation time: 4.07s
+Error processing GCMG/GCMG_2024-09-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-31.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.296, 19735771083.199997
+G estimation time: 2.64s
+Error processing GCMG/GCMG_2024-10-31.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-08.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.44, 14967927424.5
+G estimation time: 3.19s
+Error processing GCMG/GCMG_2024-02-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.339, 12000152834.7
+G estimation time: 3.17s
+Error processing GCMG/GCMG_2024-03-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.255, 11145569906.0
+G estimation time: 3.63s
+Error processing GCMG/GCMG_2024-10-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-28.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.303, 11271457913.0
+G estimation time: 3.62s
+Error processing GCMG/GCMG_2023-12-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-19.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.302, 16181184841.3
+G estimation time: 3.16s
+Error processing GCMG/GCMG_2024-04-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-06.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.307, 18190458092.5
+G estimation time: 4.27s
+Error processing GCMG/GCMG_2024-09-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.424, 27567983356.699997
+G estimation time: 3.85s
+Error processing GCMG/GCMG_2023-07-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-29.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.277, 13765640099.599998
+G estimation time: 1.95s
+Error processing GCMG/GCMG_2024-08-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-14.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.367, 23214193302.0
+G estimation time: 3.36s
+Error processing GCMG/GCMG_2023-09-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.372, 18895382443.3
+G estimation time: 3.75s
+Error processing GCMG/GCMG_2023-07-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.333, 27336746917.1
+G estimation time: 3.11s
+Error processing GCMG/GCMG_2024-08-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-19.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.285, 14003592816.4
+G estimation time: 4.19s
+Error processing GCMG/GCMG_2024-01-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.307, 13652020954.499998
+G estimation time: 3.24s
+Error processing GCMG/GCMG_2024-04-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.515, 15072687097.6
+G estimation time: 4.19s
+Error processing GCMG/GCMG_2024-02-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-29.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.304, 19958298880.6
+G estimation time: 3.46s
+Error processing GCMG/GCMG_2024-01-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-18.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.298, 11297423928.9
+G estimation time: 2.93s
+Error processing GCMG/GCMG_2024-09-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.289, 19674580148.4
+G estimation time: 3.06s
+Error processing GCMG/GCMG_2024-06-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.279, 14693775423.6
+G estimation time: 3.40s
+Error processing GCMG/GCMG_2024-08-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.205, 19235938788.0
+G estimation time: 3.27s
+Error processing GCMG/GCMG_2024-01-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.292, 12708315374.0
+G estimation time: 3.44s
+Error processing GCMG/GCMG_2024-04-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-17.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.294, 22787430499.6
+G estimation time: 3.15s
+Error processing GCMG/GCMG_2024-06-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-13.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.288, 6296227577.7
+G estimation time: 4.96s
+Error processing GCMG/GCMG_2024-08-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.377, 22776289661.399998
+G estimation time: 3.16s
+Error processing GCMG/GCMG_2023-07-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-17.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.291, 11409410600.7
+G estimation time: 4.04s
+Error processing GCMG/GCMG_2024-10-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-30.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.321, 18365860871.5
+G estimation time: 1.26s
+Error processing GCMG/GCMG_2024-08-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.33, 24949711325.7
+G estimation time: 2.95s
+Error processing GCMG/GCMG_2024-03-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-14.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.613, 12934028624.0
+G estimation time: 3.05s
+Error processing GCMG/GCMG_2023-08-14.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-07.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.926, 21185497511.199997
+G estimation time: 2.86s
+Error processing GCMG/GCMG_2023-08-07.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-30.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.316, 10280151528.0
+G estimation time: 3.97s
+Error processing GCMG/GCMG_2024-10-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.571, 14514515367.1
+G estimation time: 4.73s
+Error processing GCMG/GCMG_2023-07-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.296, 10346173809.800001
+G estimation time: 3.99s
+Error processing GCMG/GCMG_2024-09-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-17.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.404, 25072536730.5
+G estimation time: 3.62s
+Error processing GCMG/GCMG_2023-11-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.306, 16446430406.5
+G estimation time: 2.93s
+Error processing GCMG/GCMG_2024-07-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-06.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.931, 30486632712.800003
+G estimation time: 2.89s
+Error processing GCMG/GCMG_2023-10-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-27.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.324, 12451041963.0
+G estimation time: 0.92s
+Error processing GCMG/GCMG_2024-06-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-06.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.279, 13001907213.699999
+G estimation time: 3.33s
+Error processing GCMG/GCMG_2024-02-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-27.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.364, 11562400193.7
+G estimation time: 4.43s
+Error processing GCMG/GCMG_2024-11-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.286, 11952318618.199999
+G estimation time: 3.84s
+Error processing GCMG/GCMG_2024-01-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-10.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.294, 21484267026.899998
+G estimation time: 3.14s
+Error processing GCMG/GCMG_2024-01-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-15.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.486, 34887144250.2
+G estimation time: 4.63s
+Error processing GCMG/GCMG_2023-08-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-29.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.849, 27282224937.199997
+G estimation time: 2.82s
+Error processing GCMG/GCMG_2023-08-29.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-31.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.664, 34264964130.299995
+G estimation time: 2.74s
+Error processing GCMG/GCMG_2023-08-31.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-02.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.847, 20422750509.5
+G estimation time: 2.94s
+Error processing GCMG/GCMG_2023-10-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-18.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.385, 17482014013.4
+G estimation time: 1.02s
+Error processing GCMG/GCMG_2024-11-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.315, 9464246999.699999
+G estimation time: 4.53s
+Error processing GCMG/GCMG_2024-10-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-01.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.355, 10827093978.4
+G estimation time: 3.25s
+Error processing GCMG/GCMG_2024-03-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-02.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.301, 10385105640.6
+G estimation time: 4.83s
+Error processing GCMG/GCMG_2024-08-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-12.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.587, 26379181774.399998
+G estimation time: 3.28s
+Error processing GCMG/GCMG_2023-10-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-08.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.535, 19111775446.2
+G estimation time: 3.32s
+Error processing GCMG/GCMG_2023-11-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-01.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.299, 18462548238.3
+G estimation time: 3.23s
+Error processing GCMG/GCMG_2024-05-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-31.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.293, 16821189833.7
+G estimation time: 3.42s
+Error processing GCMG/GCMG_2024-05-31.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-24.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.804, 25552947033.7
+G estimation time: 3.69s
+Error processing GCMG/GCMG_2023-08-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-30.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.47, 37582273284.7
+G estimation time: 0.50s
+Error processing GCMG/GCMG_2023-10-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-12.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.303, 3088037621.4
+G estimation time: 4.60s
+Error processing GCMG/GCMG_2024-08-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-02.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.462, 14285086436.199999
+G estimation time: 4.39s
+Error processing GCMG/GCMG_2024-12-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-03.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.292, 13501827378.5
+G estimation time: 4.18s
+Error processing GCMG/GCMG_2024-12-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-06.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.289, 29099691435.000004
+G estimation time: 3.12s
+Error processing GCMG/GCMG_2024-03-06.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-28.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.308, 23637057847.3
+G estimation time: 3.13s
+Error processing GCMG/GCMG_2024-05-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-08.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.283, 18375971502.7
+G estimation time: 4.20s
+Error processing GCMG/GCMG_2024-01-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-13.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.304, 19343950214.7
+G estimation time: 3.47s
+Error processing GCMG/GCMG_2024-12-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.282, 22547574244.0
+G estimation time: 2.94s
+Error processing GCMG/GCMG_2024-08-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.347, 19314299031.8
+G estimation time: 0.63s
+Error processing GCMG/GCMG_2024-04-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-16.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.835, 21664498500.1
+G estimation time: 3.24s
+Error processing GCMG/GCMG_2023-10-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-03.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.333, 13784100269.0
+G estimation time: 3.44s
+Error processing GCMG/GCMG_2024-05-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-01.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.955, 21221228896.2
+G estimation time: 2.94s
+Error processing GCMG/GCMG_2023-08-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-13.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.416, 38736588896.200005
+G estimation time: 3.16s
+Error processing GCMG/GCMG_2023-10-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-08-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.243, 8480064780.500001
+G estimation time: 4.11s
+Error processing GCMG/GCMG_2024-08-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-28.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.291, 22173349934.2
+G estimation time: 3.22s
+Error processing GCMG/GCMG_2024-02-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-19.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.177, 10648686030.4
+G estimation time: 4.14s
+Error processing GCMG/GCMG_2024-09-19.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-21.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.565, 13514135044.3
+G estimation time: 2.84s
+Error processing GCMG/GCMG_2023-08-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-22.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.268, 16484016307.499998
+G estimation time: 1.86s
+Error processing GCMG/GCMG_2024-11-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-13.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.4, 9234077658.5
+G estimation time: 5.74s
+Error processing GCMG/GCMG_2024-11-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-13.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.301, 17886298869.3
+G estimation time: 4.13s
+Error processing GCMG/GCMG_2024-02-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-10.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.296, 7994227192.6
+G estimation time: 5.13s
+Error processing GCMG/GCMG_2024-05-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-05.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.281, 15418305629.199999
+G estimation time: 3.21s
+Error processing GCMG/GCMG_2024-02-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-04.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.318, 11845139433.6
+G estimation time: 3.77s
+Error processing GCMG/GCMG_2024-09-04.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-09.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.341, 20849381205.8
+G estimation time: 3.39s
+Error processing GCMG/GCMG_2024-04-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-12.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.71, 25389174249.1
+G estimation time: 3.10s
+Error processing GCMG/GCMG_2023-09-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-11.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.292, 10470518892.4
+G estimation time: 0.78s
+Error processing GCMG/GCMG_2024-06-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.327, 9898669242.2
+G estimation time: 3.54s
+Error processing GCMG/GCMG_2024-04-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-13.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.321, 19452511949.5
+G estimation time: 3.97s
+Error processing GCMG/GCMG_2023-12-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.2, 13130683658.5
+G estimation time: 3.21s
+Error processing GCMG/GCMG_2024-03-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-07-28.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.812, 17967112336.5
+G estimation time: 3.17s
+Error processing GCMG/GCMG_2023-07-28.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-05.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.391, 28468675460.9
+G estimation time: 2.91s
+Error processing GCMG/GCMG_2023-10-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.328, 10562606281.4
+G estimation time: 3.93s
+Error processing GCMG/GCMG_2024-10-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-08.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.28, 17772437422.3
+G estimation time: 3.21s
+Error processing GCMG/GCMG_2024-04-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-13.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.388, 10429615426.6
+G estimation time: 3.90s
+Error processing GCMG/GCMG_2023-11-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-12-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.318, 24511985326.2
+G estimation time: 1.39s
+Error processing GCMG/GCMG_2024-12-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-30.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.299, 16282067477.7
+G estimation time: 3.91s
+Error processing GCMG/GCMG_2023-11-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.283, 16747285533.5
+G estimation time: 4.12s
+Error processing GCMG/GCMG_2024-02-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-11.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.543, 26123354562.0
+G estimation time: 2.92s
+Error processing GCMG/GCMG_2023-09-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-10-27.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.814, 18560425992.8
+G estimation time: 3.06s
+Error processing GCMG/GCMG_2023-10-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-01.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.26, 16626753793.0
+G estimation time: 4.52s
+Error processing GCMG/GCMG_2024-11-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-18.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.853, 20598465829.4
+G estimation time: 2.97s
+Error processing GCMG/GCMG_2023-09-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-22.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.265, 13481163954.499998
+G estimation time: 4.07s
+Error processing GCMG/GCMG_2024-07-22.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-13.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.291, 15489251643.900002
+G estimation time: 4.02s
+Error processing GCMG/GCMG_2024-05-13.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.259, 11100284050.0
+G estimation time: 1.48s
+Error processing GCMG/GCMG_2024-07-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-03.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.307, 12782709077.9
+G estimation time: 3.45s
+Error processing GCMG/GCMG_2024-10-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.42, 11579304503.0
+G estimation time: 3.36s
+Error processing GCMG/GCMG_2023-11-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.287, 22449440790.4
+G estimation time: 3.40s
+Error processing GCMG/GCMG_2023-12-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.354, 10443290088.5
+G estimation time: 5.66s
+Error processing GCMG/GCMG_2024-02-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.349, 8276965949.400001
+G estimation time: 4.67s
+Error processing GCMG/GCMG_2023-12-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-11.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.312, 9359774878.300001
+G estimation time: 4.33s
+Error processing GCMG/GCMG_2024-03-11.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-02.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.319, 8005157831.200001
+G estimation time: 2.73s
+Error processing GCMG/GCMG_2024-01-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.265, 14067534631.600002
+G estimation time: 5.01s
+Error processing GCMG/GCMG_2024-11-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-02-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.341, 11727709738.5
+G estimation time: 7.23s
+Error processing GCMG/GCMG_2024-02-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-01.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.832, 11886030367.5
+G estimation time: 3.73s
+Error processing GCMG/GCMG_2023-11-01.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-10.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.299, 13453550433.1
+G estimation time: 3.18s
+Error processing GCMG/GCMG_2024-06-10.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-15.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.277, 7612960548.9
+G estimation time: 6.78s
+Error processing GCMG/GCMG_2024-11-15.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-05-16.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.235, 22054772441.0
+G estimation time: 3.24s
+Error processing GCMG/GCMG_2024-05-16.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-30.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.284, 10622763631.900002
+G estimation time: 1.56s
+Error processing GCMG/GCMG_2024-01-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-18.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.276, 12404288428.800001
+G estimation time: 3.73s
+Error processing GCMG/GCMG_2024-01-18.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-03.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.318, 13349035464.9
+G estimation time: 3.61s
+Error processing GCMG/GCMG_2024-09-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-03-05.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.3, 18494197181.8
+G estimation time: 3.35s
+Error processing GCMG/GCMG_2024-03-05.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-23.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.641, 13325652072.2
+G estimation time: 2.98s
+Error processing GCMG/GCMG_2023-08-23.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-27.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.513, 23373477414.6
+G estimation time: 3.17s
+Error processing GCMG/GCMG_2023-11-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-06-21.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.285, 13571886784.7
+G estimation time: 3.10s
+Error processing GCMG/GCMG_2024-06-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-04-17.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.314, 15638599487.099998
+G estimation time: 3.51s
+Error processing GCMG/GCMG_2024-04-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-11-03.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.397, 15488106204.699999
+G estimation time: 3.90s
+Error processing GCMG/GCMG_2023-11-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-30.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.285, 8774354685.699999
+G estimation time: 0.85s
+Error processing GCMG/GCMG_2024-07-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-03.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.478, 24614484812.7
+G estimation time: 3.66s
+Error processing GCMG/GCMG_2023-08-03.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-08-08.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.804, 14480701300.0
+G estimation time: 3.22s
+Error processing GCMG/GCMG_2023-08-08.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-21.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.41, 20065248593.9
+G estimation time: 2.86s
+Error processing GCMG/GCMG_2023-09-21.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-01-24.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.29, 13018213965.800001
+G estimation time: 3.79s
+Error processing GCMG/GCMG_2024-01-24.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-20.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.337, 26504266552.2
+G estimation time: 3.21s
+Error processing GCMG/GCMG_2023-09-20.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-17.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.322, 12010663349.1
+G estimation time: 3.95s
+Error processing GCMG/GCMG_2024-09-17.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-10-09.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.286, 13138321103.4
+G estimation time: 3.72s
+Error processing GCMG/GCMG_2024-10-09.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-02.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.313, 21293164768.3
+G estimation time: 3.19s
+Error processing GCMG/GCMG_2024-07-02.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-09-30.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.282, 13738116534.599998
+G estimation time: 3.35s
+Error processing GCMG/GCMG_2024-09-30.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-12.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.289, 12919336805.300001
+G estimation time: 1.49s
+Error processing GCMG/GCMG_2024-07-12.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-12-27.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.282, 24990970078.2
+G estimation time: 4.74s
+Error processing GCMG/GCMG_2023-12-27.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-11-25.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.301, 13681479744.9
+G estimation time: 5.95s
+Error processing GCMG/GCMG_2024-11-25.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2024-07-26.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.253, 13900097985.1
+G estimation time: 4.14s
+Error processing GCMG/GCMG_2024-07-26.parquet: name 'timeout' is not defined
+
+GCMG/GCMG_2023-09-13.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.272, 20178741271.7
+G estimation time: 2.97s
+Error processing GCMG/GCMG_2023-09-13.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-25.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.163, 2384587761.5
+G estimation time: 9.22s
+Error processing LCID/LCID_2024-09-25.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-11.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.284, 3025041372.7000003
+G estimation time: 7.01s
+Error processing LCID/LCID_2024-10-11.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-07.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.2, 2622875042.3
+G estimation time: 15.05s
+Error processing LCID/LCID_2024-10-07.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-07-24.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.305, 2066470790.5
+G estimation time: 10.83s
+Error processing LCID/LCID_2024-07-24.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-10.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.305, 2365813291.6
+G estimation time: 12.45s
+Error processing LCID/LCID_2024-09-10.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-29.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.193, 2106635785.8
+G estimation time: 17.43s
+Error processing LCID/LCID_2024-08-29.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-05.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.305, 2729926734.7
+G estimation time: 15.84s
+Error processing LCID/LCID_2024-09-05.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-03.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.303, 3941026998.5
+G estimation time: 14.58s
+Error processing LCID/LCID_2024-09-03.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-28.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.147, 2348742729.6
+G estimation time: 22.01s
+Error processing LCID/LCID_2024-08-28.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-06.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.173, 2300453772.5
+G estimation time: 15.97s
+Error processing LCID/LCID_2024-09-06.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-13.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.274, 3144707801.6
+G estimation time: 10.36s
+Error processing LCID/LCID_2024-08-13.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-01.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.145, 2478630703.0
+G estimation time: 9.33s
+Error processing LCID/LCID_2024-08-01.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-10.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.191, 3856305597.9
+G estimation time: 8.52s
+Error processing LCID/LCID_2024-10-10.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-19.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.285, 2609097736.3
+G estimation time: 10.83s
+Error processing LCID/LCID_2024-08-19.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-07-23.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.171, 2876875562.7
+G estimation time: 10.31s
+Error processing LCID/LCID_2024-07-23.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-07-26.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.138, 2213064909.2999997
+G estimation time: 16.12s
+Error processing LCID/LCID_2024-07-26.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-23.parquet:
 Data reading time: 0.03s
-Tmin, Tmax: 3.974, 58114396456.6
-Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+Tmin, Tmax: 0.197, 1460827128.8
+G estimation time: 27.49s
+Error processing LCID/LCID_2024-08-23.parquet: name 'timeout' is not defined
 
-UA/UA_2024-09-12_dbeq-basic.parquet:
+LCID/LCID_2024-10-17.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.19, 1391924326.0
+G estimation time: 26.12s
+Error processing LCID/LCID_2024-10-17.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-23.parquet:
 Data reading time: 0.00s
-Tmin, Tmax: 1.275, 68708772242.200005
-Run started at 2025-03-27 18:03:44.585243
+Tmin, Tmax: 0.253, 4741802922.8
+G estimation time: 12.59s
+Error processing LCID/LCID_2024-09-23.parquet: name 'timeout' is not defined
 
+LCID/LCID_2024-08-16.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.223, 3324426286.3
+G estimation time: 7.43s
+Error processing LCID/LCID_2024-08-16.parquet: name 'timeout' is not defined
 
-UA/UA_2024-06-26_dbeq-basic.parquet:
-Data reading time: 0.03s
-Tmin, Tmax: 3.974, 58114396456.6
-Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-08-09.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.162, 3164978257.2000003
+G estimation time: 11.15s
+Error processing LCID/LCID_2024-08-09.parquet: name 'timeout' is not defined
 
-UA/UA_2024-09-12_dbeq-basic.parquet:
+LCID/LCID_2024-08-02.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.252, 2710300676.0
+G estimation time: 13.81s
+Error processing LCID/LCID_2024-08-02.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-21.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.193, 3318535872.1
+G estimation time: 9.37s
+Error processing LCID/LCID_2024-08-21.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-07-29.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.171, 2521792348.6000004
+G estimation time: 12.43s
+Error processing LCID/LCID_2024-07-29.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-18.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.227, 1929634231.3999999
+G estimation time: 12.05s
+Error processing LCID/LCID_2024-10-18.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.311, 2773859650.6
+G estimation time: 10.26s
+Error processing LCID/LCID_2024-09-20.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-11.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.264, 1986749585.0000002
+G estimation time: 19.29s
+Error processing LCID/LCID_2024-09-11.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-16.parquet:
 Data reading time: 0.00s
-Tmin, Tmax: 1.275, 68708772242.200005
-Error processing UA/UA_2024-09-12_dbeq-basic.parquet: name 'date' is not defined
+Tmin, Tmax: 0.283, 4116296014.1000004
+G estimation time: 5.22s
+Error processing LCID/LCID_2024-10-16.parquet: name 'timeout' is not defined
 
-UA/UA_2024-08-30_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 4.673, 60713685756.299995
-Error processing UA/UA_2024-08-30_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-09-04.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.167, 2870625964.2999997
+G estimation time: 14.50s
+Error processing LCID/LCID_2024-09-04.parquet: name 'timeout' is not defined
 
-UA/UA_2024-07-01_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 0.418, 86895313717.6
-Error processing UA/UA_2024-07-01_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-09-17.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.2, 1522960636.7
+G estimation time: 11.78s
+Error processing LCID/LCID_2024-09-17.parquet: name 'timeout' is not defined
 
-UA/UA_2024-08-19_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 0.435, 51298856787.4
-Error processing UA/UA_2024-08-19_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-09-24.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.159, 3015722866.4
+G estimation time: 11.20s
+Error processing LCID/LCID_2024-09-24.parquet: name 'timeout' is not defined
 
-UA/UA_2024-09-23_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 1.345, 70340558492.40001
-Error processing UA/UA_2024-09-23_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-09-18.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.159, 2583864429.7
+G estimation time: 18.56s
+Error processing LCID/LCID_2024-09-18.parquet: name 'timeout' is not defined
 
-UA/UA_2024-08-13_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 25.567, 107968171163.00002
-Error processing UA/UA_2024-08-13_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-08-27.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.303, 1199935389.0
+G estimation time: 38.65s
+Error processing LCID/LCID_2024-08-27.parquet: name 'timeout' is not defined
 
-UA/UA_2024-08-09_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 2.246, 65983448855.200005
-Error processing UA/UA_2024-08-09_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-08-12.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.29, 2441032996.6
+G estimation time: 10.87s
+Error processing LCID/LCID_2024-08-12.parquet: name 'timeout' is not defined
 
-UA/UA_2024-09-10_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 0.361, 33590948445.7
-Error processing UA/UA_2024-09-10_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-10-01.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.19, 2198901705.7999997
+G estimation time: 12.50s
+Error processing LCID/LCID_2024-10-01.parquet: name 'timeout' is not defined
 
-UA/UA_2024-07-11_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 2.187, 85655042173.0
-Run started at 2025-03-27 18:04:20.722615
+LCID/LCID_2024-08-30.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.32, 2660997124.0
+G estimation time: 20.01s
+Error processing LCID/LCID_2024-08-30.parquet: name 'timeout' is not defined
 
+LCID/LCID_2024-10-02.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.184, 1976565430.5
+G estimation time: 21.30s
+Error processing LCID/LCID_2024-10-02.parquet: name 'timeout' is not defined
 
-UA/UA_2024-06-26_dbeq-basic.parquet:
-Data reading time: 0.03s
-Tmin, Tmax: 3.974, 58114396456.6
-Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-08-15.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.294, 5420456718.900001
+G estimation time: 10.60s
+Error processing LCID/LCID_2024-08-15.parquet: name 'timeout' is not defined
 
-UA/UA_2024-09-12_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 1.275, 68708772242.200005
-Error processing UA/UA_2024-09-12_dbeq-basic.parquet: name 'date' is not defined
+LCID/LCID_2024-09-12.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.178, 2345818786.0
+G estimation time: 17.14s
+Error processing LCID/LCID_2024-09-12.parquet: name 'timeout' is not defined
 
-UA/UA_2024-08-30_dbeq-basic.parquet:
-Data reading time: 0.00s
-Tmin, Tmax: 4.673, 60713685756.299995
+LCID/LCID_2024-09-16.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.294, 3251462799.4
+G estimation time: 10.68s
+Error processing LCID/LCID_2024-09-16.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-07.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.267, 1905929511.4
+G estimation time: 18.13s
+Error processing LCID/LCID_2024-08-07.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-07-22.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.291, 2682196463.0
+G estimation time: 16.19s
+Error processing LCID/LCID_2024-07-22.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-07-25.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.288, 2466120978.5
+G estimation time: 20.30s
+Error processing LCID/LCID_2024-07-25.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-07-31.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.289, 3068382285.7999997
+G estimation time: 14.97s
+Error processing LCID/LCID_2024-07-31.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-06.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.186, 2669787323.6000004
+G estimation time: 16.73s
+Error processing LCID/LCID_2024-08-06.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-09.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.256, 3598841561.7
+G estimation time: 6.42s
+Error processing LCID/LCID_2024-10-09.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-20.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.302, 3989879263.7999997
+G estimation time: 8.20s
+Error processing LCID/LCID_2024-08-20.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-14.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.169, 3376231163.6
+G estimation time: 7.99s
+Error processing LCID/LCID_2024-10-14.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-07-30.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.266, 1749807630.9999998
+G estimation time: 11.60s
+Error processing LCID/LCID_2024-07-30.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-22.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.311, 2061900004.1000001
+G estimation time: 25.55s
+Error processing LCID/LCID_2024-08-22.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-08.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.303, 3345129628.3
+G estimation time: 9.96s
+Error processing LCID/LCID_2024-08-08.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-13.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.225, 2944104259.6
+G estimation time: 12.40s
+Error processing LCID/LCID_2024-09-13.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-27.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.202, 2747496416.7
+G estimation time: 23.01s
+Error processing LCID/LCID_2024-09-27.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-04.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.293, 3103121305.2999997
+G estimation time: 15.50s
+Error processing LCID/LCID_2024-10-04.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-26.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.241, 2277197155.9
+G estimation time: 31.10s
+Error processing LCID/LCID_2024-08-26.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-08.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.28, 2829424493.7
+G estimation time: 7.04s
+Error processing LCID/LCID_2024-10-08.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-09.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.186, 1782027255.7
+G estimation time: 13.81s
+Error processing LCID/LCID_2024-09-09.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-05.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.17, 2505705136.5
+G estimation time: 14.22s
+Error processing LCID/LCID_2024-08-05.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-08-14.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.189, 2871272407.2000003
+G estimation time: 9.09s
+Error processing LCID/LCID_2024-08-14.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-30.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 0.156, 3228977774.7000003
+G estimation time: 16.16s
+Error processing LCID/LCID_2024-09-30.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-03.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.186, 2839765764.2000003
+G estimation time: 9.84s
+Error processing LCID/LCID_2024-10-03.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-19.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.205, 2297219714.4
+G estimation time: 14.03s
+Error processing LCID/LCID_2024-09-19.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-15.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.247, 4208183068.5
+G estimation time: 8.08s
+Error processing LCID/LCID_2024-10-15.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-10-21.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.214, 1820586277.2
+G estimation time: 12.16s
+Error processing LCID/LCID_2024-10-21.parquet: name 'timeout' is not defined
+
+LCID/LCID_2024-09-26.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.162, 1912752581.8
+G estimation time: 13.34s
+Error processing LCID/LCID_2024-09-26.parquet: name 'timeout' is not defined
