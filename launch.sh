@@ -1,10 +1,6 @@
 pip install uv
 
 
-export UV_LINK_MODE=symlink
-source ~/.zshrc
-echo $UV_LINK_MODE
-
 
 uv venv
 source .venv/bin/activate
