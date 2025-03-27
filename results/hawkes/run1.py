@@ -35,6 +35,8 @@ with open("results/hawkes/runinfo.txt", "w") as log_file:
               "PTON", "VLY", "VOD", "CSX", "WB", "BGC", "GRAB", "KHC", "HLMN", "IEP",
               "GBDC", "WBD", "PSNY", "NTAP", "GEO", "LCID", "GCMG", "CXW", "RIOT", "HL",
               "CX", "ERIC", "UA"]
+    
+    stocks = ["UA"]
 
     for stock in tqdm(stocks, desc="Processing stocks"):
         data_path = f"{os.getenv('FOLDER_PATH')}/data/hawkes_dataset/{stock}"
@@ -53,8 +55,9 @@ with open("results/hawkes/runinfo.txt", "w") as log_file:
                 
                 # Get min and max time deltas
                 df = df.with_columns(pl.col("ts_event").diff().alias("delta_t"))
-                T_min = df["delta_t"].cast(pl.Duration).dt.seconds()
-                T_max = df["delta_t"].cast(pl.Duration).dt.seconds() * 100
+                delta_t_ns = df["delta_t"].cast(pl.Int64)  # Get nanoseconds
+                T_min = float(delta_t_ns.min()) / 1e9  # Convert to seconds
+                T_max = float(delta_t_ns.max()) / 1e9 * 100
                 
                 # Create custom time grid with linear and log spacing
                 t_linear = np.linspace(T_min, T_max/100, 50)  # First half linear

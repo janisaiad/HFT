@@ -431,7 +431,7 @@ class Hawkes: # N dimensionnal hawkes process
         print(f"Conditionnement du système: {cond_number}")
         
         # Si le conditionnement est trop élevé, utiliser une méthode régularisée
-        if cond_number > 1e4:
+        if cond_number > 1e8:
             print("Système mal conditionné. Utilisation de la régularisation de Tikhonov.")
             # Paramètre de régularisation
             alpha = 1e-6
