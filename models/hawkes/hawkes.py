@@ -11,7 +11,7 @@ class Hawkes: # N dimensionnal hawkes process
         # psi returns a N dimensionnal vector
         # mu is a N dimensionnal vector
         self.dim = N
-        self.phi = phi
+        self.phi = phi 
         self.psi = psi
         self.mu = mu
         self.list_of_events = [[] for _ in range(N)] # matrix of time events, of size N x T
@@ -21,12 +21,12 @@ class Hawkes: # N dimensionnal hawkes process
     def add_event(self, event: float, dimension: int):
         self.list_of_events[dimension].append(event)
     
-    
     def get_intensity(self, t: float) -> np.ndarray: # returns a vector of intensities
-        return self.mu + sum(self.psi(t - event) for event in self.list_of_events)
-    
-    
-    
+        intensity = self.mu.copy()
+        for dim in range(self.dim):
+            for event in self.list_of_events[dim]:
+                intensity += self.phi(t - event)[:, dim]  # phi returns a matrix, take column dim
+        return intensity
     
     
     
