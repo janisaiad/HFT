@@ -399,6 +399,9 @@ class Hawkes: # N dimensionnal hawkes process
         
         return A, b
 
+
+
+
     def solve_phi_from_wiener_hopf(self, g_results=None):
         """
         Résout le système linéaire issu de l'équation de Wiener-Hopf pour obtenir φ˜
@@ -417,7 +420,7 @@ class Hawkes: # N dimensionnal hawkes process
         print(f"Conditionnement du système: {cond_number}")
         
         # Si le conditionnement est trop élevé, utiliser une méthode régularisée
-        if cond_number > 1e10:
+        if cond_number > 1e4:
             print("Système mal conditionné. Utilisation de la régularisation de Tikhonov.")
             # Paramètre de régularisation
             alpha = 1e-6
