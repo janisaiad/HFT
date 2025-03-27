@@ -152,22 +152,22 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     
+    
+    
     # application of convolution product to phi & psi
-    def get_psi_matrix(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
-        psi_matrix = np.zeros((self.dim, self.dim))
-        for i in range(self.dim):
-            for j in range(self.dim):
-                psi_matrix[i,j] = self.convolution_product(self.phi, t, i, j)
-        return psi_matrix
     
-    
-    
+    def get_psi_function(self) -> callable: # this is the sum of all the convolution product of phi with itself
+        self.psi_function = self.convolution_product_matrix(self.psi)
+        return self.psi_function
+
+    def get_psi(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
+        if self.psi_function is None:
+            self.get_psi_function() 
+        return self.psi_function(t)
     
     
     def nu(self, t: float) -> float: # infinitesimal covariance matrix
-        
-        
-        
+            
         return
         
    
