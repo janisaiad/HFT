@@ -227,11 +227,12 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     # we should compute some g integrals
-    def get_g_from_parquet(self,df: pl.DataFrame) -> np.ndarray: # we estimate g in the time grid 
+    def get_g_from_parquet(self,df: pl.DataFrame,threshold: int = 1000) -> np.ndarray: # we estimate g in the time grid 
         # pour chaque colonne on regarde les temps d'arrivée
         df = df.with_columns(
         pl.col("ts_event").cast(pl.Datetime).alias("timestamp")
 )
+        df = df.slice(0, threshold)
         pdf = df.to_pandas()
         pdf["timestamp"] = pd.to_datetime(pdf["timestamp"])
         
@@ -449,7 +450,7 @@ class Hawkes: # N dimensionnal hawkes process
         for i in range(D):
             for j in range(D):
                 for k in range(K):
-                    idx = i * D * K + j * K + k
+                    idx = i * D * D + j * K + k
                     phi_values[i, j, k] = x[idx]
         
         # Créer une fonction φ˜ interpolée
@@ -513,8 +514,8 @@ class Hawkes: # N dimensionnal hawkes process
         K = self.stepsize
         D = self.dim
         
-        system = np.zeros((D*K*K, D*K*K)) # we have D*K*K equations
-        vector = np.zeros(D*K*K) # we have D*K*K unknowns
+        system = np.zeros((D*D*K, D*D*K)) # we have D*K*K equations
+        vector = np.zeros(D*D*K) # we have D*K*K unknowns
         
         # for each quadrature point and each dimension
         for n in range(K):

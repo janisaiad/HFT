@@ -27,7 +27,7 @@ os.makedirs("results/hawkes/plots", exist_ok=True)
 os.makedirs("results/hawkes/phi_values", exist_ok=True)
 
 # Open log file
-with open("results/hawkes/runinfo.txt", "w") as log_file:
+with open("results/hawkes/runinfo.txt", "a") as log_file:
     log_file.write(f"Run started at {datetime.now()}\n\n")
 
     # Process each stock
@@ -49,6 +49,7 @@ with open("results/hawkes/runinfo.txt", "w") as log_file:
                 # Read data
                 start_read = time.time()
                 df = pl.read_parquet(f"{data_path}/{file}")
+                
                 read_time = time.time() - start_read
                 log_file.write(f"\n{stock}/{file}:\n")
                 log_file.write(f"Data reading time: {read_time:.2f}s\n")
@@ -69,31 +70,44 @@ with open("results/hawkes/runinfo.txt", "w") as log_file:
                 hawkes.t_grid = t_grid  # Override default grid
                 
                 # Estimate g and solve Wiener-Hopf
+                print("Estimating g...")
                 start_g = time.time()
                 g_results = hawkes.get_g_from_parquet(df)
                 g_time = time.time() - start_g
                 log_file.write(f"G estimation time: {g_time:.2f}s\n")
                 
+                print("Solving phi...")
                 start_phi = time.time()
                 phi_values = hawkes.solve_phi_from_wiener_hopf(g_results)
                 phi_time = time.time() - start_phi
                 log_file.write(f"Phi estimation time: {phi_time:.2f}s\n")
                 
                 # Save phi values
+                print("Saving phi values...")
                 date = file.split(".")[0]
                 np.save(f"results/hawkes/phi_values/{stock}_{date}_phi.npy", phi_values)
                 
                 # Plot phi matrix
-                start_plot = time.time()
+                print("Plotting phi matrix...")
+                
+                # Create figure and axes grid
                 fig, axes = plt.subplots(N, N, figsize=(20, 20))
-                fig.suptitle(f"{stock} - {date} - Kernel Functions")
                 
                 event_types = ["P(a)", "P(b)", "T(a)", "T(b)", "L(a)", "L(b)", "C(a)", "C(b)"]
                 
+                # Get time points from quadrature scheme
+                t_points = hawkes.quadrature_points
+                
                 for i in range(N):
                     for j in range(N):
+                        start_plot = time.time()
+                        fig.suptitle(f"{stock} - {date} - Kernel Functions")
                         ax = axes[i,j]
-                        ax.plot(t_grid, phi_values[i,j,:])
+                        
+                        # Plot phi values at quadrature points
+                        phi_at_points = np.array([hawkes.phi(t)[i,j] for t in t_points])
+                        ax.plot(t_points, phi_at_points, 'o-')
+                        
                         if i == N-1:
                             ax.set_xlabel("Time")
                         if j == 0:
