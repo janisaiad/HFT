@@ -130,3 +130,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Supervisors: Mathieu Rosenbaum and Charles-Albert Lehalle
 - Data provider: Databento
 - Contributors and collaborators
+
+
+
+Useful tools : 
+git-filter-repo : https://github.com/newren/git-filter-repo
+nbstripout : https://github.com/kynan/nbstripout
+nbconvert : https://nbconvert.readthedocs.io/en/latest/
