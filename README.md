@@ -142,3 +142,4 @@ nbconvert : https://nbconvert.readthedocs.io/en/latest/
 refaire des vizs de chaque stocks
 
 ajouter cupy-cuda12x
+aussi faire des plots de la distribution des inter arrivées etc ..

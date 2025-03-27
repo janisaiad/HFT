@@ -1,5 +1,5 @@
 import os
-import numpy as np
+import cupy as cp
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 import polars as pl
@@ -13,14 +13,14 @@ dotenv.load_dotenv()
 
 # Set up parameters
 N = 8  # 8 event types
-mu = np.array([0.1] * N)  # Base intensities
+mu = cp.array([0.1] * N)  # Base intensities
 K = 100  # Total grid points (50 linear + 50 log)
 
 def phi(t):  # Initial kernel function
-    return np.array([[0.1 * np.exp(-t)] * N] * N)
+    return cp.array([[0.1 * cp.exp(-t)] * N] * N)
 
 def psi(t):  # Initial response function
-    return np.array([0.1 * np.exp(-t)] * N)
+    return cp.array([0.1 * cp.exp(-t)] * N)
 
 # Create output directories
 os.makedirs("results/hawkes/plots", exist_ok=True) 
@@ -66,9 +66,9 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
                 
                 # Create custom time grid with linear and log spacing
                 K=100
-                t_linear = np.linspace(T_min, T_max/100, K//2)  # First half linear
-                t_log = np.logspace(np.log10(T_max/100), np.log10(T_max), K//2)  # Second half log
-                t_grid = np.concatenate([t_linear, t_log])
+                t_linear = cp.linspace(T_min, T_max/100, K//2)  # First half linear
+                t_log = cp.logspace(cp.log10(T_max/100), cp.log10(T_max), K//2)  # Second half log
+                t_grid = cp.concatenate([t_linear, t_log])
                 
                 # Initialize Hawkes model with custom grid
                 hawkes = Hawkes(phi=phi, psi=psi, mu=mu, N=N, stepsize=K)
@@ -78,9 +78,11 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
                 print("Estimating g...")
                 start_g = time.time()
                 g_results = hawkes.get_g_from_parquet(df)
+                print(g_results)
                 # g_results is a dict of numpy arrays
                 for key, value in g_results.items():
-                    np.save(f"results/hawkes/g_values/{stock}_{date}_{key}.npy", value)
+                    print(type(value))
+                    cp.save(f"/ome/janis/HFT/HFT/results/hawkes/g_values/{stock}_{date}_{key}.npy", value)
                 g_time = time.time() - start_g
                 log_file.write(f"G estimation time: {g_time:.2f}s\n")
                 
@@ -100,7 +102,7 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
                 print("Saving phi values...")
                 date = file.split(".")[0]
                 if phi_values is not None:
-                    np.save(f"results/hawkes/phi_values/{stock}_{date}_phi.npy", phi_values)
+                    cp.save(f"results/hawkes/phi_values/{stock}_{date}_phi.npy", phi_values)
                 
                 # Plot phi matrix
                 print("Plotting phi matrix...")

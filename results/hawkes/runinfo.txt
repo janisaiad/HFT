@@ -1,0 +1,438 @@
+Run started at 2025-03-27 17:57:08.402171
+
+
+UA/UA_2024-06-26_dbeq-basic.parquet:
+Data reading time: 0.02s
+Tmin, Tmax: 3.974, 58114396456.6
+Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.275, 68708772242.200005
+Error processing UA/UA_2024-09-12_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-30_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 4.673, 60713685756.299995
+Error processing UA/UA_2024-08-30_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-01_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.418, 86895313717.6
+Error processing UA/UA_2024-07-01_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.435, 51298856787.4
+Error processing UA/UA_2024-08-19_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.345, 70340558492.40001
+Error processing UA/UA_2024-09-23_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-13_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 25.567, 107968171163.00002
+Error processing UA/UA_2024-08-13_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.246, 65983448855.200005
+Error processing UA/UA_2024-08-09_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-10_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.361, 33590948445.7
+Error processing UA/UA_2024-09-10_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-11_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.187, 85655042173.0
+Error processing UA/UA_2024-07-11_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-29_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.674, 41931209738.8
+Error processing UA/UA_2024-08-29_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-28_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.01, 46812573072.299995
+Error processing UA/UA_2024-08-28_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-22_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.382, 96403257396.7
+Error processing UA/UA_2024-08-22_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-20_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 47.313, 77877216006.2
+Error processing UA/UA_2024-08-20_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-31_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 2.4, 161655710815.9
+Error processing UA/UA_2024-07-31_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-27_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.484, 49529042698.5
+Error processing UA/UA_2024-08-27_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-06-28_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 3.153, 82962093762.1
+Error processing UA/UA_2024-06-28_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.795, 221616495074.7
+Error processing UA/UA_2024-07-19_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-25_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.782, 72565679137.0
+Error processing UA/UA_2024-07-25_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 3.691, 69403940132.7
+Error processing UA/UA_2024-08-05_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 5.881, 112927608357.8
+Error processing UA/UA_2024-07-09_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.431, 77294444576.2
+Error processing UA/UA_2024-08-06_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-17_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.656, 48748440845.0
+Error processing UA/UA_2024-09-17_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-04_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.446, 66330497719.4
+Error processing UA/UA_2024-09-04_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-06-25_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 5.775, 65935930464.100006
+Error processing UA/UA_2024-06-25_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-06_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.036, 88601053798.7
+Error processing UA/UA_2024-09-06_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-15_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.186, 70186199993.4
+Error processing UA/UA_2024-07-15_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-05_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 47.775, 105206469980.3
+Error processing UA/UA_2024-07-05_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-20_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.42, 34179007445.5
+Error processing UA/UA_2024-09-20_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-17_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.067, 71955601918.7
+Error processing UA/UA_2024-07-17_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.458, 37770465571.7
+Error processing UA/UA_2024-08-16_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.512, 84778702142.6
+Error processing UA/UA_2024-07-23_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-18_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 4.762, 44738978940.8
+Error processing UA/UA_2024-09-18_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-29_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 18.961, 78061832488.6
+Error processing UA/UA_2024-07-29_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-05_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 2.619, 65136801732.00001
+Error processing UA/UA_2024-09-05_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-14_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 4.787, 55008839495.50001
+Error processing UA/UA_2024-08-14_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-23_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 29.825, 81118929758.4
+Error processing UA/UA_2024-08-23_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-10_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.24, 151595535528.9
+Error processing UA/UA_2024-07-10_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.528, 68900642643.6
+Error processing UA/UA_2024-07-12_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.004, 47969363842.4
+Error processing UA/UA_2024-08-12_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-11_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.448, 30758040157.5
+Error processing UA/UA_2024-09-11_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-08_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.39, 39779047453.5
+Error processing UA/UA_2024-08-08_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-06-24_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 32.877, 77455905053.8
+Error processing UA/UA_2024-06-24_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-02_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 5.646, 75331792127.40001
+Error processing UA/UA_2024-08-02_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.613, 30292238935.7
+Error processing UA/UA_2024-09-09_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-02_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 23.582, 238510897252.5
+Error processing UA/UA_2024-07-02_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-21_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.908, 71240584729.40001
+Error processing UA/UA_2024-08-21_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-19_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.426, 30407947466.9
+Error processing UA/UA_2024-09-19_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.443, 34503922704.5
+Error processing UA/UA_2024-09-16_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-03_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.329, 81858681201.3
+Error processing UA/UA_2024-07-03_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-16_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.778, 76571301038.8
+Error processing UA/UA_2024-07-16_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-03_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.718, 58126128015.6
+Error processing UA/UA_2024-09-03_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-18_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 8.663, 146216657625.2
+Error processing UA/UA_2024-07-18_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-15_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 7.232, 50054512367.0
+Error processing UA/UA_2024-08-15_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-06-27_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 1.475, 101471542682.4
+Error processing UA/UA_2024-06-27_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-08_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.385, 121305015075.20001
+Error processing UA/UA_2024-07-08_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-24_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 12.824, 89323226569.9
+Error processing UA/UA_2024-07-24_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-26_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 3.465, 39653270721.3
+Error processing UA/UA_2024-08-26_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-22_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.886, 99549032766.0
+Error processing UA/UA_2024-07-22_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-30_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 10.131, 105323948930.8
+Error processing UA/UA_2024-07-30_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-01_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 5.083, 67423968314.3
+Error processing UA/UA_2024-08-01_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-26_dbeq-basic.parquet:
+Data reading time: 0.01s
+Tmin, Tmax: 0.664, 93189700673.3
+Error processing UA/UA_2024-07-26_dbeq-basic.parquet: name 'date' is not defined
+
+Run completed at 2025-03-27 17:59:16.876046Run started at 2025-03-27 17:59:46.112654
+
+
+GOOGL/GOOGL_2024-10-10.parquet:
+Data reading time: 0.07s
+Tmin, Tmax: 0.167, 564562224.7
+Run started at 2025-03-27 18:00:55.611435
+
+
+UA/UA_2024-06-26_dbeq-basic.parquet:
+Data reading time: 0.03s
+Tmin, Tmax: 3.974, 58114396456.6
+Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.275, 68708772242.200005
+Error processing UA/UA_2024-09-12_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-30_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 4.673, 60713685756.299995
+Error processing UA/UA_2024-08-30_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-01_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.418, 86895313717.6
+Error processing UA/UA_2024-07-01_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.435, 51298856787.4
+Error processing UA/UA_2024-08-19_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.345, 70340558492.40001
+Error processing UA/UA_2024-09-23_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-13_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 25.567, 107968171163.00002
+Error processing UA/UA_2024-08-13_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.246, 65983448855.200005
+Run started at 2025-03-27 18:01:28.461345
+
+
+UA/UA_2024-06-26_dbeq-basic.parquet:
+Data reading time: 0.03s
+Tmin, Tmax: 3.974, 58114396456.6
+Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.275, 68708772242.200005
+Run started at 2025-03-27 18:03:44.585243
+
+
+UA/UA_2024-06-26_dbeq-basic.parquet:
+Data reading time: 0.03s
+Tmin, Tmax: 3.974, 58114396456.6
+Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.275, 68708772242.200005
+Error processing UA/UA_2024-09-12_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-30_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 4.673, 60713685756.299995
+Error processing UA/UA_2024-08-30_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-01_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.418, 86895313717.6
+Error processing UA/UA_2024-07-01_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-19_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.435, 51298856787.4
+Error processing UA/UA_2024-08-19_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-23_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.345, 70340558492.40001
+Error processing UA/UA_2024-09-23_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-13_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 25.567, 107968171163.00002
+Error processing UA/UA_2024-08-13_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-09_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.246, 65983448855.200005
+Error processing UA/UA_2024-08-09_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-10_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 0.361, 33590948445.7
+Error processing UA/UA_2024-09-10_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-07-11_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 2.187, 85655042173.0
+Run started at 2025-03-27 18:04:20.722615
+
+
+UA/UA_2024-06-26_dbeq-basic.parquet:
+Data reading time: 0.03s
+Tmin, Tmax: 3.974, 58114396456.6
+Error processing UA/UA_2024-06-26_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-09-12_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 1.275, 68708772242.200005
+Error processing UA/UA_2024-09-12_dbeq-basic.parquet: name 'date' is not defined
+
+UA/UA_2024-08-30_dbeq-basic.parquet:
+Data reading time: 0.00s
+Tmin, Tmax: 4.673, 60713685756.299995
