@@ -1,5 +1,6 @@
 import pytest
 import numpy as np
+import polars as pl
 from hft.models.hawkes import Hawkes
 
 def test_hawkes_initialization():
@@ -98,3 +99,54 @@ def test_convolution_product():
     conv_result2 = hawkes.get_convolution_product_matrix(t)
     assert np.array_equal(conv_result1, conv_result2)
     assert conv_result1.shape == (N, N)
+    
+    
+def test_parquet_reading_and_wiener_hopf():
+    
+    N = 8  # 8 event types for market data
+    mu = np.array([0.1] * N)  # Base intensities
+    
+    def phi(t):  # Placeholder kernel function
+        return np.array([[0.1 * np.exp(-t)] * N] * N)
+    
+    def psi(t):  # Placeholder response function 
+        return np.array([0.1 * np.exp(-t)] * N)
+    
+    hawkes = Hawkes(phi=phi, psi=psi, mu=mu, N=N, stepsize=100)
+    
+    # Test parquet reading
+    df = hawkes.get_parquet("data/DB_MBP_10/data/hawkes_dataset/GBDC/GBDC_2023-07-17.parquet")
+    assert isinstance(df, pl.DataFrame)
+    
+    # Test g estimation
+    g_results = hawkes.get_g_from_parquet(df)
+    assert isinstance(g_results, dict)
+    assert "g_estimates" in g_results
+    assert "g_integrals" in g_results
+    assert "ug_integrals" in g_results
+    assert "t_grid" in g_results
+    assert "lambda_i" in g_results
+    
+    # Check dimensions
+    assert g_results["g_estimates"].shape == (N, N, hawkes.stepsize)
+    assert g_results["g_integrals"].shape == (N, N, hawkes.stepsize)
+    assert g_results["ug_integrals"].shape == (N, N, hawkes.stepsize)
+    assert len(g_results["t_grid"]) == hawkes.stepsize
+    assert len(g_results["lambda_i"]) == N
+    
+    # Test Wiener-Hopf system construction
+    A, b = hawkes.compute_wiener_hopf_linear_kernel(g_results)
+    expected_size = N * N * hawkes.stepsize
+    assert A.shape == (expected_size, expected_size)
+    assert b.shape == (expected_size,)
+    
+    # Test phi estimation
+    phi_values = hawkes.solve_phi_from_wiener_hopf(g_results)
+    assert phi_values.shape == (N, N, hawkes.stepsize)
+    assert np.all(np.isfinite(phi_values))  # Check no NaN or inf values
+    
+    # Test reconstructed kernel function
+    t_test = 0.5
+    phi_t = hawkes.phi(t_test)
+    assert phi_t.shape == (N, N)
+    assert np.all(np.isfinite(phi_t))

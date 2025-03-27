@@ -228,7 +228,6 @@ class Hawkes: # N dimensionnal hawkes process
     
     # we should compute some g integrals
     def get_g_from_parquet(self,df: pl.DataFrame) -> np.ndarray: # we estimate g in the time grid 
-        df = df.filter(pl.col("event_type").is_in(["P(a)","P(b)","T(a)","T(b)","L(a)","L(b)"]))
         # pour chaque colonne on regarde les temps d'arrivée
         df = df.with_columns(
         pl.col("ts_event").cast(pl.Datetime).alias("timestamp")
@@ -239,17 +238,24 @@ class Hawkes: # N dimensionnal hawkes process
         # Définir le temps de référence
         t0 = pdf["timestamp"].min()
         pdf["time_microseconds"] = (pdf["timestamp"] - t0).dt.total_seconds()*1000000
-            
-        # Mapper les types d'événements aux indices
+        # Define event types and create event_type column based on which column changed
         event_types = ["P_a", "P_b", "T_a", "T_b", "L_a", "L_b", "C_a", "C_b"]
         event_to_idx = {evt: i for i, evt in enumerate(event_types)}
-        self.dim = len(event_types)  # Mettre à jour la dimension
+        self.dim = len(event_types)
         
-        # Séparer les événements par type
-        events_by_type = [pdf[pdf["event_type"] == evt]["time_seconds"].values for evt in event_types]
+        # Create event_type column by checking which column had a change
+        def determine_event_type(row):
+            for evt in event_types:
+                if pd.notna(row[evt]):
+                    return event_to_idx[evt]
+            return None
+            
+        pdf["event_type"] = pdf.apply(determine_event_type, axis=1)
         
+        # Group events by type
+        events_by_type = [pdf[pdf["event_type"] == i]["time_microseconds"].values for i in range(self.dim)]
         # Calculer les intensités de base (Lambda^i)
-        total_duration = pdf["time_seconds"].max() - pdf["time_seconds"].min()
+        total_duration = pdf["time_microseconds"].max() - pdf["time_microseconds"].min()
         lambda_i = np.array([len(events) / total_duration for events in events_by_type])
         
         max_lag = 300 # Tmax
@@ -273,7 +279,8 @@ class Hawkes: # N dimensionnal hawkes process
                     continue
                 
                 # Histogramme des délais entre événements j et i
-                counts = np.zeros(n_bins)
+                # Attention: pour n_bins points sur la grille, il y a n_bins+1 délimiteurs de bins
+                counts = np.zeros(n_bins)  # devrait être de taille n_bins
                 total_j_events = 0
                 
                 for t_j in j_events:
@@ -283,7 +290,11 @@ class Hawkes: # N dimensionnal hawkes process
                     
                     if len(deltas) > 0:
                         # Calculer l'histogramme des délais
-                        hist, _ = np.histogram(deltas, bins=t_grid)
+                        # Les bins doivent être spécifiés comme un tableau de taille n_bins+1
+                        bin_edges = np.linspace(0, max_lag, n_bins + 1)  # n_bins+1 points pour n_bins intervalles
+                        hist, _ = np.histogram(deltas, bins=bin_edges)
+                        
+                        # Maintenant hist et counts ont la même taille (n_bins)
                         counts += hist
                         total_j_events += 1
                 
@@ -413,7 +424,7 @@ class Hawkes: # N dimensionnal hawkes process
             Une matrice 3D de taille (D, D, K) contenant les valeurs de φ˜_ij(t_k)
         """
         # Construire le système
-        A, b = self.get_system_from_wiener_hopf(g_results)
+        A, b = self.compute_wiener_hopf_linear_kernel(g_results)
         
         # Vérifier le conditionnement du système
         cond_number = np.linalg.cond(A)
