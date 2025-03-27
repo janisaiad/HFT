@@ -15,6 +15,9 @@ class Hawkes: # N dimensionnal hawkes process
         self.psi = psi
         self.convolution_threshold = 10 # number of time we convolve phi with itself
         self.mu = mu
+        self.sigma = None
+        self.nu = None
+        self.mean_vector = None
         self.l1_norm_phi = None
         self.list_of_events = [[] for _ in range(N)] # matrix of time events, of size N x T
         
@@ -87,13 +90,14 @@ class Hawkes: # N dimensionnal hawkes process
     
     # here we compute the equation (4) of the pape Bacry et al
     def get_average_intensity(self, t: float) -> float:
-        mean_vector = np.zeros(self.dim)
-        I = np.eye(self.dim)
-        if self.l1_norm_phi is None:
-            l1_matrix = self.get_l1_norm_phi()
-            mean_vector = np.linalg.inv(I - l1_matrix) @ self.mu 
-            return mean_vector
-        return np.linalg.inv(I - self.l1_norm_phi) @ self.mu
+        if self.mean_vector is None:
+            mean_vector = np.zeros(self.dim)
+            I = np.eye(self.dim)
+            if self.l1_norm_phi is None:
+                l1_matrix = self.get_l1_norm_phi()
+                mean_vector = np.linalg.inv(I - l1_matrix) @ self.mu 
+            self.mean_vector = mean_vector
+        return self.mean_vector
     
     
     
@@ -120,6 +124,8 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     
+    def convolve_functions(self, function1: callable, function2: callable) -> callable:
+        return lambda t: quad(lambda tau: function1(t - tau) * function2(tau), 0, t)[0]
     
     def get_convolution_product(self, t: float) -> np.ndarray: # this is the sum of all the convolution product of phi with itself
         return self.convolution_product_matrix(self.phi)(t)
@@ -166,10 +172,23 @@ class Hawkes: # N dimensionnal hawkes process
         return self.psi_function(t)
     
     
-    def nu(self, t: float) -> float: # infinitesimal covariance matrix
-            
-        return
-        
+    
+    
+    def get_sigma(self, t: float) -> np.ndarray: # matrix whose diagonal entries are the average intensity and the off-diagonal entries are the average intensity of the other dimensions
+        mean_vector = self.get_average_intensity(t) # it is a vector, we need to make it a diagonal matrix
+        mean_vector_matrix = np.diag(mean_vector)
+        sigma = mean_vector_matrix
+        return sigma
+    
+    def get_sigma_function(self) -> callable:
+        return lambda t: self.get_sigma(t)
+    
+    
+    # this is according to the formula (5) of Bacry et al
+    def nu(self, t: float) -> float:
+        sigma_function = self.get_sigma_function()
+        psi_function = self.get_psi_function()
+        return self.convolve_functions(psi_function, lambda u: psi_function(u).T)(t) + sigma_function(t)@psi_function(t).T+psi_function(t)@sigma_function(t)+ sigma_function(t)
    
    
    
