@@ -1,1 +1,2 @@
-from hft.models import QR
+from hft.models import hawkes
+
