@@ -137,3 +137,8 @@ Useful tools :
 git-filter-repo : https://github.com/newren/git-filter-repo
 nbstripout : https://github.com/kynan/nbstripout
 nbconvert : https://nbconvert.readthedocs.io/en/latest/
+
+
+refaire des vizs de chaque stocks
+
+ajouter cupy-cuda12x

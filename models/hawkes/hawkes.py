@@ -5,6 +5,9 @@ import polars as pl
 import pandas as pd
 from scipy.integrate import quad
 import cupy as cp
+from tqdm import tqdm
+
+
 
 class Hawkes: # N dimensionnal hawkes process
     def __init__(self, phi: callable, psi: callable, mu: float, N: int, stepsize: int = 10):
@@ -233,7 +236,7 @@ class Hawkes: # N dimensionnal hawkes process
         df = df.with_columns(
         pl.col("ts_event").cast(pl.Datetime).alias("timestamp")
 )
-        df = df.slice(0, threshold)
+        # df = df.slice(0, threshold)
         pdf = df.to_pandas()
         pdf["timestamp"] = pd.to_datetime(pdf["timestamp"])
         
@@ -271,10 +274,10 @@ class Hawkes: # N dimensionnal hawkes process
         
             
         # Pour chaque paire de types d'événements (i,j)
-        for j in range(self.dim):
+        for j in tqdm(range(self.dim), desc="Computing g_estimates"):
             j_events = events_by_type[j]
             
-            for i in range(self.dim):
+            for i in tqdm(range(self.dim), desc="Computing g_estimates"):
                 i_events = events_by_type[i]
                 
                 if len(j_events) == 0 or len(i_events) == 0:

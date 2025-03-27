@@ -6,8 +6,10 @@ import polars as pl
 import dotenv
 from tqdm import tqdm
 import plotly.graph_objects as go
-FOLDER_PATH = os.getenv("FOLDER_PATH")
 
+
+FOLDER_PATH = os.getenv("FOLDER_PATH")
+print(FOLDER_PATH)
 
 dotenv.load_dotenv()
 

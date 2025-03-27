@@ -56,13 +56,18 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
                 
                 # Get min and max time deltas
                 df = df.with_columns(pl.col("ts_event").diff().alias("delta_t"))
+                df = df.filter(pl.col("delta_t") != 0)
                 delta_t_ns = df["delta_t"].cast(pl.Int64)  # Get nanoseconds
-                T_min = float(delta_t_ns.min()) / 1e9  # Convert to seconds
-                T_max = float(delta_t_ns.max()) / 1e9 * 100
+                
+                T_min = float(delta_t_ns.min()) / 1e3  # Convert to micro
+                T_max = float(delta_t_ns.max()) / 1e3 * 100
+                log_file.write(f"Tmin, Tmax: {T_min}, {T_max}\n")
+                print("Tmin, Tmax", T_min, T_max)
                 
                 # Create custom time grid with linear and log spacing
-                t_linear = np.linspace(T_min, T_max/100, 50)  # First half linear
-                t_log = np.logspace(np.log10(T_max/100), np.log10(T_max), 50)  # Second half log
+                K=100
+                t_linear = np.linspace(T_min, T_max/100, K//2)  # First half linear
+                t_log = np.logspace(np.log10(T_max/100), np.log10(T_max), K//2)  # Second half log
                 t_grid = np.concatenate([t_linear, t_log])
                 
                 # Initialize Hawkes model with custom grid
@@ -73,19 +78,29 @@ with open("results/hawkes/runinfo.txt", "a") as log_file:
                 print("Estimating g...")
                 start_g = time.time()
                 g_results = hawkes.get_g_from_parquet(df)
+                # g_results is a dict of numpy arrays
+                for key, value in g_results.items():
+                    np.save(f"results/hawkes/g_values/{stock}_{date}_{key}.npy", value)
                 g_time = time.time() - start_g
                 log_file.write(f"G estimation time: {g_time:.2f}s\n")
                 
                 print("Solving phi...")
                 start_phi = time.time()
-                phi_values = hawkes.solve_phi_from_wiener_hopf(g_results)
+                try:
+                    with timeout(5):  # 5 second timeout
+                        phi_values = hawkes.solve_phi_from_wiener_hopf(g_results)
+                except TimeoutError:
+                    print("Phi estimation timed out after 5 seconds")
+                    log_file.write("Phi estimation timed out after 5 seconds\n")
+                    phi_values = None
                 phi_time = time.time() - start_phi
                 log_file.write(f"Phi estimation time: {phi_time:.2f}s\n")
                 
                 # Save phi values
                 print("Saving phi values...")
                 date = file.split(".")[0]
-                np.save(f"results/hawkes/phi_values/{stock}_{date}_phi.npy", phi_values)
+                if phi_values is not None:
+                    np.save(f"results/hawkes/phi_values/{stock}_{date}_phi.npy", phi_values)
                 
                 # Plot phi matrix
                 print("Plotting phi matrix...")
