@@ -84,17 +84,19 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     
+    # here we compute the equation (4) of the pape Bacry et al
     def get_average_intensity(self, t: float) -> float:
         mean_vector = np.zeros(self.dim)
+        I = np.eye(self.dim)
         if self.l1_norm_phi is None:
-            # Get L1 norm matrix
             l1_matrix = self.get_l1_norm_phi()
-            # Calculate (I-L)^-1 * mu
-            I = np.eye(self.dim)  # Identity matrix
-            mean_vector = np.linalg.inv(I - l1_matrix) @ self.mu  # Matrix multiplication with inverse
+            mean_vector = np.linalg.inv(I - l1_matrix) @ self.mu 
             return mean_vector
-        
-        return (np.eye(self.dim) - self.l1_norm_phi) ** -1 @ self.mu
+        return np.linalg.inv(I - self.l1_norm_phi) @ self.mu
+    
+    
+    
+    
     
     
    
