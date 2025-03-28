@@ -40,7 +40,7 @@ for stock in tqdm(list(LIST_STOCKS_SIZE.keys())):
     parquet_files = [f for f in os.listdir(f"{FOLDER_PATH}{stock}") if f.endswith('.parquet')]
     parquet_files.sort()
     print(len(parquet_files),"\n",parquet_files)
-    threshold = len(parquet_files)//4
+    threshold = len(parquet_files)//2
     parquet_files = parquet_files[:threshold]
     # Read and concatenate all parquet files
     df = pl.concat([
