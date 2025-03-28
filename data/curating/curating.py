@@ -42,18 +42,28 @@ def curate_mid_price(df,stock):
     else:
         df = df.filter(
             (
-                (pl.col("ts_event").dt.hour() == 9) & (pl.col("ts_event").dt.minute() >= 30) |
-                (pl.col("ts_event").dt.hour() > 9) & (pl.col("ts_event").dt.hour() < 16) |
-                (pl.col("ts_event").dt.hour() == 16) & (pl.col("ts_event").dt.minute() == 0)
+                (pl.col("ts_event").dt.hour() == 9) & (pl.col("ts_event").dt.minute() >= 35) |
+                (pl.col("ts_event").dt.hour() > 9) & (pl.col("ts_event").dt.hour() < 16)
             )
         )
     
+    # Remove the first row at 9:30
+    df = df.with_row_index("index").filter(
+        ~((pl.col("ts_event").dt.hour() == 9) & 
+          (pl.col("ts_event").dt.minute() == 30) & 
+          (pl.col("index") == df.filter(
+              (pl.col("ts_event").dt.hour() == 9) & 
+              (pl.col("ts_event").dt.minute() == 30)
+          ).with_row_index("index").select("index").min())
+        )
+    ).drop("index")
     mid_price = (df["ask_px_00"] + df["bid_px_00"]) / 2
     
     # managing nans or infs, preceding value filling
     mid_price = mid_price.fill_nan(mid_price.shift(1))
     df = df.with_columns(mid_price=mid_price)
-
+    # sort by ts_event
+    df = df.sort("ts_event")
     return df
 
 
