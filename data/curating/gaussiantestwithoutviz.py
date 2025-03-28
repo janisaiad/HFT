@@ -28,7 +28,7 @@ stock = "KHC"
 parquet_files = [f for f in os.listdir(f"{FOLDER_PATH}{stock}") if f.endswith('.parquet')]
 parquet_files.sort()
 print(len(parquet_files),"\n",parquet_files)
-threshold = len(parquet_files)
+threshold = len(parquet_files)//4
 parquet_files = parquet_files[:threshold]
 # Read and concatenate all parquet files
 df = pl.concat([
@@ -127,20 +127,6 @@ df_4h = dfs["4h"]
 # +
 import plotly.graph_objects as go
 
-# Create plots for each time scale
-for scale in time_scales:
-    df_current = dfs[scale]
-    
-    fig = go.Figure()
-    fig.add_trace(
-        go.Scatter(x=df_current["ts_event"], y=df_current["mid_price"], name="Mid Price")
-    )
-    fig.update_layout(
-        title=f"{scale} Sampling",
-        xaxis_title="Time", 
-        yaxis_title="Mid Price"
-    )
-    fig.show()
 
 
 # +
@@ -178,7 +164,7 @@ def plot_hist_with_gaussian(data, title):
     plt.ylabel('Density')
     plt.legend()
     plt.grid(True, alpha=0.3)
-    plt.show()
+    plt.savefig(f"/home/janis/HFTP2/HFT/results/hurst/plots/{stock}_{scale}_returns_histogram.png")
 
 
 
