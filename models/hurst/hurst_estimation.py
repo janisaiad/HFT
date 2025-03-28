@@ -6,5 +6,12 @@ import scipy as sp
 
 
 
-Class 
+class HurstEstimation:
+    def __init__(self, stock: str):
+        self.stock = stock
+
+    def estimate_hurst_exponent(self):
+        pass
+
+
 
