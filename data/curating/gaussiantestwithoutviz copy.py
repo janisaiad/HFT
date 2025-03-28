@@ -35,12 +35,28 @@ LIST_STOCKS_SIZE = {"WBD": "327M", "PSNY": "312M", "NTAP": "228M", "GEO": "199M"
     "LCID": "163M", "GCMG": "160M", "CXW": "108M", "RIOT": "36M", "HL": "18M",
     "CX": "4.8M", "ERIC": "4.2M", "UA": "2.7M"
 }
+
+LIST_STOCKS_SIZE = {"NTAP": "228M", "GEO": "199M",
+    "LCID": "163M", "GCMG": "160M", "CXW": "108M", "RIOT": "36M", "HL": "18M",
+    "CX": "4.8M", "ERIC": "4.2M", "UA": "2.7M"
+}
+
+
+
+LIST_STOCKS_SIZE = {
+    "GOOGL": "5.6G", "AAPL": "3.1G", "AMZN": "3.1G", "AAL": "2.2G", "MSFT": "2.1G",
+    "GT": "2.1G", "INTC": "1.5G", "IOVA": "1.5G", "PTEN": "1.5G", "MLCO": "1.4G",
+    "PTON": "1.4G", "VLY": "1.1G", "VOD": "951M", "CSX": "619M", "WB": "591M",
+    "BGC": "591M", "GRAB": "454M", "KHC": "428M", "HLMN": "390M"
+}
+
+
 # -
-for stock in tqdm(list(LIST_STOCKS_SIZE.keys())):
+for stock in tqdm(list(LIST_STOCKS_SIZE.keys())[::-1]):
     parquet_files = [f for f in os.listdir(f"{FOLDER_PATH}{stock}") if f.endswith('.parquet')]
     parquet_files.sort()
     print(len(parquet_files),"\n",parquet_files)
-    threshold = len(parquet_files)//2
+    threshold = len(parquet_files)//3
     parquet_files = parquet_files[:threshold]
     # Read and concatenate all parquet files
     df = pl.concat([
@@ -166,7 +182,10 @@ for stock in tqdm(list(LIST_STOCKS_SIZE.keys())):
         bin_centers = (bins[:-1] + bins[1:]) / 2
         mask = (bin_centers > 0) & (counts > 0)
         if np.any(mask):
-            popt, _ = curve_fit(rational_func, bin_centers[mask], counts[mask], p0=[1, 1, 2])
+            try:
+                popt, _ = curve_fit(rational_func, bin_centers[mask], counts[mask], p0=[1, 1, 2])
+            except:
+                popt = [np.nan, np.nan, np.nan]
             x_rational = np.linspace(max(min(data_clean), 0.01), max(data_clean), 100)
             y_rational = rational_func(x_rational, *popt)
             plt.plot(x_rational, y_rational, 'k-', lw=2, label=f'Rational fit (a={popt[0]:.3f}, b={popt[1]:.3f}, c={popt[2]:.3f})')
