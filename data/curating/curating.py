@@ -22,7 +22,7 @@ FOLDER_PATH = os.getenv("FOLDER_PATH")
 
 
 dotenv.load_dotenv()
-stock = "WBD"
+stock = "UA"
 # -
 
 df = pl.read_parquet(f"{FOLDER_PATH}{stock}/{stock}_2024-07-22.parquet")
@@ -54,8 +54,6 @@ def curate_mid_price(df,stock):
     mid_price = mid_price.fill_nan(mid_price.shift(1))
     df = df.with_columns(mid_price=mid_price)
 
-    df = df.with_columns(tick_variation=pl.col("mid_price").diff())
-    df = df.with_columns(log_variation=pl.col("mid_price").log().diff())
     return df
 
 
@@ -110,46 +108,34 @@ fig.show()
 
 # -
 
-df_cleaned = df[["ts_event","mid_price","tick_variation","log_variation"]]
+df_cleaned = df[["ts_event","mid_price"]]
 
 df_cleaned.head(10)
 
 # +
 # Create different time-based resampled dataframes
 df_1s = df_cleaned.group_by(pl.col("ts_event").dt.truncate("1s")).agg([
-    pl.col("mid_price").last().alias("mid_price"),
-    pl.col("tick_variation").sum().alias("tick_variation"), 
-    pl.col("log_variation").sum().alias("log_variation")
+    pl.col("mid_price").last().alias("mid_price")
 ])
 
 df_5s = df_cleaned.group_by(pl.col("ts_event").dt.truncate("5s")).agg([
-    pl.col("mid_price").last().alias("mid_price"),
-    pl.col("tick_variation").sum().alias("tick_variation"),
-    pl.col("log_variation").sum().alias("log_variation")
+    pl.col("mid_price").last().alias("mid_price")
 ])
 
 df_20s = df_cleaned.group_by(pl.col("ts_event").dt.truncate("20s")).agg([
-    pl.col("mid_price").last().alias("mid_price"), 
-    pl.col("tick_variation").sum().alias("tick_variation"),
-    pl.col("log_variation").sum().alias("log_variation")
+    pl.col("mid_price").last().alias("mid_price")
 ])
 
 df_1min = df_cleaned.group_by(pl.col("ts_event").dt.truncate("1m")).agg([
-    pl.col("mid_price").last().alias("mid_price"),
-    pl.col("tick_variation").sum().alias("tick_variation"),
-    pl.col("log_variation").sum().alias("log_variation")
+    pl.col("mid_price").last().alias("mid_price")
 ])
 
 df_5min = df_cleaned.group_by(pl.col("ts_event").dt.truncate("5m")).agg([
-    pl.col("mid_price").last().alias("mid_price"),
-    pl.col("tick_variation").sum().alias("tick_variation"),
-    pl.col("log_variation").sum().alias("log_variation")
+    pl.col("mid_price").last().alias("mid_price")
 ])
 
 df_10min = df_cleaned.group_by(pl.col("ts_event").dt.truncate("10m")).agg([
-    pl.col("mid_price").last().alias("mid_price"),
-    pl.col("tick_variation").sum().alias("tick_variation"),
-    pl.col("log_variation").sum().alias("log_variation")
+    pl.col("mid_price").last().alias("mid_price")
 ])
 
 # Display the first few rows of each resampled dataframe
@@ -172,6 +158,24 @@ df_5s = df_5s.sort("ts_event")
 df_20s = df_20s.sort("ts_event")
 df_1min = df_1min.sort("ts_event")
 df_5min = df_5min.sort("ts_event")
+
+
+
+df_1s = df_1s.with_columns(tick_variation=pl.col("mid_price").diff())
+df_1s = df_1s.with_columns(log_variation=pl.col("mid_price").log().diff())
+
+df_5s = df_5s.with_columns(tick_variation=pl.col("mid_price").diff())
+df_5s = df_5s.with_columns(log_variation=pl.col("mid_price").log().diff())
+
+df_20s = df_20s.with_columns(tick_variation=pl.col("mid_price").diff())
+df_20s = df_20s.with_columns(log_variation=pl.col("mid_price").log().diff())
+
+df_1min = df_1min.with_columns(tick_variation=pl.col("mid_price").diff())
+df_1min = df_1min.with_columns(log_variation=pl.col("mid_price").log().diff())
+
+df_5min = df_5min.with_columns(tick_variation=pl.col("mid_price").diff())
+df_5min = df_5min.with_columns(log_variation=pl.col("mid_price").log().diff())
+
 
 
 # +
@@ -236,5 +240,77 @@ fig5.update_layout(
     yaxis_title="Mid Price"
 )
 fig5.show()
+
+
+
+# +
+import plotly.graph_objects as go
+
+# 1 Second sampling plot
+fig1 = go.Figure()
+fig1.add_trace(
+    go.Scatter(x=df_1s["ts_event"], y=df_1s["tick_variation"], name = "Tick variation")
+)
+fig1.update_layout(
+    title="1 Second Sampling",
+    xaxis_title="Time",
+    yaxis_title="Mid Price"
+)
+fig1.show()
+
+# 5 Seconds sampling plot
+fig2 = go.Figure()
+fig2.add_trace(
+    go.Scatter(x=df_5s["ts_event"], y=df_5s["tick_variation"], name = "Tick variation")
+)
+fig2.update_layout(
+    title="5 Seconds Sampling",
+    xaxis_title="Time", 
+    yaxis_title="Mid Price"
+)
+fig2.show()
+
+# 20 Seconds sampling plot
+fig3 = go.Figure()
+fig3.add_trace(
+    go.Scatter(x=df_20s["ts_event"], y=df_20s["tick_variation"], name = "Tick variation")
+)
+fig3.update_layout(
+    title="20 Seconds Sampling",
+    xaxis_title="Time",
+    yaxis_title="Mid Price"
+)
+fig3.show()
+
+# 1 Minute sampling plot
+fig4 = go.Figure()
+fig4.add_trace(
+    go.Scatter(x=df_1min["ts_event"], y=df_1min["tick_variation"], name = "Tick variation")
+)
+fig4.update_layout(
+    title="1 Minute Sampling",
+    xaxis_title="Time",
+    yaxis_title="Mid Price"
+)
+fig4.show()
+
+# 5 Minutes sampling plot
+fig5 = go.Figure()
+fig5.add_trace(
+    go.Scatter(x=df_5min["ts_event"], y=df_5min["tick_variation"], name = "Tick variation")
+)
+fig5.update_layout(
+    title="5 Minutes Sampling", 
+    xaxis_title="Time",
+    yaxis_title="Mid Price"
+)
+fig5.show()
+
+
+# -
+
+
+
+
 
 
