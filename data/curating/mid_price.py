@@ -5,8 +5,7 @@ from tqdm import tqdm
 
 folder_path = "/home/janis/EAP1/HFT_QR_RL/data/smash4/DB_MBP_10/"
 
-def curate_mid_price(stock, file, folder_path=folder_path):
-    df = pl.read_parquet(f"{folder_path}/{stock}/{file}")
+def curate_mid_price(df,stock):
     num_entries_by_publisher = df.group_by("publisher_id").len().sort("len", descending=True)
     if len(num_entries_by_publisher) > 1:
             df = df.filter(pl.col("publisher_id") == 41)
