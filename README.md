@@ -137,3 +137,6 @@ Useful tools :
 git-filter-repo : https://github.com/newren/git-filter-repo
 nbstripout : https://github.com/kynan/nbstripout
 nbconvert : https://nbconvert.readthedocs.io/en/latest/
+
+essayer le microprice aussi,
+on peut plus faire l'hypothese modele bachelier à partir d'un certain temps pour la vol
