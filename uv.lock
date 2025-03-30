@@ -1,5 +1,9 @@
 version = 1
 requires-python = ">=3.12"
+resolution-markers = [
+    "python_full_version >= '3.13'",
+    "python_full_version < '3.13'",
+]
 
 [[package]]
 name = "anyio"
@@ -310,6 +314,21 @@ wheels = [
 ]
 
 [[package]]
+name = "copulas"
+version = "0.12.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "plotly" },
+    { name = "scipy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3a/ca/63d14f8c14910b05f1e9c54501f2ab78e1bae9a94ef319ee736add00a6b0/copulas-0.12.1.tar.gz", hash = "sha256:a50f411dadfeb28b152097a6995919c03d07c33133035999f61d776bb6f4d005", size = 45015 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e3/fa/16b0f4091ad862c91ebb82273f4f0d34a914d2844d79ea1096b8bd1a20d0/copulas-0.12.1-py3-none-any.whl", hash = "sha256:1cef4a1518b6564c45b0d826b3484da8e335750515479e9aed4f10ee6a8d74ae", size = 52454 },
+]
+
+[[package]]
 name = "cramjam"
 version = "2.9.1"
 source = { registry = "https://pypi.org/simple" }
@@ -545,6 +564,7 @@ source = { editable = "." }
 dependencies = [
     { name = "arch" },
     { name = "armagarch" },
+    { name = "copulas" },
     { name = "cython" },
     { name = "dotenv" },
     { name = "fastparquet" },
@@ -571,6 +591,7 @@ dependencies = [
 requires-dist = [
     { name = "arch", specifier = ">=7.2.0" },
     { name = "armagarch", specifier = ">=1.0.4" },
+    { name = "copulas", specifier = ">=0.12.1" },
     { name = "cython", specifier = ">=0.28" },
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "fastparquet", specifier = ">=2024.11.0" },

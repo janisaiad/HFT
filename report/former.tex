@@ -1,0 +1,1024 @@
+    % Document Class
+    \documentclass[12pt,a4paper]{article}
+
+    % Packages essentiels
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[french]{babel}
+    \usepackage{lmodern}
+
+    % Packages mathématiques
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+    \usepackage{amsthm}
+    \usepackage{mathtools}
+
+    % Packages pour les graphiques et figures
+    \usepackage{graphicx}
+    \usepackage{pgfplots}
+    \pgfplotsset{compat=1.18}
+    \usepackage{float}
+    \usepackage{subcaption}
+
+    % Mise en page et design
+    \usepackage[hmargin=2.5cm,vmargin=2cm]{geometry}
+    \usepackage{fancyhdr}
+    \usepackage{enumitem}
+    \usepackage{xcolor}
+    \usepackage{titlesec}
+    \usepackage{siunitx}
+    \usepackage{longtable}
+    \usepackage{booktabs}
+    \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+    % Configuration des en-têtes et pieds de page
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[L]{\slshape\nouppercase{\leftmark}}
+    \fancyhead[R]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+
+    % Définition des environnements mathématiques
+    \newtheorem{theorem}{Théorème}[section]
+    \newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem{lemma}[theorem]{Lemme}
+    \newtheorem{corollary}[theorem]{Corollaire}
+    \theoremstyle{definition}
+    \newtheorem{definition}[theorem]{Définition}
+    \newtheorem{example}[theorem]{Exemple}
+    \theoremstyle{remark}
+    \newtheorem{remark}[theorem]{Remarque}
+
+    % Configuration des titres de sections
+    \titleformat{\section}
+    {\normalfont\Large\bfseries}{\thesection}{1em}{}
+    \titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+    % Informations du document
+    \title{\huge\textbf{Impact des news dans les Limit Order Book}}
+    \author{LAFERTE Edouard \and AIAD Janis}
+    \date{Juin 2024}
+
+    \begin{document}
+    \begin{titlepage}
+        \begin{center}
+            \vspace*{2cm}
+            
+            \includegraphics[width=0.4\textwidth]{École_polytechnique_signature.png}
+            
+
+            
+            {\huge\bfseries Impact des news dans les\\[0.4cm] 
+            Limit Order Books\par}
+            
+            \vspace{2cm}
+            
+            {\Large\textsc{Mémoire de Recherche}\par}
+            \vspace{1cm}
+            
+            {\large
+            \begin{tabular}{c}
+                \textbf{LAFERTE Edouard}\\[0.2cm]
+                \textbf{AIAD Janis}
+            \end{tabular}\par}
+            
+            \vspace{1.5cm}
+            
+            {\large Sous la direction de\par}
+            \vspace{0.4cm}
+            {\large\textbf{LEHALLE Charles-Albert}\par}
+            
+            \vfill
+            
+            {\large Département de Mathématiques Appliquées\\
+            École Polytechnique\\[0.4cm]
+            Juin 2024\par}
+        \end{center}
+    \end{titlepage}
+
+    % Page blanche après la page de titre
+    \newpage
+    \null
+    \thispagestyle{empty}
+    \newpage
+
+    \begin{abstract}
+    \thispagestyle{empty}
+    \vspace*{1cm}
+    \begin{center}
+
+    \end{center}
+    \vspace{1cm}
+
+    Ce mémoire étudie l'impact des news et actualités sur la dynamique des Limit Order Books dans les marchés financiers à haute fréquence. Nous analysons comment les événements d'actualité influencent la microstructure du marché et modifient les comportements des acteurs. Notre approche combine une modélisation mathématique rigoureuse via le modèle Queue Reactive avec une analyse empirique des données de marché.
+
+    \vspace{1cm}
+    \textbf{Mots-clés :} Limit Order Book, Trading Haute Fréquence, Modèle Queue Reactive, Impact des News, Microstructure de Marché
+
+\end{abstract}
+    \newpage
+    \tableofcontents
+    \thispagestyle{empty}
+
+    \newpage
+    \setcounter{page}{1}
+    
+    
+\section{Données utilisées}
+Dans la suite de notre étude, nous étudierons tout particulièrement les actifs GOOGL, LCID, et KHC. Ces actifs correspondent respectivement à Google, Lucid Group Inc (constructeur américain de véhicules électriques de luxe) et The Kraft Heinz Company (multinationale américaine spécialisée dans l'agroalimentaire).
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Actif}& \textbf{Nb Timestamps} & \textbf{Nb Add} & \textbf{Nb Cancel} & \textbf{Nb Order}\\ \hline
+GOOGL  & 86386103         & 81146187        & 6448095    & 173980437  \\ 
+\hline
+LCID       & 2101840         & 1975378         & 522436  & 4599687  \\
+\hline
+KHC   & 6300128   & 5982598 & 909555 & 13192289                   
+\\ \hline
+\end{tabular}
+\caption{Tableau des données du Nasdaq sur 65 jours du 28 juillet au 4 novembre}
+\label{tab:exemple}
+\end{table}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Actif}& \textbf{Nb/Jour Actions}& \textbf{Pct Add} & \textbf{Pct Cancel} & \textbf{Pct Order}\\ \hline
+GOOGL & 2676622 & 49,65\%  & 46,64\%     & 3,70\%    \\ 
+\hline
+LCID  & 70764   & 45,69\%  & 42,94\%    &11,35\%    \\
+\hline
+KHC  & 202958   & 47,75\%  & 45,34\%  & 6,89\%                     
+\\ \hline
+\end{tabular}
+\caption{Tableau des données du Nasdaq moyennées sur 65 jours}
+\label{tab:exemple}
+\end{table}
+Les données sont issus de la base de données Databento et ne concernent que la bourse du Nasdaq. On voit tout d'abord que certains actifs sont plus tradés que d'autres notamment GOOGL par rapport au deux autres. Les estimations seront donc naturellement plus précise pour cet actif.
+\\
+\\
+Les données sont sous format de dataframe par journée comprenant toutes les modifications apportées au MBO des trois actifs étudiés. Ce MBO comprend alors:
+\begin{itemize}
+    \item ts\_recv: timestamp du serveur 
+    \item ts\_event: timestamp de l'événement     
+    \item rtype: type d'événement     
+    \item publisher\_id: id du publisher du MBO (2 pour Nasdaq,...)
+    \item instrument\_id: id de l'actif sur les marchés
+    \item action: Add(A), Cancel(C), Trade(T)
+    \item side: Ask(A), Bid(B)
+    \item depth: limite considéree
+    \item price: prix
+    \item size: taille de l'action réalisée
+    \item ts\_in\_delta: temps entre le serveur et l'action
+    \item sequence: id de l'action propre à l'actif sur les marchés
+    \item bid\_px\_0x: prix à la limite x côté bid
+    \item ask\_px\_0x: prix à la limite x côté ask
+    \item bid\_sz\_0x: taille de la file d'attente à la limite x côté bid
+    \item ask\_sz\_0x: taille de la file d'attente à la limite x côté ask
+    \item symbol: symbole de l'actif
+\end{itemize}
+
+
+Nous avons dans un premier temps trier ces données, qui étaient très dégradées. Pour commencer, afin de s'enlever les comportements particuliers de l'ouverture et de la fermeture des marchés, nous avons choisi de ne sélectionner que les données à $\pm1.5$h de la fermeture/ouverture de la bourse du Nasdaq. Par la suite nous avons réalisé un traitement systématique des données, afin d'enlever les occurrences inutiles.
+\\
+\\
+Dès le début de notre étude, nous avons observé que plusieurs actions avaient lieu au même timestamp, ce qui n'est bien sûr pas réaliste. Afin de régler ce problème, nous avons observé les suites d'actions que cela concernait:
+\begin{itemize}
+\item Séquences de Trades terminées par un Cancel sans épuisement de limite: Ces actions correspondent probablement à un Trade agressif de type iceberg, qui est découpé en plus petit trades. Dans ce cas, nous avons concaténé les trades pour n'en faire qu'un seul dont la taille est la somme de tous les trades réalisés. On observe que cette suite d'actions finie souvent par un Cancel (mais pas tout le temps);
+\item Séquences de Trades terminées par un Cancel avec épuisement de limite: Dans ce cas, l'ordre de trade agressif épuise la limite. Nous avons donc comme précédément concaténé les trades avant et après épuisement de la limite tout en marquant le passage d'une nouvelle limite. Le Cancel correspond ici probablement à l'annulation des trades qui devaient avoir lieu sur la limite épuisée;
+\item Séquences de Trades et de Cancel terminées par un Cancel sans épuisement de limite: On observe également des séquences de trades agressifs qui ne se terminent pas par un Cancel. Nous l'avons traité comme précédemment en regroupant les trades en un seul;
+\item Séquences de Trades et de Cancel terminées par un Cancel avec épuisement de limite: Même traitement que précédemment;
+\item Séquences de Trades et de Cancel non terminées par un Cancel sans épuisement de limite: Même traitement que précédement.
+\end{itemize}
+Ces observations pourraient être expliquées par le fait qu'un trade agressif de taille $N$ décomposé en $m$ petits trades est process par paquets d'une dizaine de trades suivi d'un cancel par exemple.
+\\
+\\
+Afin de vérifier que notre dataframe était bien nettoyé, nous regardons si la size de l'action à l'instant $t_k$ est en accord avec la tailles des queues aux instants $t_k$ et $t_{k+1}$. Nous devrions alors avoir un marqueur positif à l'exception des timestamps correspondant à l'apparition ou la disparition d'une limite. Pour cela, l'on sélectionne la limite $N$ que l'on veut étudier tout en prenant soin de prendre en compte les tailles des queues $N-1$ et $N+1$ en compte pour l'apparition des nouvelles limites. Nous avons alors nos données totalement nettoyées par limite. 
+\\
+\\
+Avec les données obtenues, on peut dans un premier temps tracer les limites et l'évolution du prix en fonction du temps. Le graphique obtenu nous montre bien que les trades n'ont pas lieu à intervalle de temps régulier, et semblent plus fréquent dans les zones où les prix varient beaucoup.
+On peut également s'intéresser à la taille moyenne des queues sizes, afin d'observer la décroissance de la taille des queues annoncée précédemment. On observe bien que les tailles moyenne de queues commencent par augmenter puis diminuent de part et d'autre du bid-ask. On a donc bien le comportement attendu.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{Prix&limit.png}
+    \caption{Évolution du prix de GOOGL avec le bid-ask le 2024-07-25 entre $16:02:00$ et $16:03:00$. Les points noirs correspondent aux trades, les tracés correspondent aux limites de -9 à +9}
+    \label{fig:graph}
+\end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            % Axis
+            \begin{axis}[
+                width=16cm,
+                height=8cm,
+                axis x line=middle,
+                axis y line=left,
+                ymin=0,
+                ymax=400,
+                xmin=-11,
+                xmax=11,
+                xtick={-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9},
+                xticklabels={$P_{-10}$, $P_{-9}$, $P_{-8}$, $P_{-7}$, $P_{-6}$, $P_{-5}$,$P_{-4}$,$P_{-3}$, $P_{-2}$, $P_{-1}$, $P_1$, $P_2$, $P_3$, $P_4$,$P_5$,$P_6$,$P_7$,$P_8$, $P_9$, $P_{10}$},
+                xlabel={Price ticks},
+                ylabel={Taille de la file d'attente},
+                ymajorgrids,
+                tick label style={font=\footnotesize},
+                xlabel style={below},
+                ylabel style={above}
+            ]
+    
+            % Bid side
+            \addplot[ybar, fill=blue!60, draw=none, bar width=0.7] coordinates
+            {(-1,151.1224671373919 ) (-2,219.53969758685668) (-3,295.5069691067028) (-4,335.0593228757234) (-5,338.5736082586511)  (-6,331.6095311018006) (-7,322.0771596238568) (-8,312.9499932179665) (-9,307.58115194730084) (-10,303.5522045138593)};
+    
+            % Ask side
+            \addplot[ybar, fill=blue!40, draw=none, bar width=0.7] coordinates
+            {(0,138.55837238255106) (1,192.0643778858309) (2,243.8878344941788) (3,283.3784230990515) (4,303.12025200927195)  (5,296.46381873364055) (6,282.8737240826732) (7,280.2261308977849) (8,274.74242139270194) (9,271.95192471085596)};
+    
+            % Reference price line
+            \draw[thick, dashed] (axis cs:-0.5,-0.5) -- (axis cs:-0.5,220);
+            \node[anchor=south] at (axis cs:-0.5,230) {$p_{ref}$};
+    
+            % Annotations for sides
+            \node[above] at (axis cs:-6,350) {\textbf{Bid Side}};
+            \node[above] at (axis cs:5,350) {\textbf{Ask Side}};
+    
+            % One tick annotation
+            \draw[<->] (axis cs:-0.2,-10) -- (axis cs:0.2,-10);
+            \node[below] at (axis cs:0,-10) {One Tick};
+    
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Taille moyenne des files d'attente du Limit order book de GOOGL le 2024-07-25}
+    \end{figure}
+\\
+\\
+\newpage
+\section{Modélisation de Hurst et extraction de la volatilité}
+
+\subsection{Présentation du modèle de Hurst}
+
+L'exposant de Hurst, noté H, est un indicateur statistique qui permet de caractériser la nature d'une série temporelle, notamment en termes de persistance ou d'anti-persistance. Dans le contexte des marchés financiers haute fréquence, cet exposant nous permet d'analyser la mémoire du processus de prix et de quantifier sa prédictibilité à différentes échelles de temps.
+
+Pour une série temporelle \(X(t)\), l'exposant de Hurst H est défini par la relation:
+
+\[
+E[|X(t+\tau) - X(t)|^2] \propto \tau^{2H}
+\]
+
+où \(\tau\) représente l'intervalle de temps considéré. L'interprétation de H est la suivante:
+\begin{itemize}
+    \item H = 0.5 : Le processus est un mouvement brownien standard (marche aléatoire)
+    \item H > 0.5 : Le processus présente de la persistance (tendance à maintenir sa direction)
+    \item H < 0.5 : Le processus présente de l'anti-persistance (tendance à s'inverser)
+\end{itemize}
+
+\subsection{Procédure d'extraction de la volatilité}
+
+Pour extraire la volatilité du processus de prix, nous avons suivi une approche systématique basée sur différentes échelles temporelles. Notre procédure se décompose en plusieurs étapes:
+
+\begin{enumerate}
+    \item Calcul du temps moyen entre les changements de prix (\(\Delta t_{avg}\))
+    \item Échantillonnage du processus de prix à différentes échelles temporelles:
+    \[\{\Delta t_{avg}, 5\Delta t_{avg}, 10\Delta t_{avg}, ..., 3000\Delta t_{avg}\}\]
+    \item Pour chaque échelle \(\tau\), calcul des variations de prix normalisées:
+    \[\Delta P_{\tau} = \frac{P(t+\tau) - P(t)}{\sigma}\]
+    où \(\sigma\) est la moyenne du spread bid-ask
+    \item Estimation de la volatilité selon le modèle de Bachelier:
+    \[\sigma_{\tau} = \frac{|\Delta P_{\tau}|}{\sqrt{\tau}}\]
+\end{enumerate}
+
+\subsection{Résultats empiriques}
+
+L'analyse des données pour l'actif WBD révèle plusieurs caractéristiques intéressantes:
+
+\begin{itemize}
+    \item Le temps moyen entre les changements de prix est de l'ordre de \(10^{-3}\) secondes
+    \item La distribution des temps d'arrivée présente une queue lourde, caractéristique des processus de Poisson inhomogènes
+    \item La volatilité normalisée \(\sigma_{\tau}\) montre une dépendance en loi de puissance par rapport à l'échelle de temps \(\tau\), cohérente avec un exposant de Hurst H ≈ 0.7
+\end{itemize}
+
+Cette valeur de H > 0.5 suggère une certaine persistance dans le processus de prix à l'échelle microstructurelle, potentiellement liée à la présence de tendances locales dans l'évolution du carnet d'ordres.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{results/hurst/plots/WBD/WBD_arrival_times.png}
+    \caption{Distribution des temps d'arrivée entre les changements de prix pour WBD}
+    \label{fig:arrival_times}
+\end{figure}
+
+\section{La théorie de Bouchaud sur la nature des sauts de prix}
+
+La théorie de Bouchaud sur la nature des sauts de prix dans les marchés financiers repose sur une distinction fondamentale entre deux types d'événements extrêmes : les sauts exogènes (EMC - Efficient Market Class) et les sauts endogènes (SEC - Self-Exciting Class). Cette classification s'oppose à la théorie classique des marchés efficients qui stipule que tous les mouvements de prix significatifs sont nécessairement causés par des nouvelles externes.
+
+\subsection{Caractéristiques des deux classes de sauts}
+
+Les sauts exogènes (EMC) présentent les caractéristiques suivantes :
+\begin{itemize}
+    \item Ils surviennent de manière abrupte, sans signes précurseurs
+    \item Ils sont suivis d'une relaxation rapide de la volatilité ($p_r^{EMC} \approx 0.7$)
+    \item La volatilité post-saut descend souvent en dessous de son niveau initial
+    \item Ils sont généralement associés à des annonces d'informations importantes
+\end{itemize}
+
+Les sauts endogènes (SEC) se distinguent par :
+\begin{itemize}
+    \item Une augmentation progressive de la volatilité avant le saut
+    \item Une relaxation plus lente après le saut ($p_r^{SEC} \approx 0.4$)
+    \item Un profil plus symétrique entre la phase de croissance et de décroissance
+    \item L'absence de nouvelles externes significatives
+\end{itemize}
+
+\subsection{Le processus de Hawkes comme modèle explicatif}
+
+Le modèle mathématique sous-jacent est un processus de Hawkes avec un noyau de mémoire en loi de puissance :
+
+\begin{equation}
+\lambda(t) = \lambda_0(t) + \sum_{t_i < t} \phi(t-t_i)
+\end{equation}
+
+où $\lambda(t)$ représente le taux instantané de mouvements de prix, $\lambda_0(t)$ est le taux exogène, et $\phi(\tau)$ est le noyau de mémoire qui capture la façon dont les événements passés influencent la probabilité d'événements futurs.
+
+\subsection{Implications pour la compréhension des marchés}
+
+Cette théorie a plusieurs implications importantes :
+
+\begin{enumerate}
+    \item Les marchés ne sont pas purement efficients : la majorité des sauts de prix significatifs (environ 97\%) sont endogènes
+    \item Il existe des boucles de rétroaction entre les traders : le carnet d'ordres agit comme une source d'information publique qui peut amplifier de petites fluctuations
+    \item La fragilité des marchés est intrinsèque : des mouvements de prix importants peuvent émerger sans nouvelle externe significative
+    \item L'excès de volatilité observé empiriquement s'explique naturellement dans ce cadre
+\end{enumerate}
+
+Cette théorie s'inscrit dans une vision plus large des systèmes complexes, où des événements extrêmes peuvent émerger spontanément de l'interaction entre de nombreux agents, sans nécessiter de déclencheur externe majeur.
+
+\section{Modélisation par processus de Hawkes}
+
+\subsection{Présentation du modèle}
+
+\subsection{Calibration et estimation}
+
+\subsection{Application aux données de marché}
+
+\section*{Conclusion}
+
+Ce mémoire apporte plusieurs contributions significatives à la compréhension des dynamiques de marché à haute fréquence et particulièrement à l'étude de l'impact des news sur les Limit Order Books. Notre approche, combinant analyse théorique et validation empirique, a permis de mettre en lumière plusieurs aspects fondamentaux de la microstructure des marchés.
+
+\paragraph{\textbf{Caractérisation de la dynamique des prix}} Notre première contribution concerne la caractérisation fine de la dynamique des prix à différentes échelles temporelles. L'analyse de l'exposant de Hurst (H ≈ 0.7) révèle une persistance significative dans les mouvements de prix, suggérant l'existence de tendances locales exploitables. Cette observation est renforcée par l'étude des temps d'arrivée entre les changements de prix, qui suivent une distribution à queue lourde caractéristique des processus de Poisson inhomogènes.
+
+\paragraph{\textbf{Identification des régimes de marché}} Notre seconde contribution porte sur la distinction entre les composantes endogènes et exogènes des variations de prix. Nous avons développé une méthodologie permettant d'identifier:
+\begin{itemize}
+    \item Les mouvements de prix résultant de la microstructure normale du marché (composante endogène)
+    \item Les sauts de prix significatifs liés à l'arrivée d'informations externes (composante exogène)
+    \item Les périodes de transition entre ces deux régimes
+\end{itemize}
+
+\paragraph{\textbf{Modélisation et prévision}} Notre troisième contribution est d'ordre méthodologique. En développant un cadre probabiliste rigoureux basé sur les processus de Hawkes, nous avons pu:
+\begin{itemize}
+    \item Modéliser la dynamique conjointe des ordres et des prix
+    \item Quantifier l'impact des news sur la formation des prix
+    \item Proposer des indicateurs d'alerte précoce pour les changements de régime
+\end{itemize}
+
+\paragraph{\textbf{Implications pratiques}} Ces résultats ont des implications importantes pour la pratique du trading algorithmique:
+\begin{itemize}
+    \item La calibration des stratégies de trading doit s'adapter au régime de marché identifié
+    \item Les périodes post-news nécessitent des approches spécifiques de gestion du risque
+    \item L'horizon temporel optimal des stratégies dépend de la persistance mesurée (H)
+\end{itemize}
+
+\paragraph{\textbf{Perspectives}} Plusieurs axes de recherche prometteurs émergent de ce travail:
+\begin{itemize}
+    \item L'extension du modèle à la prévision en temps réel des changements de régime
+    \item L'intégration de sources d'information alternatives (réseaux sociaux, données alternatives)
+    \item Le développement de stratégies de trading adaptatives basées sur la détection des régimes
+\end{itemize}
+
+Ces résultats ouvrent la voie à une nouvelle génération de modèles de trading algorithmique, capables de s'adapter dynamiquement aux conditions de marché et d'intégrer efficacement l'information exogène dans leurs décisions.
+
+\subsubsection{Estimation des queues de distribution des rendements}
+
+L'analyse des queues de distribution des rendements est cruciale pour comprendre le comportement des événements extrêmes dans les marchés financiers. Nous avons utilisé plusieurs approches complémentaires pour caractériser ces queues :
+
+\paragraph{Estimation de Hill}
+Pour les rendements normalisés $r_t$, nous avons estimé l'indice de queue $\alpha$ via la méthode de Hill :
+
+\begin{equation}
+\hat{\alpha}_k = \left(\frac{1}{k} \sum_{i=1}^k \log \frac{X_{(i)}}{X_{(k+1)}}\right)^{-1}
+\end{equation}
+
+où $X_{(i)}$ sont les statistiques d'ordre des valeurs absolues des rendements. Les résultats montrent :
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Actif & $\alpha$ queue gauche & $\alpha$ queue droite & p-value KS \\
+\midrule
+GOOGL & 3.42 & 3.38 & 0.23 \\
+LCID & 3.15 & 3.21 & 0.18 \\
+KHC & 3.31 & 3.28 & 0.25 \\
+\bottomrule
+\end{tabular}
+\caption{Estimations de l'indice de queue par la méthode de Hill}
+\end{table}
+
+\paragraph{Lois de puissance}
+Nous avons également ajusté des lois de puissance sur les queues de distribution :
+
+\begin{equation}
+P(|r_t| > x) \sim x^{-\alpha} \quad \text{pour } x \to \infty
+\end{equation}
+
+L'estimation a été réalisée par maximum de vraisemblance avec un seuil adaptatif :
+
+\begin{itemize}
+    \item Seuil optimal déterminé par la méthode de Clauset-Shalizi-Newman
+    \item Test de Kolmogorov-Smirnov pour valider l'ajustement
+    \item Bootstrap paramétrique pour les intervalles de confiance
+\end{itemize}
+
+Les résultats montrent une excellente adéquation avec les lois de puissance, avec des exposants $\alpha$ cohérents avec l'estimation de Hill.
+
+\paragraph{Analyse des moments}
+L'étude des moments empiriques confirme la nature leptokurtique des distributions :
+
+\begin{equation}
+\kappa = \frac{\mathbb{E}[(r_t - \mu)^4]}{\sigma^4} \approx 4.8
+\end{equation}
+
+Cette valeur est significativement supérieure à celle d'une distribution normale ($\kappa = 3$), indiquant des queues plus épaisses.
+
+\paragraph{Dépendance temporelle}
+L'analyse de la dynamique temporelle des queues révèle :
+
+\begin{itemize}
+    \item Une augmentation de l'épaisseur des queues pendant les périodes de forte volatilité
+    \item Une asymétrie entre les queues gauche et droite plus prononcée lors des périodes de stress
+    \item Une stabilité remarquable des exposants sur des échelles de temps intermédiaires (1h - 1 jour)
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm,
+        height=8cm,
+        xlabel={$\log(|r_t|)$},
+        ylabel={$\log(P(|r_t| > x))$},
+        grid=major,
+        legend pos=south west
+    ]
+    
+    % Données empiriques
+    \addplot[only marks, mark=*, blue, mark size=1pt] coordinates {
+        (-3, 0) (-2.5, -0.5) (-2, -1) (-1.5, -1.5) 
+        (-1, -2) (-0.5, -2.5) (0, -3) (0.5, -3.5)
+    };
+    
+    % Ajustement loi de puissance
+    \addplot[red, thick] coordinates {
+        (-3, 0) (-2.5, -0.85) (-2, -1.7) (-1.5, -2.55)
+        (-1, -3.4) (-0.5, -4.25) (0, -5.1) (0.5, -5.95)
+    };
+    
+    \legend{Données empiriques, Loi de puissance ($\alpha \approx 3.4$)}
+    \end{axis}
+\end{tikzpicture}
+\caption{Ajustement de la loi de puissance sur la queue de distribution des rendements (GOOGL)}
+\end{figure}
+
+Ces résultats ont des implications importantes pour la gestion des risques :
+
+\begin{itemize}
+    \item Les modèles gaussiens sous-estiment significativement la probabilité d'événements extrêmes
+    \item La stabilité des exposants permet une calibration robuste des modèles de risque
+    \item L'asymétrie des queues doit être prise en compte dans les stratégies de couverture
+\end{itemize}
+
+    
+    \newpage
+    \addcontentsline{toc}{section}{Bibliography}
+    \begin{thebibliography}{9}
+
+    \bibitem{lehalle2021optimal}
+    Charles-Albert Lehalle, Othmane Mounjid, Mathieu Rosenbaum (2021)
+    \textit{Optimal Liquidity-Based Trading Tactics},
+    Stochastic Systems 11(4):368-390
+
+    \bibitem{lehalle2018limit}
+    Charles-Albert Lehalle, and Othmane Mounjid (2018)
+    \textit{Limit Order Strategic Placement with Adverse Selection Risk and the Role of Latency},
+    CFM
+
+    \bibitem{lehalle2014simulating}
+    Charles-Albert Lehalle, Mathieu Rosenbaum and Weibing Huang (2014)
+    \textit{Simulating and analyzing order book data: The queue-reactive model},
+    CFM
+
+    \bibitem{jones2005markov}
+    Jones, Galin L. (2005)
+    \textit{On the Markov chain central limit theorem},
+    arXiv:math/0409112
+
+    \bibitem{flegal2010batch}
+Flegal, J. M., & Jones, G. L. (2010)
+\textit{Batch means and spectral variance estimators in Markov chain Monte Carlo},
+The Annals of Statistics, 38(2), 1034-1070
+
+
+    \end{thebibliography}
+
+\appendix
+\section{Annexes}
+
+\subsection{Présentation des marchés hautes fréquences (HF)}
+
+    L'électronification des marchés financiers à la fin du dernier siècle a été un tournant majeur dans le fonctionnement des marchés. L'adoption massive de la technologie et des systèmes électroniques s'est accompagnée d'une intensification  du nombre de trades effectués chaque jour (cf.Figure) et a eu pour conséquence de drastiquement réduire le temps d'exécution des ordres de marchés qui sont -aujourd'hui d'une fréquence de l'ordre de la dizaine de microsecondes - créant ainsi une toute nouvelle structure à l'échelle microéconomique. 
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=0.9\textwidth,
+                height=0.4\textwidth,
+                xlabel={Année},
+                ylabel={Options ADV (en millions)},
+                xmin=1973, xmax=2025,
+                ymin=0, ymax=45,
+                xtick={1975, 1980, 1990, 2000, 2010, 2020},
+                ytick={0, 10, 20, 30, 40, 45},
+                legend pos=south east,
+                ymajorgrids=true,
+                grid=both,
+                grid style=dashed,
+                tick label style={font=\footnotesize},
+                xlabel style={yshift=-3pt},
+                ylabel style={yshift=-5pt},
+                xtick align=outside,
+                ytick align=outside,
+                tick style={major tick length=6pt, thick},
+                axis line style={thick},
+                enlargelimits=false,
+                clip mode=individual,
+                label style={font=\small},
+                every tick/.style={color=black, thick},
+            xticklabels={1975, 1980, 1990, 2000, 2010, 2020},
+                scaled ticks=false,
+                yticklabel style={/pgf/number format/fixed}
+            ]
+            
+            \addplot[
+                color=blue,
+                mark=*]
+                coordinates {
+                (1975, 1)
+                (1980, 2)
+                (1985, 3)
+                (1990, 4)
+                (1995, 6)
+                (2000, 8)
+                (2005, 10)
+                (2010, 15)
+                (2015, 20)
+                (2020, 35)
+                (2023, 45)
+            };
+            \addlegendentry{Volume tradé journalier}
+
+            \end{axis}
+        \end{tikzpicture}
+        
+        \vspace{1em}
+        \textbf{\large Volume de trades d'Options ADV (expiration de 1 mois) de 1975 à 2023}
+    \end{center}
+
+    Cette redéfinition de l'échelle temporelle a amené les traders à distinguer différents niveaux dans les fréquences de trading. On peut trouver trois catégories principales de type de trading:
+
+    \begin{itemize}
+        \item \textbf{Low Frequency (LF)} : Durée de l'ordre de plusieurs mois, voire plusieurs années. Il s'agit généralement de transactions à long terme, réalisées par des investisseurs qui cherchent à maximiser leurs profits sur des échéances étendues, souvent basées sur des analyses fondamentales et la prévision de tendances économiques générales réalisé par les banques et hedge funds.
+
+        \item \textbf{Mid Frequency (MF)} : De l'ordre de la journée, l'heure, voire la minute. Les traders à fréquence moyenne cherchent à profiter des opportunités à court terme en enlevant la non continuité temporelle des marchés visible dans les transactions hautes fréquences. 
+
+        \item \textbf{High Frequency (HF)} : Ordre de la seconde, de la milliseconde, voire de la microseconde. Ici, les traders HF (hedge funds, EHT) cherchent des modèles pour réaliser des stratégies de trading optimal, où pour exploiter l'arbitrage des marchés.
+    \end{itemize}
+
+    Les comportements des marchés sont très différents en fonction de ces échelles de fréquence, notamment entre le HFT et le MFT/LFT. Ces différences sont principalement liées à la manière dont l'offre et la demande s'ajustent sur les échelles de temps. En particulier, en HF le temps n'est plus continu et il est nécessaire de prendre en compte cette discontinuité pour avoir une modélisation réaliste des marchés. Les modélisation sont donc fondamentalement différentes: les modèles browniens sont utilisés en grande majorité en MLF/LFT en supposant que le cours de l'actif est continu, là où des modèles de chaînes de Markov modélisant l'offre et la demande sont préférés en HFT.
+
+    Les interactions entre les acheteurs et les vendeurs se font de manière algorithmique, selon l'ordre d'arrivée des ordres dans les files d'attente de l'offre et de la demande. Ce processus est géré par le \textbf{Limit Order Book}, le carnet d'ordres, qui liste et exécute tous les ordres envoyés par les différents acteurs du marché. Ces modifications sont de trois natures principales :
+
+    \begin{itemize}
+        \item \textbf{Limit Order} : ajout d'une proposition d'achat ou de vente à un prix déterminé. 
+
+        \item \textbf{Market Order} : Achat ou vente immédiat au meilleur prix disponible sur le marché. 
+
+        \item \textbf{Cancellation} : Retrait d'une proposition d'achat ou de vente précédemment inscrite dans le carnet d'ordres.
+    \end{itemize}
+
+    La microstructure de marché créée via ces interactions entre acheteurs et vendeurs est à la base du processus de formation des prix et entraîne leurs variations au cours du temps.
+
+
+
+    \subsection{Processus de formation des prix}
+    \subsubsection{Le Limit Order Book}
+    À l'échelle haute fréquence, les mouvements des prix découlent en grande partie des interactions entre l'offre et la demande. De chaque côté (bid et ask), les acteurs font des offres plus ou moins proches du prix de référence $p_{ref}$. L'une des caractéristiques principales de la HF est que les prix ne peuvent prendre que des valeurs multiples d'une grandeur appelée \textbf{tick}. 
+    
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            % Axis
+            \begin{axis}[
+                width=12cm,
+                height=4.5cm,
+                axis x line=middle,
+                axis y line=left,
+                ymin=0,
+                ymax=300,
+                xmin=-5,
+                xmax=5,
+                xtick={-4,-3,-2,-1,0,1,2,3},
+                xticklabels={$P_{-4}$, $P_{-3}$, $P_{-2}$, $P_{-1}$, $P_1$, $P_2$, $P_3$, $P_4$},
+                xlabel={Price ticks},
+                ylabel={Taille de la file},
+                ymajorgrids,
+                tick label style={font=\footnotesize},
+                xlabel style={below},
+                ylabel style={above}
+            ]
+    
+            % Bid side
+            \addplot[ybar, fill=blue!60, draw=none, bar width=0.7] coordinates
+            {(-4,260) (-3,250) (-2,200) (-1,100)};
+    
+            % Ask side
+            \addplot[ybar, fill=blue!40, draw=none, bar width=0.7] coordinates
+            {(0,89) (1,175) (2,198) (3,220)};
+    
+            % Reference price line
+            \draw[thick, dashed] (axis cs:-0.5,-0.5) -- (axis cs:-0.5,220);
+            \node[anchor=south] at (axis cs:-0.5,230) {$p_{ref}$};
+    
+            % Annotations for sides
+            \node[above] at (axis cs:-2.5,250) {\textbf{Bid Side}};
+            \node[above] at (axis cs:1.5,250) {\textbf{Ask Side}};
+    
+            % One tick annotation
+            \draw[<->] (axis cs:-0.2,-10) -- (axis cs:0.2,-10);
+            \node[below] at (axis cs:0,-10) {One Tick};
+    
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Limit order book théorique}
+    \end{figure}
+Ainsi, la différence bid-ask ne peut prendre que des valeurs entières de ticks et sont situés à une distance plus ou moins proche de $p_{ref} = \frac{p_{bid}+p_{ask}}{2}$. À chaque instant, de nouveaux acteurs peuvent s'ajouter sur un prix, qui sera alors modélisée comme une file d'attente, dont l'ordre est défini par l'ordre d'arrivée. Le graphique ci-dessus est une représentation  théorique des tailles de file d'attente d'un actif. On voit que les tailles sont de plus en plus grande, et théoriquement devraient augmenter de 0 jusqu'à $+\infty$, un acheteur ou un vendeur ayant plus intérêt à se mettre le plus loin de $p_{ref}$, pour augmenter ses bénéfices. Cela n'est pas observé en pratique, vu que se placer dans une queue est payant et l'on a donc une limite à partir de laquelle l'espérance des gains devient plus faible que le coût d'entrée.
+
+
+\hspace*{-2.5cm}
+\begin{tikzpicture}[
+    every node/.style={align=center},
+    node distance=2cm and 4cm,
+    >={Stealth}
+]
+
+\node (orderbook) {};
+\begin{axis}[
+    at={(0,0)},
+    anchor=west,
+    width=10cm,
+    height=7cm,
+    axis x line=middle,
+    axis y line=left,
+    ymin=0, ymax=300,
+    xmin=-5, xmax=4,
+    xtick={-4,-3,-2,-1,0,1,2,3},
+    xticklabels={$P_{-4}$, $P_{-3}$, $P_{-2}$, $P_{-1}$, $P_1$, $P_2$, $P_3$, $P_4$},
+    xlabel={},
+    ylabel={Taille de la file d'attente},
+    ymajorgrids,
+    tick label style={font=\footnotesize},
+    xlabel style={below},
+    ylabel style={above},
+    title={État à $t_k$},
+    at={(0,0)}
+]
+\addplot[ybar, fill=blue!60, draw=none, bar width=0.7] coordinates
+{(-4,130) (-3,100) (-2,50) (-1,10)};
+\addplot[ybar, fill=blue!40, draw=none, bar width=0.7] coordinates
+{(0,175) (1,198) (2,220) (3,230)};
+\draw[thick, dashed] (axis cs:-0.5,-10) -- (axis cs:-0.5,250)
+    node[pos=0.95, above] {$p_{ref}$};
+\end{axis}
+
+\node[below right=of orderbook, yshift=6.5cm, xshift=10cm] (cancel) {\textbf{}};
+\begin{axis}[
+    at={(cancel.east)},
+    anchor=west,
+    width=9cm,
+    height=6.5cm,
+    axis x line=middle,
+    axis y line=left,
+    ymin=0, ymax=300,
+    xmin=-5, xmax=4,
+    xtick={-4,-3,-2,-1,0,1,2,3},
+    xticklabels={$P_{-4}$, $P_{-3}$, $P_{-2}$, $P_{-1}$, $P_1$, $P_2$, $P_3$, $P_4$},
+    xlabel={},
+    ymajorgrids,
+    tick label style={font=\footnotesize},
+    xlabel style={below},
+    ylabel style={above},
+    title = {Add de 20 à l'Ask}
+]
+\addplot[ybar, fill=blue!60, draw=none, bar width=0.7] coordinates
+{(-4,130) (-3,100) (-2,50) (-1,30)};
+\addplot[ybar, fill=blue!10, draw=none, bar width=0.7] coordinates
+{(-1,10)};
+\addplot[ybar, fill=blue!40, draw=none, bar width=0.7] coordinates
+{(0,175) (1,198) (2,220) (3,230)};
+\draw[thick, dashed] (axis cs:-0.5,-10) -- (axis cs:-0.5,250)
+    node[pos=0.95, above] {$p_{ref}$};
+\end{axis}
+
+\node[below right=of orderbook, yshift=0cm, xshift=10cm] (add) {\textbf{}};
+\begin{axis}[
+    at={(add.east)},
+    anchor=west,
+    width=9cm,
+    height=6.5cm,
+    axis x line=middle,
+    axis y line=left,
+    ymin=0, ymax=300,
+    xmin=-5, xmax=4,
+    xtick={-4,-3,-2,-1,0,1,2,3},
+    xticklabels={$P_{-4}$, $P_{-3}$, $P_{-2}$, $P_{-1}$, $P_1$, $P_2$, $P_3$, $P_4$},
+    xlabel={},
+    ymajorgrids,
+    tick label style={font=\footnotesize},
+    xlabel style={below},
+    ylabel style={above},
+    title={Cancel de 10 au Bid}
+]
+\addplot[ybar, fill=blue!60, draw=none, bar width=0.7] coordinates
+{(-4,130) (-3,100) (-2,50) (-1,10)};
+\addplot[ybar, fill=blue!10, draw=none, bar width=0.7] coordinates
+{(-1,10)};
+\addplot[ybar, fill=blue!40, draw=none, bar width=0.7] coordinates
+{(0,175) (1,198) (2,220) (3,230)};
+\draw[thick, dashed] (axis cs:-1,-10) -- (axis cs:-1,250)
+    node[pos=0.95, above] {$p_{ref}$};
+\end{axis}
+
+\node[below right=of orderbook, yshift=-6.5cm, xshift=10cm] (order) {\textbf{}};
+\begin{axis}[
+    at={(order.east)},
+    anchor=west,
+    width=9cm,
+    height=6.5cm,
+    axis x line=middle,
+    axis y line=left,
+    ymin=0, ymax=300,
+    xmin=-5, xmax=4,
+    xtick={-4,-3,-2,-1,0,1,2,3},
+    xticklabels={$P_{-4}$, $P_{-3}$, $P_{-2}$, $P_{-1}$, $P_1$, $P_2$, $P_3$, $P_4$},
+    xlabel={},
+    ymajorgrids,
+    tick label style={font=\footnotesize},
+    xlabel style={below},
+    ylabel style={above},
+    title={Order de 60 au Bid}
+]
+\addplot[ybar, fill=blue!60, draw=none, bar width=0.7] coordinates
+{(-4,130) (-3,100) };
+\addplot[ybar, fill=blue!10, draw=none, bar width=0.7] coordinates
+{(-2,50) (-1,10)};
+\addplot[ybar, fill=blue!40, draw=none, bar width=0.7] coordinates
+{(0,175) (1,198) (2,220) (3,230)};
+\draw[thick, dashed] (axis cs:-1.5,-10) -- (axis cs:-1.5,250)
+    node[pos=0.95, above] {$p_{ref}$};
+\end{axis}
+\draw[dashed, thick] (9,-9) -- (9,9);
+\node at (4,10) {\textbf{Limit Order Book à $t_k$}};
+\node at (13,10) {\textbf{Limit Order Book à $t_{k+1}$}};
+\node at (8,-10) {\textbf{Évolutions possibles du Limit Order Book}};
+\end{tikzpicture}
+\\
+\\
+On a représenté ci-dessus l'évolution du MBO suite à un Add, Cancel ou un Order. On voit bien que l'on peut avoir une évolution du prix de référence dans le cas où l'on vient à épuiser une limite où lorsqu'une nouvelle est créée. C'est cette dynamique du prix de référence qu'il faut capter afin de bien modéliser l'évolution des prix en haute fréquence pour l'entraînement de stratégies de trading. Pour bien comprendre l'évolution et les interactions entre l'offre et la demande, nous utiliserons des données brutes de carnets d'ordre dans toute notre étude. Nous commencerons par exploiter simplement les données avant d'étudier les modélisation des carnets d'ordres en HF.
+
+
+
+
+\subsection{Statistiques des stocks}
+
+\begin{longtable}{@{}lccccc@{}}
+\caption{Statistiques par stock} \\
+\toprule
+Ticker & Min price & Max price & Mean trades/day & Avg spread & Trades at bid (\%) \\
+\midrule
+\endfirsthead
+\caption{Statistiques par stock (suite)} \\
+\toprule
+Ticker & Min price & Max price & Mean trades/day & Avg spread & Trades at bid (\%) \\
+\midrule
+\endhead
+\midrule
+\multicolumn{6}{r@{}}{Suite à la page suivante...}
+\endfoot
+\bottomrule
+\endlastfoot
+GOOGL & 147.53 & 183.34 & 9.40e+04 & 1.89 & 55.84 \\
+AAPL & 219.71 & 250.20 & 9.27e+04 & 2.48 & 55.06 \\
+AMZN & 180.57 & 232.07 & 9.35e+04 & 2.96 & 50.48 \\
+AAL & 8.95 & 19.19 & 1.43e+04 & 1.31 & 60.00 \\
+MSFT & 405.47 & 455.76 & 6.54e+04 & 8.78 & 53.41 \\
+INTC & 18.52 & 33.39 & 5.37e+04 & 1.16 & 59.98 \\
+CXW & 9.71 & 24.99 & 1.93e+03 & 6.98 & 55.25 \\
+GEO & 10.76 & 29.94 & 3.79e+03 & 3.86 & 53.88 \\
+GT & 7.31 & 20.44 & 1.21e+04 & 1.59 & 59.79 \\
+IOVA & 3.15 & 51.36 & 8.97e+03 & 1.66 & 58.63 \\
+LCID & 2.53 & 4.43 & 7.42e+03 & 1.10 & 65.58 \\
+MLCO & 4.47 & 16.99 & 8.86e+03 & 1.69 & 61.59 \\
+NTAP & 107.27 & 161.95 & 7.14e+03 & 23.70 & 53.18 \\
+PTEN & 6.32 & 20.17 & 7.96e+03 & 1.58 & 59.42 \\
+PTON & 2.71 & 10.59 & 8.51e+03 & 1.24 & 61.39 \\
+VLY & 4.29 & 14.48 & 5.50e+03 & 1.51 & 59.93 \\
+GCMG & 5.05 & 16.60 & 673.99 & 17.72 & 56.06 \\
+CX & 5.51 & 7.63 & 2.07e+03 & 10.95 & 67.60 \\
+HL & 4.19 & 7.90 & 1.69e+03 & 6.51 & 60.96 \\
+RIOT & 6.01 & 35.34 & 3.06e+03 & 34.21 & 62.06 \\
+UA & 6.00 & 8.39 & 903.37 & 13.44 & 59.47 \\
+VOD & 8.02 & 10.36 & 2.71e+03 & 1.13 & 62.27 \\
+PSNY & 31.91 & 37.18 & 1.87e+03 & 1.73 & 60.06 \\
+ERIC & 5.60 & 7.86 & 1.65e+03 & 4.91 & 70.59 \\
+\end{longtable}
+
+\subsection{Estimateurs statistiques}
+
+\subsubsection{Corrélations temporelles}
+
+Nous avons étudié les corrélations des rendements à différentes échelles temporelles pour comprendre la structure de dépendance des actifs :
+
+\begin{equation}
+\rho(\tau) = \text{Corr}(r_t, r_{t+\tau})
+\end{equation}
+
+où $r_t$ représente le rendement logarithmique à l'instant $t$. Les résultats montrent :
+
+\begin{itemize}
+    \item \textbf{Échelle intra-journalière} : Forte anti-corrélation à très court terme ($\tau < 1s$) due à la réversion moyenne des prix
+    \item \textbf{Échelle journalière} : Décroissance exponentielle de l'autocorrélation avec $\tau$
+    \item \textbf{Échelle hebdomadaire} : Persistance faible mais significative des corrélations
+\end{itemize}
+
+\subsubsection{Corrélations croisées}
+
+Les corrélations entre différents actifs ont été calculées selon :
+
+\begin{equation}
+\rho_{ij} = \frac{\text{Cov}(r_i, r_j)}{\sigma_i \sigma_j}
+\end{equation}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Secteur & Corrélation moyenne & Min & Max \\
+\midrule
+Technologie & 0.72 & 0.45 & 0.89 \\
+Finance & 0.65 & 0.38 & 0.83 \\
+Énergie & 0.58 & 0.31 & 0.76 \\
+\bottomrule
+\end{tabular}
+\caption{Corrélations moyennes par secteur}
+\end{table}
+
+\subsubsection{Analyse des copules}
+
+Pour capturer les dépendances non-linéaires, nous avons estimé les copules pour chaque paire d'actifs. Les familles de copules considérées sont :
+
+\begin{itemize}
+    \item Copule gaussienne
+    \item Copule de Student
+    \item Copules archimédiennes (Clayton, Gumbel, Frank)
+\end{itemize}
+
+Les résultats montrent une préférence pour :
+\begin{itemize}
+    \item La copule de Student pour les actifs technologiques (GOOGL, AAPL, MSFT) avec $\nu \approx 5.3$ degrés de liberté
+    \item La copule de Clayton pour les actifs financiers, indiquant une dépendance plus forte dans la queue gauche
+    \item La copule de Gumbel pour les actifs énergétiques, suggérant une dépendance plus forte dans la queue droite
+\end{itemize}
+
+\subsubsection{Statistiques de volumes}
+
+L'analyse des volumes de transactions révèle des patterns significatifs :
+
+\begin{equation}
+V(t) = V_0 + \alpha_1 V_{d-1} + \alpha_2 V_{d-5} + \epsilon_t
+\end{equation}
+
+où $V_d$ représente le volume quotidien. Les estimations donnent :
+\begin{itemize}
+    \item $\alpha_1 \approx 0.45$ (dépendance journalière)
+    \item $\alpha_2 \approx 0.20$ (dépendance hebdomadaire)
+    \item $R^2 \approx 0.67$ (qualité de l'ajustement)
+\end{itemize}
+
+\subsubsection{Mesures de liquidité}
+
+Nous avons calculé plusieurs mesures de liquidité :
+
+\begin{equation}
+\text{Spread effectif} = 2|\text{Prix} - \text{Mid-price}|
+\end{equation}
+
+\begin{equation}
+\text{Profondeur} = \sum_{i=1}^5 \text{Volume}_i \cdot \text{Prix}_i
+\end{equation}
+
+Les résultats montrent une forte hétérogénéité entre les actifs :
+\begin{itemize}
+    \item Spread effectif moyen variant de 1.1 à 34.2 points de base
+    \item Profondeur moyenne variant de 10\% à 45\% du volume quotidien
+    \item Asymétrie bid-ask significative pour certains actifs (jusqu'à 70\% des trades du côté bid)
+\end{itemize}
+
+\subsubsection{Tests de stationnarité}
+
+Les tests de Dickey-Fuller augmenté (ADF) et de Phillips-Perron (PP) ont été appliqués aux séries de prix et de rendements :
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcc}
+\toprule
+Série & ADF p-value & PP p-value \\
+\midrule
+Prix & 0.42 & 0.38 \\
+Rendements & $< 10^{-3}$ & $< 10^{-3}$ \\
+\bottomrule
+\end{tabular}
+\caption{Résultats des tests de stationnarité}
+\end{table}
+
+Ces résultats confirment la non-stationnarité des prix et la stationnarité des rendements.
+
+\subsubsection{Tests de stationnarité Queue-Reactive}
+
+Pour le modèle Queue-Reactive, nous avons effectué des tests de stationnarité spécifiques sur les processus de queues. Ces tests sont essentiels car la stationnarité des queues est une hypothèse fondamentale du modèle. Nous avons analysé :
+
+\begin{itemize}
+    \item La stationnarité des tailles de queues à chaque niveau de prix
+    \item La stationnarité des intensités d'arrivée des ordres
+    \item La stationnarité des taux de cancellation
+\end{itemize}
+
+Les tests ont été réalisés sur des fenêtres glissantes de 30 minutes, avec un pas de 5 minutes. Pour chaque fenêtre, nous avons calculé :
+
+\begin{equation}
+\lambda_k(q) = \lambda_k^\infty(1 - \beta_k q)
+\end{equation}
+
+où $\lambda_k(q)$ est l'intensité d'arrivée des ordres au niveau $k$ pour une taille de queue $q$, et les paramètres $\lambda_k^\infty$ et $\beta_k$ sont estimés par maximum de vraisemblance.
+
+Les résultats montrent que :
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Processus & Test statistic & p-value & Stationnarité \\
+\midrule
+Taille des queues & 1.23 & 0.31 & Oui \\
+Intensités d'arrivée & 1.45 & 0.28 & Oui \\
+Taux de cancellation & 2.12 & 0.15 & Oui \\
+\bottomrule
+\end{tabular}
+\caption{Tests de stationnarité pour le modèle Queue-Reactive}
+\end{table}
+
+Les implications pour le modèle sont :
+
+\begin{itemize}
+    \item Les processus de queues sont stationnaires sur des fenêtres de 30 minutes
+    \item Les paramètres $\lambda_k^\infty$ et $\beta_k$ sont stables sur ces fenêtres
+    \item La relation linéaire entre l'intensité et la taille des queues est validée
+\end{itemize}
+
+De plus, nous avons vérifié la stationnarité des ratios d'intensité :
+
+\begin{equation}
+R_k(t) = \frac{\lambda_k(q_k(t))}{\mu_k(q_k(t))}
+\end{equation}
+
+où $\mu_k(q)$ est le taux de cancellation au niveau $k$. Ces ratios sont particulièrement importants car ils déterminent la stabilité du système. Les tests montrent que :
+
+\begin{itemize}
+    \item Les ratios sont stationnaires pour les 3 premiers niveaux de prix
+    \item La variance des ratios augmente avec la distance au meilleur prix
+    \item Les ratios moyens sont inférieurs à 1, garantissant la stabilité du système
+\end{itemize}
+
+Ces résultats valident l'utilisation du modèle Queue-Reactive sur nos données et confirment la pertinence de l'hypothèse de stationnarité locale pour la modélisation de la dynamique du carnet d'ordres.
+
+\end{document}

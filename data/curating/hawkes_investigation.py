@@ -17,29 +17,29 @@ import os
 import polars as pl
 import dotenv
 from tqdm import tqdm
+import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 FOLDER_PATH = os.getenv("FOLDER_PATH")
 
 
 dotenv.load_dotenv()
 stock = "WBD"
+# -
 
-# +
-parquet_files = [f for f in os.listdir(f"{FOLDER_PATH}{stock}") if f.endswith('.parquet')]
+parquet_files = [f for f in os.listdir(f"{FOLDER_PATH}/data/hawkes_dataset/{stock}") if f.endswith('.parquet')]
 parquet_files.sort()
 print(len(parquet_files),"\n",parquet_files)
 threshold = len(parquet_files)//10
-
+threshold = 1
 parquet_files = parquet_files[:threshold]
 # Read and concatenate all parquet files
 df = pl.concat([
-    pl.read_parquet(f"{FOLDER_PATH}{stock}/{file}") 
+    pl.read_parquet(f"{FOLDER_PATH}/data/hawkes_dataset/{stock}/{file}") 
     for file in parquet_files
 ])
 
 
-# -
-
+# +
 def curate_mid_price(df,stock):
     num_entries_by_publisher = df.group_by("publisher_id").len().sort("len", descending=True)
     if len(num_entries_by_publisher) > 1:
@@ -76,28 +76,163 @@ def curate_mid_price(df,stock):
     mid_price = mid_price.fill_nan(mid_price.shift(1))
     df = df.with_columns(mid_price=mid_price)
     # now we define the mid price with the microprice, barycenter of bid and ask prices by their weights
-    
-    micro_price = (df["ask_px_00"] * df["bid_sz_00"] + df["bid_px_00"] * df["ask_sz_00"]) / (df["bid_sz_00"] + df["ask_sz_00"])
-    df = df.with_columns(mid_price=micro_price)
-    # sort by ts_event
     df = df.sort("ts_event")
     return df
 
 
-# +
-df  = curate_mid_price(df,stock)
+df_price = pl.concat([
+    pl.read_parquet(f"{FOLDER_PATH}{stock}/{file}") 
+    for file in parquet_files
+])
+df_price = curate_mid_price(df_price,stock)
+df_price = df_price["ts_event","mid_price"]
 
-# average bid ask spread
-avg_spread = (df["ask_px_00"] - df["bid_px_00"]).mean()
 # -
-
-print(f"Average bid ask spread: {avg_spread}")
 
 df.head()
 
-df_cleaned = df[["ts_event","mid_price"]]
+df_price.head()
 
-df_cleaned = df[["ts_event","mid_price","micro_price"]]
+# +
+# Plot differences between ask and bid events
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 6))
+fig.suptitle('Differences between Ask and Bid Events')
+
+# Plot P_a - P_b
+ax1.plot(df['ts_event'], df['P_a'] - df['P_b'])
+ax1.set_title('P_a - P_b')
+ax1.set_xlabel('Time')
+ax1.set_ylabel('Difference')
+
+# Plot T_a - T_b  
+ax2.plot(df['ts_event'], df['T_a'] - df['T_b'])
+ax2.set_title('T_a - T_b')
+ax2.set_xlabel('Time')
+ax2.set_ylabel('Difference')
+
+# Plot L_a - L_b
+ax3.plot(df['ts_event'], df['L_a'] - df['L_b'])
+ax3.set_title('L_a - L_b')
+ax3.set_xlabel('Time')
+ax3.set_ylabel('Difference')
+
+# Plot C_a - C_b
+ax4.plot(df['ts_event'], df['C_a'] - df['C_b'])
+ax4.set_title('C_a - C_b')
+ax4.set_xlabel('Time')
+ax4.set_ylabel('Difference')
+
+plt.tight_layout()
+plt.show()
+plt.savefig(f"/home/janis/HFTP2/HFT/results/hurst/plots/{stock}/{stock}_diff_between_ask_and_bid_events.png")
+
+plt.plot(df_price["ts_event"], df_price["mid_price"])
+plt.grid()
+plt.show()
+plt.savefig(f"/home/janis/HFTP2/HFT/results/hurst/plots/{stock}/{stock}_mid_price.png")
+
+
+
+
+# -
+
+# > Exp kernel on hawkes, after we will see others long term memory kernels
+
+fraction = 0.05
+# get the first 5% of the data
+df = df.slice(0, int(len(df) * fraction))
+
+
+# +
+# Fit multivariate Hawkes process to the data
+import Hawkes as hk
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Convert timestamps to seconds since start
+start_time = df["ts_event"].min()
+times = (df["ts_event"] - start_time).cast(pl.Duration).dt.total_seconds().cast(pl.Float64).to_numpy()
+
+# Get event times for each dimension
+event_types = ['P_a', 'P_b', 'T_a', 'T_b', 'L_a', 'L_b', 'C_a', 'C_b']
+
+# Create separate models for each event type
+models = {}
+for event_type in event_types:
+    # Get event times for this type
+    event_times = times[df[event_type].to_numpy() > 0]
+    
+    # Create and configure model
+    model = hk.estimator()
+    model.set_kernel('exp')  # Use exponential kernel
+    model.set_baseline('const')  # Use constant baseline
+    
+    # Fit model
+    itv = [float(times[0]), float(times[-1])]  # Observation interval
+    try:
+        model.fit(event_times, itv)
+        models[event_type] = model
+        print(f"\nResults for {event_type}:")
+        print(model.get_params())
+    except Exception as e:
+        print(f"Error fitting model for {event_type}: {str(e)}")
+        continue
+
+# Plot intensities for successfully fitted models
+fig, axes = plt.subplots(4, 2, figsize=(15, 20))
+axes = axes.flatten()
+
+for i, event_type in enumerate(event_types):
+    if event_type not in models:
+        continue
+        
+    model = models[event_type]
+    ax = axes[i]
+    plt.sca(ax)  # Set current axis
+    
+    # Add event markers
+    event_times = times[df[event_type].to_numpy() > 0]
+    ymin, ymax = ax.get_ylim()
+    ax.vlines(event_times, ymin=ymin, ymax=ymax, alpha=0.1, color='red')
+    
+    ax.set_title(f'Hawkes Process Intensity for {event_type}')
+    ax.set_xlabel('Time (seconds)')
+    ax.set_ylabel('Intensity')
+    ax.grid(True)
+
+plt.tight_layout()
+plt.show()
+plt.savefig(f"/home/janis/HFTP2/HFT/results/hurst/plots/{stock}/{stock}_hawkes_intensity.png")
+
+# Diagnostic plots for successfully fitted models
+fig, axes = plt.subplots(4, 2, figsize=(15, 20))
+axes = axes.flatten()
+
+for i, event_type in enumerate(event_types):
+    if event_type not in models:
+        continue
+        
+    model = models[event_type]
+    ax = axes[i]
+    plt.sca(ax)
+    try:
+        model.plot_KS()
+        ax.set_title(f'KS Plot for {event_type}')
+    except Exception as e:
+        print(f"Error plotting KS plot for {event_type}: {str(e)}")
+        continue
+
+plt.tight_layout()
+plt.show()
+plt.savefig(f"/home/janis/HFTP2/HFT/results/hurst/plots/{stock}/{stock}_hawkes_diagnostics.png")
+
+# -
+
+    
+
+
+
+
 
 
 
