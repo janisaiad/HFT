@@ -121,97 +121,232 @@ def curate_mid_price(df,stock):
     return df
 
 
-
 for stock in tqdm(date_stocks[most_common_dates[0]], "Huge amount of data to process"):
-    df = all_dfs[stock]
-    df  = curate_mid_price(df,stock)
-    all_dfs[stock] = df
-    df = all_dfs[stock]
-    # average bid ask spread
-    avg_spread = (df["ask_px_00"] - df["bid_px_00"]).mean()
-    print(f"Average bid ask spread: {avg_spread}")
-    # Calculate time differences between mid price changes in nanoseconds and convert to milliseconds
-    time_diffs = df.with_columns(
-        mid_price_change=pl.col("mid_price").diff()
-    ).filter(
-        pl.col("mid_price_change") != 0
-    ).select(
-        (pl.col("ts_event").diff().cast(pl.Int64) / 1_000_000).alias("time_diff_ms")  # Convert to milliseconds
-    ).drop_nulls()
-
-    # Filter out times > 1 hour (3600000 milliseconds) 
-    time_diffs = time_diffs.filter(pl.col("time_diff_ms") <= 36000)
-    alpha = 0.5  # Use first 10% of data
-    time_diffs_np = time_diffs.to_numpy().flatten()[:int(len(time_diffs) * alpha)]
-    avg_arrival_time = time_diffs.mean()["time_diff_ms"][0] 
-    time_scales = [str(int(k*avg_arrival_time))+"us" for k in [1,5,10,30,100,1000,3000,10000,30000,100000,300000,1000000,3000000]]
-    print(time_scales)
-
-    time_scales = time_scales
-
-    dfs = {}
-
-    for scale in time_scales:
-        
-        df_temp = df.group_by(pl.col("ts_event").dt.truncate(scale)).agg([
-            pl.col("mid_price").last().alias("mid_price")
-        ])
-        
-        df_temp = df_temp.sort("ts_event")
-        
-        df_temp = df_temp.with_columns(
-            tick_variation=pl.when(pl.col("ts_event").dt.date().diff() == 0)
-            .then(pl.col("mid_price").diff()/avg_spread)
-            .otherwise(None)
-        )
-        df_temp = df_temp.with_columns(
-            log_variation=pl.when(pl.col("ts_event").dt.date().diff() == 0)
-            .then(pl.col("mid_price").log().diff())
-            .otherwise(None)
-        )
-        
-        dfs[scale] = df_temp
-        
-
-    def rational_func(x, a, b, c):
-        return a / (b + np.power(np.abs(x), c))
-
-    def plot_hist_with_gaussian(data, title):
-        data_np = data.to_numpy()
-        data_clean = data_np[~np.isnan(data_np) & ~np.isinf(data_np)]
-        mu, std = norm.fit(data_clean)
-        
-        plt.figure(figsize=(10, 6))
-        counts, bins, _ = plt.hist(data_clean, bins='auto', density=True, alpha=0.7)
-        
-        x = np.linspace(min(data_clean), max(data_clean), 100)
-        y = norm.pdf(x, mu, std)
-        plt.plot(x, y, 'r-', lw=2, label=f'Gaussian fit (μ={mu:.3f}, σ={std:.3f})')
-        
-        # Fit rational function to the positive side of the distribution
-        bin_centers = (bins[:-1] + bins[1:]) / 2
-        mask = (bin_centers > 0) & (counts > 0)
-        if np.any(mask):
-            try:
-                popt, _ = curve_fit(rational_func, bin_centers[mask], counts[mask], p0=[1, 1, 2])
-            except Exception as e:
-                print(f"Error fitting rational function: {e}")
-                popt = [np.nan, np.nan, np.nan]
-            x_rational = np.linspace(max(min(data_clean), 0.01), max(data_clean), 100)
-            y_rational = rational_func(x_rational, *popt)
-            plt.plot(x_rational, y_rational, 'k-', lw=2, label=f'Rational fit (a={popt[0]:.3f}, b={popt[1]:.3f}, c={popt[2]:.3f})')
-        
-        plt.title(title)
-        plt.xlabel('Spread Variation')
-        plt.ylabel('Density')
-        plt.legend()
-        plt.grid(True, alpha=0.3)
-        plt.savefig(f"/home/janis/HFTP2/HFT/results/copulas/plots/{stock}_{scale}_returns_histogram.png")
-    
-    for scale in time_scales:
-        df_current = dfs[scale]
-        title = f"Histogram of spread Variations - {scale} Sampling"
-        plot_hist_with_gaussian(df_current["tick_variation"], title)
+        df = all_dfs[stock]
+        df  = curate_mid_price(df,stock)
+        all_dfs[stock] = df
 
 
 
+
+def run1(): 
+    for stock in tqdm(date_stocks[most_common_dates[0]], "Huge amount of data to process"):
+        df = all_dfs[stock]
+        # average bid ask spread
+        avg_spread = (df["ask_px_00"] - df["bid_px_00"]).mean()
+        print(f"Average bid ask spread: {avg_spread}")
+        # Calculate time differences between mid price changes in nanoseconds and convert to milliseconds
+        time_diffs = df.with_columns(
+            mid_price_change=pl.col("mid_price").diff()
+        ).filter(
+            pl.col("mid_price_change") != 0
+        ).select(
+            (pl.col("ts_event").diff().cast(pl.Int64) / 1_000_000).alias("time_diff_ms")  # Convert to milliseconds
+        ).drop_nulls()
+
+        # Filter out times > 1 hour (3600000 milliseconds) 
+        time_diffs = time_diffs.filter(pl.col("time_diff_ms") <= 36000)
+        alpha = 0.5  # Use first 10% of data
+        time_diffs_np = time_diffs.to_numpy().flatten()[:int(len(time_diffs) * alpha)]
+        avg_arrival_time = time_diffs.mean()["time_diff_ms"][0] 
+        time_scales = [str(int(k*avg_arrival_time))+"us" for k in [1,5,10,30,100,1000,3000,10000,30000,100000,300000,1000000,3000000]]
+        print(time_scales)
+
+        time_scales = time_scales
+
+        dfs = {}
+
+        for scale in time_scales:
+            
+            df_temp = df.group_by(pl.col("ts_event").dt.truncate(scale)).agg([
+                pl.col("mid_price").last().alias("mid_price")
+            ])
+            
+            df_temp = df_temp.sort("ts_event")
+            
+            df_temp = df_temp.with_columns(
+                tick_variation=pl.when(pl.col("ts_event").dt.date().diff() == 0)
+                .then(pl.col("mid_price").diff()/avg_spread)
+                .otherwise(None)
+            )
+            df_temp = df_temp.with_columns(
+                log_variation=pl.when(pl.col("ts_event").dt.date().diff() == 0)
+                .then(pl.col("mid_price").log().diff())
+                .otherwise(None)
+            )
+            
+            dfs[scale] = df_temp
+            
+
+        def rational_func(x, a, b, c):
+            return a / (b + np.power(np.abs(x), c))
+
+        def plot_hist_with_gaussian(data, title):
+            data_np = data.to_numpy()
+            data_clean = data_np[~np.isnan(data_np) & ~np.isinf(data_np)]
+            mu, std = norm.fit(data_clean)
+            
+            plt.figure(figsize=(10, 6))
+            counts, bins, _ = plt.hist(data_clean, bins='auto', density=True, alpha=0.7)
+            
+            x = np.linspace(min(data_clean), max(data_clean), 100)
+            y = norm.pdf(x, mu, std)
+            plt.plot(x, y, 'r-', lw=2, label=f'Gaussian fit (μ={mu:.3f}, σ={std:.3f})')
+            
+            # Fit rational function to the positive side of the distribution
+            bin_centers = (bins[:-1] + bins[1:]) / 2
+            mask = (bin_centers > 0) & (counts > 0)
+            if np.any(mask):
+                try:
+                    popt, _ = curve_fit(rational_func, bin_centers[mask], counts[mask], p0=[1, 1, 2])
+                except Exception as e:
+                    print(f"Error fitting rational function: {e}")
+                    popt = [np.nan, np.nan, np.nan]
+                x_rational = np.linspace(max(min(data_clean), 0.01), max(data_clean), 100)
+                y_rational = rational_func(x_rational, *popt)
+                plt.plot(x_rational, y_rational, 'k-', lw=2, label=f'Rational fit (a={popt[0]:.3f}, b={popt[1]:.3f}, c={popt[2]:.3f})')
+            
+            plt.title(title)
+            plt.xlabel('Spread Variation')
+            plt.ylabel('Density')
+            plt.legend()
+            plt.grid(True, alpha=0.3)
+            plt.savefig(f"/home/janis/HFTP2/HFT/results/copulas/plots/{stock}_{scale}_returns_histogram.png")
+        
+        for scale in time_scales:
+            df_current = dfs[scale]
+            title = f"Histogram of spread Variations - {scale} Sampling"
+            plot_hist_with_gaussian(df_current["tick_variation"], title)
+
+def run2():
+    # for each day, we fit a copula for mid price variations depending on their stock
+    for date in most_common_dates:
+        date_df = pl.DataFrame()
+        for stock in date_stocks[date]:
+            df = all_dfs[stock]
+            date_df = pl.concat([date_df, df])
+        
+        micro_variations = []
+        # Sample at different time scales from 1us to 1000s
+        time_scales = ["1us", "10us", "100us", "1ms", "10ms", "100ms", "1s", "10s", "100s", "1000s"]
+        time_scales.reverse()
+        for time_scale in tqdm(time_scales, "Fitting copulas"):
+            # we write in a txt the time scale
+            with open(f"/home/janis/HFTP2/HFT/results/copulas/plots/time_scale_{time_scale}.txt", "w") as f:
+                f.write(f"Time scale: {time_scale}")
+            for stock in tqdm(date_stocks[date], "Fitting copulas"):
+                df = all_dfs[stock]
+                # Calculate returns instead of raw prices for better copula fitting
+                micro_data = df.group_by_dynamic(
+                    "ts_event",
+                    every=time_scale
+                ).agg([
+                    pl.col("microprice").last().alias("microprice")
+                ])
+                returns = np.diff(np.log(micro_data["microprice"].to_numpy()))
+                micro_variations.append(returns)
+            fraction = 0.01
+            micro_variations = micro_variations[:int(len(micro_variations)*fraction)]
+            
+            # Fit different types of copulas
+            from copulalib.copulalib import Copula
+            from statsmodels.distributions.copula.api import GaussianCopula, StudentTCopula
+            
+            copula_types = {
+                'Gaussian': ('gaussian', GaussianCopula()),
+                'Student-t': ('student', StudentTCopula()),
+                'Clayton': ('clayton', None),
+                'Frank': ('frank', None),
+                'Gumbel': ('gumbel', None)
+            }
+            
+            print("Now fitting copulas")
+            # Calculate and plot each copula
+            for copula_name, (family, statsmodel_copula) in tqdm(copula_types.items(), "Fitting copulas"):
+                try:
+                    # Open files in append mode at the start
+                    stats_file = open(f"/home/janis/HFTP2/HFT/results/copulas/stats/{copula_name}_{date}_{time_scale}.txt", "a")
+                    
+                    if statsmodel_copula is None:
+                        # Use copulalib implementation
+                        copula = Copula(micro_variations[0], micro_variations[1], family=family)
+                        
+                        # Calculate correlations
+                        kendall_tau = copula.tau
+                        spearman_corr = copula.sr
+                        pearson_corr = copula.pr
+                        theta = copula.theta
+                        
+                        # Generate samples for plotting
+                        X1, Y1 = copula.generate_xy(1000)
+                    else:
+                        # Create new instance for each fit to avoid attribute issues
+                        copula = type(statsmodel_copula)()
+                        
+                        # Check for sufficient variation in data
+                        if len(set(micro_variations[0])) < 2 or len(set(micro_variations[1])) < 2:
+                            print(f"Warning: Insufficient variation in data for {copula_name} copula")
+                            stats_file.write(f"Warning: Insufficient variation in data for {copula_name} copula\n")
+                            stats_file.close()
+                            continue
+                            
+                        copula.fit(micro_variations)
+                        
+                        # Calculate correlations
+                        kendall_tau = copula.kendall_tau()
+                        spearman_corr = copula.spearman_correlation()
+                        pearson_corr = copula.pearson_correlation()
+                        theta = copula.params[0] if hasattr(copula, 'params') else None
+                        
+                        # Generate samples for plotting
+                        samples = copula.random(1000)
+                        X1, Y1 = samples[:, 0], samples[:, 1]
+                    
+                    # Print and write results in real-time
+                    stats_file.write(f"\nResults for {copula_name} copula at {time_scale} scale:\n")
+                    if theta is not None:
+                        print(f"Theta: {theta:.3f}")
+                        stats_file.write(f"Theta: {theta:.3f}\n")
+                    print(f"Kendall tau: {kendall_tau:.3f}")
+                    stats_file.write(f"Kendall tau: {kendall_tau:.3f}\n")
+                    print(f"Spearman correlation: {spearman_corr:.3f}")
+                    stats_file.write(f"Spearman correlation: {spearman_corr:.3f}\n")
+                    print(f"Pearson correlation: {pearson_corr:.3f}")
+                    stats_file.write(f"Pearson correlation: {pearson_corr:.3f}\n")
+                    stats_file.flush()  # Force write to disk
+                    
+                    # Plot
+                    plt.figure(figsize=(12, 8))
+                    plt.scatter(X1, Y1, alpha=0.5)
+                    plt.xlabel('U')
+                    plt.ylabel('V')
+                    
+                    # Add correlation info to plot
+                    info_text = [
+                        f'Kendall tau: {kendall_tau:.3f}',
+                        f'Spearman corr: {spearman_corr:.3f}',
+                        f'Pearson corr: {pearson_corr:.3f}'
+                    ]
+                    if theta is not None:
+                        info_text.insert(0, f'Theta: {theta:.3f}')
+                    
+                    plt.text(0.05, 0.95,
+                            '\n'.join(info_text),
+                            transform=plt.gca().transAxes,
+                            bbox=dict(facecolor='white', alpha=0.8))
+                    
+                    plt.title(f"{copula_name} Copula - {date} - Scale {time_scale}")
+                    plt.savefig(f"/home/janis/HFTP2/HFT/results/copulas/plots/{copula_name}_copula_{date}_{time_scale}.png")
+                    plt.close()
+                    
+                    stats_file.close()
+                
+                except Exception as e:
+                    print(f"Error fitting {copula_name} copula: {e}")
+                    with open(f"/home/janis/HFTP2/HFT/results/copulas/stats/{copula_name}_{date}_{time_scale}.txt", "a") as f:
+                        f.write(f"Error fitting copula: {e}\n")
+                    continue
+
+if __name__ == "__main__":
+    #run1()
+    run2()

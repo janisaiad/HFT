@@ -314,6 +314,15 @@ wheels = [
 ]
 
 [[package]]
+name = "copulalib"
+version = "2.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/1d/67/ae35d0e3ccb4bb2538c85a154f2423f6eac7bb9879e375283ad7ad972989/copulalib-2.0.1.tar.gz", hash = "sha256:3321bc915139a2b5b9505c93487ea9b37d4500321c026221e91eacab54b5c358", size = 13830 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6e/7f/638989e3e9c363522993d233edf37c39320aa1ad463d540014bcd3662aa2/copulalib-2.0.1-py3-none-any.whl", hash = "sha256:f4e028972c5c6ba7ebd3b9dcc8e3b9b27c67fd6b6f87a3dd3b301373f4537df3", size = 14464 },
+]
+
+[[package]]
 name = "copulas"
 version = "0.12.1"
 source = { registry = "https://pypi.org/simple" }
@@ -564,6 +573,7 @@ source = { editable = "." }
 dependencies = [
     { name = "arch" },
     { name = "armagarch" },
+    { name = "copulalib" },
     { name = "copulas" },
     { name = "cython" },
     { name = "dotenv" },
@@ -591,6 +601,7 @@ dependencies = [
 requires-dist = [
     { name = "arch", specifier = ">=7.2.0" },
     { name = "armagarch", specifier = ">=1.0.4" },
+    { name = "copulalib", specifier = ">=2.0.1" },
     { name = "copulas", specifier = ">=0.12.1" },
     { name = "cython", specifier = ">=0.28" },
     { name = "dotenv", specifier = ">=0.9.9" },
