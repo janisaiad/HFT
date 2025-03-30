@@ -58,10 +58,10 @@ most_common_dates = [date for date, count in date_counts.items() if count == max
 print(f"Dates with maximum count ({max_count} stocks): {most_common_dates}")
 
 # Create empty list to store all dataframes
-all_dfs = {stock: pl.DataFrame() for stock in stocks_list}
+all_dfs = {stock: pl.DataFrame() for stock in date_stocks[most_common_dates[0]]}
 
 # Load and combine data for each date
-for date in most_common_dates[:3]:
+for date in most_common_dates[:1]:
     print(f"\nProcessing date: {date}")
     stocks_for_date = date_stocks[date]
     
@@ -77,9 +77,10 @@ for date in most_common_dates[:3]:
 
 
 def curate_mid_price(df,stock):
-    num_entries_by_publisher = df.group_by("publisher_id").len().sort("len", descending=True)
-    if len(num_entries_by_publisher) > 1:
-            df = df.filter(pl.col("publisher_id") == 41)
+    if "publisher_id" in df.columns:
+        num_entries_by_publisher = df.group_by("publisher_id").len().sort("len", descending=True)
+        if len(num_entries_by_publisher) > 1:
+                df = df.filter(pl.col("publisher_id") == 41)
         
         
     if stock == "GOOGL":
@@ -194,7 +195,11 @@ for stock in tqdm(stocks_list, "Huge amount of data to process"):
         bin_centers = (bins[:-1] + bins[1:]) / 2
         mask = (bin_centers > 0) & (counts > 0)
         if np.any(mask):
-            popt, _ = curve_fit(rational_func, bin_centers[mask], counts[mask], p0=[1, 1, 2])
+            try:
+                popt, _ = curve_fit(rational_func, bin_centers[mask], counts[mask], p0=[1, 1, 2])
+            except Exception as e:
+                print(f"Error fitting rational function: {e}")
+                popt = [np.nan, np.nan, np.nan]
             x_rational = np.linspace(max(min(data_clean), 0.01), max(data_clean), 100)
             y_rational = rational_func(x_rational, *popt)
             plt.plot(x_rational, y_rational, 'k-', lw=2, label=f'Rational fit (a={popt[0]:.3f}, b={popt[1]:.3f}, c={popt[2]:.3f})')
