@@ -228,11 +228,11 @@ def run2():
         
         micro_variations = []
         # Sample at different time scales from 1us to 1000s
-        time_scales = ["1us", "10us", "100us", "1ms", "10ms", "100ms", "1s", "10s", "100s", "1000s"]
+        time_scales = ["30us", "100us", "1ms", "10ms", "100ms", "1s"]
         time_scales.reverse()
         for time_scale in tqdm(time_scales, "Fitting copulas"):
             # we write in a txt the time scale
-            with open(f"/home/janis/HFTP2/HFT/results/copulas/plots/time_scale_{time_scale}.txt", "w") as f:
+            with open(f"/home/janis/HFTP2/HFT/results/copulas/plots/time_scale_{time_scale}.txt", "a") as f:
                 f.write(f"Time scale: {time_scale}")
             for stock in tqdm(date_stocks[date], "Fitting copulas"):
                 df = all_dfs[stock]
@@ -264,13 +264,27 @@ def run2():
             # Calculate and plot each copula
             for copula_name, (family, statsmodel_copula) in tqdm(copula_types.items(), "Fitting copulas"):
                 try:
+                    # Check if we have enough data points
+                    if len(micro_variations) < 2:
+                        print(f"Warning: Not enough data points for {copula_name} copula")
+                        continue
+                        
+                    if len(micro_variations[0]) == 0 or len(micro_variations[1]) == 0:
+                        print(f"Warning: Empty data arrays for {copula_name} copula")
+                        continue
+                        
                     # Open files in append mode at the start
                     stats_file = open(f"/home/janis/HFTP2/HFT/results/copulas/stats/{copula_name}_{date}_{time_scale}.txt", "a")
                     
                     if statsmodel_copula is None:
                         # Use copulalib implementation
-                        copula = Copula(micro_variations[0], micro_variations[1], family=family)
-                        
+                        try:
+                            copula = Copula(micro_variations[0], micro_variations[1], family=family)
+                        except IndexError:
+                            print(f"Warning: Index error when creating {copula_name} copula")
+                            stats_file.close()
+                            continue
+                            
                         # Calculate correlations
                         kendall_tau = copula.tau
                         spearman_corr = copula.sr
@@ -290,8 +304,13 @@ def run2():
                             stats_file.close()
                             continue
                             
-                        copula.fit(micro_variations)
-                        
+                        try:
+                            copula.fit(micro_variations)
+                        except (IndexError, ValueError) as e:
+                            print(f"Warning: Error fitting {copula_name} copula: {e}")
+                            stats_file.close()
+                            continue
+                            
                         # Calculate correlations
                         kendall_tau = copula.kendall_tau()
                         spearman_corr = copula.spearman_correlation()
