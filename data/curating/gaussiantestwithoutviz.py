@@ -22,13 +22,13 @@ FOLDER_PATH = os.getenv("FOLDER_PATH")
 
 
 dotenv.load_dotenv()
-stock = "KHC"
+stock = "WBD"
 # -
 
 parquet_files = [f for f in os.listdir(f"{FOLDER_PATH}{stock}") if f.endswith('.parquet')]
 parquet_files.sort()
 print(len(parquet_files),"\n",parquet_files)
-threshold = len(parquet_files)//4
+threshold = len(parquet_files)//5
 parquet_files = parquet_files[:threshold]
 # Read and concatenate all parquet files
 df = pl.concat([
@@ -87,8 +87,54 @@ print(f"Average bid ask spread: {avg_spread}")
 
 df_cleaned = df[["ts_event","mid_price"]]
 
+# Average arrival time
+
 # +
-time_scales = ["30s", "1m", "5m", "10m","20m","30m","1h","2h","4h"]
+# Compute average time between mid price changes
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Calculate time differences between mid price changes in nanoseconds and convert to milliseconds
+time_diffs = df.with_columns(
+    mid_price_change=pl.col("mid_price").diff()
+).filter(
+    pl.col("mid_price_change") != 0
+).select(
+    (pl.col("ts_event").diff().cast(pl.Int64) / 1_000_000).alias("time_diff_ms")  # Convert to milliseconds
+).drop_nulls()
+
+# Filter out times > 1 hour (3600000 milliseconds) 
+time_diffs = time_diffs.filter(pl.col("time_diff_ms") <= 36000)
+
+# Take first alpha fraction of data
+alpha = 0.1  # Use first 10% of data
+time_diffs_np = time_diffs.to_numpy().flatten()[:int(len(time_diffs) * alpha)]
+
+# Create histogram
+plt.figure(figsize=(10, 6))
+plt.hist(time_diffs_np, bins='auto', density=True, alpha=0.7)
+
+plt.title(f'Distribution of Time Between Mid Price Changes (<1h) for {stock} (First {alpha*100}% of data)')
+plt.xlabel('Time between mid price changes (milliseconds)')
+plt.ylabel('Density')
+plt.ylim(0,0.0002)
+print('Average time between mid price changes:', time_diffs.mean())
+avg_arrival_time = time_diffs.mean()["time_diff_ms"][0] 
+plt.grid(True, alpha=0.3)
+
+# +
+
+# Save plot
+os.makedirs(f"/home/janis/HFTP2/HFT/results/hurst/plots/{stock}/", exist_ok=True)
+plt.savefig(f"/home/janis/HFTP2/HFT/results/hurst/plots/{stock}/{stock}_arrival_times.png")
+
+# -
+
+time_scales = [str(int(k*avg_arrival_time))+"us" for k in [1,5,10,30,100,1000,3000,10000,30000,100000,300000,1000000,3000000]]
+print(time_scales)
+
+# +
+time_scales = time_scales
 
 dfs = {}
 
@@ -114,19 +160,24 @@ for scale in time_scales:
     
     print(f"\n{scale} sampling:")
     print(df_temp.head())
-df_30s = dfs["30s"]
-df_1min = dfs["1m"]
-df_5min = dfs["5m"]
-df_10min = dfs["10m"]
-df_20min = dfs["20m"]
-df_30min = dfs["30m"]
-df_1h = dfs["1h"]
-df_2h = dfs["2h"]
-df_4h = dfs["4h"]
 
 # +
 import plotly.graph_objects as go
 
+# Create plots for each time scale
+for scale in time_scales:
+    df_current = dfs[scale]
+    
+    fig = go.Figure()
+    fig.add_trace(
+        go.Scatter(x=df_current["ts_event"], y=df_current["mid_price"], name="Mid Price")
+    )
+    fig.update_layout(
+        title=f"{scale} Sampling",
+        xaxis_title="Time", 
+        yaxis_title="Mid Price"
+    )
+    fig.show()
 
 
 # +
@@ -164,6 +215,7 @@ def plot_hist_with_gaussian(data, title):
     plt.ylabel('Density')
     plt.legend()
     plt.grid(True, alpha=0.3)
+    plt.show()
     plt.savefig(f"/home/janis/HFTP2/HFT/results/hurst/plots/{stock}_{scale}_returns_histogram.png")
 
 
@@ -174,8 +226,6 @@ for scale in time_scales:
     df_current = dfs[scale]
     title = f"Histogram of spread Variations - {scale} Sampling"
     plot_hist_with_gaussian(df_current["tick_variation"], title)
-
-
 
 
 
