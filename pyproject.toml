@@ -3,7 +3,7 @@ name = "hft"
 version = "0.1.0"
 description = "Repository for HFT"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
     "arch>=7.2.0",
     "armagarch>=1.0.4",
