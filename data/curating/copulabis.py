@@ -191,6 +191,9 @@ for date in most_common_dates:
             'Gumbel': 'gumbel'
         }
         
+        # Store coefficients for all pairs
+        correlation_results = []
+        
         print("\nFitting copulas...")
         stocks = list(stock_returns.keys())
         for i in range(len(stocks)):
@@ -202,43 +205,52 @@ for date in most_common_dates:
                     try:
                         copula = Copula(stock_returns[stock1], stock_returns[stock2], family=family)
                         
-                        kendall_tau = copula.tau
-                        spearman_corr = copula.sr
-                        pearson_corr = copula.pr
-                        theta = copula.theta
+                        # Store results in a dictionary
+                        result = {
+                            'stock1': stock1,
+                            'stock2': stock2,
+                            'copula_type': copula_name,
+                            'theta': copula.theta,
+                            'kendall_tau': copula.tau,
+                            'spearman_corr': copula.sr,
+                            'pearson_corr': copula.pr,
+                            'X1': copula.generate_xy(1000)[0],
+                            'Y1': copula.generate_xy(1000)[1]
+                        }
+                        correlation_results.append(result)
                         
-                        X1, Y1 = copula.generate_xy(1000)
-                        
-                        print(f"\nResults for {copula_name} copula:")
-                        print(f"Theta: {theta:.3f}")
-                        print(f"Kendall tau: {kendall_tau:.3f}")
-                        print(f"Spearman correlation: {spearman_corr:.3f}")
-                        print(f"Pearson correlation: {pearson_corr:.3f}")
-                        
-                        plt.figure(figsize=(12, 8))
-                        plt.scatter(X1, Y1, alpha=0.5)
-                        plt.xlabel('U')
-                        plt.ylabel('V')
-                        
-                        info_text = [
-                            f'Theta: {theta:.3f}',
-                            f'Kendall tau: {kendall_tau:.3f}',
-                            f'Spearman corr: {spearman_corr:.3f}',
-                            f'Pearson corr: {pearson_corr:.3f}'
-                        ]
-                        
-                        plt.text(0.05, 0.95,
-                                '\n'.join(info_text),
-                                transform=plt.gca().transAxes,
-                                bbox=dict(facecolor='white', alpha=0.8))
-                        
-                        plt.title(f"{copula_name} Copula - {stock1} vs {stock2}\n{date} - Scale {time_scale}")
-                        plt.show()
-                        plt.savefig(f"/home/janis/HFTP2/HFT/results/copulas/stats/{stock1}_{stock2}_{date}_{time_scale}.png")
-                        plt.close()
-                    
                     except Exception as e:
                         print(f"Error fitting {copula_name} copula: {e}")
                         continue
-
-
+        
+        # Sort results by absolute value of Kendall's tau
+        correlation_results.sort(key=lambda x: abs(x['kendall_tau']), reverse=True)
+        
+        # Plot and save only top 5 most correlated pairs
+        for result in correlation_results[:5]:
+            plt.figure(figsize=(12, 8))
+            plt.scatter(result['X1'], result['Y1'], alpha=0.5)
+            plt.xlabel('U')
+            plt.ylabel('V')
+            
+            info_text = [
+                f'Theta: {result["theta"]:.3f}',
+                f'Kendall tau: {result["kendall_tau"]:.3f}',
+                f'Spearman corr: {result["spearman_corr"]:.3f}',
+                f'Pearson corr: {result["pearson_corr"]:.3f}'
+            ]
+            
+            plt.text(0.05, 0.95,
+                    '\n'.join(info_text),
+                    transform=plt.gca().transAxes,
+                    bbox=dict(facecolor='white', alpha=0.8))
+            
+            plt.title(f"{result['copula_type']} Copula - {result['stock1']} vs {result['stock2']}\n{date} - Scale {time_scale}")
+            plt.savefig(f"/home/janis/HFTP2/HFT/results/copulas/stats/TOP_{result['stock1']}_{result['stock2']}_{date}_{time_scale}.png")
+            plt.close()
+            
+            print(f"\nTop correlation pair: {result['stock1']} - {result['stock2']}")
+            print(f"Copula type: {result['copula_type']}")
+            print(f"Kendall tau: {result['kendall_tau']:.3f}")
+            print(f"Spearman correlation: {result['spearman_corr']:.3f}")
+            print(f"Pearson correlation: {result['pearson_corr']:.3f}")
