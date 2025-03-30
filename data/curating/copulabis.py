@@ -234,7 +234,7 @@ for date in most_common_dates:
                         
                         plt.title(f"{copula_name} Copula - {stock1} vs {stock2}\n{date} - Scale {time_scale}")
                         plt.show()
-                        plt.savefig(f"copulas/{stock1}_{stock2}_{date}_{time_scale}.png")
+                        plt.savefig(f"/home/janis/HFTP2/HFT/results/copulas/stats/{stock1}_{stock2}_{date}_{time_scale}.png")
                         plt.close()
                     
                     except Exception as e:
