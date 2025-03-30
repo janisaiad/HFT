@@ -23,6 +23,7 @@ dependencies = [
     "polars>=1.23.0",
     "pyarrow>=19.0.1",
     "pytest>=8.3.5",
+    "ruptures>=1.1.9",
     "scipy>=1.15.2",
     "seaborn>=0.13.2",
     "setuptools>=75.8.2",

@@ -27,6 +27,7 @@ from scipy.stats import norm
 from scipy.optimize import curve_fit
 from ruptures import Window
 from statsmodels.tsa.stattools import adfuller
+import json
 
 
 dotenv.load_dotenv()
@@ -73,21 +74,6 @@ max_count = max(date_counts.values())
 most_common_dates = [date for date, count in date_counts.items() if count == max_count]
 print(f"Dates with maximum count ({max_count} stocks): {most_common_dates}")
 print("stocks for most common date:", date_stocks[most_common_dates[0]])
-# Create empty list to store all dataframes
-all_dfs = {stock: pl.DataFrame() for stock in date_stocks[most_common_dates[0]]}
-
-# Load and combine data for each date
-for date in most_common_dates[:1]:
-    print(f"\nProcessing date: {date}")
-    stocks_for_date = date_stocks[date]
-    
-    # Load data for each stock on this date
-    for stock in tqdm(stocks_for_date):
-        file_path = f"{FOLDER_PATH}{stock}/{stock}_{date}.parquet"
-        if os.path.exists(file_path):
-            df = pl.read_parquet(file_path)
-            all_dfs[stock] = pl.concat([all_dfs[stock], df])
-
 
 def curate_mid_price(df,stock):
     if "publisher_id" in df.columns:
@@ -131,17 +117,8 @@ def curate_mid_price(df,stock):
     df = df.sort("ts_event")
     return df
 
-
-for stock in tqdm(date_stocks[most_common_dates[0]], "Huge amount of data to process"):
-        df = all_dfs[stock]
-        df  = curate_mid_price(df,stock)
-        all_dfs[stock] = df
-
-
-# --
-
 # For each stock and time scale, perform stationarity tests and detect regime changes
-time_scales = ["30us", "100us", "1ms", "10ms", "100ms", "1s"]
+time_scales = ["100ms", "1s",'10s','60s']
 time_scales.reverse()
 
 for date in most_common_dates:
@@ -149,51 +126,74 @@ for date in most_common_dates:
     
     for stock in date_stocks[date]:
         print(f"\nAnalyzing stock: {stock}")
-        df = all_dfs[stock]
         
-        for time_scale in time_scales:
-            print(f"\nProcessing time scale: {time_scale}")
+        # Load data for this stock and date
+        file_path = f"{FOLDER_PATH}{stock}/{stock}_{date}.parquet"
+        if os.path.exists(file_path):
+            df = pl.read_parquet(file_path)
+            df = curate_mid_price(df, stock)
             
-            # Resample data
-            sampled_prices = df.group_by_dynamic(
-                "ts_event",
-                every=time_scale
-            ).agg([
-                pl.col("microprice").last().alias("microprice")
-            ])
+            # Store changepoints for each timescale
+            changepoints_data = {}
             
-            prices = sampled_prices["microprice"].to_numpy()
-            timestamps = sampled_prices["ts_event"].to_numpy()
+            for time_scale in time_scales:
+                print(f"\nProcessing time scale: {time_scale}")
+                
+                # Resample data
+                sampled_prices = df.group_by_dynamic(
+                    "ts_event",
+                    every=time_scale
+                ).agg([
+                    pl.col("microprice").last().alias("microprice")
+                ])
+                
+                prices = sampled_prices["microprice"].to_numpy()
+                timestamps = sampled_prices["ts_event"].to_numpy()
+                
+                # Perform ADF test for stationarity
+                adf_result = adfuller(prices)
+                is_stationary = adf_result[1] < 0.05
+                
+                # Detect change points using Window method
+                model = Window(width=50, model="l2").fit(prices.reshape(-1, 1))
+                change_points = model.predict(pen=np.std(prices))
+                
+                # Store timestamps of changepoints
+                changepoint_timestamps = [timestamps[cp].astype(str) for cp in change_points if cp < len(timestamps)]
+                changepoints_data[time_scale] = {
+                    "timestamps": changepoint_timestamps,
+                    "is_stationary": bool(is_stationary),
+                    "adf_pvalue": float(adf_result[1])
+                }
+                
+                # Plot the results
+                plt.figure(figsize=(15, 10))
+                
+                # Plot 1: Price series with change points
+                plt.subplot(2, 1, 1)
+                plt.plot(timestamps, prices, label='Price', alpha=0.7)
+                for change_point in change_points:
+                    if change_point < len(timestamps):
+                        plt.axvline(x=timestamps[change_point], color='r', linestyle='--', alpha=0.5)
+                plt.title(f"{stock} - {time_scale} - Price Series with Regime Changes\n" + 
+                         f"Stationary: {is_stationary} (p-value: {adf_result[1]:.4f})")
+                plt.legend()
+                
+                # Plot 2: Returns distribution
+                plt.subplot(2, 1, 2)
+                returns = np.diff(np.log(prices))
+                plt.hist(returns, bins=50, density=True, alpha=0.7)
+                plt.title(f"Returns Distribution")
+                
+                plt.tight_layout()
+                os.makedirs(f"/home/janis/HFTP2/HFT/results/stationarity/stats/{stock}", exist_ok=True)
+                plt.savefig(f"/home/janis/HFTP2/HFT/results/stationarity/stats/{stock}/{stock}_{date}_{time_scale}.png")
+                plt.close()
+                
+                print(f"ADF test p-value: {adf_result[1]}")
+                print(f"Number of regime changes detected: {len(change_points)}")
             
-            # Perform ADF test for stationarity
-            adf_result = adfuller(prices)
-            is_stationary = adf_result[1] < 0.05
-            
-            # Detect change points using Window method
-            model = Window(width=50, model="l2").fit(prices.reshape(-1, 1))
-            change_points = model.predict(pen=np.std(prices))
-            
-            # Plot the results
-            plt.figure(figsize=(15, 10))
-            
-            # Plot 1: Price series with change points
-            plt.subplot(2, 1, 1)
-            plt.plot(timestamps, prices, label='Price', alpha=0.7)
-            for change_point in change_points:
-                plt.axvline(x=timestamps[change_point], color='r', linestyle='--', alpha=0.5)
-            plt.title(f"{stock} - {time_scale} - Price Series with Regime Changes\n" + 
-                     f"Stationary: {is_stationary} (p-value: {adf_result[1]:.4f})")
-            plt.legend()
-            
-            # Plot 2: Returns distribution
-            plt.subplot(2, 1, 2)
-            returns = np.diff(np.log(prices))
-            plt.hist(returns, bins=50, density=True, alpha=0.7)
-            plt.title(f"Returns Distribution")
-            
-            plt.tight_layout()
-            plt.savefig(f"/home/janis/HFTP2/HFT/results/stationarity/stats/{stock}_{date}_{time_scale}.png")
-            plt.close()
-            
-            print(f"ADF test p-value: {adf_result[1]}")
-            print(f"Number of regime changes detected: {len(change_points)}")
+            # Save changepoints data to JSON file
+            os.makedirs(f"/home/janis/HFTP2/HFT/results/stationarity/{stock}/changepoints", exist_ok=True)
+            with open(f"/home/janis/HFTP2/HFT/results/stationarity/{stock}/changepoints/{stock}_{date}_changepoints.json", "w") as f:
+                json.dump(changepoints_data, f, indent=4)
