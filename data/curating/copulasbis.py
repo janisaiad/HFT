@@ -56,7 +56,7 @@ print(f"Most common date across stocks: {most_common_date}")
 max_count = max(date_counts.values())
 most_common_dates = [date for date, count in date_counts.items() if count == max_count]
 print(f"Dates with maximum count ({max_count} stocks): {most_common_dates}")
-
+print("stocks for most common date:", date_stocks[most_common_dates[0]])
 # Create empty list to store all dataframes
 all_dfs = {stock: pl.DataFrame() for stock in date_stocks[most_common_dates[0]]}
 
@@ -122,7 +122,7 @@ def curate_mid_price(df,stock):
 
 
 
-for stock in tqdm(stocks_list, "Huge amount of data to process"):
+for stock in tqdm(date_stocks[most_common_dates[0]], "Huge amount of data to process"):
     df = all_dfs[stock]
     df  = curate_mid_price(df,stock)
     all_dfs[stock] = df
@@ -172,9 +172,6 @@ for stock in tqdm(stocks_list, "Huge amount of data to process"):
         
         dfs[scale] = df_temp
         
-        print(f"\n{scale} sampling:")
-        print(df_temp.head())
-
 
     def rational_func(x, a, b, c):
         return a / (b + np.power(np.abs(x), c))
