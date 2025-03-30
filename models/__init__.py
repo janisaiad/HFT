@@ -1,3 +1,3 @@
-from . import hawkes
+from . import hawkes,pyhawkes
 
-__all__ = ["hawkes"]
+__all__ = ["hawkes","pyhawkes"]

@@ -28,6 +28,7 @@ def convert_discrete_to_continuous(S, dt):
     C_ct = C_ct[perm]
     return S_ct, C_ct, T
 
+
 def convert_continuous_to_discrete(S, C, dt, T_min, T_max):
     bins = np.arange(T_min, T_max, dt)
     if bins[-1] != T_max:

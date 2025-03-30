@@ -148,3 +148,9 @@ added swig, & tick
 faire des commits et dig la librairie tick x datainitiative
 
 CPPFLAGS="-I /home/janis/HFTP2/HFT/.venv/lib/python3.12/site-packages/numpy/_core/include" uv add tick ---> be careful with that
+
+
+
+
+added pyhawkes
+added pybasicbayes
