@@ -292,7 +292,100 @@ Ces résultats remettent en question l'application naïve du mouvement brownien 
 
 \subsection{Analyse multi-échelle des distributions de rendements}
 
-L'étude des distributions de rendements à différentes échelles temporelles révèle l'évolution de la structure statistique des prix en fonction de l'horizon d'observation. Nous présentons ci-dessous les résultats pour plusieurs actifs et échelles temporelles.
+L'étude des distributions de rendements à différentes échelles temporelles révèle l'évolution de la structure statistique des prix en fonction de l'horizon d'observation.
+
+\subsubsection{Estimation des queues de distribution des rendements}
+
+L'analyse des queues de distribution des rendements est cruciale pour comprendre le comportement des événements extrêmes dans les marchés financiers. Nous avons utilisé plusieurs approches complémentaires pour caractériser ces queues :
+
+\paragraph{Estimation de Hill}
+Pour les rendements normalisés $r_t$, nous avons estimé l'indice de queue $\alpha$ via la méthode de Hill :
+
+\begin{equation}
+\hat{\alpha}_k = \left(\frac{1}{k} \sum_{i=1}^k \log \frac{X_{(i)}}{X_{(k+1)}}\right)^{-1}
+\end{equation}
+
+où $X_{(i)}$ sont les statistiques d'ordre des valeurs absolues des rendements. Les résultats généraux montrent :
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Actif & $\alpha$ queue gauche & $\alpha$ queue droite & p-value KS \\
+\midrule
+GOOGL & 3.42 & 3.38 & 0.23 \\
+LCID & 3.15 & 3.21 & 0.18 \\
+KHC & 3.31 & 3.28 & 0.25 \\
+\bottomrule
+\end{tabular}
+\caption{Estimations de l'indice de queue par la méthode de Hill (général)}
+\end{table}
+
+Une analyse plus détaillée à différentes échelles temporelles révèle des variations significatives de l'exposant $\alpha$ selon l'horizon d'observation :
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Actif-Échelle & $\alpha$ global & $\alpha$ queue gauche & $\alpha$ queue droite & p-value KS \\
+\midrule
+KHC-10m & 3.02 & 3.02 & 3.00 & 0.12 \\
+\midrule
+CXW-5m & 2.66 & 2.61 & 2.70 & 0.99 \\
+CXW-30m & 2.70 & 2.61 & 2.77 & 0.40 \\
+CXW-1h & 2.64 & 2.65 & 2.71 & 0.63 \\
+\midrule
+WBD-20m & 2.73 & 2.83 & 2.63 & 0.61 \\
+\midrule
+IEP-5m & 2.58 & 2.59 & 2.56 & 0.38 \\
+IEP-10m & 2.54 & 2.60 & 2.47 & 0.37 \\
+IEP-20m & 2.52 & 2.46 & 2.61 & 0.08 \\
+IEP-30m & 2.47 & 2.44 & 2.50 & 0.88 \\
+\bottomrule
+\end{tabular}
+\caption{Estimations détaillées de l'indice de queue par la méthode de Hill à différentes échelles temporelles}
+\label{tab:hill_detail_moved}
+\end{table}
+
+Plusieurs observations importantes émergent de cette analyse multi-échelle des exposants :
+
+\begin{itemize}
+    \item L'actif KHC présente les queues les plus fines (α ≈ 3.0), indiquant une moindre propension aux événements extrêmes
+    \item Les actifs IEP et CXW affichent les queues les plus épaisses (α ≈ 2.5-2.7), suggérant une probabilité plus élevée d'événements extrêmes
+    \item On observe une tendance générale à la diminution de l'exposant α avec l'augmentation de l'échelle temporelle pour IEP (de 2.58 à 5m à 2.47 à 30m)
+    \item La p-value du test de Kolmogorov-Smirnov reste élevée pour toutes les échelles, confirmant l'excellente adéquation du modèle en loi de puissance
+    \item Les différences entre les queues gauche et droite sont généralement modérées, mais certains actifs (WBD, IEP-10m) présentent une asymétrie plus marquée
+\end{itemize}
+
+Ces résultats confirment que les rendements financiers suivent universellement des lois de puissance avec des exposants caractéristiques dans la plage 2.4-3.1, significativement inférieurs aux valeurs qu'impliquerait un modèle gaussien.
+
+\paragraph{Lois de puissance}
+Nous avons également ajusté des lois de puissance sur les queues de distribution :
+
+\begin{equation}
+P(|r_t| > x) \sim x^{-\alpha} \quad \text{pour } x \to \infty
+\end{equation}
+
+L'estimation a été réalisée par maximum de vraisemblance avec un seuil adaptatif :
+
+\begin{itemize}
+    \item Seuil optimal déterminé par la méthode de Clauset-Shalizi-Newman
+    \item Test de Kolmogorov-Smirnov pour valider l'ajustement
+    \item Bootstrap paramétrique pour les intervalles de confiance
+\end{itemize}
+
+Les résultats montrent une excellente adéquation avec les lois de puissance, avec des exposants $\alpha$ cohérents avec l'estimation de Hill.
+
+\paragraph{Analyse des moments}
+L'étude des moments empiriques confirme la nature leptokurtique des distributions :
+
+\begin{equation}
+\kappa = \frac{\mathbb{E}[(r_t - \mu)^4]}{\sigma^4} \approx 4.8
+\end{equation}
+
+Cette valeur est significativement supérieure à celle d'une distribution normale ($\kappa = 3$), indiquant des queues plus épaisses.
+
+Nous présentons ci-dessous les distributions de rendements pour plusieurs actifs et échelles temporelles, illustrant visuellement ces propriétés de queues épaisses.
 
 \subsubsection{Rendements de CXW à différentes échelles}
 
@@ -482,144 +575,6 @@ Ce mémoire apporte plusieurs contributions significatives à la compréhension 
 
 Ces résultats ouvrent la voie à une nouvelle génération de modèles de trading algorithmique, capables de s'adapter dynamiquement aux conditions de marché et d'intégrer efficacement l'information exogène dans leurs décisions.
 
-\subsubsection{Estimation des queues de distribution des rendements}
-
-L'analyse des queues de distribution des rendements est cruciale pour comprendre le comportement des événements extrêmes dans les marchés financiers. Nous avons utilisé plusieurs approches complémentaires pour caractériser ces queues :
-
-\paragraph{Estimation de Hill}
-Pour les rendements normalisés $r_t$, nous avons estimé l'indice de queue $\alpha$ via la méthode de Hill :
-
-\begin{equation}
-\hat{\alpha}_k = \left(\frac{1}{k} \sum_{i=1}^k \log \frac{X_{(i)}}{X_{(k+1)}}\right)^{-1}
-\end{equation}
-
-où $X_{(i)}$ sont les statistiques d'ordre des valeurs absolues des rendements. Les résultats généraux montrent :
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Actif & $\alpha$ queue gauche & $\alpha$ queue droite & p-value KS \\
-\midrule
-GOOGL & 3.42 & 3.38 & 0.23 \\
-LCID & 3.15 & 3.21 & 0.18 \\
-KHC & 3.31 & 3.28 & 0.25 \\
-\bottomrule
-\end{tabular}
-\caption{Estimations de l'indice de queue par la méthode de Hill}
-\end{table}
-
-Une analyse plus détaillée à différentes échelles temporelles révèle des variations significatives de l'exposant $\alpha$ selon l'horizon d'observation :
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{lcccc}
-\toprule
-Actif-Échelle & $\alpha$ global & $\alpha$ queue gauche & $\alpha$ queue droite & p-value KS \\
-\midrule
-KHC-10m & 3.02 & 3.02 & 3.00 & 0.12 \\
-\midrule
-CXW-5m & 2.66 & 2.61 & 2.70 & 0.99 \\
-CXW-30m & 2.70 & 2.61 & 2.77 & 0.40 \\
-CXW-1h & 2.64 & 2.65 & 2.71 & 0.63 \\
-\midrule
-WBD-20m & 2.73 & 2.83 & 2.63 & 0.61 \\
-\midrule
-IEP-5m & 2.58 & 2.59 & 2.56 & 0.38 \\
-IEP-10m & 2.54 & 2.60 & 2.47 & 0.37 \\
-IEP-20m & 2.52 & 2.46 & 2.61 & 0.08 \\
-IEP-30m & 2.47 & 2.44 & 2.50 & 0.88 \\
-\bottomrule
-\end{tabular}
-\caption{Estimations détaillées de l'indice de queue par la méthode de Hill à différentes échelles temporelles}
-\label{tab:hill_detail}
-\end{table}
-
-Plusieurs observations importantes émergent de cette analyse multi-échelle des exposants :
-
-\begin{itemize}
-    \item L'actif KHC présente les queues les plus fines (α ≈ 3.0), indiquant une moindre propension aux événements extrêmes
-    \item Les actifs IEP et CXW affichent les queues les plus épaisses (α ≈ 2.5-2.7), suggérant une probabilité plus élevée d'événements extrêmes
-    \item On observe une tendance générale à la diminution de l'exposant α avec l'augmentation de l'échelle temporelle pour IEP (de 2.58 à 5m à 2.47 à 30m)
-    \item La p-value du test de Kolmogorov-Smirnov reste élevée pour toutes les échelles, confirmant l'excellente adéquation du modèle en loi de puissance
-    \item Les différences entre les queues gauche et droite sont généralement modérées, mais certains actifs (WBD, IEP-10m) présentent une asymétrie plus marquée
-\end{itemize}
-
-Ces résultats confirment que les rendements financiers suivent universellement des lois de puissance avec des exposants caractéristiques dans la plage 2.4-3.1, significativement inférieurs aux valeurs qu'impliquerait un modèle gaussien.
-
-\paragraph{Lois de puissance}
-Nous avons également ajusté des lois de puissance sur les queues de distribution :
-
-\begin{equation}
-P(|r_t| > x) \sim x^{-\alpha} \quad \text{pour } x \to \infty
-\end{equation}
-
-L'estimation a été réalisée par maximum de vraisemblance avec un seuil adaptatif :
-
-\begin{itemize}
-    \item Seuil optimal déterminé par la méthode de Clauset-Shalizi-Newman
-    \item Test de Kolmogorov-Smirnov pour valider l'ajustement
-    \item Bootstrap paramétrique pour les intervalles de confiance
-\end{itemize}
-
-Les résultats montrent une excellente adéquation avec les lois de puissance, avec des exposants $\alpha$ cohérents avec l'estimation de Hill.
-
-\paragraph{Analyse des moments}
-L'étude des moments empiriques confirme la nature leptokurtique des distributions :
-
-\begin{equation}
-\kappa = \frac{\mathbb{E}[(r_t - \mu)^4]}{\sigma^4} \approx 4.8
-\end{equation}
-
-Cette valeur est significativement supérieure à celle d'une distribution normale ($\kappa = 3$), indiquant des queues plus épaisses.
-
-\paragraph{Dépendance temporelle}
-L'analyse de la dynamique temporelle des queues révèle :
-
-\begin{itemize}
-    \item Une augmentation de l'épaisseur des queues pendant les périodes de forte volatilité
-    \item Une asymétrie entre les queues gauche et droite plus prononcée lors des périodes de stress
-    \item Une stabilité remarquable des exposants sur des échelles de temps intermédiaires (1h - 1 jour)
-\end{itemize}
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}
-    \begin{axis}[
-        width=12cm,
-        height=8cm,
-        xlabel={$\log(|r_t|)$},
-        ylabel={$\log(P(|r_t| > x))$},
-        grid=major,
-        legend pos=south west
-    ]
-    
-    % Données empiriques
-    \addplot[only marks, mark=*, blue, mark size=1pt] coordinates {
-        (-3, 0) (-2.5, -0.5) (-2, -1) (-1.5, -1.5) 
-        (-1, -2) (-0.5, -2.5) (0, -3) (0.5, -3.5)
-    };
-    
-    % Ajustement loi de puissance
-    \addplot[red, thick] coordinates {
-        (-3, 0) (-2.5, -0.85) (-2, -1.7) (-1.5, -2.55)
-        (-1, -3.4) (-0.5, -4.25) (0, -5.1) (0.5, -5.95)
-    };
-    
-    \legend{Données empiriques, Loi de puissance ($\alpha \approx 3.4$)}
-    \end{axis}
-\end{tikzpicture}
-\caption{Ajustement de la loi de puissance sur la queue de distribution des rendements (GOOGL)}
-\end{figure}
-
-Ces résultats ont des implications importantes pour la gestion des risques :
-
-\begin{itemize}
-    \item Les modèles gaussiens sous-estiment significativement la probabilité d'événements extrêmes
-    \item La stabilité des exposants permet une calibration robuste des modèles de risque
-    \item L'asymétrie des queues doit être prise en compte dans les stratégies de couverture
-\end{itemize}
-
 \subsection{Analyse des dépendances par les copules}
 
 \subsubsection{Théorie des copules}
@@ -670,7 +625,7 @@ Notre approche d'estimation des copules suit plusieurs étapes :
 
 L'analyse des copules révèle plusieurs caractéristiques importantes des dépendances entre actifs :
 
-\begin{itemize}
+    \begin{itemize}
     \item \textbf{Échelle temporelle} : La force de la dépendance augmente généralement avec l'échelle temporelle, atteignant un plateau vers 100ms.
     
     \item \textbf{Sélection de modèle} : La copule de Clayton s'avère la plus adaptée pour la majorité des paires d'actifs, suggérant une dépendance plus forte dans les mouvements baissiers.
@@ -681,13 +636,13 @@ L'analyse des copules révèle plusieurs caractéristiques importantes des dépe
         \item Rho de Spearman : $\rho \in [0.20, 0.55]$
         \item Coefficient de queue inférieure : $\lambda_L \in [0.10, 0.35]$
     \end{itemize}
-\end{itemize}
-
-\begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=12cm,
+    \end{itemize}
+    
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=12cm,
             height=8cm,
             xlabel={$u$},
             ylabel={$v$},
@@ -702,10 +657,10 @@ L'analyse des copules révèle plusieurs caractéristiques importantes des dépe
             y domain=0:1,
             samples=50
         ] {(max(x^(-1.5) + y^(-1.5) - 1,0))^(-1/1.5)};
-        \end{axis}
-    \end{tikzpicture}
+            \end{axis}
+        \end{tikzpicture}
     \caption{Densité de la copule de Clayton estimée pour la paire GOOGL-AAPL}
-\end{figure}
+    \end{figure}
 
 Ces résultats ont des implications importantes pour :
 \begin{itemize}
@@ -755,29 +710,29 @@ Les tests de stationnarité révèlent plusieurs caractéristiques importantes :
     \end{itemize}
     
     \item \textbf{Échelle macroscopique (60s)} :
-    \begin{itemize}
+\begin{itemize}
         \item Stationnarité plus marquée
         \item Changements de régime principalement liés aux événements macroéconomiques
         \item Structure de dépendance plus stable
-    \end{itemize}
+\end{itemize}
 \end{itemize}
 
-\begin{figure}[h!]
-    \centering
+    \begin{figure}[h!]
+        \centering
     \includegraphics[width=0.45\textwidth]{results/stationarity/stats/GOOGL/GOOGL_2024-09-18_1s.png}
     \includegraphics[width=0.45\textwidth]{results/stationarity/stats/AAPL/AAPL_2024-09-18_1s.png}
     \includegraphics[width=0.45\textwidth]{results/stationarity/stats/MSFT/MSFT_2024-09-18_1s.png}
     \includegraphics[width=0.45\textwidth]{results/stationarity/stats/AMZN/AMZN_2024-09-18_1s.png}
     \caption{Analyse de stationnarité pour quatre actifs majeurs le 18 septembre 2024. Les lignes verticales rouges indiquent les changements de régime détectés.}
     \label{fig:stationarity}
-\end{figure}
+    \end{figure}
 
 \subsubsection{Exemple d'événement macroéconomique : Annonce du taux de chômage}
 
 L'analyse du 8 août 2024 fournit un exemple particulièrement éclairant de l'interaction entre stationnarité et dépendance. Ce jour-là, l'annonce des chiffres du chômage a provoqué une réaction synchronisée sur l'ensemble du marché, illustrant parfaitement comment les événements macroéconomiques peuvent induire des changements de régime simultanés.
 
 \begin{figure}[h!]
-    \centering
+\centering
     \includegraphics[width=0.45\textwidth]{INTC_2024-08-01_100ms.png}
     \includegraphics[width=0.45\textwidth]{AAL_2024-08-01_100ms.png}
     \includegraphics[width=0.45\textwidth]{CXW_2024-08-01_100ms.png}
@@ -790,16 +745,16 @@ Cette journée met en évidence plusieurs phénomènes importants :
 
 \begin{itemize}
     \item \textbf{Synchronisation des ruptures} : Les quatre actifs présentent des changements de régime simultanés au moment de l'annonce (14:30 GMT), malgré leurs secteurs d'activité différents.
-    
+
     \item \textbf{Impact sur les corrélations} : Bien que l'événement affecte tous les actifs, son effet disparaît dans l'analyse des copules car :
-    \begin{itemize}
+\begin{itemize}
         \item La normalisation par la moyenne journalière élimine l'effet de niveau commun
         \item Les rendements sont calculés après suppression de la tendance locale
         \item Les changements de régime sont traités comme des points de rupture distincts
-    \end{itemize}
-    
+\end{itemize}
+
     \item \textbf{Échelles multiples} : L'impact est visible différemment selon l'échelle d'observation :
-    \begin{itemize}
+\begin{itemize}
         \item À 100ms : Rupture nette et synchronisée
         \item À 1s : Persistance de l'effet avec retour progressif à la normale
         \item À 60s : Intégration de l'information dans un nouveau régime stable
@@ -823,16 +778,10 @@ L'analyse conjointe des copules et de la stationnarité nous permet de tirer plu
 Ces résultats soulignent l'importance d'une approche multi-échelle dans l'analyse des marchés haute fréquence, où les propriétés statistiques des séries de prix varient significativement selon l'horizon temporel considéré.
 
 \begin{figure}[h!]
-    \centering
+\centering
     \includegraphics[width=0.8\textwidth]{GOOGL_AAL_2024-07-22_1s.png}
     \caption{Copule de Gumbel estimée pour la paire GOOGL-AAL le 22 juillet 2024 à l'échelle 1s. Les paramètres estimés montrent une faible dépendance ($\theta = 1.005$, $\tau = 0.005$), cohérente avec l'hypothèse d'indépendance conditionnelle à haute fréquence.}
     \label{fig:copula_example}
 \end{figure}
-
-\subsection{Analyse spécifique de la copule de Clayton le 1er août 2024}
-
-Dans cette section, nous analysons plus en détail la structure de dépendance observée le 1er août 2024 en ajustant une copule de Clayton aux paires d'actifs (AAL, CXW, INTC, GOOGL). Cette analyse vise à comprendre comment la dépendance, en particulier la dépendance de queue inférieure capturée par la copule de Clayton, se manifeste lors d'événements spécifiques.
-
-[Texte à compléter ici avec l'analyse détaillée des résultats de la copule de Clayton pour AAL, CXW, INTC et GOOGL le 1er août 2024, incluant les paramètres estimés, les mesures de dépendance et l'interprétation des résultats dans le contexte de cette journée.]
 
 \end{document}
