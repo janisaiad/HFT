@@ -365,6 +365,20 @@ Cette structure multi-échelle de l'exposant de Hurst reflète différents régi
     \item L'augmentation de H aux échelles intermédiaires suggère donc l'influence croissante des tendances directionnelles, où l'hypothèse Bachelier n'est plus respectéé.
 \end{itemize}
 
+
+On sait aussi maintenant que le processus est stationnaire, donc on peut faire l'autocorrélation sur le processus stationnaire, qui nous donne un résultat montrant en partie
+(décroissance linéaire à taux faible et constant en échelle log) la persistance de la volatilité. En ayant une décroissance lente (pas aussi lente que linéaire dans le cas mouvement brownien fractionnaire)
+on peut en conclure que le processus est assez persistant.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{autocorr.png}
+    \caption{Fonction d'autocorrélation des rendements pour WBD. La décroissance lente de l'autocorrélation confirme la présence de mémoire longue significative dans la série temporelle des rendements, conformément à l'hypothèse d'efficience du marché à ces échelles de temps.}
+    \label{fig:autocorr_wbd}
+\end{figure}
+
+
+
 Dans le futur, nous souhaitons mettre en place des approches d'estimation plus robustes \cite{chong2024minimax, chong2024clt} pour estimer H, et les comparer aux approche wavelets plus anciennes. 
 
 \begin{figure}[h!]
@@ -557,20 +571,23 @@ Nous examinons ici par exemple les matrices de corrélation pour la journée du 
 
 \begin{figure}[H] % Use H to place figures more strictly here
     \centering
-    \begin{subfigure}[b]{0.8\textwidth} % Keep subfigure width for layout, change graphic width
-        \includegraphics[width=0.32\textwidth]{variations_matrix_2024-07-22_10ms.png}
+    \begin{subfigure}[b]{0.32\textwidth} % Ajustement de la largeur pour alignement horizontal
+        \centering % Centrer l'image dans la subfigure
+        \includegraphics[width=\textwidth]{variations_matrix_2024-07-22_10ms.png} % Image prend toute la largeur de la subfigure
         \caption{Échelle 10ms}
         \label{fig:corr_10ms}
     \end{subfigure}
-    \vspace{1cm}
-    \begin{subfigure}[b]{0.8\textwidth} % Keep subfigure width for layout, change graphic width
-        \includegraphics[width=0.32\textwidth]{variations_matrix_2024-07-22_1s.png}
+    \hfill % Espace horizontal flexible
+    \begin{subfigure}[b]{0.32\textwidth} % Ajustement de la largeur pour alignement horizontal
+        \centering % Centrer l'image dans la subfigure
+        \includegraphics[width=\textwidth]{variations_matrix_2024-07-22_1s.png} % Image prend toute la largeur de la subfigure
         \caption{Échelle 1s}
         \label{fig:corr_1s}
     \end{subfigure}
-    \vspace{1cm}
-    \begin{subfigure}[b]{0.8\textwidth} % Keep subfigure width for layout, change graphic width
-        \includegraphics[width=0.32\textwidth]{variations_matrix_2024-07-22_10s.png}
+    \hfill % Espace horizontal flexible
+    \begin{subfigure}[b]{0.32\textwidth} % Ajustement de la largeur pour alignement horizontal
+        \centering % Centrer l'image dans la subfigure
+        \includegraphics[width=\textwidth]{variations_matrix_2024-07-22_10s.png} % Image prend toute la largeur de la subfigure
         \caption{Échelle 10s}
         \label{fig:corr_10s}
     \end{subfigure}
@@ -757,39 +774,15 @@ Cette théorie s'inscrit dans une vision plus large des systèmes complexes, où
 \newpage
 \section*{Conclusion}
 
-Ce mémoire apporte plusieurs contributions significatives à la compréhension des dynamiques de marché à haute fréquence et particulièrement à l'étude de l'impact des news sur les Limit Order Books. Notre approche, combinant analyse théorique et validation empirique, a permis de mettre en lumière plusieurs aspects fondamentaux de la microstructure des marchés.
+Ce mémoire a initié une exploration statistique approfondie d'un jeu de données haute fréquence LOB du Nasdaq, posant les bases d'une compréhension fine de la microstructure de marché sur plusieurs actifs et échelles temporelles. Nos analyses ont systématiquement validé plusieurs faits stylisés fondamentaux tout en révélant la complexité multi-échelle des dynamiques de prix.
 
-\paragraph{\textbf{Caractérisation de la dynamique des prix}} Notre première contribution concerne la caractérisation fine de la dynamique des prix à différentes échelles temporelles. L'analyse de l'exposant de Hurst (H ≈ 0.7) révèle une persistance significative dans les mouvements de prix, suggérant l'existence de tendances locales exploitables. Cette observation est renforcée par l'étude des temps d'arrivée entre les changements de prix, qui suivent une distribution à queue lourde caractéristique des processus de Poisson inhomogènes.
+L'étude des rendements a confirmé sans équivoque la présence de queues de distribution lourdes, caractérisées par des indices de queue $\alpha$ estimés par la méthode de Hill typiquement entre 2.4 et 3.1. Cette propriété, robuste à travers différents actifs et échelles temporelles (5m à 1h), non seulement quantifie le risque d'événements extrêmes mais valide aussi l'hypothèse cruciale d'intégrabilité $L^2$, légitimant ainsi l'analyse des corrélations. L'analyse de l'exposant de Hurst a révélé une forte anti-persistance (H ≈ 0.23-0.33) aux échelles microscopiques (< 60s), typique des retours rapides vers la moyenne induits par le *bid-ask bounce* et l'activité des *market makers*, tandis que l'autocorrélation des rendements a mis en évidence une mémoire longue, signe d'une volatilité persistante et agrégée.
 
-\paragraph{\textbf{Identification des régimes de marché}} Notre seconde contribution porte sur la distinction entre les composantes endogènes et exogènes des variations de prix. Nous avons développé une méthodologie permettant d'identifier:
-\begin{itemize}
-    \item Les mouvements de prix résultant de la microstructure normale du marché (composante endogène)
-    \item Les sauts de prix significatifs liés à l'arrivée d'informations externes (composante exogène)
-    \item Les périodes de transition entre ces deux régimes
-\end{itemize}
+L'analyse de la stationnarité, via les tests ADF et la détection de ruptures, a montré que si les séries de prix sont localement non-stationnaires à très haute fréquence (100ms), elles peuvent être considérées comme stationnaires par morceaux sur des échelles plus longues (1s-60s). Ces ruptures de stationnarité coïncident souvent avec des événements macroéconomiques majeurs, induisant des réactions synchronisées sur l'ensemble des actifs, même ceux évoluant dans des secteurs différents. Ce phénomène souligne l'interaction complexe entre les dynamiques endogènes rapides et les chocs exogènes.
 
-\paragraph{\textbf{Modélisation et prévision}} Notre troisième contribution est d'ordre méthodologique. En développant un cadre probabiliste rigoureux basé sur les processus de Hawkes, nous avons pu:
-\begin{itemize}
-    \item Modéliser la dynamique conjointe des ordres et des prix
-    \item Quantifier l'impact des news sur la formation des prix
-    \item Proposer des indicateurs d'alerte précoce pour les changements de régime
-\end{itemize}
+La structure de dépendance, explorée par les matrices de corrélation linéaire et les copules, s'est également avérée fortement dépendante de l'échelle. Une indépendance quasi-totale aux échelles microscopiques (10ms) laisse place à des structures de corrélation plus marquées (clusters sectoriels) et à une dépendance non-linéaire (souvent capturée par la copule de Clayton, indiquant une dépendance accrue lors des baisses) aux échelles de la seconde et au-delà. Cette observation, couplée à la synchronisation des ruptures lors d'événements externes, suggère que si le bruit de microstructure domine à très court terme, les facteurs communs et les interactions systémiques deviennent prépondérants lorsque l'horizon temporel s'allonge.
 
-\paragraph{\textbf{Implications pratiques}} Ces résultats ont des implications importantes pour la pratique du trading algorithmique:
-\begin{itemize}
-    \item La calibration des stratégies de trading doit s'adapter au régime de marché identifié
-    \item Les périodes post-news nécessitent des approches spécifiques de gestion du risque
-    \item L'horizon temporel optimal des stratégies dépend de la persistance mesurée (H)
-\end{itemize}
-
-\paragraph{\textbf{Perspectives}} Plusieurs axes de recherche prometteurs émergent de ce travail:
-\begin{itemize}
-    \item L'extension du modèle à la prévision en temps réel des changements de régime
-    \item L'intégration de sources d'information alternatives (réseaux sociaux, données alternatives)
-    \item Le développement de stratégies de trading adaptatives basées sur la détection des régimes
-\end{itemize}
-
-Ces résultats ouvrent la voie à une nouvelle génération de modèles de trading algorithmique, capables de s'adapter dynamiquement aux conditions de marché et d'intégrer efficacement l'information exogène dans leurs décisions.
+Ces résultats empiriques s'inscrivent bien dans le cadre théorique des processus auto-excités comme les processus de Hawkes, et de la distinction de Bouchaud entre sauts endogènes (SEC), majoritaires et liés à la dynamique interne du LOB (reflétée par l'anti-persistance et les queues lourdes des temps d'arrivée), et sauts exogènes (EMC), plus rares mais synchronisés et liés aux informations externes. L'ensemble de ce travail préliminaire de caractérisation statistique ouvre ainsi la voie à une modélisation plus fine intégrant ces différentes facettes, notamment en reliant les modèles de volatilité rough aux processus de Hawkes sous-jacents pour capturer la dynamique multi-échelle complexe des marchés financiers.
 
 \newpage
 \begin{thebibliography}{9}
