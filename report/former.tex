@@ -64,7 +64,7 @@
         \begin{center}
             \vspace*{2cm}
             
-            \includegraphics[width=0.4\textwidth]{École_polytechnique_signature.png}
+            \includegraphics[width=0.27\textwidth]{École_polytechnique_signature.png}
             
 
             
@@ -193,7 +193,7 @@ Les données sont sous format de dataframe par journée comprenant toutes les mo
 
 \begin{figure}[h!]
 \centering
-    \includegraphics[width=0.8\textwidth]{time_expansion.png}
+    \includegraphics[width=0.53\textwidth]{time_expansion.png}
     \caption{Illustration de l'expansion temporelle appliquée aux données, détaillée dans le notebook \texttt{timeexpansion.ipynb}. Ce processus permet d'analyser les dynamiques à différentes échelles temporelles.}
     \label{fig:time_expansion}
 \end{figure}
@@ -253,10 +253,10 @@ L'analyse du 8 août 2024 fournit un exemple particulièrement éclairant de l'i
 
 \begin{figure}[h!]
 \centering
-    \includegraphics[width=0.45\textwidth]{INTC_2024-08-01_100ms.png}
-    \includegraphics[width=0.45\textwidth]{AAL_2024-08-01_100ms.png}
-    \includegraphics[width=0.45\textwidth]{CXW_2024-08-01_100ms.png}
-    \includegraphics[width=0.45\textwidth]{GOOGL_2024-08-01_100ms.png}
+    \includegraphics[width=0.3\textwidth]{INTC_2024-08-01_100ms.png}
+    \includegraphics[width=0.3\textwidth]{AAL_2024-08-01_100ms.png}
+    \includegraphics[width=0.3\textwidth]{CXW_2024-08-01_100ms.png}
+    \includegraphics[width=0.3\textwidth]{GOOGL_2024-08-01_100ms.png}
     \caption{Analyse de stationnarité pour INTC, AAL, CXW et GOOGL le 8 août 2024 à l'échelle de 100ms et en temps GMT. Les lignes verticales rouges indiquent les changements de régime détectés.
     Le dataset GOOGL était shifté de 6h pour correspondre au temps GMT, donc pic à 20h sur le graphe}
     \label{fig:stationarity_unemployment}
@@ -372,7 +372,7 @@ on peut en conclure que le processus est assez persistant.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{autocorr.png}
+    \includegraphics[width=0.53\textwidth]{autocorr.png}
     \caption{Fonction d'autocorrélation des rendements pour WBD. La décroissance lente de l'autocorrélation confirme la présence de mémoire longue significative dans la série temporelle des rendements, conformément à l'hypothèse d'efficience du marché à ces échelles de temps.}
     \label{fig:autocorr_wbd}
 \end{figure}
@@ -383,21 +383,21 @@ Dans le futur, nous souhaitons mettre en place des approches d'estimation plus r
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{arrivaltimewbd.png}
+    \includegraphics[width=0.53\textwidth]{arrivaltimewbd.png}
     \caption{Distribution des temps d'arrivée entre les changements de prix pour WBD. La queue lourde observée (fat tail) est caractéristique d'un noyau avec meta-orders, conformément aux travaux de Rosenbaum qui prédisent cette distribution en loi de puissance pour les ordres cachés sur les marchés.}
     \label{fig:arrival_times_wbd}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{wbd_logvar.png}
+    \includegraphics[width=0.53\textwidth]{wbd_logvar.png}
     \caption{Distribution des variations logarithmiques de prix pour WBD. L'écart significatif par rapport à la distribution normale (pointillés) confirme la nature leptokurtique des rendements haute fréquence.}
     \label{fig:log_variations_wbd}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{output.png}
+    \includegraphics[width=0.53\textwidth]{output.png}
     \caption{Histogramme de la volatilité (log normal) pour les actifs étudiés. La distribution présente des queues épaisses (fat tailed), signalant une probabilité accrue d'événements extrêmes par rapport à une distribution gaussienne. Ce phénomène est une caractéristique fondamentale des marchés financiers.}
     \label{fig:volatility_hist}
 \end{figure}
