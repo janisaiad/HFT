@@ -224,10 +224,50 @@ L'analyse des données pour l'actif WBD révèle plusieurs caractéristiques int
 \begin{itemize}
     \item Le temps moyen entre les changements de prix est de l'ordre de \(10^{-3}\) secondes
     \item La distribution des temps d'arrivée présente une queue lourde, caractéristique des processus de Poisson inhomogènes
-    \item La volatilité normalisée \(\sigma_{\tau}\) montre une dépendance en loi de puissance par rapport à l'échelle de temps \(\tau\), cohérente avec un exposant de Hurst H ≈ 0.7
+    \item La volatilité normalisée \(\sigma_{\tau}\) montre une dépendance en loi de puissance par rapport à l'échelle de temps \(\tau\)
 \end{itemize}
 
-Cette valeur de H > 0.5 suggère une certaine persistance dans le processus de prix à l'échelle microstructurelle, potentiellement liée à la présence de tendances locales dans l'évolution du carnet d'ordres.
+Notre analyse approfondie de l'exposant de Hurst à différentes échelles temporelles révèle une caractéristique remarquable : contrairement à l'hypothèse classique d'un H ≈ 0.5 pour les marchés efficients, nous observons un H systématiquement inférieur à 0.5, indiquant une forte anti-persistance dans le processus de prix. Ce phénomène est particulièrement prononcé aux échelles microscopiques.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Échelle temporelle (µs)} & \textbf{Exposant de Hurst (H)} \\
+\hline
+2 041 & 0.229 \\
+10 207 & 0.250 \\
+20 415 & 0.268 \\
+61 247 & 0.270 \\
+204 157 & 0.284 \\
+2 041 576 & 0.285 \\
+6 124 728 & 0.297 \\
+20 415 762 & 0.278 \\
+61 247 288 & 0.310 \\
+204 157 627 & 0.329 \\
+612 472 883 & 0.206 \\
+\hline
+\end{tabular}
+\caption{Estimations de l'exposant de Hurst pour WBD à différentes échelles temporelles}
+\label{tab:hurst_exponents}
+\end{table}
+
+Cette anti-persistance (H < 0.5) suggère une forte tendance à la réversion vers la moyenne à court terme, caractéristique des marchés dominés par des market makers et des stratégies de trading haute fréquence. Plusieurs observations importantes émergent :
+
+\begin{itemize}
+    \item À l'échelle microscopique (< 100 ms), H ≈ 0.23-0.27, indiquant une forte anti-persistance
+    \item Aux échelles intermédiaires (100 ms - 60 s), H augmente progressivement jusqu'à ≈ 0.33
+    \item Aux échelles plus longues (> 10 min), H diminue à nouveau (≈ 0.21)
+\end{itemize}
+
+Cette structure multi-échelle de l'exposant de Hurst reflète différents régimes de marchés et acteurs :
+\begin{itemize}
+    \item L'anti-persistance à très court terme est cohérente avec le comportement de rebond des prix autour du spread bid-ask
+    \item L'augmentation de H aux échelles intermédiaires suggère l'influence croissante des tendances directionnelles
+    \item La diminution de H aux échelles plus longues pourrait résulter de l'interaction entre différentes classes d'acteurs du marché
+\end{itemize}
+
+Ces résultats remettent en question l'application naïve du mouvement brownien standard comme modèle pour les prix d'actifs à l'échelle microstructurelle.
 
 \begin{figure}[h!]
     \centering
