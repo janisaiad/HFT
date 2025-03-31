@@ -231,10 +231,127 @@ Cette valeur de H > 0.5 suggère une certaine persistance dans le processus de p
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{results/hurst/plots/WBD/WBD_arrival_times.png}
-    \caption{Distribution des temps d'arrivée entre les changements de prix pour WBD}
-    \label{fig:arrival_times}
+    \includegraphics[width=0.8\textwidth]{arrivaltimewbd.png}
+    \caption{Distribution des temps d'arrivée entre les changements de prix pour WBD. La queue lourde observée (fat tail) est caractéristique d'un noyau avec meta-orders, conformément aux travaux de Rosenbaum qui prédisent cette distribution en loi de puissance pour les ordres cachés sur les marchés.}
+    \label{fig:arrival_times_wbd}
 \end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wbd_logvar.png}
+    \caption{Distribution des variations logarithmiques de prix pour WBD. L'écart significatif par rapport à la distribution normale (pointillés) confirme la nature leptokurtique des rendements haute fréquence.}
+    \label{fig:log_variations_wbd}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{output.png}
+    \caption{Histogramme de la volatilité réalisée pour les actifs étudiés. La distribution présente des queues épaisses (fat tailed), signalant une probabilité accrue d'événements extrêmes par rapport à une distribution gaussienne. Ce phénomène est une caractéristique fondamentale des marchés financiers.}
+    \label{fig:volatility_hist}
+\end{figure}
+
+\subsection{Analyse multi-échelle des distributions de rendements}
+
+L'étude des distributions de rendements à différentes échelles temporelles révèle l'évolution de la structure statistique des prix en fonction de l'horizon d'observation. Nous présentons ci-dessous les résultats pour plusieurs actifs et échelles temporelles.
+
+\subsubsection{Rendements de CXW à différentes échelles}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{CXW_5m_returns_histogram.png}
+        \caption{Distribution des rendements à 5 minutes}
+        \label{fig:CXW_5m}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{CXW_30m_returns_histogram.png}
+        \caption{Distribution des rendements à 30 minutes}
+        \label{fig:CXW_30m}
+    \end{subfigure}
+    
+    \vspace{0.5cm}
+    
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{CXW_1h_returns_histogram.png}
+        \caption{Distribution des rendements à 1 heure}
+        \label{fig:CXW_1h}
+    \end{subfigure}
+    \caption{Distributions des rendements pour CXW à différentes échelles temporelles. Les ajustements en loi de puissance (courbes rouges) montrent des exposants caractéristiques entre 3.2 et 3.6, cohérents avec les travaux théoriques sur les marchés financiers. Notons que l'épaisseur des queues diminue légèrement avec l'allongement de l'échelle temporelle, suggérant un retour progressif vers la normalité.}
+    \label{fig:CXW_multi_scale}
+\end{figure}
+
+\subsubsection{Rendements de IEP à différentes échelles}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{IEP_5m_returns_histogram.png}
+        \caption{Distribution des rendements à 5 minutes}
+        \label{fig:IEP_5m}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{IEP_10m_returns_histogram.png}
+        \caption{Distribution des rendements à 10 minutes}
+        \label{fig:IEP_10m}
+    \end{subfigure}
+    
+    \vspace{0.5cm}
+    
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{IEP_20m_returns_histogram.png}
+        \caption{Distribution des rendements à 20 minutes}
+        \label{fig:IEP_20m}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{IEP_30m_returns_histogram.png}
+        \caption{Distribution des rendements à 30 minutes}
+        \label{fig:IEP_30m}
+    \end{subfigure}
+    \caption{Distributions des rendements pour IEP à différentes échelles temporelles. Les distributions suivent des lois de puissance avec des exposants qui varient entre 3.0 et 3.5 selon l'échelle. Cette structure en loi de puissance est caractéristique des systèmes complexes auto-organisés et reflète le comportement collectif des acteurs du marché.}
+    \label{fig:IEP_multi_scale}
+\end{figure}
+
+\subsubsection{Rendements de WBD et KHC}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{WBD_20m_returns_histogram.png}
+        \caption{Distribution des rendements de WBD à 20 minutes}
+        \label{fig:WBD_20m}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{KHC_10m_returns_histogram.png}
+        \caption{Distribution des rendements de KHC à 10 minutes}
+        \label{fig:KHC_10m}
+    \end{subfigure}
+    \caption{Comparaison des distributions de rendements pour WBD et KHC. Malgré des secteurs d'activité différents, les deux actifs présentent des distributions similaires en loi de puissance, suggérant un mécanisme universel sous-jacent dans la formation des prix sur les marchés financiers.}
+    \label{fig:WBD_KHC_returns}
+\end{figure}
+
+\subsection{Structure de corrélation entre actifs}
+
+L'analyse des corrélations entre les différents actifs étudiés révèle la structure de dépendance du marché et permet d'identifier les clusters d'actifs qui tendent à évoluer de manière similaire.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{correlation_matrix.png}
+    \caption{Matrice de corrélation entre les rendements des différents actifs étudiés. Les zones plus foncées indiquent des corrélations plus fortes. On observe des clusters distincts correspondant aux secteurs d'activité (technologie, industrie, etc.), ainsi que des corrélations négatives entre certains secteurs, offrant des opportunités de diversification.}
+    \label{fig:correlation_matrix}
+\end{figure}
+
+Ces résultats de corrélation doivent être interprétés avec prudence car :
+\begin{itemize}
+    \item Les corrélations linéaires ne capturent pas les dépendances non-linéaires, particulièrement importantes en période de stress
+    \item La structure de corrélation évolue dans le temps, avec des augmentations significatives pendant les périodes de volatilité élevée
+    \item Les actifs présentant de faibles corrélations en temps normal peuvent converger pendant les crises (phénomène de correlation breakdown)
+\end{itemize}
+
+L'analyse par copules présentée dans la section suivante permet de dépasser ces limitations en capturant la structure complète de dépendance.
 
 \section{La théorie de Bouchaud sur la nature des sauts de prix}
 
