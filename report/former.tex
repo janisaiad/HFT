@@ -1,5 +1,5 @@
     % Document Class
-    \documentclass[12pt,a4paper]{article}
+    \documentclass[10pt,a4paper]{article}
 
     % Packages essentiels
     \usepackage[utf8]{inputenc}
@@ -55,7 +55,7 @@
     \titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
     % Informations du document
-    \title{\huge\textbf{Impact des news dans les Limit Order Book}}
+    \title{\huge\textbf{Heavy tail, Jumps & Endogeneity in HFT}}
     \author{LAFERTE Edouard \and AIAD Janis}
     \date{Juin 2024}
 
@@ -68,8 +68,8 @@
             
 
             
-            {\huge\bfseries Impact des news dans les\\[0.4cm] 
-            Limit Order Books\par}
+            {\huge\bfseries Heavy tail, Jumps and \\[0.4cm] 
+            Endogeneity in HFT \par}
             
             \vspace{2cm}
             
@@ -87,13 +87,13 @@
             
             {\large Sous la direction de\par}
             \vspace{0.4cm}
-            {\large\textbf{LEHALLE Charles-Albert}\par}
+            {\large\textbf{Mathieu ROSENBAUM}\par}
             
             \vfill
             
             {\large Département de Mathématiques Appliquées\\
             École Polytechnique\\[0.4cm]
-            Juin 2024\par}
+            Mars 2025\par}
         \end{center}
     \end{titlepage}
 
@@ -111,7 +111,13 @@
     \end{center}
     \vspace{1cm}
 
-    Ce mémoire étudie l'impact des news et actualités sur la dynamique des Limit Order Books dans les marchés financiers à haute fréquence. Nous analysons comment les événements d'actualité influencent la microstructure du marché et modifient les comportements des acteurs. Notre approche combine une modélisation mathématique rigoureuse via le modèle Queue Reactive avec une analyse empirique des données de marché.
+    Ce court projet vise à initier un pré-traitement statistique d'un dataset tick-by-tick de LOB du Nasdaqavec une vingtaine d'actifs sur plusieurs mois. En particulier, on s'intéresse à la vérification des caractéristiques principales du marché sur les queues lourdes, les jumps et changements de régimes endogènes/éxogènes, ainsi que 
+    sur la mémoire longue des ordres de marchés.
+    On présente ainsi surtout les résultats et graphes principaux obtenus sur quelques actifs pour donner une idée de la qualité des données.
+    Toutes les expériences ont été réalisées sur \url{https://github.com/janisaiad/HFT} pour une reproductibilité, avec une exhaustivité des graphes et résultats pour tout le dataset.
+    Le but principal étant de construire un projet long-terme sur 1 an avec ce dataset, cette présentation est davantage à voir comme un état d'avancement du prétraitement du dataset.
+
+    A titre indicatif, la suite du projet personnel consisteraient à unifier l'état de l'art des modèles rough comme conséquences de modèles HFT Hawkes (Quadratic Hawkes vers super-Heston rough).
 
     \vspace{1cm}
     \textbf{Mots-clés :} Limit Order Book, Trading Haute Fréquence, Modèle Queue Reactive, Impact des News, Microstructure de Marché
@@ -126,47 +132,53 @@
     
     
 \section{Données utilisées}
-Dans la suite de notre étude, nous étudierons tout particulièrement les actifs GOOGL, LCID, et KHC. Ces actifs correspondent respectivement à Google, Lucid Group Inc (constructeur américain de véhicules électriques de luxe) et The Kraft Heinz Company (multinationale américaine spécialisée dans l'agroalimentaire).
+Dans la suite de notre étude, nous étudierons les différents actifs du Nasdaq. Ces actifs correspondent à des entreprises de différents secteurs, allant des géants de la technologie aux entreprises de l'agroalimentaire.
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|}
 \hline
-\textbf{Actif}& \textbf{Nb Timestamps} & \textbf{Nb Add} & \textbf{Nb Cancel} & \textbf{Nb Order} & \textbf{Mean Arrival (ms)}\\ \hline
-GOOGL  & 86386103         & 81146187        & 6448095    & 173980437  & \phantom{000} \\ 
-\hline
-LCID       & 2101840         & 1975378         & 522436  & 4599687  & \phantom{000} \\
-\hline
-KHC   & 6300128   & 5982598 & 909555 & 13192289  & \phantom{000}                   
-\\ \hline
+\textbf{Actif} & \textbf{Taille Dataset} & \textbf{Nb Jours} & \textbf{Actions/Jour}\\ \hline
+GOOGL & 5.6G & 66 & 2.68e6 \\ \hline
+AAPL & 3.1G & 55 & 1.78e6 \\ \hline
+AMZN & 3.1G & 55 & 1.78e6 \\ \hline
+AAL & 2.2G & 371 & 1.87e5 \\ \hline
+MSFT & 2.1G & 55 & 1.21e6 \\ \hline
+GT & 2.1G & 371 & 1.79e5 \\ \hline
+INTC & 1.5G & 75 & 6.33e5 \\ \hline
+IOVA & 1.5G & 371 & 1.28e5 \\ \hline
+PTEN & 1.5G & 371 & 1.28e5 \\ \hline
+MLCO & 1.4G & 371 & 1.19e5 \\ \hline
+PTON & 1.4G & 371 & 1.19e5 \\ \hline
+VLY & 1.1G & 371 & 9.37e4 \\ \hline
+VOD & 951M & 371 & 8.10e4 \\ \hline
+CSX & 619M & 75 & 2.61e5 \\ \hline
+WB & 591M & 371 & 5.03e4 \\ \hline
+BGC & 591M & 371 & 5.03e4 \\ \hline
+GRAB & 454M & 371 & 3.87e4 \\ \hline
+KHC & 428M & 66 & 2.05e5 \\ \hline
+HLMN & 390M & 371 & 3.32e4 \\ \hline
+IEP & 342M & 371 & 2.91e4 \\ \hline
+GBDC & 338M & 371 & 2.88e4 \\ \hline
+WBD & 327M & 75 & 1.38e5 \\ \hline
+PSNY & 312M & 371 & 2.66e4 \\ \hline
+NTAP & 228M & 55 & 1.31e5 \\ \hline
+GEO & 199M & 89 & 7.07e4 \\ \hline
+LCID & 163M & 66 & 7.81e4 \\ \hline
+GCMG & 160M & 371 & 1.36e4 \\ \hline
+CXW & 108M & 89 & 3.83e4 \\ \hline
 \end{tabular}
-\caption{Tableau des données du Nasdaq sur 65 jours du 28 juillet au 4 novembre}
-\label{tab:exemple}
+\caption{Tableau des données du Nasdaq}
+\label{tab:donnees_nasdaq}
 \end{table}
-\begin{table}[h!]
-\centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-\textbf{Actif}& \textbf{Nb/Jour Actions}& \textbf{Pct Add} & \textbf{Pct Cancel} & \textbf{Pct Order}\\ \hline
-GOOGL & 2676622 & 49,65\%  & 46,64\%     & 3,70\%    \\ 
-\hline
-LCID  & 70764   & 45,69\%  & 42,94\%    &11,35\%    \\
-\hline
-KHC  & 202958   & 47,75\%  & 45,34\%  & 6,89\%                     
-\\ \hline
-\end{tabular}
-\caption{Tableau des données du Nasdaq moyennées sur 65 jours}
-\label{tab:exemple}
-\end{table}
-Les données sont issus de la base de données Databento et ne concernent que la bourse du Nasdaq. On voit tout d'abord que certains actifs sont plus tradés que d'autres notamment GOOGL par rapport au deux autres. Les estimations seront donc naturellement plus précise pour cet actif.
+
+Les données sont issues de la base de données Databento et ne concernent que la bourse du Nasdaq. On observe une grande disparité dans les volumes de données entre les différents actifs, avec notamment les géants technologiques (GOOGL, AAPL, AMZN) qui génèrent des volumes de données significativement plus importants. Les estimations seront donc naturellement plus précises pour ces actifs plus liquides.
 \\
 \\
 Les données sont sous format de dataframe par journée comprenant toutes les modifications apportées au MBO des trois actifs étudiés. Ce MBO comprend alors:
 \begin{itemize}
     \item ts\_recv: timestamp du serveur 
     \item ts\_event: timestamp de l'événement     
-    \item rtype: type d'événement     
-    \item publisher\_id: id du publisher du MBO (2 pour Nasdaq,...)
     \item instrument\_id: id de l'actif sur les marchés
     \item action: Add(A), Cancel(C), Trade(T)
     \item side: Ask(A), Bid(B)
@@ -175,14 +187,105 @@ Les données sont sous format de dataframe par journée comprenant toutes les mo
     \item size: taille de l'action réalisée
     \item ts\_in\_delta: temps entre le serveur et l'action
     \item sequence: id de l'action propre à l'actif sur les marchés
-    \item bid\_px\_0x: prix à la limite x côté bid
-    \item ask\_px\_0x: prix à la limite x côté ask
+    \item bid{a}\_px\_0x: prix à la limite x côté bid
     \item bid\_sz\_0x: taille de la file d'attente à la limite x côté bid
-    \item ask\_sz\_0x: taille de la file d'attente à la limite x côté ask
-    \item symbol: symbole de l'actif
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.8\textwidth]{time_expansion.png}
+    \caption{Illustration de l'expansion temporelle appliquée aux données, détaillée dans le notebook \texttt{timeexpansion.ipynb}. Ce processus permet d'analyser les dynamiques à différentes échelles temporelles.}
+    \label{fig:time_expansion}
+\end{figure}
+
+\newpage
+\section{Analyse de la stationnarité}
+
+\subsection{Méthodologie}
+
+Pour étudier la stationnarité des séries de prix, nous avons adopté une approche à deux volets :
+
+\begin{enumerate}
+    \item \textbf{Test de stationnarité} : Test de Dickey-Fuller augmenté (ADF) pour détecter la présence de racine unitaire :
+    \[\Delta y_t = \alpha + \beta t + \gamma y_{t-1} + \sum_{i=1}^p \delta_i \Delta y_{t-i} + \epsilon_t\]
+    où l'hypothèse nulle $H_0: \gamma = 0$ correspond à la non-stationnarité.
+    
+    \item \textbf{Détection des changements de régime} : Méthode de fenêtre glissante (Window) pour identifier les points de rupture dans la dynamique des prix :
+    \[
+    \min_{\tau_1,\ldots,\tau_K} \sum_{k=1}^{K+1} \sum_{t=\tau_{k-1}+1}^{\tau_k} \|y_t - \bar{y}_k\|^2 + \lambda K
+    \]
+    où $\tau_k$ sont les points de rupture et $\bar{y}_k$ les moyennes locales.
+\end{enumerate}
+
+L'analyse a été effectuée sur quatre échelles temporelles différentes :
+\[\{\text{100ms}, \text{1s}, \text{10s}, \text{60s}\}\]
+
+\subsection{Résultats empiriques}
+
+Les tests de stationnarité révèlent plusieurs caractéristiques importantes :
+
+\begin{itemize}
+    \item \textbf{Échelle microscopique (100ms)} : 
+    \begin{itemize}
+        \item Forte non-stationnarité (p-value ADF > 0.05)
+        \item Nombreux changements de régime locaux
+        \item Volatilité clustérisée
+    \end{itemize}
+    
+    \item \textbf{Échelle mésoscopique (1s-10s)} :
+    \begin{itemize}
+        \item Stationnarité par morceaux
+        \item Changements de régime moins fréquents mais plus significatifs
+        \item Persistance des tendances locales
+    \end{itemize}
+    
+    \item \textbf{Échelle macroscopique (60s)} :
+\begin{itemize}
+        \item Stationnarité plus marquée
+        \item Changements de régime principalement liés aux événements macroéconomiques
+        \item Structure de dépendance plus stable
+\end{itemize}
+\end{itemize}
+
+\subsection{Exemple d'événement macroéconomique : Annonce du taux de chômage à 14h30 GMT}
+
+L'analyse du 8 août 2024 fournit un exemple particulièrement éclairant de l'interaction entre stationnarité et dépendance. Ce jour-là, l'annonce des chiffres du chômage a provoqué une réaction synchronisée sur l'ensemble du marché, illustrant parfaitement comment les événements macroéconomiques peuvent induire des changements de régime simultanés.
+
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.45\textwidth]{INTC_2024-08-01_100ms.png}
+    \includegraphics[width=0.45\textwidth]{AAL_2024-08-01_100ms.png}
+    \includegraphics[width=0.45\textwidth]{CXW_2024-08-01_100ms.png}
+    \includegraphics[width=0.45\textwidth]{GOOGL_2024-08-01_100ms.png}
+    \caption{Analyse de stationnarité pour INTC, AAL, CXW et GOOGL le 8 août 2024 à l'échelle de 100ms et en temps GMT. Les lignes verticales rouges indiquent les changements de régime détectés.
+    Le dataset GOOGL était shifté de 6h pour correspondre au temps GMT, donc pic à 20h sur le graphe}
+    \label{fig:stationarity_unemployment}
+\end{figure}
+
+Cette journée met en évidence plusieurs phénomènes importants :
+
+\begin{itemize}
+    \item \textbf{Synchronisation des ruptures} : Les quatre actifs présentent des changements de régime simultanés au moment de l'annonce (14:30 GMT), malgré leurs secteurs d'activité différents.
+
+    \item \textbf{Impact sur les corrélations} : Bien que l'événement affecte tous les actifs, son effet disparaît dans l'analyse des copules car :
+\begin{itemize}
+        \item Les rendements montrent une partie fat tail (l'échèlle matplotlib s'ajuste automatiquement) avec un certain nombre de valeurs extrêmes. On ne calcule pas de Hill ici car fait plus tard mais on le voit apparaitre directement visuellement ce qui est rassurant.
+        \item Les rendements montrent auss qu'une partie de la tendance est expliquée par les variations tick-by-tick intraday (2ème plus grosse barre de l'histogramme), ce qui suggère l'explication de la tendance par des méta-ordre (et donc d'une imbalance bid-ask moyenne non nulle)
+        \item Les changements de régime sont traités comme des points de rupture distincts, on les voit particulièrement en début et fin d'activité  du marché (d'où la suppression générale de la 1ère/dernière heure d'activité)
 \end{itemize}
 
 
+Cette observation est fondamentale car elle démontre que l'apparente indépendance des rendements à haute fréquence n'est pas incompatible avec l'existence de mouvements coordonnés du marché. 
+Et donc la stationnarité locale est préservée précisément parce que ces événements sont traités comme des points de rupture plutôt que comme des variations continues du processus.
+En tout cas, on s'intéressera dans le futur à la description haute fréquence de cet évènements et son explication en terme de méta-ordre (et donc d'imbalance) par exemple. 
+
+
+Pour l'heure, on peut essayer de comprendre certains changements de régimes à travers un modèle linéaire ARMA/GARCH
+
+A REMPLIR
+
+
+\newpage
 \section{Modélisation de Hurst et extraction de la volatilité}
 
 \subsection{Présentation du modèle de Hurst}
@@ -192,7 +295,7 @@ L'exposant de Hurst, noté H, est un indicateur statistique qui permet de caract
 Pour une série temporelle \(X(t)\), l'exposant de Hurst H est défini par la relation:
 
 \[
-E[|X(t+\tau) - X(t)|^2] \propto \tau^{2H}
+E[|X(t+\tau) - X(t)|^q] \propto \tau^{qH}
 \]
 
 où \(\tau\) représente l'intervalle de temps considéré. L'interprétation de H est la suivante:
@@ -219,6 +322,7 @@ Pour extraire la volatilité du processus de prix, nous avons suivi une approche
 
 \subsection{Résultats empiriques}
 
+On choisit l'actif WBD pour illustrer les résultats, car il présente un gros tick une stationnarité marquée sur la période considérée.
 L'analyse des données pour l'actif WBD révèle plusieurs caractéristiques intéressantes:
 
 \begin{itemize}
@@ -226,9 +330,6 @@ L'analyse des données pour l'actif WBD révèle plusieurs caractéristiques int
     \item La distribution des temps d'arrivée présente une queue lourde, caractéristique des processus de Poisson inhomogènes
     \item La volatilité normalisée \(\sigma_{\tau}\) montre une dépendance en loi de puissance par rapport à l'échelle de temps \(\tau\)
 \end{itemize}
-
-Notre analyse approfondie de l'exposant de Hurst à différentes échelles temporelles révèle une caractéristique remarquable : contrairement à l'hypothèse classique d'un H ≈ 0.5 pour les marchés efficients, nous observons un H systématiquement inférieur à 0.5, indiquant une forte anti-persistance dans le processus de prix. Ce phénomène est particulièrement prononcé aux échelles microscopiques.
-
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|}
@@ -245,7 +346,6 @@ Notre analyse approfondie de l'exposant de Hurst à différentes échelles tempo
 20 415 762 & 0.278 \\
 61 247 288 & 0.310 \\
 204 157 627 & 0.329 \\
-612 472 883 & 0.206 \\
 \hline
 \end{tabular}
 \caption{Estimations de l'exposant de Hurst pour WBD à différentes échelles temporelles}
@@ -255,19 +355,17 @@ Notre analyse approfondie de l'exposant de Hurst à différentes échelles tempo
 Cette anti-persistance (H < 0.5) suggère une forte tendance à la réversion vers la moyenne à court terme, caractéristique des marchés dominés par des market makers et des stratégies de trading haute fréquence. Plusieurs observations importantes émergent :
 
 \begin{itemize}
-    \item À l'échelle microscopique (< 100 ms), H ≈ 0.23-0.27, indiquant une forte anti-persistance
+    \item À l'échelle microscopique (< 100 ms), H ≈ 0.23-0.27, indiquant une forte anti-persistance, nous ne sommes pas au niveau de H ≈ 0.1 comme esperé mais pour des hypothèses simplistes et un traitement systématique et non 
     \item Aux échelles intermédiaires (100 ms - 60 s), H augmente progressivement jusqu'à ≈ 0.33
-    \item Aux échelles plus longues (> 10 min), H diminue à nouveau (≈ 0.21)
 \end{itemize}
 
 Cette structure multi-échelle de l'exposant de Hurst reflète différents régimes de marchés et acteurs :
 \begin{itemize}
-    \item L'anti-persistance à très court terme est cohérente avec le comportement de rebond des prix autour du spread bid-ask
-    \item L'augmentation de H aux échelles intermédiaires suggère l'influence croissante des tendances directionnelles
-    \item La diminution de H aux échelles plus longues pourrait résulter de l'interaction entre différentes classes d'acteurs du marché
+    \item L'anti-persistance à très court terme est cohérente avec le comportement de bounce du spread bid-ask
+    \item L'augmentation de H aux échelles intermédiaires suggère donc l'influence croissante des tendances directionnelles, où l'hypothèse Bachelier n'est plus respectéé.
 \end{itemize}
 
-Ces résultats remettent en question l'application naïve du mouvement brownien standard comme modèle pour les prix d'actifs à l'échelle microstructurelle.
+Dans le futur, nous souhaitons mettre en place des approches d'estimation plus robustes \cite{chong2024minimax, chong2024clt} pour estimer H, et les comparer aux approche wavelets plus anciennes. 
 
 \begin{figure}[h!]
     \centering
@@ -307,21 +405,12 @@ Pour les rendements normalisés $r_t$, nous avons estimé l'indice de queue $\al
 
 où $X_{(i)}$ sont les statistiques d'ordre des valeurs absolues des rendements. Les résultats généraux montrent :
 
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Actif & $\alpha$ queue gauche & $\alpha$ queue droite & p-value KS \\
-\midrule
-GOOGL & 3.42 & 3.38 & 0.23 \\
-LCID & 3.15 & 3.21 & 0.18 \\
-KHC & 3.31 & 3.28 & 0.25 \\
-\bottomrule
-\end{tabular}
-\caption{Estimations de l'indice de queue par la méthode de Hill (général)}
-\end{table}
+Afin d'obtenir des estimations cohérentes, on estime le returns à différentes échelles temporelles (m pour minutes, h pour heure)
+Notamment, à partir de l'échèle seconde, les effets des variations tick by tick se font sentir (voir figure des rendements IEP)
+Il a donc fallu trouver un compromis entre expressivité du sampling et quantité de données pour une estimation fat tail robuste avec peu de données comme vue en cours.
+On applique donc strictement la méthode de Hill en restant proche des hypothèses du cours.
 
-Une analyse plus détaillée à différentes échelles temporelles révèle des variations significatives de l'exposant $\alpha$ selon l'horizon d'observation :
+
 
 \begin{table}[H]
 \centering
@@ -366,24 +455,12 @@ Nous avons également ajusté des lois de puissance sur les queues de distributi
 P(|r_t| > x) \sim x^{-\alpha} \quad \text{pour } x \to \infty
 \end{equation}
 
-L'estimation a été réalisée par maximum de vraisemblance avec un seuil adaptatif :
-
-\begin{itemize}
-    \item Seuil optimal déterminé par la méthode de Clauset-Shalizi-Newman
-    \item Test de Kolmogorov-Smirnov pour valider l'ajustement
-    \item Bootstrap paramétrique pour les intervalles de confiance
-\end{itemize}
+L'estimation a été réalisée par maximum de vraisemblance sur des fonctions du type lorentzienne $\frac{a}{b+x^c}$ avec un seuil adaptatif :
 
 Les résultats montrent une excellente adéquation avec les lois de puissance, avec des exposants $\alpha$ cohérents avec l'estimation de Hill.
 
-\paragraph{Analyse des moments}
-L'étude des moments empiriques confirme la nature leptokurtique des distributions :
-
-\begin{equation}
-\kappa = \frac{\mathbb{E}[(r_t - \mu)^4]}{\sigma^4} \approx 4.8
-\end{equation}
-
-Cette valeur est significativement supérieure à celle d'une distribution normale ($\kappa = 3$), indiquant des queues plus épaisses.
+Par ailleurs, nous aurions pu mettre en oeuvre un Q-Q plot, à comparer avec son équvalent théorique fat-tail alpha vs gaussian, mais cela se fera dans la suite du projet (sur github).
+Nous souhaitions principalement fabriquer des plots avec un fit fat-tail marquant.
 
 Nous présentons ci-dessous les distributions de rendements pour plusieurs actifs et échelles temporelles, illustrant visuellement ces propriétés de queues épaisses.
 
@@ -466,26 +543,172 @@ Nous présentons ci-dessous les distributions de rendements pour plusieurs actif
     \label{fig:WBD_KHC_returns_moved}
 \end{figure}
 
-\subsection{Structure de corrélation entre actifs}
 
-L'analyse des corrélations entre les différents actifs étudiés révèle la structure de dépendance du marché et permet d'identifier les clusters d'actifs qui tendent à évoluer de manière similaire.
+Ceci mis en place, on sait maintenant que nos returns sont de carré intégrable au moins ! 
+Le cours fait aussi état d'une remarque importante : l'hypothèse L2 est importante pour donner un sens aux corrélations !
 
-\begin{figure}[h!]
+Ainsi, on sait que l'on peut calculer des corrélations entre returns en pouvant donner une vraie interprétation puisque toutes les hypothèses (n>>p et L2) sont respectées
+
+\newpage
+\section{Structure de corrélation entre actifs}
+
+Ainsi, l'analyse des corrélations entre les rendements des différents actifs est ici calculée à différentes échelles temporelles, et révèle une partie de la structure de dépendance du marché. 
+Nous examinons ici par exemple les matrices de corrélation pour la journée du 22 juillet 2024 aux échelles 10ms, 1s et 10s. Le notebook data/curating/correlation.ipynb permet de reproduire les expériences.
+
+\begin{figure}[H] % Use H to place figures more strictly here
     \centering
-    \includegraphics[width=0.8\textwidth]{correlation_matrix.png}
-    \caption{Matrice de corrélation entre les rendements des différents actifs étudiés. Les zones plus foncées indiquent des corrélations plus fortes. On observe des clusters distincts correspondant aux secteurs d'activité (technologie, industrie, etc.), ainsi que des corrélations négatives entre certains secteurs, offrant des opportunités de diversification.}
-    \label{fig:correlation_matrix}
+    \begin{subfigure}[b]{0.8\textwidth} % Keep subfigure width for layout, change graphic width
+        \includegraphics[width=0.32\textwidth]{variations_matrix_2024-07-22_10ms.png}
+        \caption{Échelle 10ms}
+        \label{fig:corr_10ms}
+    \end{subfigure}
+    \vspace{1cm}
+    \begin{subfigure}[b]{0.8\textwidth} % Keep subfigure width for layout, change graphic width
+        \includegraphics[width=0.32\textwidth]{variations_matrix_2024-07-22_1s.png}
+        \caption{Échelle 1s}
+        \label{fig:corr_1s}
+    \end{subfigure}
+    \vspace{1cm}
+    \begin{subfigure}[b]{0.8\textwidth} % Keep subfigure width for layout, change graphic width
+        \includegraphics[width=0.32\textwidth]{variations_matrix_2024-07-22_10s.png}
+        \caption{Échelle 10s}
+        \label{fig:corr_10s}
+    \end{subfigure}
+    \caption{Matrices de corrélation des rendements pour les actifs disponibles le 22 juillet 2024, à différentes échelles temporelles. On observe une augmentation générale des corrélations à mesure que l'échelle de temps s'allonge.}
+    \label{fig:correlation_matrices_multiscale}
 \end{figure}
 
-Ces résultats de corrélation doivent être interprétés avec prudence car :
+Plusieurs observations clés émergent de cette analyse multi-échelle :
 \begin{itemize}
-    \item Les corrélations linéaires ne capturent pas les dépendances non-linéaires, particulièrement importantes en période de stress
-    \item La structure de corrélation évolue dans le temps, avec des augmentations significatives pendant les périodes de volatilité élevée
-    \item Les actifs présentant de faibles corrélations en temps normal peuvent converger pendant les crises (phénomène de correlation breakdown)
+    \item \textbf{Échelle microscopique (10ms)} : Les corrélations sont très faibles, proches de zéro pour la plupart des paires. Cela confirme l'indépendance relative des mouvements de prix à très haute fréquence, dominée par le bruit de microstructure.
+    \item \textbf{Échelle mésoscopique (1s)} : Les corrélations commencent à émerger, bien que restant modérées. On peut commencer à distinguer certains groupes d'actifs ayant des mouvements légèrement plus synchronisés.
+    \item \textbf{Échelle macroscopique (10s)} : Les corrélations sont nettement plus prononcées. Des clusters d'actifs positivement corrélés deviennent visibles, souvent liés à des secteurs d'activité communs (par exemple, technologie, énergie). Les corrélations négatives apparaissent également entre certains groupes. C'est à cette échelle que la structure économique sous-jacente du marché devient la plus apparente dans les corrélations linéaires.
 \end{itemize}
 
-L'analyse par copules présentée dans la section suivante permet de dépasser ces limitations en capturant la structure complète de dépendance.
+Ces résultats soulignent que la structure de dépendance est fortement dépendante de l'échelle. Les corrélations linéaires classiques ne capturent qu'une partie de l'image et sont plus pertinentes aux échelles macroscopiques. Cependant, elles doivent être interprétées avec prudence car :
+\begin{itemize}
+    \item On ne capture pas les dépendances non-linéaires, particulièrement importantes en période de stress. Cela devient vraiment important en intraday et lors de jumps corrélés sur l'orderbook (voir Hawkes).
+    \item Sur plusieurs jours , la structure de corrélation évolue est n'est plus cantonnée à la dynamique intraday. Ces recherches seront à poursuivre dans le futur.
+    \item Et donc les actifs qui présentent de faibles corrélations en temps normal (il y en a beaucoup ici) peuvent converger pendant les crises (phénomène de *correlation breakdown*). On étudiera aussi ça dans le futur.
+\end{itemize}
 
+En appendice, on analyse une partie des dépendances par des copules. On passe maintenant à une analyse plus poussée des dépendances des assets en modélisant l'évolution de l'orderbook par des processus de Hawkes
+
+\newpage
+\section{Analyse des dépendances par les copules}
+
+\subsection{Théorie des copules}
+
+La théorie des copules fournit un cadre mathématique puissant pour étudier les structures de dépendance entre variables aléatoires. Le théorème de Sklar établit qu'une distribution jointe multivariée peut être décomposée en ses distributions marginales et une copule qui capture entièrement la structure de dépendance :
+
+\begin{equation}
+F(x_1, \ldots, x_n) = C(F_1(x_1), \ldots, F_n(x_n))
+\end{equation}
+
+où $F$ est la distribution jointe, $F_i$ sont les distributions marginales, et $C$ est la copule.
+
+Dans notre étude, nous nous sommes concentrés sur trois familles principales de copules :
+
+\begin{itemize}
+    \item \textbf{Copule de Clayton} :
+    \[C_\theta(u,v) = (u^{-\theta} + v^{-\theta} - 1)^{-1/\theta}, \quad \theta > 0\]
+    Caractérisée par une dépendance de queue inférieure forte.
+    
+    \item \textbf{Copule de Frank} :
+    \[C_\theta(u,v) = -\frac{1}{\theta}\ln\left(1 + \frac{(e^{-\theta u}-1)(e^{-\theta v}-1)}{e^{-\theta}-1}\right), \quad \theta \neq 0\]
+    Présente une dépendance symétrique sans dépendance de queue.
+    
+    \item \textbf{Copule de Gumbel} :
+    \[C_\theta(u,v) = \exp\left(-\left[(-\ln u)^\theta + (-\ln v)^\theta\right]^{1/\theta}\right), \quad \theta \geq 1\]
+    Caractérisée par une dépendance de queue supérieure forte.
+\end{itemize}
+
+\subsection{Méthodologie d'estimation}
+
+Notre approche d'estimation des copules suit plusieurs étapes :
+
+\begin{enumerate}
+    \item \textbf{Échantillonnage temporel} : Les données sont échantillonnées à différentes échelles temporelles :
+    \[\{\text{30µs}, \text{100µs}, \text{1ms}, \text{10ms}, \text{100ms}, \text{1s}\}\]
+    
+    \item \textbf{Calcul des rendements} : Pour chaque actif $i$, nous calculons les rendements logarithmiques :
+    \[r_i(t) = \ln\left(\frac{P_i(t+\Delta t)}{P_i(t)}\right)\]
+    où $P_i(t)$ est le microprix défini comme :
+    \[P_i(t) = \frac{P^a_i(t)V^b_i(t) + P^b_i(t)V^a_i(t)}{V^a_i(t) + V^b_i(t)}\]
+    
+    \item \textbf{Synchronisation des données} : Les séries sont alignées temporellement et tronquées à la même longueur pour assurer une comparaison cohérente.
+    
+    \item \textbf{Estimation des paramètres} : Pour chaque paire d'actifs et chaque type de copule, nous estimons les paramètres par maximum de vraisemblance.
+\end{enumerate}
+
+\subsection{Résultats empiriques}
+
+L'analyse des copules révèle plusieurs caractéristiques importantes des dépendances entre actifs :
+
+    \begin{itemize}
+    \item \textbf{Échelle temporelle} : La force de la dépendance augmente généralement avec l'échelle temporelle, atteignant un plateau vers 100ms.
+    
+    \item \textbf{Sélection de modèle} : La copule de Clayton s'avère la plus adaptée pour la majorité des paires d'actifs, suggérant une dépendance plus forte dans les mouvements baissiers.
+    
+    \item \textbf{Mesures de dépendance} :
+    \begin{itemize}
+        \item Tau de Kendall : $\tau \in [0.15, 0.45]$
+        \item Rho de Spearman : $\rho \in [0.20, 0.55]$
+        \item Coefficient de queue inférieure : $\lambda_L \in [0.10, 0.35]$
+    \end{itemize}
+    \end{itemize}
+    
+Ces résultats ont des implications importantes pour :
+\begin{itemize}
+    \item La gestion des risques : La forte dépendance de queue inférieure suggère un risque accru en période de stress
+    \item L'allocation de portefeuille : La structure de dépendance non-linéaire doit être prise en compte
+    \item La modélisation des prix : Les hypothèses de normalité multivariée sont clairement rejetées
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.8\textwidth]{GOOGL_AAL_2024-07-22_1s.png}
+    \caption{Copule de Gumbel estimée pour la paire GOOGL-AAL le 22 juillet 2024 à l'échelle 1s. Les paramètres estimés montrent une faible dépendance ($\theta = 1.005$, $\tau = 0.005$), cohérente avec l'hypothèse d'indépendance conditionnelle à haute fréquence.}
+    \label{fig:copula_example}
+\end{figure}
+
+
+
+
+\subsection{Synthèse des analyses de dépendance et stationnarité}
+
+L'analyse conjointe des copules et de la stationnarité nous permet de tirer plusieurs conclusions importantes sur la nature des dépendances dans les marchés haute fréquence :
+
+\begin{itemize}
+    \item Les séries temporelles présentent une indépendance conditionnelle forte à l'échelle microscopique, confirmée par la faiblesse des dépendances capturées par les copules à ces échelles ($\tau < 0.2$ pour $\Delta t < 1\text{ms}$).
+    
+    \item Les changements de régime majeurs sont synchronisés entre les différents actifs, comme observé notamment lors de l'annonce des taux de la Fed le 18 septembre 2024, suggérant une source commune de non-stationnarité.
+    
+    \item La structure de dépendance évolue avec l'échelle temporelle : alors que les prix sont largement indépendants à l'échelle microscopique, des motifs de dépendance plus forts émergent aux échelles plus longues, particulièrement en période de stress.
+\end{itemize}
+
+Ces résultats soulignent l'importance d'une approche multi-échelle dans l'analyse des marchés haute fréquence, où les propriétés statistiques des séries de prix varient significativement selon l'horizon temporel considéré.
+
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=0.8\textwidth]{GOOGL_AAL_2024-07-22_1s.png}
+    \caption{Copule de Gumbel estimée pour la paire GOOGL-AAL le 22 juillet 2024 à l'échelle 1s. Les paramètres estimés montrent une faible dépendance ($\theta = 1.005$, $\tau = 0.005$), cohérente avec l'hypothèse d'indépendance conditionnelle à haute fréquence.}
+    \label{fig:copula_example}
+\end{figure}
+
+
+
+
+\newpage
+\section{Modélisation par processus de Hawkes}
+
+\subsection{Présentation du modèle}
+
+\subsection{Calibration et estimation}
+
+\subsection{Application aux données de marché}
+
+\newpage
 \section{La théorie de Bouchaud sur la nature des sauts de prix}
 
 La théorie de Bouchaud sur la nature des sauts de prix dans les marchés financiers repose sur une distinction fondamentale entre deux types d'événements extrêmes : les sauts exogènes (EMC - Efficient Market Class) et les sauts endogènes (SEC - Self-Exciting Class). Cette classification s'oppose à la théorie classique des marchés efficients qui stipule que tous les mouvements de prix significatifs sont nécessairement causés par des nouvelles externes.
@@ -531,14 +754,7 @@ Cette théorie a plusieurs implications importantes :
 
 Cette théorie s'inscrit dans une vision plus large des systèmes complexes, où des événements extrêmes peuvent émerger spontanément de l'interaction entre de nombreux agents, sans nécessiter de déclencheur externe majeur.
 
-\section{Modélisation par processus de Hawkes}
-
-\subsection{Présentation du modèle}
-
-\subsection{Calibration et estimation}
-
-\subsection{Application aux données de marché}
-
+\newpage
 \section*{Conclusion}
 
 Ce mémoire apporte plusieurs contributions significatives à la compréhension des dynamiques de marché à haute fréquence et particulièrement à l'étude de l'impact des news sur les Limit Order Books. Notre approche, combinant analyse théorique et validation empirique, a permis de mettre en lumière plusieurs aspects fondamentaux de la microstructure des marchés.
@@ -575,213 +791,21 @@ Ce mémoire apporte plusieurs contributions significatives à la compréhension 
 
 Ces résultats ouvrent la voie à une nouvelle génération de modèles de trading algorithmique, capables de s'adapter dynamiquement aux conditions de marché et d'intégrer efficacement l'information exogène dans leurs décisions.
 
-\subsection{Analyse des dépendances par les copules}
+\newpage
+\begin{thebibliography}{9}
 
-\subsubsection{Théorie des copules}
+\bibitem{chong2024minimax}
+Carsten Chong, Marc Hoffmann, Yanghui Liu, Mathieu Rosenbaum, and Grégoire Szymanski.
+\newblock Statistical inference for rough volatility: Minimax Theory.
+\newblock \emph{arXiv preprint arXiv:2210.01214}, 2024.
+\newblock URL: \url{https://arxiv.org/abs/2210.01214}.
 
-La théorie des copules fournit un cadre mathématique puissant pour étudier les structures de dépendance entre variables aléatoires. Le théorème de Sklar établit qu'une distribution jointe multivariée peut être décomposée en ses distributions marginales et une copule qui capture entièrement la structure de dépendance :
+\bibitem{chong2024clt}
+Carsten H. Chong, Marc Hoffmann, Yanghui Liu, Mathieu Rosenbaum, and Grégoire Szymanski.
+\newblock Statistical inference for rough volatility: Central limit theorems.
+\newblock \emph{The Annals of Applied Probability}, 34(3), 2024.
+\newblock DOI: \href{http://dx.doi.org/10.1214/23-AAP2002}{10.1214/23-aap2002}.
 
-\begin{equation}
-F(x_1, \ldots, x_n) = C(F_1(x_1), \ldots, F_n(x_n))
-\end{equation}
-
-où $F$ est la distribution jointe, $F_i$ sont les distributions marginales, et $C$ est la copule.
-
-Dans notre étude, nous nous sommes concentrés sur trois familles principales de copules :
-
-\begin{itemize}
-    \item \textbf{Copule de Clayton} :
-    \[C_\theta(u,v) = (u^{-\theta} + v^{-\theta} - 1)^{-1/\theta}, \quad \theta > 0\]
-    Caractérisée par une dépendance de queue inférieure forte.
-    
-    \item \textbf{Copule de Frank} :
-    \[C_\theta(u,v) = -\frac{1}{\theta}\ln\left(1 + \frac{(e^{-\theta u}-1)(e^{-\theta v}-1)}{e^{-\theta}-1}\right), \quad \theta \neq 0\]
-    Présente une dépendance symétrique sans dépendance de queue.
-    
-    \item \textbf{Copule de Gumbel} :
-    \[C_\theta(u,v) = \exp\left(-\left[(-\ln u)^\theta + (-\ln v)^\theta\right]^{1/\theta}\right), \quad \theta \geq 1\]
-    Caractérisée par une dépendance de queue supérieure forte.
-\end{itemize}
-
-\subsubsection{Méthodologie d'estimation}
-
-Notre approche d'estimation des copules suit plusieurs étapes :
-
-\begin{enumerate}
-    \item \textbf{Échantillonnage temporel} : Les données sont échantillonnées à différentes échelles temporelles :
-    \[\{\text{30µs}, \text{100µs}, \text{1ms}, \text{10ms}, \text{100ms}, \text{1s}\}\]
-    
-    \item \textbf{Calcul des rendements} : Pour chaque actif $i$, nous calculons les rendements logarithmiques :
-    \[r_i(t) = \ln\left(\frac{P_i(t+\Delta t)}{P_i(t)}\right)\]
-    où $P_i(t)$ est le microprix défini comme :
-    \[P_i(t) = \frac{P^a_i(t)V^b_i(t) + P^b_i(t)V^a_i(t)}{V^a_i(t) + V^b_i(t)}\]
-    
-    \item \textbf{Synchronisation des données} : Les séries sont alignées temporellement et tronquées à la même longueur pour assurer une comparaison cohérente.
-    
-    \item \textbf{Estimation des paramètres} : Pour chaque paire d'actifs et chaque type de copule, nous estimons les paramètres par maximum de vraisemblance.
-\end{enumerate}
-
-\subsubsection{Résultats empiriques}
-
-L'analyse des copules révèle plusieurs caractéristiques importantes des dépendances entre actifs :
-
-    \begin{itemize}
-    \item \textbf{Échelle temporelle} : La force de la dépendance augmente généralement avec l'échelle temporelle, atteignant un plateau vers 100ms.
-    
-    \item \textbf{Sélection de modèle} : La copule de Clayton s'avère la plus adaptée pour la majorité des paires d'actifs, suggérant une dépendance plus forte dans les mouvements baissiers.
-    
-    \item \textbf{Mesures de dépendance} :
-    \begin{itemize}
-        \item Tau de Kendall : $\tau \in [0.15, 0.45]$
-        \item Rho de Spearman : $\rho \in [0.20, 0.55]$
-        \item Coefficient de queue inférieure : $\lambda_L \in [0.10, 0.35]$
-    \end{itemize}
-    \end{itemize}
-    
-    \begin{figure}[h!]
-        \centering
-        \begin{tikzpicture}
-            \begin{axis}[
-                width=12cm,
-            height=8cm,
-            xlabel={$u$},
-            ylabel={$v$},
-            title={Exemple de copule de Clayton estimée (GOOGL-AAPL)},
-            colorbar,
-            view={0}{90}
-        ]
-        \addplot3[
-            surf,
-            shader=interp,
-            domain=0:1,
-            y domain=0:1,
-            samples=50
-        ] {(max(x^(-1.5) + y^(-1.5) - 1,0))^(-1/1.5)};
-            \end{axis}
-        \end{tikzpicture}
-    \caption{Densité de la copule de Clayton estimée pour la paire GOOGL-AAPL}
-    \end{figure}
-
-Ces résultats ont des implications importantes pour :
-\begin{itemize}
-    \item La gestion des risques : La forte dépendance de queue inférieure suggère un risque accru en période de stress
-    \item L'allocation de portefeuille : La structure de dépendance non-linéaire doit être prise en compte
-    \item La modélisation des prix : Les hypothèses de normalité multivariée sont clairement rejetées
-\end{itemize}
-
-\subsection{Analyse de la stationnarité}
-
-\subsubsection{Méthodologie}
-
-Pour étudier la stationnarité des séries de prix, nous avons adopté une approche à deux volets :
-
-\begin{enumerate}
-    \item \textbf{Test de stationnarité} : Test de Dickey-Fuller augmenté (ADF) pour détecter la présence de racine unitaire :
-    \[\Delta y_t = \alpha + \beta t + \gamma y_{t-1} + \sum_{i=1}^p \delta_i \Delta y_{t-i} + \epsilon_t\]
-    où l'hypothèse nulle $H_0: \gamma = 0$ correspond à la non-stationnarité.
-    
-    \item \textbf{Détection des changements de régime} : Méthode de fenêtre glissante (Window) pour identifier les points de rupture dans la dynamique des prix :
-    \[
-    \min_{\tau_1,\ldots,\tau_K} \sum_{k=1}^{K+1} \sum_{t=\tau_{k-1}+1}^{\tau_k} \|y_t - \bar{y}_k\|^2 + \lambda K
-    \]
-    où $\tau_k$ sont les points de rupture et $\bar{y}_k$ les moyennes locales.
-\end{enumerate}
-
-L'analyse a été effectuée sur quatre échelles temporelles différentes :
-\[\{\text{100ms}, \text{1s}, \text{10s}, \text{60s}\}\]
-
-\subsubsection{Résultats empiriques}
-
-Les tests de stationnarité révèlent plusieurs caractéristiques importantes :
-
-\begin{itemize}
-    \item \textbf{Échelle microscopique (100ms)} : 
-    \begin{itemize}
-        \item Forte non-stationnarité (p-value ADF > 0.05)
-        \item Nombreux changements de régime locaux
-        \item Volatilité clustérisée
-    \end{itemize}
-    
-    \item \textbf{Échelle mésoscopique (1s-10s)} :
-    \begin{itemize}
-        \item Stationnarité par morceaux
-        \item Changements de régime moins fréquents mais plus significatifs
-        \item Persistance des tendances locales
-    \end{itemize}
-    
-    \item \textbf{Échelle macroscopique (60s)} :
-\begin{itemize}
-        \item Stationnarité plus marquée
-        \item Changements de régime principalement liés aux événements macroéconomiques
-        \item Structure de dépendance plus stable
-\end{itemize}
-\end{itemize}
-
-    \begin{figure}[h!]
-        \centering
-    \includegraphics[width=0.45\textwidth]{results/stationarity/stats/GOOGL/GOOGL_2024-09-18_1s.png}
-    \includegraphics[width=0.45\textwidth]{results/stationarity/stats/AAPL/AAPL_2024-09-18_1s.png}
-    \includegraphics[width=0.45\textwidth]{results/stationarity/stats/MSFT/MSFT_2024-09-18_1s.png}
-    \includegraphics[width=0.45\textwidth]{results/stationarity/stats/AMZN/AMZN_2024-09-18_1s.png}
-    \caption{Analyse de stationnarité pour quatre actifs majeurs le 18 septembre 2024. Les lignes verticales rouges indiquent les changements de régime détectés.}
-    \label{fig:stationarity}
-    \end{figure}
-
-\subsubsection{Exemple d'événement macroéconomique : Annonce du taux de chômage}
-
-L'analyse du 8 août 2024 fournit un exemple particulièrement éclairant de l'interaction entre stationnarité et dépendance. Ce jour-là, l'annonce des chiffres du chômage a provoqué une réaction synchronisée sur l'ensemble du marché, illustrant parfaitement comment les événements macroéconomiques peuvent induire des changements de régime simultanés.
-
-\begin{figure}[h!]
-\centering
-    \includegraphics[width=0.45\textwidth]{INTC_2024-08-01_100ms.png}
-    \includegraphics[width=0.45\textwidth]{AAL_2024-08-01_100ms.png}
-    \includegraphics[width=0.45\textwidth]{CXW_2024-08-01_100ms.png}
-    \includegraphics[width=0.45\textwidth]{GOOGL_2024-08-01_100ms.png}
-    \caption{Analyse de stationnarité pour INTC, AAL, CXW et GOOGL le 8 août 2024 à l'échelle de 100ms. Les lignes verticales rouges indiquent les changements de régime détectés.}
-    \label{fig:stationarity_unemployment}
-\end{figure}
-
-Cette journée met en évidence plusieurs phénomènes importants :
-
-\begin{itemize}
-    \item \textbf{Synchronisation des ruptures} : Les quatre actifs présentent des changements de régime simultanés au moment de l'annonce (14:30 GMT), malgré leurs secteurs d'activité différents.
-
-    \item \textbf{Impact sur les corrélations} : Bien que l'événement affecte tous les actifs, son effet disparaît dans l'analyse des copules car :
-\begin{itemize}
-        \item La normalisation par la moyenne journalière élimine l'effet de niveau commun
-        \item Les rendements sont calculés après suppression de la tendance locale
-        \item Les changements de régime sont traités comme des points de rupture distincts
-\end{itemize}
-
-    \item \textbf{Échelles multiples} : L'impact est visible différemment selon l'échelle d'observation :
-\begin{itemize}
-        \item À 100ms : Rupture nette et synchronisée
-        \item À 1s : Persistance de l'effet avec retour progressif à la normale
-        \item À 60s : Intégration de l'information dans un nouveau régime stable
-    \end{itemize}
-\end{itemize}
-
-Cette observation est fondamentale car elle démontre que l'apparente indépendance des rendements à haute fréquence n'est pas incompatible avec l'existence de mouvements coordonnés du marché. La stationnarité locale est préservée précisément parce que ces événements sont traités comme des points de rupture plutôt que comme des variations continues du processus.
-
-\subsubsection{Synthèse des analyses de dépendance et stationnarité}
-
-L'analyse conjointe des copules et de la stationnarité nous permet de tirer plusieurs conclusions importantes sur la nature des dépendances dans les marchés haute fréquence :
-
-\begin{itemize}
-    \item Les séries temporelles présentent une indépendance conditionnelle forte à l'échelle microscopique, confirmée par la faiblesse des dépendances capturées par les copules à ces échelles ($\tau < 0.2$ pour $\Delta t < 1\text{ms}$).
-    
-    \item Les changements de régime majeurs sont synchronisés entre les différents actifs, comme observé notamment lors de l'annonce des taux de la Fed le 18 septembre 2024, suggérant une source commune de non-stationnarité.
-    
-    \item La structure de dépendance évolue avec l'échelle temporelle : alors que les prix sont largement indépendants à l'échelle microscopique, des motifs de dépendance plus forts émergent aux échelles plus longues, particulièrement en période de stress.
-\end{itemize}
-
-Ces résultats soulignent l'importance d'une approche multi-échelle dans l'analyse des marchés haute fréquence, où les propriétés statistiques des séries de prix varient significativement selon l'horizon temporel considéré.
-
-\begin{figure}[h!]
-\centering
-    \includegraphics[width=0.8\textwidth]{GOOGL_AAL_2024-07-22_1s.png}
-    \caption{Copule de Gumbel estimée pour la paire GOOGL-AAL le 22 juillet 2024 à l'échelle 1s. Les paramètres estimés montrent une faible dépendance ($\theta = 1.005$, $\tau = 0.005$), cohérente avec l'hypothèse d'indépendance conditionnelle à haute fréquence.}
-    \label{fig:copula_example}
-\end{figure}
+\end{thebibliography}
 
 \end{document}
