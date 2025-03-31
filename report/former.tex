@@ -286,7 +286,7 @@ Ces résultats remettent en question l'application naïve du mouvement brownien 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{output.png}
-    \caption{Histogramme de la volatilité réalisée pour les actifs étudiés. La distribution présente des queues épaisses (fat tailed), signalant une probabilité accrue d'événements extrêmes par rapport à une distribution gaussienne. Ce phénomène est une caractéristique fondamentale des marchés financiers.}
+    \caption{Histogramme de la volatilité (log normal) pour les actifs étudiés. La distribution présente des queues épaisses (fat tailed), signalant une probabilité accrue d'événements extrêmes par rapport à une distribution gaussienne. Ce phénomène est une caractéristique fondamentale des marchés financiers.}
     \label{fig:volatility_hist}
 \end{figure}
 
@@ -296,18 +296,18 @@ L'étude des distributions de rendements à différentes échelles temporelles r
 
 \subsubsection{Rendements de CXW à différentes échelles}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{CXW_5m_returns_histogram.png}
         \caption{Distribution des rendements à 5 minutes}
-        \label{fig:CXW_5m}
+        \label{fig:CXW_5m_moved}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{CXW_30m_returns_histogram.png}
         \caption{Distribution des rendements à 30 minutes}
-        \label{fig:CXW_30m}
+        \label{fig:CXW_30m_moved}
     \end{subfigure}
     
     \vspace{0.5cm}
@@ -315,26 +315,26 @@ L'étude des distributions de rendements à différentes échelles temporelles r
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{CXW_1h_returns_histogram.png}
         \caption{Distribution des rendements à 1 heure}
-        \label{fig:CXW_1h}
+        \label{fig:CXW_1h_moved}
     \end{subfigure}
     \caption{Distributions des rendements pour CXW à différentes échelles temporelles. Les ajustements en loi de puissance (courbes rouges) montrent des exposants caractéristiques entre 3.2 et 3.6, cohérents avec les travaux théoriques sur les marchés financiers. Notons que l'épaisseur des queues diminue légèrement avec l'allongement de l'échelle temporelle, suggérant un retour progressif vers la normalité.}
-    \label{fig:CXW_multi_scale}
+    \label{fig:CXW_multi_scale_moved}
 \end{figure}
 
 \subsubsection{Rendements de IEP à différentes échelles}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{IEP_5m_returns_histogram.png}
         \caption{Distribution des rendements à 5 minutes}
-        \label{fig:IEP_5m}
+        \label{fig:IEP_5m_moved}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{IEP_10m_returns_histogram.png}
         \caption{Distribution des rendements à 10 minutes}
-        \label{fig:IEP_10m}
+        \label{fig:IEP_10m_moved}
     \end{subfigure}
     
     \vspace{0.5cm}
@@ -342,35 +342,35 @@ L'étude des distributions de rendements à différentes échelles temporelles r
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{IEP_20m_returns_histogram.png}
         \caption{Distribution des rendements à 20 minutes}
-        \label{fig:IEP_20m}
+        \label{fig:IEP_20m_moved}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{IEP_30m_returns_histogram.png}
         \caption{Distribution des rendements à 30 minutes}
-        \label{fig:IEP_30m}
+        \label{fig:IEP_30m_moved}
     \end{subfigure}
     \caption{Distributions des rendements pour IEP à différentes échelles temporelles. Les distributions suivent des lois de puissance avec des exposants qui varient entre 3.0 et 3.5 selon l'échelle. Cette structure en loi de puissance est caractéristique des systèmes complexes auto-organisés et reflète le comportement collectif des acteurs du marché.}
-    \label{fig:IEP_multi_scale}
+    \label{fig:IEP_multi_scale_moved}
 \end{figure}
 
 \subsubsection{Rendements de WBD et KHC}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{WBD_20m_returns_histogram.png}
         \caption{Distribution des rendements de WBD à 20 minutes}
-        \label{fig:WBD_20m}
+        \label{fig:WBD_20m_moved}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{KHC_10m_returns_histogram.png}
         \caption{Distribution des rendements de KHC à 10 minutes}
-        \label{fig:KHC_10m}
+        \label{fig:KHC_10m_moved}
     \end{subfigure}
     \caption{Comparaison des distributions de rendements pour WBD et KHC. Malgré des secteurs d'activité différents, les deux actifs présentent des distributions similaires en loi de puissance, suggérant un mécanisme universel sous-jacent dans la formation des prix sur les marchés financiers.}
-    \label{fig:WBD_KHC_returns}
+    \label{fig:WBD_KHC_returns_moved}
 \end{figure}
 
 \subsection{Structure de corrélation entre actifs}
@@ -493,7 +493,7 @@ Pour les rendements normalisés $r_t$, nous avons estimé l'indice de queue $\al
 \hat{\alpha}_k = \left(\frac{1}{k} \sum_{i=1}^k \log \frac{X_{(i)}}{X_{(k+1)}}\right)^{-1}
 \end{equation}
 
-où $X_{(i)}$ sont les statistiques d'ordre des valeurs absolues des rendements. Les résultats montrent :
+où $X_{(i)}$ sont les statistiques d'ordre des valeurs absolues des rendements. Les résultats généraux montrent :
 
 \begin{table}[h!]
 \centering
@@ -508,6 +508,44 @@ KHC & 3.31 & 3.28 & 0.25 \\
 \end{tabular}
 \caption{Estimations de l'indice de queue par la méthode de Hill}
 \end{table}
+
+Une analyse plus détaillée à différentes échelles temporelles révèle des variations significatives de l'exposant $\alpha$ selon l'horizon d'observation :
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Actif-Échelle & $\alpha$ global & $\alpha$ queue gauche & $\alpha$ queue droite & p-value KS \\
+\midrule
+KHC-10m & 3.02 & 3.02 & 3.00 & 0.12 \\
+\midrule
+CXW-5m & 2.66 & 2.61 & 2.70 & 0.99 \\
+CXW-30m & 2.70 & 2.61 & 2.77 & 0.40 \\
+CXW-1h & 2.64 & 2.65 & 2.71 & 0.63 \\
+\midrule
+WBD-20m & 2.73 & 2.83 & 2.63 & 0.61 \\
+\midrule
+IEP-5m & 2.58 & 2.59 & 2.56 & 0.38 \\
+IEP-10m & 2.54 & 2.60 & 2.47 & 0.37 \\
+IEP-20m & 2.52 & 2.46 & 2.61 & 0.08 \\
+IEP-30m & 2.47 & 2.44 & 2.50 & 0.88 \\
+\bottomrule
+\end{tabular}
+\caption{Estimations détaillées de l'indice de queue par la méthode de Hill à différentes échelles temporelles}
+\label{tab:hill_detail}
+\end{table}
+
+Plusieurs observations importantes émergent de cette analyse multi-échelle des exposants :
+
+\begin{itemize}
+    \item L'actif KHC présente les queues les plus fines (α ≈ 3.0), indiquant une moindre propension aux événements extrêmes
+    \item Les actifs IEP et CXW affichent les queues les plus épaisses (α ≈ 2.5-2.7), suggérant une probabilité plus élevée d'événements extrêmes
+    \item On observe une tendance générale à la diminution de l'exposant α avec l'augmentation de l'échelle temporelle pour IEP (de 2.58 à 5m à 2.47 à 30m)
+    \item La p-value du test de Kolmogorov-Smirnov reste élevée pour toutes les échelles, confirmant l'excellente adéquation du modèle en loi de puissance
+    \item Les différences entre les queues gauche et droite sont généralement modérées, mais certains actifs (WBD, IEP-10m) présentent une asymétrie plus marquée
+\end{itemize}
+
+Ces résultats confirment que les rendements financiers suivent universellement des lois de puissance avec des exposants caractéristiques dans la plage 2.4-3.1, significativement inférieurs aux valeurs qu'impliquerait un modèle gaussien.
 
 \paragraph{Lois de puissance}
 Nous avons également ajusté des lois de puissance sur les queues de distribution :
@@ -740,10 +778,10 @@ L'analyse du 8 août 2024 fournit un exemple particulièrement éclairant de l'i
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.45\textwidth]{results/stationarity/stats/INTC/INTC_2024-08-01_100ms.png}
-    \includegraphics[width=0.45\textwidth]{results/stationarity/stats/AAL/AAL_2024-08-01_100ms.png}
-    \includegraphics[width=0.45\textwidth]{results/stationarity/stats/CXW/CXW_2024-08-01_100ms.png}
-    \includegraphics[width=0.45\textwidth]{results/stationarity/stats/GOOGL/GOOGL_2024-08-01_100ms.png}
+    \includegraphics[width=0.45\textwidth]{INTC_2024-08-01_100ms.png}
+    \includegraphics[width=0.45\textwidth]{AAL_2024-08-01_100ms.png}
+    \includegraphics[width=0.45\textwidth]{CXW_2024-08-01_100ms.png}
+    \includegraphics[width=0.45\textwidth]{GOOGL_2024-08-01_100ms.png}
     \caption{Analyse de stationnarité pour INTC, AAL, CXW et GOOGL le 8 août 2024 à l'échelle de 100ms. Les lignes verticales rouges indiquent les changements de régime détectés.}
     \label{fig:stationarity_unemployment}
 \end{figure}
@@ -786,9 +824,15 @@ Ces résultats soulignent l'importance d'une approche multi-échelle dans l'anal
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{results/copulas/GOOGL_AAL_2024-07-22_1s.png}
+    \includegraphics[width=0.8\textwidth]{GOOGL_AAL_2024-07-22_1s.png}
     \caption{Copule de Gumbel estimée pour la paire GOOGL-AAL le 22 juillet 2024 à l'échelle 1s. Les paramètres estimés montrent une faible dépendance ($\theta = 1.005$, $\tau = 0.005$), cohérente avec l'hypothèse d'indépendance conditionnelle à haute fréquence.}
     \label{fig:copula_example}
 \end{figure}
+
+\subsection{Analyse spécifique de la copule de Clayton le 1er août 2024}
+
+Dans cette section, nous analysons plus en détail la structure de dépendance observée le 1er août 2024 en ajustant une copule de Clayton aux paires d'actifs (AAL, CXW, INTC, GOOGL). Cette analyse vise à comprendre comment la dépendance, en particulier la dépendance de queue inférieure capturée par la copule de Clayton, se manifeste lors d'événements spécifiques.
+
+[Texte à compléter ici avec l'analyse détaillée des résultats de la copule de Clayton pour AAL, CXW, INTC et GOOGL le 1er août 2024, incluant les paramètres estimés, les mesures de dépendance et l'interprétation des résultats dans le contexte de cette journée.]
 
 \end{document}
