@@ -106,7 +106,7 @@
     A titre indicatif, la suite du projet personnel consisteraient à unifier l'état de l'art des modèles rough comme conséquences de modèles HFT Hawkes (Quadratic Hawkes vers super-Heston rough).
 
             \vspace{0.5cm}
-    \textbf{Mots-clés :} Limit Order Book, Trading Haute Fréquence, Modèle Queue Reactive, Impact des News, Microstructure de Marché
+    \textbf{Mots-clés :} Limit Order Book, Trading Haute Fréquence, Modèle de File d'Attente Réactive, Impact des News, Microstructure de Marché
 \end{abstract}
             \end{minipage}
 
@@ -168,7 +168,7 @@ CXW & 108M & 89 & 3.83e4 & 9.71 & 24.99 & 1.93e+03 & 6.98 & 55.25 \\ \hline
 Les données sont issues de la base de données Databento et ne concernent que la bourse du Nasdaq. On observe une grande disparité dans les volumes de données entre les différents actifs, avec notamment les géants technologiques (GOOGL, AAPL, AMZN) qui génèrent des volumes de données significativement plus importants. Les estimations seront donc naturellement plus précises pour ces actifs plus liquides.
 \\
 \\
-Les données sont sous format de dataframe par journée comprenant toutes les modifications apportées au Market By Order (MBO) des actifs étudiés. Ce MBO comprend alors:
+Les données sont fournies sous forme de dataframe par journée comprenant toutes les modifications apportées au Market By Order (MBO) des actifs étudiés. Ce MBO comprend alors:
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|}
@@ -287,23 +287,19 @@ Par exemple l'analyse du 8 août 2024 fournit un exemple particulièrement écla
 
 Cette journée montre plusieurs phénomènes importants :
 
-\begin{itemize}
-    \item \textbf{Synchronisation des ruptures} : Les quatre actifs présentent des changements de régime simultanés au moment de l'annonce (14:30 GMT), malgré leurs secteurs d'activité différents.
-
-    \item \textbf{Impact sur les corrélations} : Bien que l'événement affecte tous les actifs, son effet disparaît dans l'analyse des copules car :
-\begin{itemize}
-        \item Les rendements montrent une partie fat tail (l'échèle matplotlib s'ajuste automatiquement) avec un certain nombre de valeurs extrêmes. On ne calcule pas de Hill ici car fait plus tard mais on le voit apparaitre directement visuellement ce qui est rassurant.
-        \item Les rendements montrent auss qu'une partie de la tendance est expliquée par les variations tick-by-tick intraday (2ème plus grosse barre de l'histogramme), ce qui suggère l'explication de la tendance par des méta-ordre (et donc d'une imbalance bid-ask moyenne non nulle)
+\begin{itemize}    
+        \item Les rendements montrent une partie fat tail (l'échelle matplotlib s'ajuste automatiquement) avec un certain nombre de valeurs extrêmes. On ne calcule pas de Hill ici car l'analyse est faite plus tard mais on le voit apparaitre directement visuellement ce qui est rassurant.
+        \item Les rendements montrent aussi qu'une partie de la tendance est expliquée par les variations tick-by-tick intraday (2ème plus grosse barre de l'histogramme), ce qui suggère l'explication de la tendance par des méta-ordres (et donc d'une imbalance bid-ask moyenne non nulle)
         \item Les changements de régime sont traités comme des points de rupture distincts, on les voit particulièrement en début et fin d'activité  du marché (d'où la suppression générale de la 1ère/dernière heure d'activité)
 \end{itemize}
 
 
 Cette observation est fondamentale car elle démontre que l'apparente indépendance des rendements à haute fréquence n'est pas incompatible avec l'existence de mouvements coordonnés du marché. 
 Et donc la stationnarité locale est préservée précisément parce que ces événements sont traités comme des points de rupture plutôt que comme des variations continues du processus.
-En tout cas, on s'intéressera dans le futur à la description haute fréquence de cet évènements et son explication en terme de méta-ordre (et donc d'imbalance) par exemple. 
+En tout cas, on s'intéressera dans le futur à la description haute fréquence de cet événement et son explication en termes de méta-ordres (et donc d'imbalance) par exemple. 
 Nous avons aussi intégré des fit ARMA/GARCH sur les rendements pour trouver les changepoints et interpréter une partie du Hurst mais cette analyse sera détaillée dans le futur sur le github puisque 13 pages sont trop courtes pour tout présenter.
 
-Pour l'heure, maintenant que l'on a trouvé des stocks et journées plutôt stationnaires, on peut maintenant mieux fitter un modèle brownien fractionnaire le plus indépendant possible du sampling time.
+Pour l'heure, maintenant que l'on a trouvé des stocks et journées plutôt stationnaires, on peut maintenant mieux ajuster un modèle brownien fractionnaire le plus indépendant possible du sampling time.
 
 
 \section{Modélisation de Hurst et extraction de la volatilité}
@@ -326,7 +322,7 @@ où \(\tau\) représente l'intervalle de temps considéré. L'interprétation de
 \end{itemize}
 
 En étant en haute fréquence, on se place d'ores et déjà dans un modèle Bachelier puisque nous sommes à la limite de la fusion variation tick-by-tick -> variation continue.
-
+Nous n'utilisons pas les méthodes de calcul stochastique/MLE vu dans le cours de Mr. Kébaier pour l'instant, cela sera fait dans le futur, nous nous cantonons au modèle Bachelier avec timestamps irréguliers.
 On peut donc estimer très simplement H avec un OLS des log-coordonnées.
 
 \subsection{Procédure d'extraction de la volatilité}
