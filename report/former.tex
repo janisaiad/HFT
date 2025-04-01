@@ -97,7 +97,7 @@
 
             \begin{minipage}{0.8\textwidth}
             \begin{abstract}
-    Ce court projet vise à initier un pré-traitement statistique d'un dataset tick-by-tick de LOB du Nasdaqavec une vingtaine d'actifs sur plusieurs mois. En particulier, on s'intéresse à la vérification des caractéristiques principales du marché sur les queues lourdes, les jumps et changements de régimes endogènes/éxogènes, ainsi que 
+    Ce court projet vise à initier un pré-traitement statistique d'un dataset tick-by-tick de LOB du Nasdaq avec une vingtaine d'actifs sur plusieurs mois. En particulier, on s'intéresse à la vérification des caractéristiques principales du marché sur les queues lourdes, les jumps et changements de régimes endogènes/éxogènes, ainsi que 
     sur la mémoire longue des ordres de marchés.
     On présente ainsi surtout les résultats et graphes principaux obtenus sur quelques actifs pour donner une idée de la qualité des données.
     Toutes les expériences ont été réalisées sur \url{https://github.com/janisaiad/HFT} pour une reproductibilité, avec une exhaustivité des graphes et résultats pour tout le dataset.
@@ -128,66 +128,66 @@
 Dans la suite de notre étude, nous étudierons les différents actifs du Nasdaq. Ces actifs correspondent à des entreprises de différents secteurs, allant des géants de la technologie aux entreprises de l'agroalimentaire.
 
 \begin{table}[h!]
-\centering
-\begin{tabular}{|c|c|c|c|}
+\hspace{-2.5cm}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-\textbf{Actif} & \textbf{Taille Dataset} & \textbf{Nb Jours} & \textbf{Actions/Jour}\\ \hline
-GOOGL & 5.6G & 66 & 2.68e6 \\ \hline
-AAPL & 3.1G & 55 & 1.78e6 \\ \hline
-AMZN & 3.1G & 55 & 1.78e6 \\ \hline
-AAL & 2.2G & 371 & 1.87e5 \\ \hline
-MSFT & 2.1G & 55 & 1.21e6 \\ \hline
-GT & 2.1G & 371 & 1.79e5 \\ \hline
-INTC & 1.5G & 75 & 6.33e5 \\ \hline
-IOVA & 1.5G & 371 & 1.28e5 \\ \hline
-PTEN & 1.5G & 371 & 1.28e5 \\ \hline
-MLCO & 1.4G & 371 & 1.19e5 \\ \hline
-PTON & 1.4G & 371 & 1.19e5 \\ \hline
-VLY & 1.1G & 371 & 9.37e4 \\ \hline
-VOD & 951M & 371 & 8.10e4 \\ \hline
-CSX & 619M & 75 & 2.61e5 \\ \hline
-WB & 591M & 371 & 5.03e4 \\ \hline
-BGC & 591M & 371 & 5.03e4 \\ \hline
-GRAB & 454M & 371 & 3.87e4 \\ \hline
-KHC & 428M & 66 & 2.05e5 \\ \hline
-HLMN & 390M & 371 & 3.32e4 \\ \hline
-IEP & 342M & 371 & 2.91e4 \\ \hline
-GBDC & 338M & 371 & 2.88e4 \\ \hline
-WBD & 327M & 75 & 1.38e5 \\ \hline
-PSNY & 312M & 371 & 2.66e4 \\ \hline
-NTAP & 228M & 55 & 1.31e5 \\ \hline
-GEO & 199M & 89 & 7.07e4 \\ \hline
-LCID & 163M & 66 & 7.81e4 \\ \hline
-GCMG & 160M & 371 & 1.36e4 \\ \hline
-CXW & 108M & 89 & 3.83e4 \\ \hline
+\textbf{Actif} & \textbf{Size} & \textbf{Nb Day} & \textbf{Row/Day} & \textbf{Min price} & \textbf{Max price} & \textbf{Mean trades/day} & \textbf{Avg spread} & \textbf{Trades at bid (\%)}\\ \hline
+GOOGL & 5.6G & 66 & 2.68e6 & 147.53 & 183.34 & 9.40e+04 & 1.89 & 55.84 \\ \hline
+AAPL & 3.1G & 55 & 1.78e6 & 219.71 & 250.20 & 9.27e+04 & 2.48 & 55.06 \\ \hline
+AMZN & 3.1G & 55 & 1.78e6 & 180.57 & 232.07 & 9.35e+04 & 2.96 & 50.48 \\ \hline
+AAL & 2.2G & 371 & 1.87e5 & 8.95 & 19.19 & 1.43e+04 & 1.31 & 60.00 \\ \hline
+MSFT & 2.1G & 55 & 1.21e6 & 405.47 & 455.76 & 6.54e+04 & 8.78 & 53.41 \\ \hline
+GT & 2.1G & 371 & 1.79e5 & 7.31 & 20.44 & 1.21e+04 & 1.59 & 59.79 \\ \hline
+INTC & 1.5G & 75 & 6.33e5 & 18.52 & 33.39 & 5.37e+04 & 1.16 & 59.98 \\ \hline
+IOVA & 1.5G & 371 & 1.28e5 & 3.15 & 51.36 & 8.97e+03 & 1.66 & 58.63 \\ \hline
+PTEN & 1.5G & 371 & 1.28e5 & 6.32 & 20.17 & 7.96e+03 & 1.58 & 59.42 \\ \hline
+MLCO & 1.4G & 371 & 1.19e5 & 4.47 & 16.99 & 8.86e+03 & 1.69 & 61.59 \\ \hline
+PTON & 1.4G & 371 & 1.19e5 & 2.71 & 10.59 & 8.51e+03 & 1.24 & 61.39 \\ \hline
+VLY & 1.1G & 371 & 9.37e4 & 4.29 & 14.48 & 5.50e+03 & 1.51 & 59.93 \\ \hline
+VOD & 951M & 371 & 8.10e4 & 8.02 & 10.36 & 2.71e+03 & 1.13 & 62.27 \\ \hline
+CSX & 619M & 75 & 2.61e5 & 4.22 & 9.02 & 852.15 & 13.48 & 50.66 \\ \hline
+WB & 591M & 371 & 5.03e4 & 5.60 & 7.86 & 1.65e+03 & 4.91 & 70.59 \\ \hline
+BGC & 591M & 371 & 5.03e4 & 5.31 & 7.15 & 1.41e+03 & 2.49 & 75.16 \\ \hline
+GRAB & 454M & 371 & 3.87e4 & 6.00 & 8.39 & 903.37 & 13.44 & 59.47 \\ \hline
+KHC & 428M & 66 & 2.05e5 & 4.55 & 8.54 & 813.31 & 37.42 & 60.91 \\ \hline
+HLMN & 390M & 371 & 3.32e4 & 6.32 & 12.63 & 517.60 & 17.67 & 50.51 \\ \hline
+IEP & 342M & 371 & 2.91e4 & 5.50 & 7.98 & 290.24 & 14.88 & 52.62 \\ \hline
+GBDC & 338M & 371 & 2.88e4 & 5.89 & 7.50 & 259.48 & 2.73 & 63.97 \\ \hline
+WBD & 327M & 75 & 1.38e5 & 6.91 & 10.75 & 222.08 & 5.39 & 56.81 \\ \hline
+PSNY & 312M & 371 & 2.66e4 & 31.91 & 37.18 & 1.87e+03 & 1.73 & 60.06 \\ \hline
+NTAP & 228M & 55 & 1.31e5 & 107.27 & 161.95 & 7.14e+03 & 23.70 & 53.18 \\ \hline
+GEO & 199M & 89 & 7.07e4 & 10.76 & 29.94 & 3.79e+03 & 3.86 & 53.88 \\ \hline
+LCID & 163M & 66 & 7.81e4 & 2.53 & 4.43 & 7.42e+03 & 1.10 & 65.58 \\ \hline
+GCMG & 160M & 371 & 1.36e4 & 5.05 & 16.60 & 673.99 & 17.72 & 56.06 \\ \hline
+CXW & 108M & 89 & 3.83e4 & 9.71 & 24.99 & 1.93e+03 & 6.98 & 55.25 \\ \hline
 \end{tabular}
-\caption{Tableau des données du Nasdaq}
+\caption{Caractéristiques descriptives des données du Nasdaq}
 \label{tab:donnees_nasdaq}
 \end{table}
 
 Les données sont issues de la base de données Databento et ne concernent que la bourse du Nasdaq. On observe une grande disparité dans les volumes de données entre les différents actifs, avec notamment les géants technologiques (GOOGL, AAPL, AMZN) qui génèrent des volumes de données significativement plus importants. Les estimations seront donc naturellement plus précises pour ces actifs plus liquides.
 \\
 \\
-Les données sont sous format de dataframe par journée comprenant toutes les modifications apportées au MBO des trois actifs étudiés. Ce MBO comprend alors:
-\begin{itemize}
-    \item ts\_recv: timestamp du serveur 
-    \item ts\_event: timestamp de l'événement     
-    \item instrument\_id: id de l'actif sur les marchés
-    \item action: Add(A), Cancel(C), Trade(T)
-    \item side: Ask(A), Bid(B)
-    \item depth: limite considéree
-    \item price: prix
-    \item size: taille de l'action réalisée
-    \item ts\_in\_delta: temps entre le serveur et l'action
-    \item sequence: id de l'action propre à l'actif sur les marchés
-    \item bid{a}\_px\_0x: prix à la limite x côté bid
-    \item bid\_sz\_0x: taille de la file d'attente à la limite x côté bid
-\end{itemize}
-
+Les données sont sous format de dataframe par journée comprenant toutes les modifications apportées au Market By Order (MBO) des actifs étudiés. Ce MBO comprend alors:
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Temps} & \textbf{État du carnet d'ordres} & \textbf{Actions} \\
+\hline
+ts\_recv (serveur) & bid\_px\_0x (prix limite x bid) & action (A/C/T) \\
+ts\_event (événement) & bid\_sz\_0x (taille limite x bid) & side (A/B) \\
+ts\_in\_delta (délai) & sequence (id de l'action) & depth (limite) \\
+& & price (prix) \\
+& & size (taille) \\
+\hline
+\end{tabular}
+\caption{Structure des données du dataset}
+\end{table}
 \begin{figure}[h!]
 \centering
         \includegraphics[width=0.53\textwidth]{time_expansion.png}
-    \caption{Illustration de l'expansion temporelle appliquée aux données, détaillée dans le notebook \texttt{timeexpansion.ipynb}. Ce processus permet d'analyser les dynamiques à différentes échelles temporelles.}
+    \caption{Illustration de l'expansion temporelle des données, détaillée dans le notebook \texttt{timeexpansion.ipynb}.}
     \label{fig:time_expansion}
 \end{figure}
 
@@ -230,7 +230,7 @@ Estimation des paramètres & Pour chaque paire d'actifs et chaque type de copule
 \hline
 Test de stationnarité & Test de Dickey-Fuller augmenté (ADF) pour inférer la présence de racine unitaire dans le cas AR. L'hypothèse nulle $H_0: \gamma = 0$ correspond à la non-stationnarité. & $\Delta y_t = \alpha + \beta t + \gamma y_{t-1} + \sum_{i=1}^p \delta_i \Delta y_{t-i} + \epsilon_t$ \\
 \hline
-Détection des points de rupture & Méthode de clustering sliding window pour trouver les points de rupture dans la série temporelle. Les $\tau_k$ sont les points de rupture et $\bar{y}_k$ les moyennes locales. & $\min_{\tau_1,\ldots,\tau_K} \sum_{k=1}^{K+1} \sum_{t=\tau_{k-1}+1}^{\tau_k} \|y_t - \bar{y}_k\|^2 + \lambda K$ \\
+Détection des points de rupture & Méthode de clustering par window pour trouver les points de rupture dans la série temporelle. Les $\tau_k$ sont les points de rupture et $\bar{y}_k$ les moyennes locales. & $\min_{\tau_1,\ldots,\tau_K} \sum_{k=1}^{K+1} \sum_{t=\tau_{k-1}+1}^{\tau_k} \|y_t - \bar{y}_k\|^2 + \lambda K$ \\
 \hline
 Échelles temporelles analysées & Analyse effectuée sur quatre échelles temporelles différentes pour tous les stocks & $\{\text{100ms}, \text{1s}, \text{10s}, \text{60s}\}$ \\
 \hline
@@ -249,12 +249,12 @@ Les tests de stationnarité révèlent plusieurs caractéristiques importantes p
 \centering
 \begin{tabular}{|p{2.5cm}|p{4cm}|p{4cm}|p{4cm}|}
 \hline
-\textbf{Échelle} & \textbf{Microscopique} (100ms) & \textbf{Mésoscopique} (1s-10s) & \textbf{Macroscopique} (60s) \\
+\textbf{Échelle} & \textbf{Microscopique} (<100ms) & \textbf{Mésoscopique} (1s-10s) & \textbf{Macroscopique} (60s) \\
 \hline
-\textbf{Caractéristiques} & 
+\textbf{Remarques} & 
 \begin{itemize}
     \item Forte non-stationnarité (p-value ADF > 0.05)
-    \item Clusters de volatilité en début et fin de journée comme usuellement
+    \item Clusters de volatilité en début et fin de journée usuel en intraday.
 \end{itemize} &
 \begin{itemize}
     \item Stationnarité par morceaux pour tous les actifs, on est entre l'influence de l'orderbook et l'influence macro
@@ -325,7 +325,9 @@ où \(\tau\) représente l'intervalle de temps considéré. L'interprétation de
     \item H < 0.5 : Anti-persistance (tendance à s'inverser)
 \end{itemize}
 
-En étant en haute fréquence, on se place d'ores et déjà dans un modèle Bachelier puisque nous sommes à la limite de la fusion variation tick-by-tick -> variation continue
+En étant en haute fréquence, on se place d'ores et déjà dans un modèle Bachelier puisque nous sommes à la limite de la fusion variation tick-by-tick -> variation continue.
+
+On peut donc estimer très simplement H avec un OLS des log-coordonnées.
 
 \subsection{Procédure d'extraction de la volatilité}
 
@@ -354,13 +356,13 @@ En étant en haute fréquence, on se place d'ores et déjà dans un modèle Bach
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{rollingvola.png}
-    \caption{Profil de vol (non normalisée par le spread) sur une journée, on voit la faible régularité typique d'un Hurst petit avec de nombreux spikes, et un début/fin de journée bien volatil}
+    \caption{Profil de vol intraday (non normalisée par le spread bid-ask moyen) sur une journée, on voit la faible régularité typique d'un Hurst petit avec de nombreux spikes, et un début/fin de journée bien volatil}
     \label{fig:jump_example_1}
 \end{figure}
 
 \subsection{Résultats empiriques}
 
-On choisit l'actif WBD pour illustrer les résultats, car il présente un gros tick une stationnarité marquée sur la période considérée.
+On choisit par exemple l'actif WBD pour illustrer les résultats, car il présente une stationnarité marquée sur la période considérée. Notre approche est systématique est runnable sur tout actif.
 L'analyse des données pour l'actif WBD révèle plusieurs caractéristiques intéressantes:
 
 \begin{itemize}
@@ -403,6 +405,13 @@ Cette structure multi-échelle de l'exposant de Hurst reflète différents régi
     \item L'augmentation de H aux échelles intermédiaires suggère donc l'influence croissante des tendances directionnelles, où l'hypothèse Bachelier n'est plus respectéé.
 \end{itemize}
 
+\begin{figure}[h!]
+    \centering
+        \includegraphics[width=0.53\textwidth]{arrivaltimewbd.png}
+    \caption{Distribution des temps d'arrivée entre les changements de prix pour WBD. Un de nos meilleurs plot : La queue lourde observée (fat tail) est caractéristique d'un processus avec meta-orders, conformément aux travaux de Rosenbaum qui prédisent cette distribution en loi de puissance pour les arrivées.}
+    \label{fig:arrival_times_wbd}
+\end{figure}
+
 
 On sait aussi maintenant que le processus est stationnaire, donc on peut faire l'autocorrélation sur le processus stationnaire, qui nous donne un résultat montrant en partie
 (décroissance linéaire à taux faible et constant en échelle log) la persistance de la volatilité. En ayant une décroissance lente (pas aussi lente que linéaire dans le cas mouvement brownien fractionnaire)
@@ -419,12 +428,7 @@ on peut en conclure que le processus est assez persistant.
 
 Dans le futur, nous souhaitons mettre en place des approches d'estimation plus robustes \cite{chong2024minimax, chong2024clt} pour estimer H, et les comparer aux approche wavelets plus anciennes. 
 
-\begin{figure}[h!]
-    \centering
-        \includegraphics[width=0.53\textwidth]{arrivaltimewbd.png}
-    \caption{Distribution des temps d'arrivée entre les changements de prix pour WBD. La queue lourde observée (fat tail) est caractéristique d'un noyau avec meta-orders, conformément aux travaux de Rosenbaum qui prédisent cette distribution en loi de puissance pour les ordres cachés sur les marchés.}
-    \label{fig:arrival_times_wbd}
-\end{figure}
+
 
 \begin{figure}[h!]
     \centering
@@ -499,7 +503,7 @@ Plusieurs observations importantes émergent de cette analyse multi-échelle des
 \begin{itemize}
     \item L'actif KHC présente les queues les plus fines (α ≈ 3.0), indiquant une moindre propension aux événements extrêmes
     \item Les actifs IEP et CXW affichent les queues les plus épaisses (α ≈ 2.5-2.7), suggérant une probabilité plus élevée d'événements extrêmes
-    \item On observe une tendance générale à la diminution de l'exposant α avec l'augmentation de l'échelle temporelle pour IEP (de 2.58 à 5m à 2.47 à 30m)
+    \item On observe une tendance générale à la diminution de l'exposant α avec l'augmentation de l'échelle temporelle pour IEP (de 2.58 à 5m à 2.47 à 30m). L'exposant est très rassurant par rapport à ce qui est courant en HFT \cite{saddier2024bayesiantheorymarketimpact}
     \item La p-value du test de Kolmogorov-Smirnov reste élevée pour toutes les échelles, confirmant l'excellente adéquation du modèle en loi de puissance
     \item Les différences entre les queues gauche et droite sont généralement modérées, mais certains actifs (WBD, IEP-10m) présentent une asymétrie plus marquée
 \end{itemize}
@@ -530,7 +534,7 @@ Ces résultats confirment que les rendements financiers suivent universellement 
         \caption{Distribution des rendements à 1 heure}
         \label{fig:CXW_1h_moved}
     \end{subfigure}
-    \caption{Distribution des rendements pour CXW à 1 heure. Les ajustements en loi de puissance (courbes rouges) montrent des exposants caractéristiques entre 3.2 et 3.6, cohérents avec les travaux théoriques sur les marchés financiers. Notons que l'épaisseur des queues diminue légèrement avec l'allongement de l'échelle temporelle, suggérant un retour progressif vers la normalité. Les spikes sur l'histogramme sont dûs à la discrétisation en tick}
+    \caption{Distribution des rendements pour CXW à 1 heure. Les ajustements en loi de puissance (courbes rouges) montrent des exposants caractéristiques entre 3.2 et 3.6, cohérents avec les travaux théoriques sur les marchés financiers. Notons que l'épaisseur des queues diminue légèrement avec l'allongement de l'échelle temporelle, suggérant un retour progressif vers la normalité. Les spikes sur l'histogramme sont dûs à la discrétisation en tick car IEP est un actif à gros tick de spread moyen proche de 1}
     \label{fig:CXW_multi_scale_moved}
 \end{figure}
 
@@ -587,6 +591,7 @@ Ces résultats confirment que les rendements financiers suivent universellement 
     \caption{Comparaison des distributions de rendements pour WBD et KHC. Malgré des secteurs d'activité différents, les deux actifs présentent des distributions similaires en loi de puissance, suggérant un mécanisme universel sous-jacent dans la formation des prix sur les marchés financiers.}
     \label{fig:WBD_KHC_returns_moved}
 \end{figure}
+
 
 Ceci mis en place, on sait maintenant que nos returns sont de carré intégrable au moins ! Le cours fait aussi état d'une remarque importante : l'hypothèse $L^2$ est importante pour donner un sens aux corrélations !
 
@@ -706,10 +711,8 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
         \item $\phi(\tau)$ est le noyau de mémoire (ou noyau d'excitation), qui quantifie l'influence d'un événement passé sur l'intensité présente. Un $\phi(\tau)$ positif signifie que les événements passés augmentent la probabilité d'événements futurs.
     \end{itemize}
 
-    L'article \cite{marcaccioli2021exogenous} explore particulièrement le cas où le noyau de mémoire suit une loi de puissance, $\phi(\tau) \sim 1/\tau^{1+\theta}$ avec $0 < \theta < 1$, typique des systèmes proches de la criticalité. Ce type de noyau à mémoire longue est crucial pour modéliser la persistance observée dans la volatilité et l'activité des marchés.
-
-    A REMPLIR UN FIT HAWKES
-
+    L'article \cite{marcaccioli2021exogenous} explore particulièrement le cas où le noyau de mémoire suit une loi de puissance, $\phi(\tau) \sim 1/\tau^{1+\theta}$ avec $0 < \theta < 1$, typique des systèmes proches de la criticalité. Ce type de noyau à mémoire longue est crucial pour modéliser la persistance observée dans la volatilité et l'activité des marchés. On a vu précedemment que les inter-arrivées suivent précisément une fat-tail conséquente à ce noyau
+    
     Un intérêt majeur de ce cadre est sa capacité potentielle à distinguer les sauts de nature différente en analysant le profil de volatilité autour du saut :
     \begin{itemize}
         \item \textbf{Sauts Exogènes (EMC - Efficient Market Class)} : Typiquement associés à des nouvelles externes claires. Le modèle prédit une augmentation abrupte de la volatilité sans précurseur notable, suivie d'une relaxation rapide (décroissance en loi de puissance rapide, $\sim (t-t_j)^{\theta-1}$ puis $\sim (t-t_j)^{-\theta-1}$).
@@ -746,11 +749,11 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
 
     \subsection{Profils de sauts observés}
 
-    Nous réservons ici l'espace pour illustrer des profils de sauts typiques observés sur des instants non triviaux, c'est à dire où le jump ne se distingue pas forcément des autres à vue d'oeil mais se voit dans le score, dans nos données, en comparant le cours de l'actif et le score de saut $J_t$.
+    Nous illustrons des profils de sauts typiques observés sur des instants non triviaux, c'est à dire où le jump ne se distingue pas forcément des autres à vue d'oeil mais se voit dans le score, dans nos données, en comparant le cours de l'actif et le score de saut $J_t$.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.8\textwidth]{Exemple 1.png}
+        \includegraphics[width=0.53\textwidth]{Exemple 1.png}
         \caption{Profil de saut pour l'actif AAPL le 2024-10-10 (Exemple 1)}
         \label{fig:jump_example_1}
     \end{figure}
@@ -761,7 +764,7 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.8\textwidth]{Exemple 2 better.png}
+        \includegraphics[width=0.53\textwidth]{Exemple 2 better.png}
         \caption{Profil de saut pour l'actif AAPL le 2024-10-10 (Exemple 2)}
         \label{fig:jump_example_2}
     \end{figure}
@@ -773,31 +776,44 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
 
     \begin{figure}[H]
         \centering
-        \fbox{\rule{0pt}{4cm}\qquad\rule{8cm}{0pt}} % Placeholder pour l'image 3
-        \caption{Profil de saut pour l'actif AAA le YYYY-MM-DD (Exemple 3)}
+        \includegraphics[width=0.53\textwidth]{MSFT_2024-11-01_xnas-itch.parquet 2024-11-01 10:40:00-04:00Jump and approx.png}
+        \caption{Profil de saut pour l'actif MSFT le 2024-11-01 (Exemple 3)}
         \label{fig:jump_example_3}
     \end{figure}
-    \textit{[Texte expliquant l'image ci-dessus : Description du comportement du prix et du score Jt autour du saut détecté. Discussion sur la présence ou l'absence de précurseurs, la vitesse de relaxation, et une classification potentielle comme EMC ou SEC.]}
+    On tente alors de trouver une régression qui approxime la courbe de "Jump score". Dans l'exemple 3, on est en présence d'un saut d'apparence exogène. On obtient que le saut est bien modélisé par un palier de volatilité (absence de précurseur), suivi d'un saut, puis d'une relaxation rapide (loi de puissance rapide). Le paramètre theta choisi est $\Theta = 0.5$. 
 
     \vspace{1cm}
 
     \begin{figure}[H]
         \centering
-        \fbox{\rule{0pt}{4cm}\qquad\rule{8cm}{0pt}} % Placeholder pour l'image 4
-        \caption{Profil de saut pour l'actif BBB le YYYY-MM-DD (Exemple 4)}
+        \includegraphics[width=0.53\textwidth]{PHOTO-2025-04-01-12-04-48.jpg}
+        \caption{Profil de saut pour l'actif AAPL le 2024-10-10 (Exemple 4)}
         \label{fig:jump_example_4}
     \end{figure}
-    \textit{[Texte expliquant l'image ci-dessus : Description du comportement du prix et du score Jt autour du saut détecté. Discussion sur la présence ou l'absence de précurseurs, la vitesse de relaxation, et une classification potentielle comme EMC ou SEC.]}
 
+    Enfin, on reprend la situation de la figure 2, et ayant reconnu un saut endogène, on applique le modèle d'un profil symétrique, suivant une loi de puissance sur le voisinage du jump à environ 20 timestamps voisins. On obtient un résultat satisfaisant, la théorie est pour l'instant conforme aux observations.
+    
     \subsection{Conclusion sur l'approche}
 
-    \textit{[Conclusion sur l'approche de modélisation par processus de Hawkes et la détection de sauts basée sur \cite{marcaccioli2021exogenous}. Discussion sur la pertinence de cette approche pour analyser nos données, la possibilité de calibrer de tels modèles et de classifier les sauts observés dans notre dataset comme endogènes ou exogènes, reliant ainsi la microstructure aux événements extrêmes.]}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.53\textwidth]{AAPL_2024-10-10_xnas-itch.parquet single jumps histogram.png}
+        \caption{Histogramme du profil des sauts pour l'actif AAPL le 2024-10-10}
+        \label{fig:jump_example_4}
+    \end{figure}
+
+    On observe sur cet histogramme un profil qui rappelle à droite du pic une loi puissance, et à gauche également, cependant plus estompée encore par le fait que les sauts exogènes présentent un profil de "jump score" plat avant le saut.
+    \vspace{0.3cm}
+
+    La détection des sauts proposée par \cite{marcaccioli2021exogenous} apparaît comme un succès, comme le met en évidence l'histogramme précédent par son unique pic lisible (certes bien choisi, mais la plupart des profils sont ainsi).
+    \vspace{0.3cm}
+
+    La classification des sauts en deux catégories semble très pertinente, bien qu'on rencontre deux problèmes : relier les sauts supposés exogènes aux évènements extérieurs, et s'assurer de l'absence d'évènements ayant pu déclencher un saut supposé endogène. En revanche, ce lien entre la microstructure du marché et les évènements externes nous invite à étudier la valeur du $\theta$ que nous n'avons pas encore fitté mais que l'on a déduit à travers les profils de sauts, Les méthodes sont prometteuses et nous les poursuivrons dans les semaines à venir.
+    
 
 \newpage
 \section*{Conclusion}
-
-
-    Ce mémoire a initié une exploration statistique approfondie d'un jeu de données haute fréquence LOB du Nasdaq, posant les bases d'une compréhension fine de la microstructure de marché sur plusieurs actifs et échelles temporelles. Nos analyses ont systématiquement validé plusieurs faits stylisés fondamentaux tout en révélant la complexité multi-échelle des dynamiques de prix.
+    Ce mémoire a initié une exploration statistique approfondie d'un jeu de données haute fréquence LOB du Nasdaq, posant les bases d'une compréhension fine de la microstructure de marché sur plusieurs actifs et échelles temporelles. Nos analyses ont systématiquement validé plusieurs faits stylisés fondamentaux tout en révélant la complexité multi-échelle des dynamiques de prix. Aucun des 3 participants au projet ne suivent un cursus ou stage en finance quantitative, cela était donc l'objet d'une réèlle découverte attisée par notre curiosité du fonctionnement des marchés HFT.
 
     \vspace{0.5cm}
 
@@ -817,7 +833,7 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
 
     \vspace{0.5cm}
 
-    On a remarqué qu'aucune librairie python open-source ne permettait de bien fitter un modèle de Hawkes (tick, pyhawkes, Hawkes et hawkeslib), nous continuerons notre projet en construisant une librairie open-sourcée qui permettra de s'accorder sur une estimation efficace sur des données quelconques (sismiques ou populations) et HFT (voir librarie "tick" qui n'est plus maintenue).
+    Nous avons finalement remarqué qu'aucune librairie python open-source ne permettait de bien fitter un modèle de Hawkes (tick, pyhawkes, Hawkes et hawkeslib), nous continuerons notre projet en construisant une librairie open-sourcée qui permettra de s'accorder sur une estimation efficace sur des données quelconques (sismiques ou populations) et HFT (voir librarie tick qui n'est plus maintenue).
 
 \newpage
 \begin{thebibliography}{9}
@@ -845,6 +861,12 @@ Emmanuel Bacry, Thibault Jaisson, and Jean-Francois Muzy.
 \newblock Estimation of slowly decreasing Hawkes kernels: Application to high frequency order book modelling.
 \newblock \emph{arXiv preprint arXiv:1412.7096}, 2014.
 \newblock URL: \url{https://arxiv.org/abs/1412.7096}.
+
+\bibitem{saddier2024bayesiantheorymarketimpact}
+Louis Saddier and Matteo Marsili.
+\newblock A Bayesian theory of market impact.
+\newblock \emph{arXiv preprint arXiv:2303.08867}, 2024.
+\newblock URL: \url{https://arxiv.org/abs/2303.08867}.
 
 \end{thebibliography}
 
