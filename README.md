@@ -2,6 +2,10 @@
 
 This repository contains research work on High-Frequency Trading (HFT) under the supervision of professors Mathieu Rosenbaum and Charles-Albert Lehalle for reports. The project focuses on analyzing market microstructure and developing trading strategies using high-frequency data.
 
+## Warning
+
+This repo is under active development and is not yet ready for production use. Please send an email to janis.aiad@polytechnique.edu if you are into trouble.
+
 ## Project Structure
 
 ```
