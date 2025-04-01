@@ -1,6 +1,10 @@
 # High-Frequency Trading Research Project
 
-This repository contains research work on High-Frequency Trading (HFT) under the supervision of professors Mathieu Rosenbaum and Charles-Albert Lehalle. The project focuses on analyzing market microstructure and developing trading strategies using high-frequency data.
+This repository contains research work on High-Frequency Trading (HFT) under the supervision of professors Mathieu Rosenbaum and Charles-Albert Lehalle for reports. The project focuses on analyzing market microstructure and developing trading strategies using high-frequency data.
+
+## Warning
+
+This repo is under active development and is not yet ready for production use. Please send an email to janis.aiad@polytechnique.edu if you are into trouble.
 
 ## Project Structure
 
@@ -171,7 +175,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Supervisors: Mathieu Rosenbaum and Charles-Albert Lehalle
+- Supervisors: Mathieu Rosenbaum and Charles-Albert Lehalle for reports gradings.
 - Data provider: Databento
 - Contributors and collaborators
 
