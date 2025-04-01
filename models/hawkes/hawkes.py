@@ -23,7 +23,7 @@ class Hawkes: # N dimensionnal hawkes process
         self.stepsize = stepsize
         self.quadrature_points = np.linspace(0, 1, self.stepsize) # stepsize will change in the future
         self.quadrature_weights = np.ones(self.stepsize) / self.stepsize # weights also
-        
+        self.results = None
         
         
     def add_event(self, event: float, dimension: int):
@@ -92,7 +92,7 @@ class Hawkes: # N dimensionnal hawkes process
     
     
     # here we compute the equation (4) of the pape Bacry et al
-    def get_average_intensity(self, t: float) -> float:
+    def get_average_intensity(self) -> float:
         if self.mean_vector is None:
             mean_vector = np.zeros(self.dim)
             I = np.eye(self.dim)
@@ -217,14 +217,305 @@ class Hawkes: # N dimensionnal hawkes process
    
    
    
-   # estimation functions
+   #data handling
+   
+    def get_parquet(self,path: str) -> pl.DataFrame:
+        return pl.read_parquet(path)
+    
+    
+    
+    
+    
+    # we should compute some g integrals
+    def get_g_from_parquet(self,df: pl.DataFrame,threshold: int = 1000) -> np.ndarray: # we estimate g in the time grid 
+        # pour chaque colonne on regarde les temps d'arrivée
+        df = df.with_columns(
+        pl.col("ts_event").cast(pl.Datetime).alias("timestamp")
+)
+        df = df.slice(0, threshold)
+        pdf = df.to_pandas()
+        pdf["timestamp"] = pd.to_datetime(pdf["timestamp"])
+        
+        # Définir le temps de référence
+        t0 = pdf["timestamp"].min()
+        pdf["time_microseconds"] = (pdf["timestamp"] - t0).dt.total_seconds()*1000000
+        # Define event types and create event_type column based on which column changed
+        event_types = ["P_a", "P_b", "T_a", "T_b", "L_a", "L_b", "C_a", "C_b"]
+        event_to_idx = {evt: i for i, evt in enumerate(event_types)}
+        self.dim = len(event_types)
+        
+        # Create event_type column by checking which column had a change
+        def determine_event_type(row):
+            for evt in event_types:
+                if pd.notna(row[evt]):
+                    return event_to_idx[evt]
+            return None
+            
+        pdf["event_type"] = pdf.apply(determine_event_type, axis=1)
+        
+        # Group events by type
+        events_by_type = [pdf[pdf["event_type"] == i]["time_microseconds"].values for i in range(self.dim)]
+        # Calculer les intensités de base (Lambda^i)
+        total_duration = pdf["time_microseconds"].max() - pdf["time_microseconds"].min()
+        lambda_i = np.array([len(events) / total_duration for events in events_by_type])
+        
+        max_lag = 300 # Tmax
+        n_bins = self.stepsize
+        t_grid = self.quadrature_points
+        
+        
+        g_estimates = np.zeros((self.dim, self.dim, n_bins))
+        g_integrals = np.zeros((self.dim, self.dim, n_bins))  # ∫g(u)du
+        ug_integrals = np.zeros((self.dim, self.dim, n_bins))  # ∫ug(u)du
+        
+            
+        # Pour chaque paire de types d'événements (i,j)
+        for j in range(self.dim):
+            j_events = events_by_type[j]
+            
+            for i in range(self.dim):
+                i_events = events_by_type[i]
+                
+                if len(j_events) == 0 or len(i_events) == 0:
+                    continue
+                
+                # Histogramme des délais entre événements j et i
+                # Attention: pour n_bins points sur la grille, il y a n_bins+1 délimiteurs de bins
+                counts = np.zeros(n_bins)  # devrait être de taille n_bins
+                total_j_events = 0
+                
+                for t_j in j_events:
+                    # Trouver tous les événements i qui suivent l'événement j dans la fenêtre max_lag
+                    deltas = i_events[i_events > t_j] - t_j
+                    deltas = deltas[deltas <= max_lag]
+                    
+                    if len(deltas) > 0:
+                        # Calculer l'histogramme des délais
+                        # Les bins doivent être spécifiés comme un tableau de taille n_bins+1
+                        bin_edges = np.linspace(0, max_lag, n_bins + 1)  # n_bins+1 points pour n_bins intervalles
+                        hist, _ = np.histogram(deltas, bins=bin_edges)
+                        
+                        # Maintenant hist et counts ont la même taille (n_bins)
+                        counts += hist
+                        total_j_events += 1
+                
+                if total_j_events > 0:
+                    # Normaliser pour obtenir une estimation de E[dN^i_t|dN^j_0=1]
+                    bin_width = t_grid[1] - t_grid[0]
+                    intensity_conditional = counts / (total_j_events * bin_width)
+                    
+                    # on calcule g_ij(t) = E[dN^i_t|dN^j_0=1] - 1_{i=j}δ(t) - Λ^i
+                    # Note: δ(t) est gérée implicitement car l'histogramme commence à t > 0
+                    g_estimates[i, j, :] = intensity_conditional - lambda_i[i]
+                    
+                    #  les intégrales pour l'équation de Wiener-Hopf
+                    for n in range(n_bins):
+                        # sur chaque point de temps t_n
+                        t_n = t_grid[n]
+                        
+                        #  ∫g(u)du pour chaque intervalle [t_n-t_{k+1}, t_n-t_k]
+                        for k in range(n_bins):
+                            if k < n:  #pour que t_n-t_k > 0
+                                t_k = t_grid[k]
+                                t_k_plus_1 = t_grid[k+1] if k+1 < n_bins else t_grid[k] + bin_width
+                                
+                                # indices pour l'intervalle [t_n-t_{k+1}, t_n-t_k]
+                                start_idx = max(0, int((t_n - t_k_plus_1) / bin_width))
+                                end_idx = min(n_bins-1, int((t_n - t_k) / bin_width))
+                                
+                                if start_idx <= end_idx:
+                                    # ∫g(u)du sur l'intervalle
+                                    integral_range = g_estimates[i, j, start_idx:end_idx+1]
+                                    g_integrals[i, j, k] += np.sum(integral_range) * bin_width
+                                    
+                                    # ∫ug(u)du sur l'intervalle
+                                    u_values = t_grid[start_idx:end_idx+1]
+                                    ug_integrals[i, j, k] += np.sum(u_values * integral_range) * bin_width
+        
+    
+        results = {
+            "g_estimates": g_estimates,
+            "g_integrals": g_integrals,
+            "ug_integrals": ug_integrals,
+            "t_grid": t_grid,
+            "lambda_i": lambda_i
+        }
+        self.results = results
+        return results
+    
+    
+    def compute_wiener_hopf_linear_kernel(self, g_results=None, t_n_idx=0):
+        g_results =  self.g_results if g_results is None else g_results
+        
+        
+        g_estimates = g_results["g_estimates"]
+        g_integrals = g_results["g_integrals"]
+        ug_integrals = g_results["ug_integrals"]
+        t_grid = g_results["t_grid"]
+            
+        # Dimensions du système
+        K = self.stepsize  # Nombre de points de quadrature
+        D = self.dim       # Dimension du processus Hawkes
+        
+        # Initialiser le système
+        A = np.zeros((D * D * K, D * D * K))
+        b = np.zeros(D * D * K)
+        
+        # Pour chaque point t_n et chaque paire (i,j)
+        for n in range(K):
+            t_n = t_grid[n]
+            
+            for i in range(D):
+                for j in range(D):
+                    # Indice dans le système linéaire pour la ligne correspondant à φ˜_ij(t_n)
+                    row_idx = i * D * K + j * K + n
+                    
+                    # Termes de l'équation de Wiener-Hopf
+                    
+                    # 1. Terme φ˜_ij(t_n) (coefficient diagonal = 1)
+                    col_idx_n = i * D * K + j * K + n
+                    A[row_idx, col_idx_n] = 1.0
+                    
+                    # 2. Termes avec φ˜_il(t_k) pour tous l,k
+                    for k in range(K):
+                        t_k = t_grid[k]
+                        
+                        # Pour l'intégrale de g
+                        for l in range(D):
+                            # Indice de la colonne pour φ˜_il(t_k)
+                            col_idx_k = i * D * K + l * K + k
+                            
+                            # Ajouter le coefficient de φ˜_il(t_k)
+                            A[row_idx, col_idx_k] += g_integrals[l, j, k]
+                            
+                            # Si k+1 < K, ajouter les termes avec (φ˜(t_{k+1}) - φ˜(t_k))
+                            if k+1 < K:
+                                t_k_plus_1 = t_grid[k+1]
+                                dt = t_k_plus_1 - t_k
+                                
+                                # Indice de la colonne pour φ˜_il(t_{k+1})
+                                col_idx_k_plus_1 = i * D * K + l * K + (k+1)
+                                
+                                # Terme avec (t_n - t_k)/(t_{k+1} - t_k) * ∫g
+                                coef_1 = (t_n - t_k) / dt
+                                A[row_idx, col_idx_k_plus_1] += coef_1 * g_integrals[l, j, k]
+                                A[row_idx, col_idx_k] -= coef_1 * g_integrals[l, j, k]
+                                
+                                # Terme avec -1/(t_{k+1} - t_k) * ∫ug
+                                coef_2 = -1.0 / dt
+                                A[row_idx, col_idx_k_plus_1] += coef_2 * ug_integrals[l, j, k]
+                                A[row_idx, col_idx_k] -= coef_2 * ug_integrals[l, j, k]
+                    
+                    # Terme constant g˜_ij(t_n)
+                    b[row_idx] = g_estimates[i, j, n]
+        
+        return A, b
+
+
+
+
+    def solve_phi_from_wiener_hopf(self, g_results=None):
+        """
+        Résout le système linéaire issu de l'équation de Wiener-Hopf pour obtenir φ˜
+        
+        Args:
+            g_results: Résultats de get_g_from_parquet. Si None, utilise self.results.
+        
+        Returns:
+            Une matrice 3D de taille (D, D, K) contenant les valeurs de φ˜_ij(t_k)
+        """
+        # Construire le système
+        A, b = self.compute_wiener_hopf_linear_kernel(g_results)
+        
+        # Vérifier le conditionnement du système
+        cond_number = np.linalg.cond(A)
+        print(f"Conditionnement du système: {cond_number}")
+        
+        # Si le conditionnement est trop élevé, utiliser une méthode régularisée
+        if cond_number > 1e8:
+            print("Système mal conditionné. Utilisation de la régularisation de Tikhonov.")
+            # Paramètre de régularisation
+            alpha = 1e-6
+            # Résolution avec régularisation
+            x, residuals, rank, s = np.linalg.lstsq(A, b, rcond=alpha)
+        else:
+            # Résolution standard
+            x = np.linalg.solve(A, b)
+        
+        # Reconstruction de φ˜
+        K = self.stepsize
+        D = self.dim
+        phi_values = np.zeros((D, D, K))
+        
+        for i in range(D):
+            for j in range(D):
+                for k in range(K):
+                    idx = i * D * D + j * K + k
+                    phi_values[i, j, k] = x[idx]
+        
+        # Créer une fonction φ˜ interpolée
+        t_grid = g_results["t_grid"] if g_results else self.results["t_grid"]
+        
+        def phi_tilde(t):
+            # Trouver l'indice le plus proche dans la grille
+            if t < t_grid[0] or t > t_grid[-1]:
+                return np.zeros((D, D))
+            
+            # Interpolation linéaire
+            idx = np.searchsorted(t_grid, t)
+            if idx == 0:
+                return phi_values[:, :, 0]
+            elif idx == len(t_grid):
+                return phi_values[:, :, -1]
+            else:
+                t0, t1 = t_grid[idx-1], t_grid[idx]
+                phi0, phi1 = phi_values[:, :, idx-1], phi_values[:, :, idx]
+                alpha = (t - t0) / (t1 - t0)
+                return (1 - alpha) * phi0 + alpha * phi1
+        
+        # Mettre à jour la fonction phi
+        self.phi = phi_tilde
+        
+        return phi_values
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     def get_system(self) -> tuple[np.ndarray, np.ndarray]:
         K = self.stepsize
         D = self.dim
         
-        system = np.zeros((D*K*K, D*K*K)) # we have D*K*K equations
-        vector = np.zeros(D*K*K) # we have D*K*K unknowns
+        system = np.zeros((D*D*K, D*D*K)) # we have D*K*K equations
+        vector = np.zeros(D*D*K) # we have D*K*K unknowns
         
         # for each quadrature point and each dimension
         for n in range(K):
@@ -244,10 +535,7 @@ class Hawkes: # N dimensionnal hawkes process
                             system[row, l*D*D + j*D + k] = w_k * self.get_g(t_n - t_k)[i,l]
                     vector[row] = self.get_g(t_n)[i,j]
         return system, vector
-    
-   
-   
-   
+
    
    
     def verify_system(self) -> tuple[float, float]:
@@ -277,12 +565,23 @@ class Hawkes: # N dimensionnal hawkes process
         return phi_matrix
     
     
-    def get_estimator_nu(self, t: float) -> np.ndarray:
-       return 
     
     
-    def get_estimator_sigma(self, t: float) -> np.ndarray:
-       return
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
    
    
    

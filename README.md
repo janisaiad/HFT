@@ -130,3 +130,27 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Supervisors: Mathieu Rosenbaum and Charles-Albert Lehalle
 - Data provider: Databento
 - Contributors and collaborators
+
+
+
+Useful tools : 
+git-filter-repo : https://github.com/newren/git-filter-repo
+nbstripout : https://github.com/kynan/nbstripout
+nbconvert : https://nbconvert.readthedocs.io/en/latest/
+
+essayer le microprice aussi,
+on peut plus faire l'hypothese modele bachelier à partir d'un certain temps pour la vol
+
+sudo apt update
+sudo apt install python3-dev python3-numpy
+added swig, & tick
+
+faire des commits et dig la librairie tick x datainitiative
+
+CPPFLAGS="-I /home/janis/HFTP2/HFT/.venv/lib/python3.12/site-packages/numpy/_core/include" uv add tick ---> be careful with that
+
+
+
+
+added pyhawkes
+added pybasicbayes
