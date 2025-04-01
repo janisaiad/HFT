@@ -292,7 +292,7 @@ Cette journée montre plusieurs phénomènes importants :
 
     \item \textbf{Impact sur les corrélations} : Bien que l'événement affecte tous les actifs, son effet disparaît dans l'analyse des copules car :
 \begin{itemize}
-        \item Les rendements montrent une partie fat tail (l'échèlle matplotlib s'ajuste automatiquement) avec un certain nombre de valeurs extrêmes. On ne calcule pas de Hill ici car fait plus tard mais on le voit apparaitre directement visuellement ce qui est rassurant.
+        \item Les rendements montrent une partie fat tail (l'échèle matplotlib s'ajuste automatiquement) avec un certain nombre de valeurs extrêmes. On ne calcule pas de Hill ici car fait plus tard mais on le voit apparaitre directement visuellement ce qui est rassurant.
         \item Les rendements montrent auss qu'une partie de la tendance est expliquée par les variations tick-by-tick intraday (2ème plus grosse barre de l'histogramme), ce qui suggère l'explication de la tendance par des méta-ordre (et donc d'une imbalance bid-ask moyenne non nulle)
         \item Les changements de régime sont traités comme des points de rupture distincts, on les voit particulièrement en début et fin d'activité  du marché (d'où la suppression générale de la 1ère/dernière heure d'activité)
 \end{itemize}
@@ -349,6 +349,14 @@ En étant en haute fréquence, on se place d'ores et déjà dans un modèle Bach
 \label{tab:volatility_extraction}
 \end{table}
 \end{landscape}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{rollingvola.png}
+    \caption{Profil de vol (non normalisée par le spread) sur une journée, on voit la faible régularité typique d'un Hurst petit avec de nombreux spikes, et un début/fin de journée bien volatil}
+    \label{fig:jump_example_1}
+\end{figure}
 
 \subsection{Résultats empiriques}
 
@@ -495,7 +503,7 @@ Plusieurs observations importantes émergent de cette analyse multi-échelle des
     \item La p-value du test de Kolmogorov-Smirnov reste élevée pour toutes les échelles, confirmant l'excellente adéquation du modèle en loi de puissance
     \item Les différences entre les queues gauche et droite sont généralement modérées, mais certains actifs (WBD, IEP-10m) présentent une asymétrie plus marquée
 \end{itemize}
-Ces résultats confirment que les rendements financiers suivent universellement des lois de puissance avec des exposants caractéristiques dans la plage 2.4-3.1, significativement inférieurs aux valeurs qu'impliquerait un modèle gaussien. On ajuste également des power-law sur les queues de distribution, l'estimation ayant été réalisée par maximum de vraisemblance sur des fonctions du type lorentzienne $\frac{a}{b+x^c}$ avec un seuil adaptatif. Les résultats montrent une excellente adéquation avec les lois de puissance, avec des exposants $\alpha$ cohérents avec l'estimation de Hill. Par ailleurs, nous aurions pu mettre en oeuvre un Q-Q plot, puis fitter $\hat \alpha$ avec son équvalent théorique fat-tail $\alpha$ vs gaussian, mais cela se fera dans la suite du projet (sur github). Nous souhaitions principalement fabriquer des plots avec un fit fat-tail marquant. Nous présentons ci-dessous les distributions de rendements pour plusieurs actifs et échelles temporelles, illustrant visuellement ces propriétés de queues épaisses. La nature même d'un histogramme automatiquement décentré et visible de loin (donc scale-invariant) avec quelques samples très extrêmes montre la nature fat-tail en plus de l'estimation de Hill.
+Ces résultats confirment que les rendements financiers suivent universellement des lois de puissance avec des exposants caractéristiques dans la plage 2.4-3.1, significativement inférieurs aux valeurs qu'impliquerait un modèle gaussien. On ajuste également des power-law sur les queues de distribution, l'estimation ayant été réalisée par maximum de vraisemblance sur des fonctions du type lorentzienne $\frac{a}{b+x^c}$ avec un seuil adaptatif. Les résultats montrent une excellente adéquation avec les lois de puissance, avec des exposants $\alpha$ cohérents avec l'estimation de Hill. Par ailleurs, nous aurions pu mettre en oeuvre un Q-Q plot, puis fitter $\hat \alpha$ avec son équvalent théorique fat-tail $\alpha$ vs gaussian, mais cela se fera dans la suite du projet (sur github). Nous souhaitions principalement fabriquer des plots avec un fit fat-tail marquant. La nature même d'un histogramme automatiquement décentré et visible de loin (donc scale-invariant) avec quelques samples très extrêmes montre la nature fat-tail en plus de l'estimation de Hill.
 
 \subsubsection{Rendements de CXW à différentes échelles}
 
@@ -672,7 +680,8 @@ L'analyse des copules révèle plusieurs caractéristiques importantes des dépe
 On peut tirer une conclusion importante sur la nature des dépendances HFT, qui est l'indépendance conditionnelle forte à l'échelle micro, confirmée par la faiblesse des dépendances capturées par les copules à ces échelles ($\tau < 0.2$ pour $\Delta t < 1\text{ms}$).
     
     
-On souligne donc l'importance d'une approche multi-échelle dans l'analyse des marchés haute fréquence. C'est le coeur de l'analyse fat-tail, que l'on peut retrouver dans le noyau d'excitation Hawkes dans la suite du rapport.
+On souligne donc l'importance d'une approche multi-échelle dans l'analyse des marchés haute fréquence. C'est le coeur de l'analyse fat-tail, que l'on peut retrouver dans le noyau d'excitation Hawkes dans la suite du rapport. La partie suivante sur les processus de Hawkes reste cependant facultative dans le cadre de ce premier rapport. Nous avons tenté de nous inspirer des travaux de \cite{bacry2014estimationslowlydecreasinghawkes} pour l'estimation des noyaux de Hawkes, mais la librairie standard `tick` n'étant plus maintenue, nous avons dû recoder entièrement la procédure d'estimation non-paramétrique (disponible sur le dépôt GitHub dans `models/hawkes/`). Les premiers essais, lancés sur CUDA en raison du volume de données considérable, sont en cours d'analyse durant le mois d'avril. Bien que cette tâche soit ambitieuse pour ce projet personnel à long terme, les résultats préliminaires sont prometteurs malgré les défis calculatoires rencontrés.
+
 
 Pour approfondir l'analyse des dépendances temporelles et de la nature des événements extrêmes (sauts), on s'inspire des travaux de Marcaccioli et al. \cite{marcaccioli2021exogenous} qui utilisent des processus de Hawkes pour modéliser et classifier les sauts de prix.
 
@@ -680,7 +689,7 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
 \newpage
 \section{Modélisation par processus de Hawkes}
 
-    
+    Pour approfondir l'analyse des dépendances temporelles et de la nature des événements extrêmes (sauts), On s'inspire des travaux de Marcaccioli et al. \cite{marcaccioli2021exogenous} qui utilisent des Hawkes pour modéliser et classifier les sauts de prix.
 
     \subsection{Le modèle de Hawkes auto-excité}
 
@@ -699,29 +708,7 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
 
     L'article \cite{marcaccioli2021exogenous} explore particulièrement le cas où le noyau de mémoire suit une loi de puissance, $\phi(\tau) \sim 1/\tau^{1+\theta}$ avec $0 < \theta < 1$, typique des systèmes proches de la criticalité. Ce type de noyau à mémoire longue est crucial pour modéliser la persistance observée dans la volatilité et l'activité des marchés.
 
-    Pour l'exemple, on regarde les inter-arrivées des différents processus de comptage sur GOOGL le 8 aout 2024, qui présente une bonne stationnarité avec quelques sauts que l'on souhaite classifier comme endogènes ou exogènes. L'analyse des différents processus de comptage montre des propriétés fat-tail cohérentes avec la littérature HFT :
-
-    \begin{table}[h!]
-    \centering
-    \begin{tabular}{|l|c|c|l|}
-    \hline
-    \textbf{Processus} & \textbf{Événements} & \textbf{Hill} & \textbf{Description} \\
-    \hline
-    $P_a$ & 134,843 & 3.22 & Mouvements de prix à la hausse \\
-    $P_b$ & 134,855 & 3.37 & Mouvements de prix à la baisse \\
-    $T_a$ & 47,652 & 4.45 & Transactions agressives à l'achat \\
-    $T_b$ & 43,866 & 4.99 & Transactions agressives à la vente \\
-    $L_a$ & 835,378 & 4.01 & Ajouts d'ordres à l'achat \\
-    $L_b$ & 736,989 & 3.57 & Ajouts d'ordres à la vente \\
-    $C_a$ & 824,702 & 4.49 & Annulations d'ordres à l'achat \\
-    $C_b$ & 714,962 & 4.12 & Annulations d'ordres à la vente \\
-    \hline
-    \end{tabular}
-    \caption{Estimateurs de Hill pour les différents processus de comptage}
-    \label{tab:hill_estimates}
-    \end{table}
-
-    Les estimateurs de Hill, compris entre 3 et 5, sont cohérents avec les valeurs typiquement observées sur les marchés HFT, confirmant la nature fat-tail des distributions des temps inter-arrivées. On note que les processus de prix ($P_a$, $P_b$) présentent les queues les plus lourdes (Hill $\approx 3.3$), suivis des ordres limites et annulations, puis des transactions.
+    A REMPLIR UN FIT HAWKES
 
     Un intérêt majeur de ce cadre est sa capacité potentielle à distinguer les sauts de nature différente en analysant le profil de volatilité autour du saut :
     \begin{itemize}
@@ -840,6 +827,12 @@ Riccardo Marcaccioli, Jean-Philippe Bouchaud, and Michael Benzaquen.
 \newblock Exogenous and endogenous price jumps belong to different dynamical classes.
 \newblock \emph{Journal of Statistical Mechanics: Theory and Experiment}, 2022(2):023403, 2022.
 \newblock DOI: \href{http://dx.doi.org/10.1088/1742-5468/ac498c}{10.1088/1742-5468/ac498c}.
+
+\bibitem{bacry2014estimationslowlydecreasinghawkes}
+Emmanuel Bacry, Thibault Jaisson, and Jean-Francois Muzy.
+\newblock Estimation of slowly decreasing Hawkes kernels: Application to high frequency order book modelling.
+\newblock \emph{arXiv preprint arXiv:1412.7096}, 2014.
+\newblock URL: \url{https://arxiv.org/abs/1412.7096}.
 
 \end{thebibliography}
 
