@@ -96,7 +96,7 @@
     \vspace{0.5cm}
 
             \begin{minipage}{0.8\textwidth}
-            \begin{abstract}
+    \begin{abstract}
     Ce court projet vise à initier un pré-traitement statistique d'un dataset tick-by-tick de LOB du Nasdaq avec une vingtaine d'actifs sur plusieurs mois. En particulier, on s'intéresse à la vérification des caractéristiques principales du marché sur les queues lourdes, les jumps et changements de régimes endogènes/éxogènes, ainsi que 
     sur la mémoire longue des ordres de marchés.
     On présente ainsi surtout les résultats et graphes principaux obtenus sur quelques actifs pour donner une idée de la qualité des données.
@@ -252,16 +252,16 @@ Les tests de stationnarité révèlent plusieurs caractéristiques importantes p
 \textbf{Échelle} & \textbf{Microscopique} (<100ms) & \textbf{Mésoscopique} (1s-10s) & \textbf{Macroscopique} (60s) \\
 \hline
 \textbf{Remarques} & 
-\begin{itemize}
-    \item Forte non-stationnarité (p-value ADF > 0.05)
+    \begin{itemize}
+        \item Forte non-stationnarité (p-value ADF > 0.05)
     \item Clusters de volatilité en début et fin de journée usuel en intraday.
 \end{itemize} &
-\begin{itemize}
+    \begin{itemize}
     \item Stationnarité par morceaux pour tous les actifs, on est entre l'influence de l'orderbook et l'influence macro
     \item Changements de régime moins fréquents mais significatifs de méta-ordre par exemple
 \end{itemize} &
 \begin{itemize}
-    \item Stationnarité plus marquée
+        \item Stationnarité plus marquée
     \item Changements de régime principalement liés aux événements macroéconomiques, type annonce des taux FED le 18 Septembre 2024 à 16h GMT
 \end{itemize} \\
 \hline
@@ -287,7 +287,7 @@ Par exemple l'analyse du 8 août 2024 fournit un exemple particulièrement écla
 
 Cette journée montre plusieurs phénomènes importants :
 
-\begin{itemize}    
+\begin{itemize}
         \item Les rendements montrent une partie fat tail (l'échelle matplotlib s'ajuste automatiquement) avec un certain nombre de valeurs extrêmes. On ne calcule pas de Hill ici car l'analyse est faite plus tard mais on le voit apparaitre directement visuellement ce qui est rassurant.
         \item Les rendements montrent aussi qu'une partie de la tendance est expliquée par les variations tick-by-tick intraday (2ème plus grosse barre de l'histogramme), ce qui suggère l'explication de la tendance par des méta-ordres (et donc d'une imbalance bid-ask moyenne non nulle)
         \item Les changements de régime sont traités comme des points de rupture distincts, on les voit particulièrement en début et fin d'activité  du marché (d'où la suppression générale de la 1ère/dernière heure d'activité)
@@ -522,7 +522,7 @@ Ces résultats confirment que les rendements financiers suivent universellement 
     \end{subfigure}
     \caption{Distributions des rendements pour CXW à 5 et 30 minutes}
 \end{figure}
-
+    
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -551,7 +551,7 @@ Ces résultats confirment que les rendements financiers suivent universellement 
     \end{subfigure}
     \caption{Distributions des rendements pour IEP à 5 et 10 minutes}
 \end{figure}
-
+    
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -664,8 +664,8 @@ L'analyse des copules révèle plusieurs caractéristiques importantes des dépe
         \item Rho de Spearman : $\rho \in [-0.05, 0.05]$
         \item Coefficient de queue inférieure : $\lambda_L \in [0.10, 0.35]$
     \end{itemize}
-    \end{itemize}
-    
+\end{itemize}
+
 \begin{figure}[h!]
 \centering
     \includegraphics[width=0.8\textwidth]{GOOGL_AAL_2024-07-22_1s.png}
@@ -701,19 +701,19 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
     \lambda(t) = \lambda_0(t) + \sum_{t_i < t} \phi(t-t_i)
     \end{equation}
     où :
-    \begin{itemize}
+\begin{itemize}
         \item $\lambda_0(t)$ est l'intensité de base (ou exogène), représentant le taux d'événements déclenchés par des facteurs externes au processus lui-même (par exemple, des nouvelles macroéconomiques non spécifiques).
         \item La somme porte sur tous les événements passés $t_i < t$.
         \item $\phi(\tau)$ est le noyau de mémoire (ou noyau d'excitation), qui quantifie l'influence d'un événement passé sur l'intensité présente. Un $\phi(\tau)$ positif signifie que les événements passés augmentent la probabilité d'événements futurs.
-    \end{itemize}
+\end{itemize}
 
     L'article \cite{marcaccioli2021exogenous} explore particulièrement le cas où le noyau de mémoire suit une loi de puissance, $\phi(\tau) \sim 1/\tau^{1+\theta}$ avec $0 < \theta < 1$, typique des systèmes proches de la criticalité. Ce type de noyau à mémoire longue est crucial pour modéliser la persistance observée dans la volatilité et l'activité des marchés. On a vu précedemment que les inter-arrivées suivent précisément une fat-tail conséquente à ce noyau
     
     Un intérêt majeur de ce cadre est sa capacité potentielle à distinguer les sauts de nature différente en analysant le profil de volatilité autour du saut :
-    \begin{itemize}
+\begin{itemize}
         \item \textbf{Sauts Exogènes (EMC - Efficient Market Class)} : Typiquement associés à des nouvelles externes claires. Le modèle prédit une augmentation abrupte de la volatilité sans précurseur notable, suivie d'une relaxation rapide (décroissance en loi de puissance rapide, $\sim (t-t_j)^{\theta-1}$ puis $\sim (t-t_j)^{-\theta-1}$).
         \item \textbf{Sauts Endogènes (SEC - Self-Exciting Class)} : Émergeant de la dynamique interne du marché. Le modèle prédit une augmentation progressive de la volatilité avant le saut, suivie d'une relaxation plus lente (profil plus symétrique, décroissance en loi de puissance $\sim |t-t_j|^{2\theta-1}$ avant et après le saut).
-    \end{itemize}
+\end{itemize}
     L'estimation des exposants de ces lois de puissance (notamment $p_r$ pour la relaxation post-saut et $p_l$ pour la croissance pré-saut) permettrait ainsi de classifier les sauts observés.
 
     \subsection{Détection des sauts et score de saut}
@@ -721,9 +721,9 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
     Pour identifier empiriquement les sauts de prix candidats à cette analyse, l'article \cite{marcaccioli2021exogenous} utilise une méthodologie basée sur la standardisation des rendements. L'idée est de normaliser les rendements pour qu'en l'absence de sauts, leur distribution soit proche d'une loi normale centrée réduite, puis d'identifier les valeurs extrêmes par rapport à cette référence.
 
     Le "score de saut" $J_t$ est défini comme :
-    \begin{equation}
+\begin{equation}
     J_t = \frac{r_t}{\sigma_t f_t}
-    \end{equation}
+\end{equation}
     où :
     \begin{itemize}
         \item $r_t = \log(m_t / m_{t-1})$ est le rendement logarithmique du mid-price à l'échelle considérée (1 minute dans l'article).
