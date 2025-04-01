@@ -515,21 +515,22 @@ Ces résultats confirment que les rendements financiers suivent universellement 
         \label{fig:CXW_5m_moved}
     \end{subfigure}
     \hfill
-    \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{CXW_30m_returns_histogram.png}
         \caption{Distribution des rendements à 30 minutes}
         \label{fig:CXW_30m_moved}
     \end{subfigure}
-    
-    \vspace{0.5cm}
-    
+    \caption{Distributions des rendements pour CXW à 5 et 30 minutes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{CXW_1h_returns_histogram.png}
         \caption{Distribution des rendements à 1 heure}
         \label{fig:CXW_1h_moved}
     \end{subfigure}
-    \caption{Distributions des rendements pour CXW à différentes échelles temporelles. Les ajustements en loi de puissance (courbes rouges) montrent des exposants caractéristiques entre 3.2 et 3.6, cohérents avec les travaux théoriques sur les marchés financiers. Notons que l'épaisseur des queues diminue légèrement avec l'allongement de l'échelle temporelle, suggérant un retour progressif vers la normalité.}
+    \caption{Distribution des rendements pour CXW à 1 heure. Les ajustements en loi de puissance (courbes rouges) montrent des exposants caractéristiques entre 3.2 et 3.6, cohérents avec les travaux théoriques sur les marchés financiers. Notons que l'épaisseur des queues diminue légèrement avec l'allongement de l'échelle temporelle, suggérant un retour progressif vers la normalité. Les spikes sur l'histogramme sont dûs à la discrétisation en tick}
     \label{fig:CXW_multi_scale_moved}
 \end{figure}
 
@@ -548,9 +549,11 @@ Ces résultats confirment que les rendements financiers suivent universellement 
         \caption{Distribution des rendements à 10 minutes}
         \label{fig:IEP_10m_moved}
     \end{subfigure}
-    
-    \vspace{0.5cm}
-    
+    \caption{Distributions des rendements pour IEP à 5 et 10 minutes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{IEP_20m_returns_histogram.png}
         \caption{Distribution des rendements à 20 minutes}
@@ -562,7 +565,7 @@ Ces résultats confirment que les rendements financiers suivent universellement 
         \caption{Distribution des rendements à 30 minutes}
         \label{fig:IEP_30m_moved}
     \end{subfigure}
-    \caption{Distributions des rendements pour IEP à différentes échelles temporelles. Les distributions suivent des lois de puissance avec des exposants qui varient entre 3.0 et 3.5 selon l'échelle. Cette structure en loi de puissance est caractéristique des systèmes complexes auto-organisés et reflète le comportement collectif des acteurs du marché.}
+    \caption{Distributions des rendements pour IEP à 20 et 30 minutes. Les distributions suivent des lois de puissance avec des exposants qui varient entre 3.0 et 3.5 selon l'échelle. Cette structure en loi de puissance est caractéristique des systèmes complexes auto-organisés et reflète le comportement collectif des acteurs du marché.}
     \label{fig:IEP_multi_scale_moved}
 \end{figure}
 
@@ -585,13 +588,10 @@ Ces résultats confirment que les rendements financiers suivent universellement 
     \label{fig:WBD_KHC_returns_moved}
 \end{figure}
 
+Ceci mis en place, on sait maintenant que nos returns sont de carré intégrable au moins ! Le cours fait aussi état d'une remarque importante : l'hypothèse $L^2$ est importante pour donner un sens aux corrélations !
 
-Ceci mis en place, on sait maintenant que nos returns sont de carré intégrable au moins ! 
-Le cours fait aussi état d'une remarque importante : l'hypothèse L2 est importante pour donner un sens aux corrélations !
+Ainsi, on sait que l'on peut calculer des corrélations entre returns en pouvant donner une vraie interprétation puisque toutes les hypothèses ($n \gg p$ et $L^2$) sont respectées.
 
-Ainsi, on sait que l'on peut calculer des corrélations entre returns en pouvant donner une vraie interprétation puisque toutes les hypothèses (n>>p et L2) sont respectées
-
-\newpage
 \section{Structure de corrélation entre actifs}
 
 Ainsi, l'analyse des corrélations entre les rendements des différents actifs est ici calculée à différentes échelles temporelles, et révèle une partie de la structure de dépendance du marché. 
@@ -640,7 +640,7 @@ Ces résultats soulignent que la structure de dépendance est fortement dépenda
 
 On passe maintenant à une analyse plus poussée des dépendances des assets en modélisant la structure de dépendance des returns par des copules.
 
-\newpage
+
 \section{Analyse des dépendances par les copules}
 
 \subsection{Théorie des copules}
@@ -796,17 +796,29 @@ Pour approfondir l'analyse des dépendances temporelles et de la nature des év�
 \newpage
 \section*{Conclusion}
 
+
     Ce mémoire a initié une exploration statistique approfondie d'un jeu de données haute fréquence LOB du Nasdaq, posant les bases d'une compréhension fine de la microstructure de marché sur plusieurs actifs et échelles temporelles. Nos analyses ont systématiquement validé plusieurs faits stylisés fondamentaux tout en révélant la complexité multi-échelle des dynamiques de prix.
+
+    \vspace{0.5cm}
 
     L'étude des rendements a confirmé sans équivoque la présence de queues de distribution lourdes, caractérisées par des indices de queue $\alpha$ estimés par la méthode de Hill typiquement entre 2.4 et 3.1. Cette propriété, robuste à travers différents actifs et échelles temporelles (5m à 1h), non seulement quantifie le risque d'événements extrêmes mais valide aussi l'hypothèse cruciale d'intégrabilité $L^2$, légitimant ainsi l'analyse des corrélations. L'analyse de l'exposant de Hurst a révélé une forte anti-persistance (H ≈ 0.23-0.33) aux échelles microscopiques (< 60s), typique des retours rapides vers la moyenne induits par le *bid-ask bounce* et l'activité des *market makers*, tandis que l'autocorrélation des rendements a mis en évidence une mémoire longue, signe d'une volatilité persistante et agrégée.
 
+    \vspace{0.5cm}
+
     L'analyse de la stationnarité, via les tests ADF et la détection de ruptures, a montré que si les séries de prix sont localement non-stationnaires à très haute fréquence (100ms), elles peuvent être considérées comme stationnaires par morceaux sur des échelles plus longues (1s-60s). Ces ruptures de stationnarité coïncident souvent avec des événements macroéconomiques majeurs, induisant des réactions synchronisées sur l'ensemble des actifs, même ceux évoluant dans des secteurs différents. Ce phénomène souligne l'interaction complexe entre les dynamiques endogènes rapides et les chocs exogènes.
+
+    \vspace{0.5cm}
 
     La structure de dépendance, explorée par les matrices de corrélation linéaire et les copules, s'est également avérée fortement dépendante de l'échelle. Une indépendance quasi-totale aux échelles microscopiques (10ms) laisse place à des structures de corrélation plus marquées (clusters sectoriels) et à une dépendance non-linéaire (souvent capturée par la copule de Clayton, indiquant une dépendance accrue lors des baisses) aux échelles de la seconde et au-delà. Cette observation, couplée à la synchronisation des ruptures lors d'événements externes, suggère que si le bruit de microstructure domine à très court terme, les facteurs communs et les interactions systémiques deviennent prépondérants lorsque l'horizon temporel s'allonge.
 
+    \vspace{0.5cm}
+
     Ces résultats empiriques s'inscrivent bien dans le cadre théorique des processus auto-excités comme les processus de Hawkes, et de la distinction de Bouchaud entre sauts endogènes (SEC), majoritaires et liés à la dynamique interne du LOB (reflétée par l'anti-persistance et les queues lourdes des temps d'arrivée), et sauts exogènes (EMC), plus rares mais synchronisés et liés aux informations externes. L'ensemble de ce travail préliminaire de caractérisation statistique ouvre ainsi la voie à une modélisation plus fine intégrant ces différentes facettes, notamment en reliant les modèles de volatilité rough aux processus de Hawkes sous-jacents pour capturer la dynamique multi-échelle complexe des marchés financiers.
 
+    \vspace{0.5cm}
+
     On a remarqué qu'aucune librairie python open-source ne permettait de bien fitter un modèle de Hawkes (tick, pyhawkes, Hawkes et hawkeslib), nous continuerons notre projet en construisant une librairie open-sourcée qui permettra de s'accorder sur une estimation efficace sur des données quelconques (sismiques ou populations) et HFT (voir librarie "tick" qui n'est plus maintenue).
+
 \newpage
 \begin{thebibliography}{9}
 
